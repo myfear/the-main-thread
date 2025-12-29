@@ -1,0 +1,15 @@
+[allowlist]
+  description = "Global Allowlist"
+
+  # Ignore based on any subset of the file path
+  paths = [
+    # Ignore all example certs
+    '''(?:^|\/)jwt-case.*\.pem$''',
+    '''(?:^|\/)stateless-api.*\.pem$''',
+    '''(?:^|\/)granular-rbac-tutorial.*\.pem$''',
+    '''(?:^|\/)bsky-javafeed-generator2.*\.crt$''',
+    '''(?:^|\/)bsky-javafeed-generator2.*\.key$''',
+    '''(?:^|\/)enterprise-rag-secure\/.*\.pem$''',
+    '''(?:^|\/)enterprise-rag-metadata\/.*\.pem$''',
+     '''(?:^|/)src/main/resources/certs/.*'''
+    ]

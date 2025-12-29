@@ -1,0 +1,473 @@
+name: Monorepo Build
+
+on:
+  push:
+    branches: [ "main" ]
+  pull_request:
+    branches: [ "main" ]
+  workflow_dispatch:
+    inputs:
+      build_all:
+        description: 'Force build all projects?'
+        required: true
+        default: true
+        type: boolean
+
+permissions:
+  contents: write # Required to push badges to the orphan branch
+
+jobs:
+  # ------------------------------------------------------------------
+  # JOB 1: Detect which projects need building and which Java version
+  # ------------------------------------------------------------------
+  detect-changes:
+    runs-on: ubuntu-latest
+    outputs:
+      matrix: ${{ steps.set-matrix.outputs.matrix }}
+      has-changes: ${{ steps.set-matrix.outputs.has-changes }}
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+        with:
+          fetch-depth: 0
+
+      - name: Identify projects and Java versions
+        id: set-matrix
+        run: |
+          # --- Configuration ---
+          DEFAULT_JAVA="21"
+          # Space-separated list of folders to ignore
+          EXCLUDES="video-pipeline"
+          # ---------------------
+
+          if [ "${{ github.event_name }}" == "pull_request" ]; then
+            BASE_SHA="origin/${{ github.base_ref }}"
+          else
+            BASE_SHA="${{ github.event.before }}"
+          fi
+
+          touch matrix_data.json
+
+          # Logic: If manual trigger (and true), find ALL projects. Otherwise, find CHANGED projects.
+          if [ "${{ github.event_name }}" == "workflow_dispatch" ] && [ "${{ inputs.build_all }}" == "true" ]; then
+             echo "Manual trigger: Scanning all projects..."
+             # Find all poms, exclude target folders, get directory names
+             FIND_CMD=$(find . -maxdepth 2 -name "pom.xml" -not -path '*/target/*' | xargs dirname | sed 's|^\./||' | sort -u)
+          else
+             echo "Diffing against $BASE_SHA"
+             FIND_CMD=$(git diff --name-only $BASE_SHA HEAD | awk -F/ '{print $1}' | sort -u)
+          fi
+
+          # Process the list of directories
+          echo "$FIND_CMD" | while read dir; do
+            # Only process if it looks like a directory with a pom.xml
+            if [[ -d "$dir" ]] && [[ -f "$dir/pom.xml" ]]; then
+              
+              # Check Exclusions
+              if [[ " $EXCLUDES " =~ " $dir " ]]; then
+                echo "Skipping $dir (Explicitly Excluded)" >&2
+                continue
+              fi
+              
+              # --- Java Version Detection ---
+              # Priority 1: maven.compiler.release
+              JAVA_VERSION=$(grep -oP '(?<=<maven.compiler.release>).*?(?=</maven.compiler.release>)' "$dir/pom.xml" | head -1)
+              
+              # Priority 2: java.version
+              if [ -z "$JAVA_VERSION" ]; then
+                JAVA_VERSION=$(grep -oP '(?<=<java.version>).*?(?=</java.version>)' "$dir/pom.xml" | head -1)
+              fi
+
+              # Priority 3: maven.compiler.source
+              if [ -z "$JAVA_VERSION" ]; then
+                JAVA_VERSION=$(grep -oP '(?<=<maven.compiler.source>).*?(?=</maven.compiler.source>)' "$dir/pom.xml" | head -1)
+              fi
+
+              # Fallback: Default or if variable found
+              if [ -z "$JAVA_VERSION" ] || [[ "$JAVA_VERSION" == *'$'* ]]; then
+                JAVA_VERSION=$DEFAULT_JAVA
+              fi
+              
+              # Normalize 1.8 -> 8
+              if [ "$JAVA_VERSION" == "1.8" ]; then JAVA_VERSION="8"; fi
+              
+              # --- Check for protobuf-maven-plugin ---
+              if grep -q "<artifactId>protobuf-maven-plugin</artifactId>" "$dir/pom.xml"; then
+                NEEDS_PROTOC="true"
+              else
+                NEEDS_PROTOC="false"
+              fi
+
+              echo "Found: $dir (Java $JAVA_VERSION, protoc: $NEEDS_PROTOC)" >&2
+              echo "{\"path\": \"$dir\", \"java\": \"$JAVA_VERSION\", \"protoc\": $NEEDS_PROTOC}" >> matrix_data.json
+            fi
+          done
+
+          # Output the JSON matrix
+          if [ -s matrix_data.json ]; then
+            JSON_MATRIX="[$(paste -sd, matrix_data.json)]"
+            echo "has-changes=true" >> $GITHUB_OUTPUT
+            echo "matrix=$JSON_MATRIX" >> $GITHUB_OUTPUT
+          else
+            echo "No buildable projects found."
+            echo "has-changes=false" >> $GITHUB_OUTPUT
+            echo "matrix=[]" >> $GITHUB_OUTPUT
+          fi
+
+  # ------------------------------------------------------------------
+  # JOB 2: Build projects in parallel
+  # ------------------------------------------------------------------
+  build:
+    needs: detect-changes
+    if: needs.detect-changes.outputs.has-changes == 'true'
+    runs-on: ubuntu-latest
+    strategy:
+      fail-fast: false
+      matrix:
+        project: ${{ fromJson(needs.detect-changes.outputs.matrix) }}
+    
+    name: ${{ matrix.project.path }} (JDK ${{ matrix.project.java }})
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v4
+
+      - name: Set up JDK ${{ matrix.project.java }}
+        uses: actions/setup-java@v4
+        with:
+          java-version: ${{ matrix.project.java }}
+          distribution: 'temurin'
+      
+      - name: Install Protoc
+        if: matrix.project.protoc == true
+        uses: arduino/setup-protoc@v3
+        with:
+          repo-token: ${{ secrets.GITHUB_TOKEN }}
+      
+      - name: Cache Maven dependencies
+        uses: actions/cache@v4
+        with:
+          path: ~/.m2/repository
+          key: ${{ runner.os }}-maven-${{ matrix.project.path }}-${{ hashFiles(format('{0}/pom.xml', matrix.project.path)) }}
+          restore-keys: |
+            ${{ runner.os }}-maven-${{ matrix.project.path }}-
+            ${{ runner.os }}-maven-
+
+      # Build, but don't crash the job immediately on failure (so we can write the Red badge)
+      - name: Build with Maven
+        id: build
+        working-directory: ${{ matrix.project.path }}
+        continue-on-error: true
+        run: |
+          if [ -f "mvnw" ]; then chmod +x mvnw; CMD="./mvnw"; else CMD="mvn"; fi
+          $CMD package -DskipTests=false
+
+      # Create the JSON file for Shields.io and Sidecar JSON file
+      - name: Generate JSON Files
+        run: |
+          SAFE_NAME=$(echo "${{ matrix.project.path }}" | sed 's/\//-/g')
+          
+          if [ "${{ steps.build.outcome }}" == "success" ]; then
+            STATUS="passing"
+            COLOR="green"
+          else
+            STATUS="failing"
+            COLOR="red"
+          fi
+
+          # FIX: Use the full path to the pom.xml
+          POM_PATH="${{ matrix.project.path }}/pom.xml"
+          
+          # Check if file exists to be safe
+          if [ -f "$POM_PATH" ]; then
+            Q_VER=$(grep -oP '(?<=<quarkus.platform.version>).*?(?=</quarkus.platform.version>)' "$POM_PATH" | head -1)
+            SUBSTACK_URL=$(grep -oP '(?<=<substack-article.url>).*?(?=</substack-article.url>)' "$POM_PATH" | head -1)
+          else
+            Q_VER=""
+            SUBSTACK_URL=""
+          fi
+          
+          if [ -z "$Q_VER" ]; then Q_VER="-"; fi
+          if [ -z "$SUBSTACK_URL" ]; then SUBSTACK_URL=""; fi
+
+          # Parse test results from Surefire reports
+          SUREFIRE_DIR="${{ matrix.project.path }}/target/surefire-reports"
+          TESTS_TOTAL=0
+          TESTS_ERRORS=0
+          TESTS_FAILURES=0
+          TESTS_SKIPPED=0
+          
+          if [ -d "$SUREFIRE_DIR" ]; then
+            # Parse all TEST-*.xml files in surefire-reports
+            for xml_file in "$SUREFIRE_DIR"/TEST-*.xml; do
+              if [ -f "$xml_file" ]; then
+                # Extract attributes from <testsuite> tag
+                # Format: <testsuite name="..." tests="X" errors="Y" failures="Z" skipped="W" ...>
+                TOTAL=$(grep -oP '(?<=<testsuite\s).*?(?=>)' "$xml_file" | grep -oP '(?<=tests=")[0-9]+' | head -1)
+                ERRORS=$(grep -oP '(?<=<testsuite\s).*?(?=>)' "$xml_file" | grep -oP '(?<=errors=")[0-9]+' | head -1)
+                FAILURES=$(grep -oP '(?<=<testsuite\s).*?(?=>)' "$xml_file" | grep -oP '(?<=failures=")[0-9]+' | head -1)
+                SKIPPED=$(grep -oP '(?<=<testsuite\s).*?(?=>)' "$xml_file" | grep -oP '(?<=skipped=")[0-9]+' | head -1)
+                
+                # Accumulate totals
+                TESTS_TOTAL=$((TESTS_TOTAL + ${TOTAL:-0}))
+                TESTS_ERRORS=$((TESTS_ERRORS + ${ERRORS:-0}))
+                TESTS_FAILURES=$((TESTS_FAILURES + ${FAILURES:-0}))
+                TESTS_SKIPPED=$((TESTS_SKIPPED + ${SKIPPED:-0}))
+              fi
+            done
+          fi
+          
+          # Calculate passed tests
+          TESTS_PASSED=$((TESTS_TOTAL - TESTS_ERRORS - TESTS_FAILURES - TESTS_SKIPPED))
+
+          # Write JSON 
+          echo "{ \"schemaVersion\": 1, \"label\": \"build\", \"message\": \"$STATUS\", \"color\": \"$COLOR\"}" > "$SAFE_NAME.json"
+
+          # Write Version, Java version, test results, and substack URL to a sidecar JSON file
+          cat > "$SAFE_NAME-metadata.json" <<EOF
+          {
+            "quarkus": "$Q_VER",
+            "java": "${{ matrix.project.java }}",
+            "substackUrl": "$SUBSTACK_URL",
+            "projectPath": "${{ matrix.project.path }}",
+            "tests": {
+              "total": $TESTS_TOTAL,
+              "passed": $TESTS_PASSED,
+              "failed": $TESTS_FAILURES,
+              "errors": $TESTS_ERRORS,
+              "skipped": $TESTS_SKIPPED
+            }
+          }
+          EOF
+
+      - name: Upload Badge Artifact
+        uses: actions/upload-artifact@v4
+        with:
+          name: badge-${{ strategy.job-index }}
+          path: |
+            *.json
+          retention-days: 1
+
+      # Fail the job if the build actually failed
+      - name: Check Build Status
+        if: steps.build.outcome != 'success'
+        run: exit 1
+
+  # ------------------------------------------------------------------
+  # JOB 3: Aggregate badges and push to orphan branch
+  # ------------------------------------------------------------------
+  update-badges:
+    needs: [detect-changes, build]
+    # Only run if there were changes, AND run even if builds failed (provided the workflow wasn't cancelled manually)
+    if: needs.detect-changes.outputs.has-changes == 'true' && !cancelled()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout badges branch
+        uses: actions/checkout@v4
+        with:
+          ref: badges
+          path: badges-branch
+
+      - name: Download all artifacts
+        uses: actions/download-artifact@v4
+        with:
+          pattern: badge-*
+          path: temp-artifacts
+          merge-multiple: true
+
+      - name: Move and Commit Badges
+        run: |
+          # Create directories to ensure find commands don't crash if empty
+          mkdir -p temp-artifacts
+          mkdir -p badges-branch
+          
+          # Only proceed if we actually found JSON files
+          if [ -n "$(find temp-artifacts -name '*.json' -print -quit)" ]; then
+            echo "Found badge artifacts. Updating..."
+            
+            # Copy JSON (Badges and Metadata)
+            find temp-artifacts -name "*.json" -exec cp {} badges-branch/ \;
+            
+            cd badges-branch
+            git config user.name "github-actions[bot]"
+            git config user.email "github-actions[bot]@users.noreply.github.com"
+            
+            git add .
+            if git diff --staged --quiet; then
+              echo "No changes in badges."
+            else
+              git commit -m "Update build badges [skip ci]"
+              git push origin badges
+            fi
+          else
+            echo "No artifacts found (maybe all builds were skipped or failed early)."
+          fi
+
+  # ------------------------------------------------------------------
+  # JOB 4: Update README with badge table
+  # ------------------------------------------------------------------
+  update-readme:
+    needs: update-badges
+    if: always()
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout Main
+        uses: actions/checkout@v4
+        with:
+          ref: main # We are editing the main README
+          path: main-repo
+
+      - name: Checkout Badges Branch
+        uses: actions/checkout@v4
+        with:
+          ref: badges # We need to see what JSON files exist
+          path: badges-repo
+
+      - name: Generate New Badge Table
+        run: |
+          cd main-repo
+          
+          # 1. Create the 6-Column Header
+          echo "| Project | Java | Quarkus | Tests | Links | Build Status |" > ../badge_table.md
+          echo "| :--- | :---: | :---: | :---: | :---: | :--- |" >> ../badge_table.md
+          
+          # Iterate over JSON files in the badges branch to build rows
+          # We use the badges branch as the source of truth for what projects exist
+          cd ../badges-repo
+          for file in *.json; do
+            if [ "$file" == "*.json" ]; then continue; fi # Handle empty case
+            
+            # Skip metadata files (they end with -metadata.json)
+            if [[ "$file" == *"-metadata.json" ]]; then continue; fi
+            
+            # remove .json extension
+            PROJECT_NAME="${file%.json}"
+
+            # Read Version, Java version, test results, substack URL, and project path from sidecar JSON file
+            METADATA_FILE="${PROJECT_NAME}-metadata.json"
+            if [ -f "$METADATA_FILE" ]; then
+              # Use jq if available, otherwise use grep/sed fallback
+              if command -v jq &> /dev/null; then
+                Q_VERSION=$(jq -r '.quarkus // "-"' "$METADATA_FILE")
+                JAVA_VERSION=$(jq -r '.java // "-"' "$METADATA_FILE")
+                SUBSTACK_URL=$(jq -r '.substackUrl // ""' "$METADATA_FILE")
+                PROJECT_PATH=$(jq -r '.projectPath // ""' "$METADATA_FILE")
+                TESTS_TOTAL=$(jq -r '.tests.total // 0' "$METADATA_FILE")
+                TESTS_PASSED=$(jq -r '.tests.passed // 0' "$METADATA_FILE")
+                TESTS_FAILED=$(jq -r '.tests.failed // 0' "$METADATA_FILE")
+                TESTS_ERRORS=$(jq -r '.tests.errors // 0' "$METADATA_FILE")
+                TESTS_SKIPPED=$(jq -r '.tests.skipped // 0' "$METADATA_FILE")
+              else
+                # Fallback: use grep/sed to extract values
+                Q_VERSION=$(grep -oP '(?<="quarkus":\s*")[^"]*' "$METADATA_FILE" || echo "-")
+                JAVA_VERSION=$(grep -oP '(?<="java":\s*")[^"]*' "$METADATA_FILE" || echo "-")
+                SUBSTACK_URL=$(grep -oP '(?<="substackUrl":\s*")[^"]*' "$METADATA_FILE" || echo "")
+                PROJECT_PATH=$(grep -oP '(?<="projectPath":\s*")[^"]*' "$METADATA_FILE" || echo "")
+                TESTS_TOTAL=$(grep -oP '(?<="total":\s*)[0-9]+' "$METADATA_FILE" | head -1 || echo "0")
+                TESTS_PASSED=$(grep -oP '(?<="passed":\s*)[0-9]+' "$METADATA_FILE" | head -1 || echo "0")
+                TESTS_FAILED=$(grep -oP '(?<="failed":\s*)[0-9]+' "$METADATA_FILE" | head -1 || echo "0")
+                TESTS_ERRORS=$(grep -oP '(?<="errors":\s*)[0-9]+' "$METADATA_FILE" | head -1 || echo "0")
+                TESTS_SKIPPED=$(grep -oP '(?<="skipped":\s*)[0-9]+' "$METADATA_FILE" | head -1 || echo "0")
+                if [ -z "$Q_VERSION" ] || [ "$Q_VERSION" == "null" ]; then Q_VERSION="-"; fi
+                if [ -z "$JAVA_VERSION" ] || [ "$JAVA_VERSION" == "null" ]; then JAVA_VERSION="-"; fi
+                if [ -z "$SUBSTACK_URL" ] || [ "$SUBSTACK_URL" == "null" ]; then SUBSTACK_URL=""; fi
+                if [ -z "$PROJECT_PATH" ] || [ "$PROJECT_PATH" == "null" ]; then PROJECT_PATH=""; fi
+              fi
+            else
+              Q_VERSION="-"
+              JAVA_VERSION="-"
+              SUBSTACK_URL=""
+              PROJECT_PATH=""
+              TESTS_TOTAL=0
+              TESTS_PASSED=0
+              TESTS_FAILED=0
+              TESTS_ERRORS=0
+              TESTS_SKIPPED=0
+            fi
+            
+            # Format test results
+            if [ "$TESTS_TOTAL" -eq 0 ]; then
+              TEST_DISPLAY="-"
+            else
+              # Build test status string with emojis
+              TEST_PROBLEMS=$((TESTS_FAILED + TESTS_ERRORS))
+              if [ "$TEST_PROBLEMS" -eq 0 ]; then
+                # All passed
+                TEST_DISPLAY="✅ ${TESTS_PASSED}/${TESTS_TOTAL}"
+              else
+                # Some failures
+                TEST_DISPLAY="❌ ${TESTS_PASSED}/${TESTS_TOTAL}"
+              fi
+              
+              # Add skipped count if any
+              if [ "$TESTS_SKIPPED" -gt 0 ]; then
+                TEST_DISPLAY="${TEST_DISPLAY} (⏭️ ${TESTS_SKIPPED})"
+              fi
+            fi
+            
+            # Generate the Shield URL
+            # Note: We must use the raw.githubusercontent URL for the JSON endpoint
+            SHIELD_URL="https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/${{ github.repository }}/badges/$file"
+            
+            # Format links column: (Article)
+            if [ -n "$PROJECT_PATH" ] && [ "$PROJECT_PATH" != "" ]; then
+              REPO_URL="https://github.com/${{ github.repository }}/tree/main/$PROJECT_PATH"
+            else
+              REPO_URL=""
+            fi
+            
+            # Format project name with repository link
+            if [ -n "$REPO_URL" ] && [ "$REPO_URL" != "" ]; then
+              PROJECT_DISPLAY="**[$PROJECT_NAME]($REPO_URL)**"
+            else
+              PROJECT_DISPLAY="**$PROJECT_NAME**"
+            fi
+            
+            # Build links string (only Article, repository link is now in project name)
+            if [ -n "$SUBSTACK_URL" ] && [ "$SUBSTACK_URL" != "" ]; then
+              LINKS_DISPLAY="[Article]($SUBSTACK_URL)"
+            else
+              LINKS_DISPLAY="Article"
+            fi
+            
+            # Append row to table
+            echo "| $PROJECT_DISPLAY | $JAVA_VERSION | $Q_VERSION | $TEST_DISPLAY | $LINKS_DISPLAY | ![$PROJECT_NAME]($SHIELD_URL) |" >> ../badge_table.md
+          done
+          
+          cd ../main-repo
+
+      - name: Inject Table into README
+        run: |
+          cd main-repo
+          
+          # Define markers
+          START_MARKER="<!-- BUILD_BADGES_START -->"
+          END_MARKER="<!-- BUILD_BADGES_END -->"
+          FILE="README.md"
+          
+          # 1. Create a temporary file with the content BEFORE the start marker
+          sed -n "1,/$START_MARKER/p" "$FILE" > "$FILE.tmp"
+          
+          # 2. Append the new generated table
+          cat ../badge_table.md >> "$FILE.tmp"
+          
+          # 3. Append the content AFTER the end marker
+          # We use sed to find the end marker, then print from there to end of file
+          sed -n "/$END_MARKER/,\$p" "$FILE" >> "$FILE.tmp"
+          
+          # 4. Overwrite original file
+          mv "$FILE.tmp" "$FILE"
+
+      - name: Commit and Push README
+        run: |
+          cd main-repo
+          git config user.name "github-actions[bot]"
+          git config user.email "github-actions[bot]@users.noreply.github.com"
+          
+          # Only commit if the README actually changed
+          if git diff --quiet README.md; then
+            echo "README is up to date."
+          else
+            git add README.md
+            git commit -m "docs: Auto-update build status badges"
+            git push origin main
+          fi
