@@ -28,6 +28,7 @@ Each folder in this repository matches an article from the Substack and includes
 <!-- BUILD_BADGES_START -->
 | Project | Java | Quarkus | Tests | Links | Build Status |
 | :--- | :---: | :---: | :---: | :---: | :--- |
+| **[credit-audit](https://github.com/myfear/the-main-thread/tree/main/credit-audit)** | 21 | 3.30.5 | - | [Article](https://www.the-main-thread-com/p/quarkus-hibernate-envers-audit-trail-java) | ![credit-audit](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/credit-audit.json) |
 | **[order-service](https://github.com/myfear/the-main-thread/tree/main/order-service)** | 21 | 3.30.5 | - | [Article](https://www.the-main-thread.com/p/springdoc-vs-quarkus-openapi-zero-config) | ![order-service](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/order-service.json) |
 <!-- BUILD_BADGES_END -->
 
