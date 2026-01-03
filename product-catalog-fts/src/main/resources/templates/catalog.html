@@ -1,0 +1,274 @@
+<!doctype html>
+<html lang="en">
+
+<head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <title>Product Catalog</title>
+    <style>
+        * {
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', Roboto, 'Helvetica Neue', Arial, sans-serif;
+            margin: 0;
+            background: linear-gradient(135deg, #f5f7fa 0%, #e8ecf1 100%);
+            min-height: 100vh;
+            color: #2c3e50;
+        }
+
+        header {
+            position: sticky;
+            top: 0;
+            background: linear-gradient(135deg, #667eea 0%, #764ba2 100%);
+            box-shadow: 0 4px 6px rgba(0, 0, 0, 0.1);
+            padding: 20px 24px;
+            z-index: 1000;
+        }
+
+        header strong {
+            color: white;
+            font-size: 24px;
+            font-weight: 600;
+            letter-spacing: -0.5px;
+            margin-right: 8px;
+        }
+
+        .row {
+            display: flex;
+            gap: 12px;
+            align-items: center;
+            flex-wrap: wrap;
+        }
+
+        input,
+        select,
+        button {
+            padding: 10px 16px;
+            font-size: 14px;
+            border: 1px solid #ddd;
+            border-radius: 8px;
+            transition: all 0.2s ease;
+            font-family: inherit;
+        }
+
+        input {
+            background: white;
+            flex: 1;
+            min-width: 250px;
+        }
+
+        input:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        select {
+            background: white;
+            cursor: pointer;
+            min-width: 150px;
+        }
+
+        select:hover {
+            border-color: #667eea;
+        }
+
+        select:focus {
+            outline: none;
+            border-color: #667eea;
+            box-shadow: 0 0 0 3px rgba(102, 126, 234, 0.1);
+        }
+
+        button {
+            background: white;
+            color: #667eea;
+            font-weight: 600;
+            cursor: pointer;
+            border: 2px solid white;
+        }
+
+        button:hover:not(:disabled) {
+            background: #f8f9ff;
+            transform: translateY(-1px);
+            box-shadow: 0 4px 8px rgba(102, 126, 234, 0.2);
+        }
+
+        button:active:not(:disabled) {
+            transform: translateY(0);
+        }
+
+        button:disabled {
+            opacity: 0.5;
+            cursor: not-allowed;
+        }
+
+        #apply {
+            background: #48bb78;
+            color: white;
+            border-color: #48bb78;
+        }
+
+        #apply:hover {
+            background: #38a169;
+            border-color: #38a169;
+        }
+
+        main {
+            padding: 32px 24px;
+            max-width: 1200px;
+            margin: 0 auto;
+        }
+
+        .grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 24px;
+            margin-top: 24px;
+        }
+
+        .card {
+            background: white;
+            border: 1px solid #e2e8f0;
+            border-radius: 12px;
+            padding: 20px;
+            transition: all 0.3s ease;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        .card:hover {
+            transform: translateY(-4px);
+            box-shadow: 0 12px 24px rgba(0, 0, 0, 0.1);
+            border-color: #667eea;
+        }
+
+        .muted {
+            color: #718096;
+            font-size: 14px;
+            font-weight: 500;
+        }
+
+        .controls {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            margin: 0 0 24px 0;
+            padding: 16px 20px;
+            background: white;
+            border-radius: 12px;
+            box-shadow: 0 2px 4px rgba(0, 0, 0, 0.05);
+        }
+
+        #loadPrev {
+            background: #667eea;
+            color: white;
+            border-color: #667eea;
+        }
+
+        #loadPrev:hover:not(:disabled) {
+            background: #5568d3;
+            border-color: #5568d3;
+        }
+
+        #status {
+            display: flex;
+            align-items: center;
+            gap: 8px;
+        }
+
+        #status::before {
+            content: '';
+            width: 8px;
+            height: 8px;
+            border-radius: 50%;
+            background: #48bb78;
+            display: inline-block;
+            animation: pulse 2s ease-in-out infinite;
+        }
+
+        @keyframes pulse {
+            0%, 100% {
+                opacity: 1;
+            }
+            50% {
+                opacity: 0.5;
+            }
+        }
+
+        .sentinel {
+            height: 1px;
+        }
+
+        /* Responsive design */
+        @media (max-width: 768px) {
+            header {
+                padding: 16px;
+            }
+
+            header strong {
+                font-size: 20px;
+                width: 100%;
+                margin-bottom: 8px;
+            }
+
+            .row {
+                gap: 8px;
+            }
+
+            input {
+                min-width: 100%;
+            }
+
+            select {
+                min-width: calc(50% - 4px);
+            }
+
+            main {
+                padding: 20px 16px;
+            }
+
+            .grid {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <header>
+        <div class="row">
+            <strong>Catalog</strong>
+            <input id="q" placeholder="Search (e.g. wireless battery)" size="30" />
+            <select id="category">
+                <option value="">All categories</option>
+                <option>Electronics</option>
+                <option>Books</option>
+                <option>Clothing</option>
+                <option>Home</option>
+                <option>Sports</option>
+            </select>
+            <select id="sortBy">
+                <option value="popularity">Popularity</option>
+                <option value="newest">Newest</option>
+                <option value="relevance">Relevance (requires search)</option>
+            </select>
+            <button id="apply">Apply</button>
+        </div>
+    </header>
+
+    <main>
+        <div class="controls">
+            <button id="loadPrev" disabled>Load previous</button>
+            <div class="muted" id="status">Idle</div>
+        </div>
+
+        <div class="grid" id="grid"></div>
+        <div class="sentinel" id="sentinel"></div>
+    </main>
+
+    <script type="module" src="/static/catalog.js"></script>
+</body>
+
+</html>
