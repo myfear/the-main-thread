@@ -31,6 +31,7 @@ Each folder in this repository matches an article from the Substack and includes
 | **[credit-audit](https://github.com/myfear/the-main-thread/tree/main/credit-audit)** | 21 | 3.30.5 | - | [Article](https://www.the-main-thread-com/p/quarkus-hibernate-envers-audit-trail-java) | ![credit-audit](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/credit-audit.json) |
 | **[order-service](https://github.com/myfear/the-main-thread/tree/main/order-service)** | 21 | 3.30.5 | - | [Article](https://www.the-main-thread.com/p/springdoc-vs-quarkus-openapi-zero-config) | ![order-service](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/order-service.json) |
 | **[product-catalog-fts](https://github.com/myfear/the-main-thread/tree/main/product-catalog-fts)** | 21 | 3.30.5 | - | [Article](https://www.the-main-thread.com/p/quarkus-cursor-pagination-full-text-search-infinite-scroll) | ![product-catalog-fts](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/product-catalog-fts.json) |
+| **[vibe-api](https://github.com/myfear/the-main-thread/tree/main/vibe-api)** | 21 | 3.30.5 | - | Article | ![vibe-api](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/vibe-api.json) |
 <!-- BUILD_BADGES_END -->
 
 
