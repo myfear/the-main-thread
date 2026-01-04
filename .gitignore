@@ -6,6 +6,9 @@
 target/
 .gitignore
 
+# model files
+model/
+
 # Log file
 *.log
 
