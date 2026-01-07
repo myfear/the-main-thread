@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.5",
+  "java": "21",
+  "substackUrl": "http://the-main-thread.com/p/feature-flags-quarkus-java-production-toggles",
+  "projectPath": "feature-flags",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
