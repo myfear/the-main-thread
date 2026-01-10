@@ -19,7 +19,8 @@
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
         <onnxruntime.version>1.23.2</onnxruntime.version>
         <djl.tokenizers.version>0.36.0</djl.tokenizers.version>
-
+        <substack-article.url>
+            https://www.the-main-thread.com/p/semantic-toxicity-detection-quarkus-guardrails-java</substack-article.url>
     </properties>
 
     <dependencyManagement>
