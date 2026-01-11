@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.6",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/java-idempotency-keys-ietf-quarkus",
+  "projectPath": "idempotency-demo",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
