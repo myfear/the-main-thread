@@ -1,7 +1,7 @@
 {
   "quarkus": "3.30.6",
   "java": "21",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/query-rewriting-rag-java-langchain4j-quarkus",
   "projectPath": "rag-query-transformer",
   "tests": {
     "total": 0,
