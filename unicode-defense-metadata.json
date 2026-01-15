@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.6",
+  "java": "21",
+  "substackUrl": "https://https://www.the-main-thread.com/p/unicode-security-java-quarkus-input-validation",
+  "projectPath": "unicode-defense",
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
