@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.6",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/java-quarkus-apple-health-gpx-postgis",
+  "projectPath": "health-gpx-visualizer",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
