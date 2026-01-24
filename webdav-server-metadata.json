@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.8",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/webdav-server-java-quarkus-vertx",
+  "projectPath": "webdav-server",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
