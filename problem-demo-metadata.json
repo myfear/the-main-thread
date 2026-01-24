@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.8",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/rfc-9457-quarkus-api-error-handling-swagger",
+  "projectPath": "problem-demo",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
