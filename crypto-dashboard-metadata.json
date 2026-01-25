@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.30.8",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/real-time-crypto-dashboard-java-quarkus-redis-timeseries",
+  "projectPath": "crypto-dashboard",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
