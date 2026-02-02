@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "secure-health-api",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
