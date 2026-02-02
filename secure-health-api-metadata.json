@@ -1,7 +1,7 @@
 {
   "quarkus": "3.31.1",
   "java": "25",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/field-level-encryption-java-quarkus-hibernate-vault",
   "projectPath": "secure-health-api",
   "tests": {
     "total": 0,
