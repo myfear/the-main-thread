@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.1",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/quarkus-postgresql-database-performance-mcp",
+  "projectPath": "db-performance-demo",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
