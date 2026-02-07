@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.2",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/architecture-testing-java-quarkus-taikai",
+  "projectPath": "quarkus-taikai-demo",
+  "tests": {
+    "total": 9,
+    "passed": 9,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
