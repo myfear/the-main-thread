@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.2",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/interactive-org-chart-java-quarkus-postgresql",
+  "projectPath": "quarkus-orgchart",
+  "tests": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
