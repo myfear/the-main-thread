@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.3",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/quarkus-panache-next-jakarta-data-hibernate",
+  "projectPath": "bookstore-panache-next",
+  "tests": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
