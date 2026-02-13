@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.3",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/quarkus-flow-ollama-kafka-cloudevents-java-workflow",
+  "projectPath": "review-workflow",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
