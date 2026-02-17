@@ -1,7 +1,7 @@
 {
   "quarkus": "3.31.3",
   "java": "25",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/production-grade-logging-quarkus-java-mdc-json-async",
   "projectPath": "logging-order-service",
   "tests": {
     "total": 1,
