@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.4",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/equals-hashcode-jpa-quarkus-panache-equalsverifier",
+  "projectPath": "equals-demo",
+  "tests": {
+    "total": 14,
+    "passed": 14,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
