@@ -1,0 +1,13 @@
+{
+  "quarkus": "-",
+  "java": "17",
+  "substackUrl": "",
+  "projectPath": "book-catalog",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
