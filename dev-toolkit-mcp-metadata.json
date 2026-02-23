@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.4",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/quarkus-mcp-server-ibm-bob",
+  "projectPath": "dev-toolkit-mcp",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
