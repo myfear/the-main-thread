@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.31.4",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/local-llm-containers-ramalama-quarkus-langchain4j ",
+  "projectPath": "ramalama-quarkus-demo",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
