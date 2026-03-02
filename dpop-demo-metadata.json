@@ -4,8 +4,8 @@
   "substackUrl": "https://www.the-main-thread.com/p/quarkus-3-32-dpop-nonce-provider-java-replay-protection",
   "projectPath": "dpop-demo",
   "tests": {
-    "total": 4,
-    "passed": 4,
+    "total": 3,
+    "passed": 3,
     "failed": 0,
     "errors": 0,
     "skipped": 0
