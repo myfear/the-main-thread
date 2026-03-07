@@ -1,7 +1,7 @@
 {
   "quarkus": "3.32.2",
   "java": "25",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/quarkus-testing-2026-java-component-tests",
   "projectPath": "quarkus-testing-2026",
   "tests": {
     "total": 4,
