@@ -1,7 +1,7 @@
 {
   "quarkus": "3.32.2",
   "java": "21",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/passwordless-login-quarkus-magic-links-keycloak",
   "projectPath": "magic-link-demo",
   "tests": {
     "total": 3,

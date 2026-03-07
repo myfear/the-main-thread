@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.2",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/svg-to-png-conversion-quarkus-jairosvg-java",
+  "projectPath": "svg-converter",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
