@@ -1,7 +1,7 @@
 {
   "quarkus": "3.32.3",
   "java": "25",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/kubernetes-mcp-server-quarkus-fabric8-minikube",
   "projectPath": "kubernetes-mcp-server",
   "tests": {
     "total": 0,
