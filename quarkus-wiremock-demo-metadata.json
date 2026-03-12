@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.3",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/mock-external-apis-quarkus-wiremock-java",
+  "projectPath": "quarkus-wiremock-demo",
+  "tests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
