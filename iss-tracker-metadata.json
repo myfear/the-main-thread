@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.3",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/real-time-iss-tracker-quarkus-sse-qute-java",
+  "projectPath": "iss-tracker",
+  "tests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
