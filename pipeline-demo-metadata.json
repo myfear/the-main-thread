@@ -1,7 +1,7 @@
 {
   "quarkus": "3.32.3",
   "java": "25",
-  "substackUrl": "",
+  "substackUrl": "https://www.the-main-thread.com/p/tekton-pipeline-quarkus-kubernetes-ci-java",
   "projectPath": "pipeline-demo",
   "tests": {
     "total": 1,
