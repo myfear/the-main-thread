@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.3",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "pipeline-demo",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
