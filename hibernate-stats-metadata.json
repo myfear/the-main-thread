@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.3",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/hibernate-statistics-quarkus-n-plus-one-detection-java",
+  "projectPath": "hibernate-stats",
+  "tests": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
