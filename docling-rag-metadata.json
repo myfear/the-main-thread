@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.4",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "docling-rag",
+  "tests": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
