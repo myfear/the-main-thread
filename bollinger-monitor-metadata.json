@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.4",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/real-time-bitcoin-analytics-java-quarkus-bollinger-bands",
+  "projectPath": "bollinger-monitor",
+  "tests": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
