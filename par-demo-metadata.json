@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.4",
+  "java": "25",
+  "substackUrl": "https://www.the-main-thread.com/p/par-quarkus-oidc-keycloak-pushed-authorization-requests",
+  "projectPath": "par-demo",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
