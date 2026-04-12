@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.34.3",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "badge-platform",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
