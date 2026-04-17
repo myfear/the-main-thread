@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.34.3",
+  "java": "21",
+  "substackUrl": "https://www.the-main-thread.com/p/enterprise-rag-quarkus-docling",
+  "projectPath": "enterprise-rag",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
