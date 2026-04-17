@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.34.5",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "cache-failure-semantics",
+  "tests": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
