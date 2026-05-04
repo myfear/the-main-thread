@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.35.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "cleardesk-skills",
+  "tests": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
