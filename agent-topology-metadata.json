@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.35.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "agent-topology",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
