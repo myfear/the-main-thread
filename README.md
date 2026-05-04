@@ -28,6 +28,7 @@ Each folder in this repository matches an article from the Substack and includes
 <!-- BUILD_BADGES_START -->
 | Project | Java | Quarkus | Tests | Links | Build Status |
 | :--- | :---: | :---: | :---: | :---: | :--- |
+| **[agent-topology](https://github.com/myfear/the-main-thread/tree/main/agent-topology)** | 25 | 3.35.1 | - | Article | ![agent-topology](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/agent-topology.json) |
 | **[badge-platform](https://github.com/myfear/the-main-thread/tree/main/badge-platform)** | 21 | 3.34.3 | ✅ 1/1 | Article | ![badge-platform](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/badge-platform.json) |
 | **[billing-time](https://github.com/myfear/the-main-thread/tree/main/billing-time)** | 21 | 3.30.5 | ✅ 1/1 | Article | ![billing-time](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/billing-time.json) |
 | **[bollinger-monitor](https://github.com/myfear/the-main-thread/tree/main/bollinger-monitor)** | 25 | 3.32.4 | ✅ 8/8 | [Article](https://www.the-main-thread.com/p/real-time-bitcoin-analytics-java-quarkus-bollinger-bands) | ![bollinger-monitor](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/bollinger-monitor.json) |
