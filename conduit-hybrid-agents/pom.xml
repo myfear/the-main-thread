@@ -7,6 +7,10 @@
     <packaging>pom</packaging>
     <name>Conduit hybrid agents (aggregator)</name>
 
+    <properties>
+        <maven.compiler.release>25</maven.compiler.release>
+    </properties>
+
     <modules>
         <module>conduit-mcp-server</module>
         <module>conduit-workflow</module>
