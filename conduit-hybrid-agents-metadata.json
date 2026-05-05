@@ -1,6 +1,6 @@
 {
   "quarkus": "-",
-  "java": "21",
+  "java": "25",
   "substackUrl": "",
   "projectPath": "conduit-hybrid-agents",
   "tests": {
