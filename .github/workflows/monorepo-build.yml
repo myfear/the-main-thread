@@ -16,6 +16,9 @@ on:
 permissions:
   contents: write # Required to push badges to the orphan branch
 
+env:
+  FORCE_JAVASCRIPT_ACTIONS_TO_NODE24: "true"
+
 jobs:
   # ------------------------------------------------------------------
   # JOB 1: Detect which projects need building and which Java version
@@ -27,7 +30,7 @@ jobs:
       has-changes: ${{ steps.set-matrix.outputs.has-changes }}
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           fetch-depth: 0
 
@@ -83,7 +86,13 @@ jobs:
                 JAVA_VERSION=$(grep -oP '(?<=<maven.compiler.source>).*?(?=</maven.compiler.source>)' "$dir/pom.xml" | head -1)
               fi
 
-              # Fallback: Default or if variable found
+              # If the aggregator pom does not define a numeric Java version,
+              # try immediate child module poms before falling back.
+              if [ -z "$JAVA_VERSION" ] || [[ "$JAVA_VERSION" == *'$'* ]]; then
+                JAVA_VERSION=$(find "$dir" -mindepth 2 -maxdepth 2 -name "pom.xml" -not -path '*/target/*' -exec grep -h -oP '(?<=<maven.compiler.release>).*?(?=</maven.compiler.release>)|(?<=<java.version>).*?(?=</java.version>)|(?<=<maven.compiler.source>).*?(?=</maven.compiler.source>)' {} \; | grep -E '^[0-9]+(\.[0-9]+)?$' | head -1)
+              fi
+
+              # Fallback to default Java version
               if [ -z "$JAVA_VERSION" ] || [[ "$JAVA_VERSION" == *'$'* ]]; then
                 JAVA_VERSION=$DEFAULT_JAVA
               fi
@@ -129,10 +138,10 @@ jobs:
     name: ${{ matrix.project.path }} (JDK ${{ matrix.project.java }})
     steps:
       - name: Checkout code
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
 
       - name: Set up JDK ${{ matrix.project.java }}
-        uses: actions/setup-java@v4
+        uses: actions/setup-java@v5
         with:
           java-version: ${{ matrix.project.java }}
           distribution: 'temurin'
@@ -144,7 +153,7 @@ jobs:
           repo-token: ${{ secrets.GITHUB_TOKEN }}
       
       - name: Cache Maven dependencies
-        uses: actions/cache@v4
+        uses: actions/cache@v5
         with:
           path: ~/.m2/repository
           key: ${{ runner.os }}-maven-${{ matrix.project.path }}-${{ hashFiles(format('{0}/pom.xml', matrix.project.path)) }}
@@ -240,7 +249,7 @@ jobs:
           EOF
 
       - name: Upload Badge Artifact
-        uses: actions/upload-artifact@v4
+        uses: actions/upload-artifact@v5
         with:
           name: badge-${{ strategy.job-index }}
           path: |
@@ -262,13 +271,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout badges branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: badges
           path: badges-branch
 
       - name: Download all artifacts
-        uses: actions/download-artifact@v4
+        uses: actions/download-artifact@v5
         with:
           pattern: badge-*
           path: temp-artifacts
@@ -311,13 +320,13 @@ jobs:
     runs-on: ubuntu-latest
     steps:
       - name: Checkout Main
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: main # We are editing the main README
           path: main-repo
 
       - name: Checkout Badges Branch
-        uses: actions/checkout@v4
+        uses: actions/checkout@v5
         with:
           ref: badges # We need to see what JSON files exist
           path: badges-repo

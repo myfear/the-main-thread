@@ -12,6 +12,10 @@
 
     <name>Helios fleet demo (aggregator)</name>
 
+    <properties>
+        <maven.compiler.release>25</maven.compiler.release>
+    </properties>
+
     <modules>
         <module>helios-analytics</module>
         <module>helios-api</module>
