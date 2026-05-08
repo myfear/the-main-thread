@@ -1,0 +1,37 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: cryostat-demo
+  namespace: demo-apps
+spec:
+  replicas: 1
+  selector:
+    matchLabels:
+      app: cryostat-demo
+  template:
+    metadata:
+      labels:
+        app: cryostat-demo
+        cryostat.io/name: cryostat-sample
+        cryostat.io/namespace: cryostat
+    spec:
+      containers:
+        - name: cryostat-demo
+          image: cryostat-demo:1.0
+          imagePullPolicy: IfNotPresent
+          ports:
+            - name: http
+              containerPort: 8080
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: cryostat-demo
+  namespace: demo-apps
+spec:
+  selector:
+    app: cryostat-demo
+  ports:
+    - name: http
+      port: 8080
+      targetPort: 8080

@@ -1,0 +1,32 @@
+apiVersion: operator.cryostat.io/v1beta2
+kind: Cryostat
+metadata:
+  name: cryostat-sample
+  namespace: cryostat
+spec:
+  enableCertManager: true
+  targetNamespaces:
+    - demo-apps
+  storageOptions:
+    emptyDir:
+      enabled: true
+  reportOptions:
+    replicas: 0
+  networkOptions:
+    coreConfig:
+      annotations:
+        nginx.ingress.kubernetes.io/backend-protocol: "HTTPS"
+      ingressSpec:
+        tls:
+          - {}
+        rules:
+          - host: cryostat.local
+            http:
+              paths:
+                - path: /
+                  pathType: Prefix
+                  backend:
+                    service:
+                      name: cryostat-sample
+                      port:
+                        number: 4180
