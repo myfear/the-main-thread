@@ -28,7 +28,7 @@ Each folder in this repository matches an article from the Substack and includes
 <!-- BUILD_BADGES_START -->
 | Project | Java | Quarkus | Tests | Links | Build Status |
 | :--- | :---: | :---: | :---: | :---: | :--- |
-| **[a2a-deskflow](https://github.com/myfear/the-main-thread/tree/main/a2a-deskflow)** | 21 | - | - | Article | ![a2a-deskflow](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/a2a-deskflow.json) |
+| **[a2a-deskflow](https://github.com/myfear/the-main-thread/tree/main/a2a-deskflow)** | 25 | - | - | Article | ![a2a-deskflow](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/a2a-deskflow.json) |
 | **[agent-topology](https://github.com/myfear/the-main-thread/tree/main/agent-topology)** | 25 | 3.35.1 | - | Article | ![agent-topology](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/agent-topology.json) |
 | **[badge-platform](https://github.com/myfear/the-main-thread/tree/main/badge-platform)** | 21 | 3.34.3 | ✅ 1/1 | Article | ![badge-platform](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/badge-platform.json) |
 | **[billing-time](https://github.com/myfear/the-main-thread/tree/main/billing-time)** | 21 | 3.30.5 | ✅ 1/1 | Article | ![billing-time](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/billing-time.json) |
