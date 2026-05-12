@@ -156,9 +156,10 @@ jobs:
         uses: actions/cache@v5
         with:
           path: ~/.m2/repository
-          key: ${{ runner.os }}-maven-${{ matrix.project.path }}-${{ hashFiles(format('{0}/pom.xml', matrix.project.path)) }}
+          key: ${{ runner.os }}-maven-jdk${{ matrix.project.java }}-${{ matrix.project.path }}-${{ hashFiles(format('{0}/**/pom.xml', matrix.project.path), format('{0}/.mvn/wrapper/maven-wrapper.properties', matrix.project.path)) }}
           restore-keys: |
-            ${{ runner.os }}-maven-${{ matrix.project.path }}-
+            ${{ runner.os }}-maven-jdk${{ matrix.project.java }}-${{ matrix.project.path }}-
+            ${{ runner.os }}-maven-jdk${{ matrix.project.java }}-
             ${{ runner.os }}-maven-
 
       # Build, but don't crash the job immediately on failure (so we can write the Red badge)
