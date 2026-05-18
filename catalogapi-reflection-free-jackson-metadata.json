@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.35.2",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "catalogapi-reflection-free-jackson",
+  "tests": {
+    "total": 9,
+    "passed": 6,
+    "failed": 3,
+    "errors": 0,
+    "skipped": 0
+  }
+}
