@@ -5,8 +5,8 @@
   "projectPath": "catalogapi-reflection-free-jackson",
   "tests": {
     "total": 9,
-    "passed": 6,
-    "failed": 3,
+    "passed": 9,
+    "failed": 0,
     "errors": 0,
     "skipped": 0
   }
