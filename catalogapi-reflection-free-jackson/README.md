@@ -25,3 +25,4 @@ Enable reflection-free serializers:
 ```bash
 ./scripts/compare-json-serialization.sh
 ```
+
