@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.35.2",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "orderdesk-records-builders",
+  "tests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
