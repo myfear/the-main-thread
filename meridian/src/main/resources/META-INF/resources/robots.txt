@@ -1,0 +1,18 @@
+User-agent: *
+Allow: /
+Disallow: /admin/
+Disallow: /internal/
+
+User-agent: GPTBot
+Allow: /
+Disallow: /admin/
+Disallow: /internal/
+
+User-agent: ClaudeBot
+Allow: /
+Disallow: /admin/
+Disallow: /internal/
+
+Content-Signal: search=yes, ai-input=yes, ai-train=no
+
+Sitemap: https://api.meridian.dev/sitemap.xml

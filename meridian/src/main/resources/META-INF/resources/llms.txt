@@ -1,0 +1,26 @@
+# Meridian Knowledge API
+
+> Meridian is a Quarkus API for searching and reading structured knowledge
+> articles. Public clients can search and retrieve article content. Write
+> operations require OAuth bearer tokens from the Meridian realm.
+
+Meridian exposes JSON for API operations and Markdown for article content when
+clients send `Accept: text/markdown`.
+
+## API
+
+- [OpenAPI JSON](https://api.meridian.dev/q/openapi?format=json): Machine-readable REST API contract
+- [API catalog](https://api.meridian.dev/.well-known/api-catalog): RFC 9727 Linkset catalog
+- [OAuth protected resource metadata](https://api.meridian.dev/.well-known/oauth-protected-resource): Authorization server and scope discovery
+- [MCP Server Card](https://api.meridian.dev/.well-known/mcp/server-card.json): Pre-connection MCP discovery
+- [Agent Skills index](https://api.meridian.dev/.well-known/agent-skills/index.json): Skills published for agent clients
+
+## Content
+
+- [Article search](https://api.meridian.dev/api/v1/articles): Public article search endpoint
+- [MCP endpoint](https://api.meridian.dev/mcp): MCP Streamable HTTP endpoint
+- [MCP SSE endpoint](https://api.meridian.dev/mcp/sse): Compatibility endpoint for older MCP clients
+
+## Optional
+
+- [Human documentation](https://docs.meridian.dev): Developer guide and examples
