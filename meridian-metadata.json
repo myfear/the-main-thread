@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.34.5",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "meridian",
+  "tests": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
