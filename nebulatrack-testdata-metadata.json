@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.36.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "nebulatrack-testdata",
+  "tests": {
+    "total": 34,
+    "passed": 34,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
