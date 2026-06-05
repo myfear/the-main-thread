@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.36.1",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "carrier-bridge",
+  "tests": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
