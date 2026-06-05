@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.36.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "requestwatch-jfr",
+  "tests": {
+    "total": 3,
+    "passed": 3,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
