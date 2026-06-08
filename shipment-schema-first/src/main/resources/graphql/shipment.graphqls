@@ -1,0 +1,35 @@
+schema {
+  query: Query
+  mutation: Mutation
+  subscription: Subscription
+}
+
+type Query {
+  viewerWarehouse: String!
+  shipments(status: ShipmentStatus): [Shipment!]!
+  shipment(id: ID!): Shipment
+}
+
+type Mutation {
+  updateShipmentStatus(id: ID!, status: ShipmentStatus!): Shipment!
+}
+
+type Subscription {
+  shipmentUpdates(id: ID!): Shipment!
+}
+
+type Shipment {
+  id: ID!
+  description: String!
+  destinationCity: String!
+  warehouseCode: String!
+  status: ShipmentStatus!
+}
+
+enum ShipmentStatus {
+  CREATED
+  PICKED
+  IN_TRANSIT
+  DELAYED
+  DELIVERED
+}
