@@ -14,6 +14,6 @@
     '''(?:^|\/)book-catalog\/.*\.pem$''',
     '''(?:^|\/)dpop-demo\/.*\.pem$''',
     '''(?:^|\/)magic-link-demo\/.*\.pem$''',
-     '''(?:^|/)src/main/resources/certs/.*''',
-     '''(?:^|/)src/main/resources/META-INF/resources/.*'''
+    '''(?:^|/)src/main/resources/certs/.*''',
+    '''(?:^|/)src/main/resources/META-INF/resources/.*'''
     ]

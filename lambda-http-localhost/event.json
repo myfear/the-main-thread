@@ -1,0 +1,23 @@
+{
+  "version": "2.0",
+  "routeKey": "$default",
+  "rawPath": "/quotes/porto",
+  "rawQueryString": "speed=overnight&weightGrams=900",
+  "headers": {
+    "X-Customer-Tier": "gold"
+  },
+  "requestContext": {
+    "routeKey": "$default",
+    "stage": "qa",
+    "apiId": "local-test",
+    "domainName": "localhost",
+    "requestId": "req-raw-42",
+    "http": {
+      "method": "GET",
+      "path": "/quotes/porto",
+      "protocol": "HTTP/1.1",
+      "sourceIp": "127.0.0.1",
+      "userAgent": "curl"
+    }
+  }
+}
