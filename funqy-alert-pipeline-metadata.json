@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.36.1",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "funqy-alert-pipeline",
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
