@@ -9,6 +9,8 @@ mcp.json
 
 models
 
+publishing/
+
 #Maven
 target/
 pom.xml.tag
