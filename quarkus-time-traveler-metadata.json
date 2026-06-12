@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.0.CR1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "quarkus-time-traveler",
+  "tests": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
