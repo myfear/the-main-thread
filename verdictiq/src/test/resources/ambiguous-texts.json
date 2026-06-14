@@ -1,0 +1,12 @@
+[
+  { "category": "sarcasm", "text": "Oh great, another Monday." },
+  { "category": "sarcasm", "text": "Sure, because that always works out so well." },
+  { "category": "double-negative", "text": "I wouldn't say it wasn't without its problems." },
+  { "category": "cultural-idiom", "text": "That presentation was sick." },
+  { "category": "cultural-idiom", "text": "The food was literally fire." },
+  { "category": "dry-humor", "text": "Fantastic. Everything is on fire. Wonderful." },
+  { "category": "mixed-signal", "text": "The hotel was conveniently located near the airport, which meant we could hear every plane." },
+  { "category": "understatement", "text": "The flight delay was not ideal." },
+  { "category": "clearly-positive", "text": "This is the best Java framework I have ever used." },
+  { "category": "clearly-negative", "text": "The deployment failed and took down production for six hours." }
+]
