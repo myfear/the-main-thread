@@ -1,0 +1,26 @@
+rules:
+  - id: vaultflow-native-query-concatenation
+    patterns:
+      - pattern: $EM.createNativeQuery($QUERY + ..., ...)
+      - pattern-not: $EM.createNativeQuery("...", ...)
+    message: >
+      Native query built with string concatenation in createNativeQuery().
+      Use a Panache finder or a parameterized query instead.
+    languages: [java]
+    severity: ERROR
+    metadata:
+      category: security
+      technology: [quarkus, hibernate]
+
+  - id: vaultflow-hardcoded-secret
+    patterns:
+      - pattern: String $NAME = $VALUE;
+      - metavariable-regex:
+          metavariable: $NAME
+          regex: (?i).*(secret|token|password|apikey|api_key).*
+    message: >
+      Possible hardcoded secret in $NAME. Move it to configuration before it lands in git history.
+    languages: [java]
+    severity: ERROR
+    metadata:
+      category: security

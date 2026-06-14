@@ -1,0 +1,25 @@
+repos:
+  - repo: https://github.com/pre-commit/pre-commit-hooks
+    rev: v5.0.0
+    hooks:
+      - id: detect-private-key
+      - id: check-merge-conflict
+      - id: no-commit-to-branch
+        args: ["--branch", "main"]
+
+  - repo: https://github.com/semgrep/pre-commit
+    rev: v1.166.0
+    hooks:
+      - id: semgrep
+        name: semgrep-vaultflow
+        args:
+          - "--config"
+          - "p/java"
+          - "--config"
+          - "p/secrets"
+          - "--config"
+          - ".semgrep/vaultflow-rules.yaml"
+          - "--error"
+          - "--skip-unknown-extensions"
+          - "--quiet"
+          - "--disable-version-check"
