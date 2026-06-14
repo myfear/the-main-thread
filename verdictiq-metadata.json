@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.36.2",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "verdictiq",
+  "tests": {
+    "total": 9,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 3
+  }
+}
