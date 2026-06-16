@@ -110,6 +110,7 @@ Each folder in this repository matches an article from the Substack and includes
 | **[vibe-api](https://github.com/myfear/the-main-thread/tree/main/vibe-api)** | 21 | 3.30.5 | - | Article | ![vibe-api](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/vibe-api.json) |
 | **[webauthn-passkey-demo](https://github.com/myfear/the-main-thread/tree/main/webauthn-passkey-demo)** | 21 | 3.31.1 | - | [Article](https://www.the-main-thread.com/p/apple-passkeys-quarkus-webauthn-passwordless-java) | ![webauthn-passkey-demo](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/webauthn-passkey-demo.json) |
 | **[webdav-server](https://github.com/myfear/the-main-thread/tree/main/webdav-server)** | 21 | 3.30.8 | - | [Article](https://www.the-main-thread.com/p/webdav-server-java-quarkus-vertx) | ![webdav-server](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/webdav-server.json) |
+| **[windowwatch](https://github.com/myfear/the-main-thread/tree/main/windowwatch)** | 25 | 3.36.2 | ✅ 5/5 | Article | ![windowwatch](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/windowwatch.json) |
 <!-- BUILD_BADGES_END -->
 
 
