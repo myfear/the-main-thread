@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>WindowWatch</title>
+  <link rel="stylesheet" href="/app.css">
+</head>
+<body>
+  <header>
+    <h1>WindowWatch</h1>
+    <p class="subtitle">Retained-memory pressure for one chat lane (<code id="memoryIdLabel"></code>)</p>
+  </header>
+
+  <main class="layout">
+    <section class="chat-panel">
+      <label for="prompt">Prompt</label>
+      <textarea id="prompt" rows="4" placeholder="Send a prompt to fill the retained-memory budget…"></textarea>
+      <div class="actions">
+        <button id="send" type="button">Send</button>
+      </div>
+      <section class="answer-panel">
+        <h2>Last answer</h2>
+        <pre id="answer"></pre>
+      </section>
+    </section>
+
+    <section class="context-panel">
+      <article class="context-card">
+        <header class="context-header">
+          <span id="budgetPercent" class="context-percent">0% full</span>
+          <span id="budgetTotals" class="context-totals">0 / 1200</span>
+        </header>
+        <div class="tank-shell">
+          <div class="tank" aria-label="Retained-memory budget">
+            <div id="budgetFill" class="tank-fill"></div>
+            <div id="budgetLabel" class="tank-label">0 / 1200</div>
+          </div>
+        </div>
+        <ul id="budgetLegend" class="context-legend"></ul>
+        <p class="context-note">LangChain4j retained-memory budget. Eviction happens here.</p>
+      </article>
+
+      <article class="request-card">
+        <h2>Last Ollama call</h2>
+        <dl class="request-metrics">
+          <div>
+            <dt>Input</dt>
+            <dd id="requestInput">—</dd>
+          </div>
+          <div>
+            <dt>Output</dt>
+            <dd id="requestOutput">—</dd>
+          </div>
+          <div>
+            <dt>Model context limit</dt>
+            <dd id="requestMax">—</dd>
+          </div>
+        </dl>
+        <p id="requestNote" class="context-footer">Send a prompt to populate per-call model usage.</p>
+      </article>
+
+      <button id="autoSend" type="button">AUTO-SEND</button>
+    </section>
+
+    <section class="ledger-panel">
+      <h2>Turn ledger</h2>
+      <div id="ledger" class="ledger"></div>
+      <footer id="ledgerTotal" class="ledger-total">Σ 0</footer>
+    </section>
+  </main>
+
+  <script src="/app.js"></script>
+</body>
+</html>
