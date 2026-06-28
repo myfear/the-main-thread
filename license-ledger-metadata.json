@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.27.2",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "license-ledger",
+  "tests": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
