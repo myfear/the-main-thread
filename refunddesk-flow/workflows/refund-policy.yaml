@@ -1,0 +1,47 @@
+document:
+  dsl: "1.0.0"
+  namespace: refunddesk
+  name: refund-policy
+  version: "1.0.0"
+input:
+  schema:
+    format: json
+    document:
+      type: object
+      required:
+        - amount
+        - receiptPresent
+        - chargebackCount
+      properties:
+        amount:
+          type: number
+        receiptPresent:
+          type: boolean
+        chargebackCount:
+          type: integer
+do:
+  - route:
+      switch:
+        - missingReceipt:
+            when: .receiptPresent == false
+            then: deny
+        - smallClean:
+            when: .amount <= 50 and .chargebackCount == 0
+            then: approve
+        - default:
+            then: manualReview
+  - approve:
+      set:
+        outcome: APPROVED
+        reason: small refund with clean history
+      then: exit
+  - deny:
+      set:
+        outcome: DENIED
+        reason: receipt is missing
+      then: exit
+  - manualReview:
+      set:
+        outcome: MANUAL_REVIEW
+        reason: manual review required
+      then: exit
