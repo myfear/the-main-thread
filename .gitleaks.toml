@@ -15,5 +15,6 @@
     '''(?:^|\/)dpop-demo\/.*\.pem$''',
     '''(?:^|\/)magic-link-demo\/.*\.pem$''',
     '''(?:^|/)src/main/resources/certs/.*''',
-    '''(?:^|/)src/main/resources/META-INF/resources/.*'''
+    '''(?:^|/)src/main/resources/META-INF/resources/.*''',
+    '''(?:^|/)quarkus-multi-tenant-extension\/.*\.pem$'''
     ]
