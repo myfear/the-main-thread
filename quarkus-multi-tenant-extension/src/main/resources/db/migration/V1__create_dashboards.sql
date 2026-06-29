@@ -1,0 +1,9 @@
+CREATE SEQUENCE IF NOT EXISTS dashboards_SEQ START WITH 1 INCREMENT BY 50;
+
+CREATE TABLE IF NOT EXISTS dashboards (
+    monthly_budget NUMERIC(12,2) NOT NULL,
+    id BIGINT NOT NULL,
+    name VARCHAR(255) NOT NULL,
+    owner_email VARCHAR(255) NOT NULL,
+    PRIMARY KEY (id)
+);
