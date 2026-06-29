@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.0",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "quarkus-multi-tenant-extension",
+  "tests": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
