@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.0",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "incident-vector-search",
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
