@@ -1,0 +1,5 @@
+{
+  "name_pattern": ".*(ConfigMapping|ConfigGeneration).*",
+  "label": "Function",
+  "limit": 25
+}
