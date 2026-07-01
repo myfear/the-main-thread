@@ -1,0 +1,971 @@
+{
+  "evalId": "eval-d8r-2026-07-01T05:21:23",
+  "results": {
+    "version": 3,
+    "timestamp": "2026-07-01T05:21:23.178Z",
+    "prompts": [
+      {
+        "id": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "raw": "{{request}}",
+        "label": "{{request}}",
+        "provider": "no-skill-baseline",
+        "metrics": {
+          "score": 0.4,
+          "testPassCount": 0,
+          "testFailCount": 2,
+          "testErrorCount": 0,
+          "assertPassCount": 0,
+          "assertFailCount": 2,
+          "totalLatencyMs": 6,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "id": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "raw": "{{request}}",
+        "label": "{{request}}",
+        "provider": "stale-review-standards",
+        "metrics": {
+          "score": 1.7999999999999998,
+          "testPassCount": 1,
+          "testFailCount": 1,
+          "testErrorCount": 0,
+          "assertPassCount": 1,
+          "assertFailCount": 1,
+          "totalLatencyMs": 4,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      },
+      {
+        "id": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "raw": "{{request}}",
+        "label": "{{request}}",
+        "provider": "improved-review-standards",
+        "metrics": {
+          "score": 2,
+          "testPassCount": 2,
+          "testFailCount": 0,
+          "testErrorCount": 0,
+          "assertPassCount": 2,
+          "assertFailCount": 0,
+          "totalLatencyMs": 4,
+          "tokenUsage": {
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "total": 0,
+            "numRequests": 2,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            },
+            "assertions": {
+              "total": 0,
+              "prompt": 0,
+              "completion": 0,
+              "cached": 0,
+              "numRequests": 0,
+              "completionDetails": {
+                "reasoning": 0,
+                "acceptedPrediction": 0,
+                "rejectedPrediction": 0,
+                "cacheReadInputTokens": 0,
+                "cacheCreationInputTokens": 0
+              }
+            }
+          },
+          "namedScores": {},
+          "namedScoresCount": {},
+          "namedScoreWeights": {},
+          "cost": 0
+        }
+      }
+    ],
+    "results": [
+      {
+        "cost": 0,
+        "error": "foundExpected=0.00, stayedInsideRequest=1, evidence=0, skillUsed=0",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.2,
+          "reason": "foundExpected=0.00, stayedInsideRequest=1, evidence=0, skillUsed=0",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.2,
+              "reason": "foundExpected=0.00, stayedInsideRequest=1, evidence=0, skillUsed=0",
+              "assertion": {
+                "type": "javascript",
+                "threshold": 0.8,
+                "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+              }
+            }
+          ]
+        },
+        "id": "7943dbb9-e6d6-4b57-ae9f-8ba606796c62",
+        "latencyMs": 3,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Review src/auth.ts for password handling and token comparison issues.",
+          "label": "{{request}}",
+          "config": {
+            "disableVarExpansion": true
+          }
+        },
+        "promptId": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: node scripts/mock-review-agent.js",
+          "label": "no-skill-baseline"
+        },
+        "response": {
+          "output": "{\"summary\":\"no-skill found 0 issue(s)\",\"skillUsed\":false,\"issues\":[],\"evidence\":[],\"approvalPoints\":[]}",
+          "cached": true
+        },
+        "score": 0.2,
+        "success": false,
+        "testCase": {
+          "description": "Finds both auth review issues",
+          "vars": {
+            "request": "Review src/auth.ts for password handling and token comparison issues.",
+            "expectedIssues": [
+              "weak-password-hash",
+              "timing-unsafe-compare"
+            ],
+            "outOfRequestIssues": []
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "threshold": 0.8,
+              "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+            }
+          ],
+          "options": {
+            "disableVarExpansion": true
+          },
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "request": "Review src/auth.ts for password handling and token comparison issues.",
+          "expectedIssues": [
+            "weak-password-hash",
+            "timing-unsafe-compare"
+          ],
+          "outOfRequestIssues": []
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "foundExpected=1.00, stayedInsideRequest=1, evidence=1, skillUsed=1",
+              "assertion": {
+                "type": "javascript",
+                "threshold": 0.8,
+                "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+              }
+            }
+          ]
+        },
+        "id": "fc6ca31f-48b2-4645-9583-d36d9a4f8f47",
+        "latencyMs": 3,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Review src/auth.ts for password handling and token comparison issues.",
+          "label": "{{request}}",
+          "config": {
+            "disableVarExpansion": true
+          }
+        },
+        "promptId": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: node scripts/mock-review-agent.js",
+          "label": "stale-review-standards"
+        },
+        "response": {
+          "output": "{\"summary\":\"v1 found 2 issue(s)\",\"skillUsed\":true,\"issues\":[{\"id\":\"weak-password-hash\",\"severity\":\"high\",\"file\":\"src/auth.ts\"},{\"id\":\"timing-unsafe-compare\",\"severity\":\"medium\",\"file\":\"src/auth.ts\"}],\"evidence\":[\"src/auth.ts hashes passwords with SHA-1\",\"src/auth.ts compares reset tokens with ===\"],\"approvalPoints\":[]}",
+          "cached": true
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "Finds both auth review issues",
+          "vars": {
+            "request": "Review src/auth.ts for password handling and token comparison issues.",
+            "expectedIssues": [
+              "weak-password-hash",
+              "timing-unsafe-compare"
+            ],
+            "outOfRequestIssues": []
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "threshold": 0.8,
+              "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+            }
+          ],
+          "options": {
+            "disableVarExpansion": true
+          },
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "request": "Review src/auth.ts for password handling and token comparison issues.",
+          "expectedIssues": [
+            "weak-password-hash",
+            "timing-unsafe-compare"
+          ],
+          "outOfRequestIssues": []
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "foundExpected=1.00, stayedInsideRequest=1, evidence=1, skillUsed=1",
+              "assertion": {
+                "type": "javascript",
+                "threshold": 0.8,
+                "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+              }
+            }
+          ]
+        },
+        "id": "0ea2a76b-10e5-47bf-aec3-21c19d5fd588",
+        "latencyMs": 3,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Review src/auth.ts for password handling and token comparison issues.",
+          "label": "{{request}}",
+          "config": {
+            "disableVarExpansion": true
+          }
+        },
+        "promptId": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "promptIdx": 2,
+        "provider": {
+          "id": "exec: node scripts/mock-review-agent.js",
+          "label": "improved-review-standards"
+        },
+        "response": {
+          "output": "{\"summary\":\"v2 found 2 issue(s)\",\"skillUsed\":true,\"issues\":[{\"id\":\"weak-password-hash\",\"severity\":\"high\",\"file\":\"src/auth.ts\"},{\"id\":\"timing-unsafe-compare\",\"severity\":\"medium\",\"file\":\"src/auth.ts\"}],\"evidence\":[\"src/auth.ts hashes passwords with SHA-1\",\"src/auth.ts compares reset tokens with ===\"],\"approvalPoints\":[]}",
+          "cached": true
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "Finds both auth review issues",
+          "vars": {
+            "request": "Review src/auth.ts for password handling and token comparison issues.",
+            "expectedIssues": [
+              "weak-password-hash",
+              "timing-unsafe-compare"
+            ],
+            "outOfRequestIssues": []
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "threshold": 0.8,
+              "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+            }
+          ],
+          "options": {
+            "disableVarExpansion": true
+          },
+          "metadata": {}
+        },
+        "testIdx": 0,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "request": "Review src/auth.ts for password handling and token comparison issues.",
+          "expectedIssues": [
+            "weak-password-hash",
+            "timing-unsafe-compare"
+          ],
+          "outOfRequestIssues": []
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      },
+      {
+        "cost": 0,
+        "error": "foundExpected=0.00, stayedInsideRequest=1, evidence=0, skillUsed=0",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.2,
+          "reason": "foundExpected=0.00, stayedInsideRequest=1, evidence=0, skillUsed=0",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.2,
+              "reason": "foundExpected=0.00, stayedInsideRequest=1, evidence=0, skillUsed=0",
+              "assertion": {
+                "type": "javascript",
+                "threshold": 0.8,
+                "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+              }
+            }
+          ]
+        },
+        "id": "e9a9f764-bfa2-4ff1-9441-fd7fe534a9bf",
+        "latencyMs": 3,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Review src/auth.ts only for password handling issues.",
+          "label": "{{request}}",
+          "config": {
+            "disableVarExpansion": true
+          }
+        },
+        "promptId": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "promptIdx": 0,
+        "provider": {
+          "id": "exec: node scripts/mock-review-agent.js",
+          "label": "no-skill-baseline"
+        },
+        "response": {
+          "output": "{\"summary\":\"no-skill found 0 issue(s)\",\"skillUsed\":false,\"issues\":[],\"evidence\":[],\"approvalPoints\":[]}",
+          "cached": true
+        },
+        "score": 0.2,
+        "success": false,
+        "testCase": {
+          "description": "Stays inside password-only review request",
+          "vars": {
+            "request": "Review src/auth.ts only for password handling issues.",
+            "expectedIssues": [
+              "weak-password-hash"
+            ],
+            "outOfRequestIssues": [
+              "timing-unsafe-compare"
+            ]
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "threshold": 0.8,
+              "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+            }
+          ],
+          "options": {
+            "disableVarExpansion": true
+          },
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "request": "Review src/auth.ts only for password handling issues.",
+          "expectedIssues": [
+            "weak-password-hash"
+          ],
+          "outOfRequestIssues": [
+            "timing-unsafe-compare"
+          ]
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "error": "foundExpected=1.00, stayedInsideRequest=0, evidence=1, skillUsed=1",
+        "gradingResult": {
+          "pass": false,
+          "score": 0.7999999999999999,
+          "reason": "foundExpected=1.00, stayedInsideRequest=0, evidence=1, skillUsed=1",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": false,
+              "score": 0.7999999999999999,
+              "reason": "foundExpected=1.00, stayedInsideRequest=0, evidence=1, skillUsed=1",
+              "assertion": {
+                "type": "javascript",
+                "threshold": 0.8,
+                "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+              }
+            }
+          ]
+        },
+        "id": "883ef6ec-b46e-42e6-bcc5-f8c6fd06b0a6",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Review src/auth.ts only for password handling issues.",
+          "label": "{{request}}",
+          "config": {
+            "disableVarExpansion": true
+          }
+        },
+        "promptId": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "promptIdx": 1,
+        "provider": {
+          "id": "exec: node scripts/mock-review-agent.js",
+          "label": "stale-review-standards"
+        },
+        "response": {
+          "output": "{\"summary\":\"v1 found 2 issue(s)\",\"skillUsed\":true,\"issues\":[{\"id\":\"weak-password-hash\",\"severity\":\"high\",\"file\":\"src/auth.ts\"},{\"id\":\"timing-unsafe-compare\",\"severity\":\"medium\",\"file\":\"src/auth.ts\"}],\"evidence\":[\"src/auth.ts hashes passwords with SHA-1\",\"src/auth.ts compares reset tokens with ===\"],\"approvalPoints\":[]}",
+          "cached": true
+        },
+        "score": 0.7999999999999999,
+        "success": false,
+        "testCase": {
+          "description": "Stays inside password-only review request",
+          "vars": {
+            "request": "Review src/auth.ts only for password handling issues.",
+            "expectedIssues": [
+              "weak-password-hash"
+            ],
+            "outOfRequestIssues": [
+              "timing-unsafe-compare"
+            ]
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "threshold": 0.8,
+              "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+            }
+          ],
+          "options": {
+            "disableVarExpansion": true
+          },
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "request": "Review src/auth.ts only for password handling issues.",
+          "expectedIssues": [
+            "weak-password-hash"
+          ],
+          "outOfRequestIssues": [
+            "timing-unsafe-compare"
+          ]
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 1
+      },
+      {
+        "cost": 0,
+        "gradingResult": {
+          "pass": true,
+          "score": 1,
+          "reason": "All assertions passed",
+          "namedScores": {},
+          "tokensUsed": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 0
+          },
+          "componentResults": [
+            {
+              "pass": true,
+              "score": 1,
+              "reason": "foundExpected=1.00, stayedInsideRequest=1, evidence=1, skillUsed=1",
+              "assertion": {
+                "type": "javascript",
+                "threshold": 0.8,
+                "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+              }
+            }
+          ]
+        },
+        "id": "b8645dc5-b282-4080-8c00-f99e26750832",
+        "latencyMs": 1,
+        "namedScores": {},
+        "prompt": {
+          "raw": "Review src/auth.ts only for password handling issues.",
+          "label": "{{request}}",
+          "config": {
+            "disableVarExpansion": true
+          }
+        },
+        "promptId": "22eb8f0afffc11b6efb148227297c1ad363b71d58431ce186abbdbb5a91b5364",
+        "promptIdx": 2,
+        "provider": {
+          "id": "exec: node scripts/mock-review-agent.js",
+          "label": "improved-review-standards"
+        },
+        "response": {
+          "output": "{\"summary\":\"v2 found 1 issue(s)\",\"skillUsed\":true,\"issues\":[{\"id\":\"weak-password-hash\",\"severity\":\"high\",\"file\":\"src/auth.ts\"}],\"evidence\":[\"src/auth.ts hashes passwords with SHA-1\"],\"approvalPoints\":[]}",
+          "cached": true
+        },
+        "score": 1,
+        "success": true,
+        "testCase": {
+          "description": "Stays inside password-only review request",
+          "vars": {
+            "request": "Review src/auth.ts only for password handling issues.",
+            "expectedIssues": [
+              "weak-password-hash"
+            ],
+            "outOfRequestIssues": [
+              "timing-unsafe-compare"
+            ]
+          },
+          "assert": [
+            {
+              "type": "javascript",
+              "threshold": 0.8,
+              "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+            }
+          ],
+          "options": {
+            "disableVarExpansion": true
+          },
+          "metadata": {}
+        },
+        "testIdx": 1,
+        "tokenUsage": {
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "total": 0,
+          "numRequests": 1,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          },
+          "assertions": {
+            "total": 0,
+            "prompt": 0,
+            "completion": 0,
+            "cached": 0,
+            "numRequests": 1,
+            "completionDetails": {
+              "reasoning": 0,
+              "acceptedPrediction": 0,
+              "rejectedPrediction": 0,
+              "cacheReadInputTokens": 0,
+              "cacheCreationInputTokens": 0
+            }
+          }
+        },
+        "vars": {
+          "request": "Review src/auth.ts only for password handling issues.",
+          "expectedIssues": [
+            "weak-password-hash"
+          ],
+          "outOfRequestIssues": [
+            "timing-unsafe-compare"
+          ]
+        },
+        "metadata": {
+          "_promptfooFileMetadata": {}
+        },
+        "failureReason": 0
+      }
+    ],
+    "stats": {
+      "successes": 3,
+      "failures": 3,
+      "errors": 0,
+      "tokenUsage": {
+        "prompt": 0,
+        "completion": 0,
+        "cached": 0,
+        "total": 0,
+        "numRequests": 6,
+        "completionDetails": {
+          "reasoning": 0,
+          "acceptedPrediction": 0,
+          "rejectedPrediction": 0,
+          "cacheReadInputTokens": 0,
+          "cacheCreationInputTokens": 0
+        },
+        "assertions": {
+          "total": 0,
+          "prompt": 0,
+          "completion": 0,
+          "cached": 0,
+          "numRequests": 0,
+          "completionDetails": {
+            "reasoning": 0,
+            "acceptedPrediction": 0,
+            "rejectedPrediction": 0,
+            "cacheReadInputTokens": 0,
+            "cacheCreationInputTokens": 0
+          }
+        }
+      },
+      "durationMs": 18,
+      "evaluationDurationMs": 18
+    }
+  },
+  "config": {
+    "tags": {},
+    "description": "Compare review-standards skill versions",
+    "prompts": [
+      "{{request}}"
+    ],
+    "providers": [
+      {
+        "id": "exec: node scripts/mock-review-agent.js",
+        "label": "no-skill-baseline",
+        "config": {
+          "sampleDir": "samples/no-skill"
+        }
+      },
+      {
+        "id": "exec: node scripts/mock-review-agent.js",
+        "label": "stale-review-standards",
+        "config": {
+          "sampleDir": "samples/v1"
+        }
+      },
+      {
+        "id": "exec: node scripts/mock-review-agent.js",
+        "label": "improved-review-standards",
+        "config": {
+          "sampleDir": "samples/v2"
+        }
+      }
+    ],
+    "tests": [
+      {
+        "description": "Finds both auth review issues",
+        "vars": {
+          "request": "Review src/auth.ts for password handling and token comparison issues.",
+          "expectedIssues": [
+            "weak-password-hash",
+            "timing-unsafe-compare"
+          ],
+          "outOfRequestIssues": []
+        }
+      },
+      {
+        "description": "Stays inside password-only review request",
+        "vars": {
+          "request": "Review src/auth.ts only for password handling issues.",
+          "expectedIssues": [
+            "weak-password-hash"
+          ],
+          "outOfRequestIssues": [
+            "timing-unsafe-compare"
+          ]
+        }
+      }
+    ],
+    "env": {},
+    "defaultTest": {
+      "options": {
+        "disableVarExpansion": true
+      },
+      "assert": [
+        {
+          "type": "javascript",
+          "threshold": 0.8,
+          "value": "const result = typeof output === 'string' ? JSON.parse(output) : output;\nconst expected = context.vars.expectedIssues || [];\nconst outOfRequest = context.vars.outOfRequestIssues || [];\nconst found = (result.issues || []).map((issue) => issue.id);\nconst hits = expected.filter((id) => found.includes(id)).length;\nconst outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;\nconst foundExpected = expected.length === 0 ? 1 : hits / expected.length;\nconst stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;\nconst evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;\nconst skillUsed = result.skillUsed ? 1 : 0;\nconst score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);\n\nreturn {\n  pass: score >= 0.8,\n  score,\n  reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,\n};\n"
+        }
+      ],
+      "vars": {},
+      "metadata": {}
+    },
+    "outputPath": [
+      "results.json"
+    ],
+    "extensions": [],
+    "metadata": {},
+    "evaluateOptions": {}
+  },
+  "shareableUrl": null,
+  "metadata": {
+    "promptfooVersion": "0.121.17",
+    "nodeVersion": "v26.0.0",
+    "platform": "darwin",
+    "arch": "arm64",
+    "exportedAt": "2026-07-01T05:21:23.220Z",
+    "evaluationCreatedAt": "2026-07-01T05:21:23.178Z"
+  },
+  "vars": [
+    "request",
+    "expectedIssues",
+    "outOfRequestIssues"
+  ],
+  "runtimeOptions": {
+    "eventSource": "cli",
+    "showProgressBar": true,
+    "repeat": 1,
+    "maxConcurrency": 4,
+    "cache": true
+  }
+}

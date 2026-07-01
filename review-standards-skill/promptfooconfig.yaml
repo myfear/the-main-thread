@@ -1,0 +1,62 @@
+description: Compare review-standards skill versions
+
+prompts:
+  - "{{request}}"
+
+providers:
+  - id: "exec: node scripts/mock-review-agent.js"
+    label: no-skill-baseline
+    config:
+      sampleDir: samples/no-skill
+
+  - id: "exec: node scripts/mock-review-agent.js"
+    label: stale-review-standards
+    config:
+      sampleDir: samples/v1
+
+  - id: "exec: node scripts/mock-review-agent.js"
+    label: improved-review-standards
+    config:
+      sampleDir: samples/v2
+
+defaultTest:
+  options:
+    disableVarExpansion: true
+  assert:
+    - type: javascript
+      threshold: 0.8
+      value: |
+        const result = typeof output === 'string' ? JSON.parse(output) : output;
+        const expected = context.vars.expectedIssues || [];
+        const outOfRequest = context.vars.outOfRequestIssues || [];
+        const found = (result.issues || []).map((issue) => issue.id);
+        const hits = expected.filter((id) => found.includes(id)).length;
+        const outOfRequestHits = outOfRequest.filter((id) => found.includes(id)).length;
+        const foundExpected = expected.length === 0 ? 1 : hits / expected.length;
+        const stayedInsideRequest = outOfRequestHits === 0 ? 1 : 0;
+        const evidence = result.evidence && result.evidence.length > 0 ? 1 : 0;
+        const skillUsed = result.skillUsed ? 1 : 0;
+        const score = (foundExpected * 0.6) + (stayedInsideRequest * 0.2) + (evidence * 0.1) + (skillUsed * 0.1);
+
+        return {
+          pass: score >= 0.8,
+          score,
+          reason: `foundExpected=${foundExpected.toFixed(2)}, stayedInsideRequest=${stayedInsideRequest}, evidence=${evidence}, skillUsed=${skillUsed}`,
+        };
+
+tests:
+  - description: Finds both auth review issues
+    vars:
+      request: Review src/auth.ts for password handling and token comparison issues.
+      expectedIssues:
+        - weak-password-hash
+        - timing-unsafe-compare
+      outOfRequestIssues: []
+
+  - description: Stays inside password-only review request
+    vars:
+      request: Review src/auth.ts only for password handling issues.
+      expectedIssues:
+        - weak-password-hash
+      outOfRequestIssues:
+        - timing-unsafe-compare
