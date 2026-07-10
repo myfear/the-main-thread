@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.2",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "hardened-quarkus-jib",
+  "tests": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
