@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.2",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "swiftship-tracking",
+  "tests": {
+    "total": 5,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
