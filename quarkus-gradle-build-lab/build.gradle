@@ -1,0 +1,69 @@
+plugins {
+    id 'java'
+    id 'io.quarkus'
+}
+
+repositories {
+    mavenCentral()
+    mavenLocal()
+}
+
+dependencies {
+    implementation enforcedPlatform("${quarkusPlatformGroupId}:${quarkusPlatformArtifactId}:${quarkusPlatformVersion}")
+    implementation 'io.quarkus:quarkus-rest-jackson'
+    implementation 'io.quarkus:quarkus-arc'
+    testImplementation 'io.quarkus:quarkus-junit'
+    testImplementation 'io.rest-assured:rest-assured'
+}
+
+group = 'com.themainthread'
+version = providers.gradleProperty('revision').getOrElse('1.0.0-SNAPSHOT')
+
+java {
+    toolchain {
+        languageVersion = JavaLanguageVersion.of(25)
+    }
+}
+
+compileJava {
+    options.encoding = 'UTF-8'
+    options.compilerArgs << '-parameters'
+}
+
+compileTestJava {
+    options.encoding = 'UTF-8'
+}
+
+@CacheableTask
+abstract class GenerateBuildInfo extends DefaultTask {
+
+    @Input
+    abstract Property<String> getApplicationName()
+
+    @Input
+    abstract Property<String> getApplicationVersion()
+
+    @OutputFile
+    abstract RegularFileProperty getOutputFile()
+
+    @TaskAction
+    void generate() {
+        File target = outputFile.get().asFile
+        target.parentFile.mkdirs()
+        target.setText("""application.name=${applicationName.get()}
+application.version=${applicationVersion.get()}
+""", 'UTF-8')
+    }
+}
+
+def generateBuildInfo = tasks.register('generateBuildInfo', GenerateBuildInfo) {
+    group = 'build setup'
+    description = 'Generates build metadata consumed by the application.'
+    applicationName.set(project.name)
+    applicationVersion.set(project.version.toString())
+    outputFile.set(layout.buildDirectory.file('generated/build-info/build-info.properties'))
+}
+
+tasks.named('processResources') {
+    from(generateBuildInfo)
+}
