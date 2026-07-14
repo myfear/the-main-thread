@@ -1,0 +1,519 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A Quarkus demo that tells the truth about upload and processing progress.">
+    <title>Honest Progress · Quarkus</title>
+    <style>
+        :root {
+            color-scheme: dark;
+            --ink: #f5f1e8;
+            --muted: #9ba6a2;
+            --panel: rgba(20, 29, 28, 0.88);
+            --line: rgba(245, 241, 232, 0.13);
+            --mint: #70e0b1;
+            --coral: #ff806a;
+            --yellow: #f2c866;
+            --danger: #ff6b6b;
+        }
+
+        * { box-sizing: border-box; }
+
+        body {
+            min-height: 100vh;
+            margin: 0;
+            color: var(--ink);
+            font-family: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+            background:
+                radial-gradient(circle at 15% 10%, rgba(112, 224, 177, 0.14), transparent 30rem),
+                radial-gradient(circle at 90% 70%, rgba(255, 128, 106, 0.12), transparent 32rem),
+                #0c1211;
+        }
+
+        body::before {
+            position: fixed;
+            inset: 0;
+            z-index: -1;
+            content: "";
+            opacity: 0.12;
+            background-image: linear-gradient(var(--line) 1px, transparent 1px),
+                              linear-gradient(90deg, var(--line) 1px, transparent 1px);
+            background-size: 48px 48px;
+            mask-image: linear-gradient(to bottom, black, transparent 85%);
+        }
+
+        main {
+            width: min(1100px, calc(100% - 32px));
+            margin: 0 auto;
+            padding: 72px 0;
+        }
+
+        .eyebrow {
+            margin: 0 0 18px;
+            color: var(--mint);
+            font: 700 0.72rem/1.2 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: 0.18em;
+            text-transform: uppercase;
+        }
+
+        h1 {
+            max-width: 820px;
+            margin: 0;
+            font-size: clamp(2.8rem, 8vw, 6.8rem);
+            font-weight: 760;
+            letter-spacing: -0.065em;
+            line-height: 0.92;
+        }
+
+        h1 em { color: var(--coral); font-style: normal; }
+
+        .intro {
+            max-width: 650px;
+            margin: 28px 0 42px;
+            color: var(--muted);
+            font-size: clamp(1rem, 2vw, 1.2rem);
+            line-height: 1.65;
+        }
+
+        .workspace {
+            display: grid;
+            grid-template-columns: 0.9fr 1.1fr;
+            gap: 18px;
+        }
+
+        .panel {
+            overflow: hidden;
+            border: 1px solid var(--line);
+            border-radius: 24px;
+            background: var(--panel);
+            box-shadow: 0 30px 90px rgba(0, 0, 0, 0.3);
+            backdrop-filter: blur(18px);
+        }
+
+        .panel-body { padding: 28px; }
+
+        .panel-kicker {
+            display: flex;
+            align-items: center;
+            gap: 10px;
+            margin: 0 0 18px;
+            color: var(--muted);
+            font: 700 0.72rem/1 ui-monospace, SFMono-Regular, Menlo, monospace;
+            letter-spacing: 0.11em;
+            text-transform: uppercase;
+        }
+
+        .number {
+            display: grid;
+            width: 25px;
+            height: 25px;
+            place-items: center;
+            border: 1px solid currentColor;
+            border-radius: 50%;
+            color: var(--mint);
+        }
+
+        .drop-zone {
+            display: grid;
+            min-height: 245px;
+            padding: 28px;
+            place-items: center;
+            border: 1px dashed rgba(112, 224, 177, 0.45);
+            border-radius: 18px;
+            text-align: center;
+            transition: 160ms ease;
+        }
+
+        .drop-zone.dragging {
+            border-color: var(--mint);
+            background: rgba(112, 224, 177, 0.08);
+            transform: translateY(-2px);
+        }
+
+        .drop-icon {
+            display: block;
+            margin-bottom: 14px;
+            color: var(--mint);
+            font-size: 2.3rem;
+        }
+
+        .drop-zone strong { display: block; margin-bottom: 7px; font-size: 1.08rem; }
+        .drop-zone small { color: var(--muted); line-height: 1.5; }
+        input[type="file"] { position: absolute; width: 1px; height: 1px; opacity: 0; }
+
+        .actions { display: flex; flex-wrap: wrap; gap: 10px; margin-top: 18px; }
+
+        button, .button {
+            appearance: none;
+            min-height: 44px;
+            padding: 0 18px;
+            border: 1px solid transparent;
+            border-radius: 999px;
+            color: #0b1512;
+            background: var(--mint);
+            font: 750 0.86rem/1 inherit;
+            cursor: pointer;
+            transition: 160ms ease;
+        }
+
+        button:hover, .button:hover { filter: brightness(1.08); transform: translateY(-1px); }
+        button:focus-visible, .button:focus-visible { outline: 3px solid rgba(112, 224, 177, 0.35); outline-offset: 3px; }
+        button.secondary, .button.secondary { border-color: var(--line); color: var(--ink); background: transparent; }
+        button.danger { border-color: rgba(255, 107, 107, 0.35); color: #ffaaaa; background: transparent; }
+        button:disabled { opacity: 0.42; cursor: not-allowed; transform: none; }
+
+        .progress-stack { display: grid; gap: 12px; }
+
+        .stage {
+            padding: 21px;
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            background: rgba(255, 255, 255, 0.025);
+        }
+
+        .stage-head { display: flex; align-items: baseline; justify-content: space-between; gap: 16px; }
+        .stage h2 { margin: 0; font-size: 1rem; }
+        .percent { color: var(--mint); font: 700 0.88rem/1 ui-monospace, SFMono-Regular, Menlo, monospace; }
+
+        progress {
+            display: block;
+            width: 100%;
+            height: 8px;
+            margin: 18px 0 12px;
+            overflow: hidden;
+            border: 0;
+            border-radius: 999px;
+            color: var(--mint);
+            background: #25302d;
+        }
+
+        progress::-webkit-progress-bar { border-radius: 999px; background: #25302d; }
+        progress::-webkit-progress-value { border-radius: 999px; background: currentColor; transition: width 180ms ease; }
+        progress::-moz-progress-bar { border-radius: 999px; background: currentColor; }
+        .processing progress { color: var(--coral); }
+        progress:not([value]) { background: linear-gradient(90deg, #25302d 0 30%, var(--coral) 48%, #25302d 66%) 0 0 / 220% 100%; animation: scan 1.15s linear infinite; }
+
+        @keyframes scan { to { background-position: -220% 0; } }
+
+        .stage p { min-height: 2.8em; margin: 0; color: var(--muted); font-size: 0.88rem; line-height: 1.45; }
+
+        .receipt {
+            display: grid;
+            grid-template-columns: 1fr auto;
+            gap: 10px 20px;
+            margin-top: 12px;
+            padding: 20px 21px;
+            border: 1px solid var(--line);
+            border-radius: 17px;
+            color: var(--muted);
+            font: 0.78rem/1.5 ui-monospace, SFMono-Regular, Menlo, monospace;
+        }
+
+        .receipt strong { color: var(--ink); font-weight: 650; overflow-wrap: anywhere; text-align: right; }
+        .status-dot { display: inline-block; width: 8px; height: 8px; margin-right: 8px; border-radius: 50%; background: var(--yellow); box-shadow: 0 0 15px currentColor; }
+        .status-dot.success { background: var(--mint); }
+        .status-dot.failed { background: var(--danger); }
+
+        .principle {
+            display: flex;
+            gap: 14px;
+            margin: 18px 0 0;
+            padding: 17px 20px;
+            border-left: 2px solid var(--coral);
+            color: var(--muted);
+            background: rgba(255, 128, 106, 0.055);
+            font-size: 0.86rem;
+            line-height: 1.5;
+        }
+
+        .principle strong { color: var(--coral); }
+
+        [hidden] { display: none !important; }
+
+        @media (max-width: 780px) {
+            main { padding: 46px 0; }
+            .workspace { grid-template-columns: 1fr; }
+            .panel-body { padding: 22px; }
+            .receipt { grid-template-columns: 1fr; }
+            .receipt strong { text-align: left; }
+        }
+
+        @media (prefers-reduced-motion: reduce) {
+            *, *::before, *::after { scroll-behavior: auto !important; animation-duration: 0.01ms !important; transition-duration: 0.01ms !important; }
+        }
+    </style>
+</head>
+<body>
+<main>
+    <p class="eyebrow">Quarkus · PostgreSQL · Server-Sent Events</p>
+    <h1>100% uploaded is <em>not done.</em></h1>
+    <p class="intro">The network transfer is only the first clock. This demo reports the upload honestly, then follows a durable invoice-import job through validation, batching, and publication.</p>
+
+    <section class="workspace" aria-label="Invoice import demo">
+        <article class="panel">
+            <div class="panel-body">
+                <p class="panel-kicker"><span class="number">1</span> Pick the work</p>
+                <div id="dropZone" class="drop-zone">
+                    <div>
+                        <span class="drop-icon" aria-hidden="true">↥</span>
+                        <strong>Drop an invoice CSV here</strong>
+                        <small><code>invoice_number,amount,currency</code><br>Maximum upload size: 25 MB</small>
+                    </div>
+                </div>
+                <input id="fileInput" type="file" accept=".csv,text/csv">
+                <div class="actions">
+                    <label class="button" for="fileInput">Choose CSV</label>
+                    <button id="demoButton" class="secondary" type="button">Run demo file</button>
+                </div>
+            </div>
+        </article>
+
+        <article class="panel">
+            <div class="panel-body">
+                <p class="panel-kicker"><span class="number">2</span> Watch both clocks</p>
+                <div class="progress-stack">
+                    <section class="stage transfer" aria-labelledby="transferTitle">
+                        <div class="stage-head">
+                            <h2 id="transferTitle">Browser → Quarkus</h2>
+                            <span id="transferPercent" class="percent">0%</span>
+                        </div>
+                        <progress id="transferProgress" max="100" value="0">0%</progress>
+                        <p id="transferMessage">Waiting for a CSV file.</p>
+                    </section>
+
+                    <section class="stage processing" aria-labelledby="processingTitle">
+                        <div class="stage-head">
+                            <h2 id="processingTitle">Quarkus → published rows</h2>
+                            <span id="processingPercent" class="percent">—</span>
+                        </div>
+                        <progress id="processingProgress" max="100" value="0">0%</progress>
+                        <p id="processingMessage" aria-live="polite">No durable job yet.</p>
+                    </section>
+                </div>
+
+                <div class="receipt">
+                    <span>Status</span><strong id="jobState"><span class="status-dot"></span>idle</strong>
+                    <span>Job ID</span><strong id="jobId">—</strong>
+                    <span>Published</span><strong id="publishedCount">0 invoices</strong>
+                </div>
+
+                <div class="actions">
+                    <button id="cancelButton" class="danger" type="button" disabled>Cancel job</button>
+                </div>
+                <p class="principle"><strong>Source of truth</strong><span>Reload this page during processing. The UI reconnects and reconstructs its state from PostgreSQL.</span></p>
+            </div>
+        </article>
+    </section>
+</main>
+
+<script>
+    const elements = {
+        dropZone: document.querySelector('#dropZone'),
+        fileInput: document.querySelector('#fileInput'),
+        demoButton: document.querySelector('#demoButton'),
+        cancelButton: document.querySelector('#cancelButton'),
+        transferProgress: document.querySelector('#transferProgress'),
+        transferPercent: document.querySelector('#transferPercent'),
+        transferMessage: document.querySelector('#transferMessage'),
+        processingProgress: document.querySelector('#processingProgress'),
+        processingPercent: document.querySelector('#processingPercent'),
+        processingMessage: document.querySelector('#processingMessage'),
+        jobState: document.querySelector('#jobState'),
+        jobId: document.querySelector('#jobId'),
+        publishedCount: document.querySelector('#publishedCount')
+    };
+
+    let currentJobId = null;
+    let eventSource = null;
+
+    elements.fileInput.addEventListener('change', () => {
+        const [file] = elements.fileInput.files;
+        if (file) upload(file);
+    });
+
+    for (const eventName of ['dragenter', 'dragover']) {
+        elements.dropZone.addEventListener(eventName, event => {
+            event.preventDefault();
+            elements.dropZone.classList.add('dragging');
+        });
+    }
+
+    for (const eventName of ['dragleave', 'drop']) {
+        elements.dropZone.addEventListener(eventName, event => {
+            event.preventDefault();
+            elements.dropZone.classList.remove('dragging');
+        });
+    }
+
+    elements.dropZone.addEventListener('drop', event => {
+        const [file] = event.dataTransfer.files;
+        if (file) upload(file);
+    });
+
+    elements.demoButton.addEventListener('click', async () => {
+        try {
+            const response = await fetch('/sample-invoices.csv');
+            const body = await response.blob();
+            upload(new File([body], 'sample-invoices.csv', { type: 'text/csv' }));
+        } catch (error) {
+            showUploadError(error.message);
+        }
+    });
+
+    elements.cancelButton.addEventListener('click', async () => {
+        if (!currentJobId) return;
+        elements.cancelButton.disabled = true;
+        try {
+            const response = await fetch(`/api/imports/${currentJobId}`, { method: 'DELETE' });
+            const progress = await response.json();
+            if (!response.ok) throw new Error(progress.error || 'Cancellation failed');
+            renderJob(progress);
+        } catch (error) {
+            elements.processingMessage.textContent = error.message;
+        }
+    });
+
+    function upload(file) {
+        closeEvents();
+        currentJobId = null;
+        localStorage.removeItem('honest-progress-job');
+        resetJob();
+
+        const body = new FormData();
+        body.append('file', file);
+        const request = new XMLHttpRequest();
+        request.open('POST', '/api/imports');
+        elements.transferMessage.textContent = `Sending ${file.name} (${formatBytes(file.size)})`;
+
+        request.upload.addEventListener('progress', event => {
+            if (!event.lengthComputable) {
+                elements.transferProgress.removeAttribute('value');
+                elements.transferPercent.textContent = 'sending';
+                return;
+            }
+            const percent = Math.round(event.loaded * 100 / event.total);
+            setProgress(elements.transferProgress, elements.transferPercent, percent);
+            elements.transferMessage.textContent = `${formatBytes(event.loaded)} of ${formatBytes(event.total)} transferred`;
+        });
+
+        request.addEventListener('load', () => {
+            let response = {};
+            try { response = JSON.parse(request.responseText); } catch (_) { /* handled below */ }
+            if (request.status !== 202) {
+                showUploadError(response.error || `Upload rejected with HTTP ${request.status}`);
+                return;
+            }
+            setProgress(elements.transferProgress, elements.transferPercent, 100);
+            elements.transferMessage.textContent = 'Transfer complete. The durable job has started.';
+            currentJobId = response.id;
+            localStorage.setItem('honest-progress-job', currentJobId);
+            renderJob(response);
+            follow(currentJobId);
+        });
+
+        request.addEventListener('error', () => showUploadError('The network transfer failed.'));
+        request.addEventListener('abort', () => showUploadError('The network transfer was aborted.'));
+        request.send(body);
+    }
+
+    function follow(id) {
+        closeEvents();
+        eventSource = new EventSource(`/api/imports/${id}/events`);
+        eventSource.addEventListener('progress', event => {
+            const progress = JSON.parse(event.data);
+            renderJob(progress);
+            if (terminal(progress.state)) closeEvents();
+        });
+        eventSource.addEventListener('error', () => {
+            if (eventSource && eventSource.readyState === EventSource.CLOSED) {
+                elements.processingMessage.textContent = 'Progress stream closed. Reload to recover the job snapshot.';
+            }
+        });
+    }
+
+    function renderJob(job) {
+        currentJobId = job.id;
+        elements.jobId.textContent = job.id;
+        elements.publishedCount.textContent = `${job.publishedCount} invoice${job.publishedCount === 1 ? '' : 's'}`;
+        elements.processingMessage.textContent = job.error ? `${job.message}: ${job.error}` : job.message;
+        elements.cancelButton.disabled = terminal(job.state) || job.cancellationRequested;
+
+        const stateClass = job.state === 'SUCCEEDED' ? 'success' : terminal(job.state) ? 'failed' : '';
+        elements.jobState.innerHTML = `<span class="status-dot ${stateClass}"></span>${job.state.toLowerCase()}`;
+
+        if (job.percent === null) {
+            elements.processingProgress.removeAttribute('value');
+            elements.processingPercent.textContent = job.phase.toLowerCase();
+        } else {
+            setProgress(elements.processingProgress, elements.processingPercent, job.percent);
+        }
+
+        if (terminal(job.state)) {
+            localStorage.removeItem('honest-progress-job');
+            if (job.state !== 'SUCCEEDED' && job.percent === null) {
+                elements.processingProgress.value = 0;
+                elements.processingPercent.textContent = job.state.toLowerCase();
+            }
+        }
+    }
+
+    function resetJob() {
+        elements.processingProgress.value = 0;
+        elements.processingPercent.textContent = '—';
+        elements.processingMessage.textContent = 'Waiting for Quarkus to accept the upload.';
+        elements.jobState.innerHTML = '<span class="status-dot"></span>uploading';
+        elements.jobId.textContent = '—';
+        elements.publishedCount.textContent = '0 invoices';
+        elements.cancelButton.disabled = true;
+        setProgress(elements.transferProgress, elements.transferPercent, 0);
+    }
+
+    function showUploadError(message) {
+        elements.transferProgress.value = 0;
+        elements.transferPercent.textContent = 'failed';
+        elements.transferMessage.textContent = message;
+        elements.jobState.innerHTML = '<span class="status-dot failed"></span>rejected';
+    }
+
+    function setProgress(progress, label, value) {
+        progress.value = value;
+        label.textContent = `${value}%`;
+        progress.textContent = `${value}%`;
+    }
+
+    function terminal(state) {
+        return ['SUCCEEDED', 'FAILED', 'CANCELLED'].includes(state);
+    }
+
+    function closeEvents() {
+        if (eventSource) eventSource.close();
+        eventSource = null;
+    }
+
+    function formatBytes(bytes) {
+        if (bytes < 1024) return `${bytes} B`;
+        if (bytes < 1024 * 1024) return `${(bytes / 1024).toFixed(1)} KB`;
+        return `${(bytes / 1024 / 1024).toFixed(1)} MB`;
+    }
+
+    async function resume() {
+        const id = localStorage.getItem('honest-progress-job');
+        if (!id) return;
+        try {
+            const response = await fetch(`/api/imports/${id}`);
+            if (!response.ok) throw new Error('Stored job no longer exists');
+            const progress = await response.json();
+            setProgress(elements.transferProgress, elements.transferPercent, 100);
+            elements.transferMessage.textContent = 'Upload completed before this page was restored.';
+            renderJob(progress);
+            if (!terminal(progress.state)) follow(id);
+        } catch (_) {
+            localStorage.removeItem('honest-progress-job');
+        }
+    }
+
+    resume();
+</script>
+</body>
+</html>
