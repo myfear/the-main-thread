@@ -1,0 +1,17 @@
+<server description="Getting started server">
+    <featureManager>
+        <platform>jakartaee-11.0</platform>
+        <feature>restfulWS</feature>
+    </featureManager>
+
+    <variable name="http.host" defaultValue="localhost"/>
+    <variable name="http.port" defaultValue="9080"/>
+    <variable name="https.port" defaultValue="9443"/>
+
+    <httpEndpoint id="defaultHttpEndpoint"
+                  host="${http.host}"
+                  httpPort="${http.port}"
+                  httpsPort="${https.port}"/>
+
+    <webApplication location="getting-started.war" contextRoot="/"/>
+</server>
