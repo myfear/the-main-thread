@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.2",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "retry-safe-checkout",
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
