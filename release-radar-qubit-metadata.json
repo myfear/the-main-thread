@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.32.2",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "release-radar-qubit",
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
