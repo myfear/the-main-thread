@@ -1,0 +1,52 @@
+name: Secure shim pipeline
+
+on:
+  push:
+    branches:
+      - main
+  pull_request:
+  schedule:
+    - cron: '23 5 * * 1'
+
+permissions:
+  contents: read
+
+concurrency:
+  group: secure-shim-${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: true
+
+jobs:
+  verify:
+    runs-on: ubuntu-latest
+    timeout-minutes: 20
+
+    steps:
+      - name: Check out the exact revision
+        uses: actions/checkout@d23441a48e516b6c34aea4fa41551a30e30af803 # v6
+
+      - name: Set up Java 21
+        uses: actions/setup-java@be666c2fcd27ec809703dec50e508c2fdc7f6654 # v5.2.0
+        with:
+          distribution: temurin
+          java-version: '21'
+          cache: maven
+
+      - name: Reject missing or expired shim policy
+        run: ./scripts/check-shim-policy.sh
+
+      - name: Test and package the application
+        run: ./mvnw --batch-mode --no-transfer-progress verify
+
+      - name: Verify transformed bytecode and SBOM evidence
+        run: ./scripts/verify-build-evidence.sh
+
+      - name: Preserve review evidence
+        uses: actions/upload-artifact@043fb46d1a93c77aae656e7c1c64a875d1fc6a0a # v7.0.1
+        with:
+          name: shim-build-evidence
+          if-no-files-found: error
+          retention-days: 14
+          path: |
+            shim-policy.yaml
+            policy-service/target/shim/*.txt
+            policy-service/target/quarkus-run-cyclonedx.json

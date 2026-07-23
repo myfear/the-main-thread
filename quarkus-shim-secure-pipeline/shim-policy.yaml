@@ -1,0 +1,11 @@
+id: SHIM-001
+status: temporary
+owner: application-security
+introduced-on: 2026-07-22
+expires-on: 2026-10-31
+dependency: com.themainthread.vendor:access-policy-sdk:1.0.0
+target-class: com.themainthread.vendor.LegacyDecisionEngine
+target-method: isAllowed(java.lang.String)
+shim-class: com.themainthread.policy.LegacyDecisionEngineShim
+reason: Unknown policy decisions default to allow in the fictional vendor SDK.
+removal-condition: Upgrade to a vendor release that denies unknown decisions, run the suite without the shim, then delete SHIM-001.
