@@ -1,0 +1,27 @@
+{
+  "$schema": "https://flagd.dev/schema/v0/flags.json",
+  "flags": {
+    "pricing-engine": {
+      "state": "ENABLED",
+      "variants": {
+        "stable": "stable",
+        "dynamic": "dynamic"
+      },
+      "defaultVariant": "stable",
+      "targeting": {
+        "if": [
+          {
+            "==": [
+              {
+                "var": "targetingKey"
+              },
+              "northwind"
+            ]
+          },
+          "dynamic",
+          "stable"
+        ]
+      }
+    }
+  }
+}
