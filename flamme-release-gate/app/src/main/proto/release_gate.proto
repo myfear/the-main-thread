@@ -1,0 +1,24 @@
+syntax = "proto3";
+
+option java_multiple_files = true;
+option java_package = "com.themainthread.releasegate.proto";
+
+message ReleaseCandidate {
+  string id = 1;
+  int32 changed_files = 2;
+  int32 critical_dependencies = 3;
+  bool force_risk_failure = 4;
+  int32 analysis_delay_millis = 5;
+}
+
+message ReleaseAssessment {
+  int32 score = 1;
+  string summary = 2;
+  string processed_by = 3;
+}
+
+message ReleaseDecision {
+  bool approved = 1;
+  string reason = 2;
+  string decided_by = 3;
+}
