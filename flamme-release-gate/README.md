@@ -32,9 +32,10 @@ output, and suggested changes.
 - Podman 5.x
 
 Flamme does not currently publish a release artifact. The `vendor/flamme`
-directory contains the unchanged runtime and deployment sources from the pinned
-commit. Only their Maven parent declarations differ so the modules can build in
-this reactor. The exact provenance is in
+directory contains the runtime and deployment sources from the pinned commit.
+Their Maven parent declarations differ so the modules can build in this
+reactor. A test-only synchronization patch removes a race in an upstream test
+fixture. The production Java sources are unchanged. The exact provenance is in
 [vendor/flamme/PIN.md](vendor/flamme/PIN.md).
 
 ## Project Layout
@@ -66,8 +67,13 @@ starts its own NATS Testcontainer through Podman.
 Run the build from this directory:
 
 ```bash
-./mvnw -pl app -am test
+./mvnw test
 ```
+
+Use the complete reactor here. Flamme's runtime artifact points Quarkus to the
+separate `flamme-deployment` artifact through extension metadata, not through a
+regular Maven dependency from `app`. Selecting only `app` can therefore omit
+the deployment module on a clean checkout.
 
 The test suite checks the local Flamme pipeline, the REST validation boundary,
 the deterministic risk calculation, and the forced component failure.
@@ -75,7 +81,7 @@ the deterministic risk calculation, and the forced component failure.
 Package the runnable application:
 
 ```bash
-./mvnw -pl app -am package
+./mvnw package
 ```
 
 ## Run Everything in One Process
