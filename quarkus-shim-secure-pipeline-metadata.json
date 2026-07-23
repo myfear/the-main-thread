@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.37.3",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "quarkus-shim-secure-pipeline",
+  "tests": {
+    "total": 0,
+    "passed": 0,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
