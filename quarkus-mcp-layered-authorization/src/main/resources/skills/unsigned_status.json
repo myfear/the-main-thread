@@ -1,0 +1,9 @@
+{
+  "skill_id": "unsigned_status",
+  "publisher": "internal:ops-lab",
+  "publisher_trust_tier": "internal-unverified",
+  "signature_verified": false,
+  "requested_scopes": ["context:read"],
+  "declared_capabilities": ["status-reporting"],
+  "allowed_teams": ["platform"]
+}

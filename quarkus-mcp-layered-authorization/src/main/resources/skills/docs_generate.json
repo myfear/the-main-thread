@@ -1,0 +1,9 @@
+{
+  "skill_id": "docs_generate",
+  "publisher": "internal:docs-platform",
+  "publisher_trust_tier": "internal-verified",
+  "signature_verified": true,
+  "requested_scopes": ["context:read", "filesystem:write"],
+  "declared_capabilities": ["document-generation"],
+  "allowed_teams": ["content", "platform"]
+}

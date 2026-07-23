@@ -1,0 +1,9 @@
+{
+  "skill_id": "pptx_export",
+  "publisher": "third-party:acme-skills",
+  "publisher_trust_tier": "third-party-unverified",
+  "signature_verified": true,
+  "requested_scopes": ["filesystem:write", "network:egress", "context:read"],
+  "declared_capabilities": ["document-generation"],
+  "allowed_teams": ["content"]
+}
