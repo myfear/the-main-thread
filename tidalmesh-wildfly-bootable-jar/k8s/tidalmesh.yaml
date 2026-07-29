@@ -1,0 +1,88 @@
+apiVersion: v1
+kind: ServiceAccount
+metadata:
+  name: tidalmesh
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: Role
+metadata:
+  name: tidalmesh-pod-reader
+rules:
+  - apiGroups: [""]
+    resources: ["pods"]
+    verbs: ["get", "list"]
+---
+apiVersion: rbac.authorization.k8s.io/v1
+kind: RoleBinding
+metadata:
+  name: tidalmesh-pod-reader
+roleRef:
+  apiGroup: rbac.authorization.k8s.io
+  kind: Role
+  name: tidalmesh-pod-reader
+subjects:
+  - kind: ServiceAccount
+    name: tidalmesh
+---
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: tidalmesh
+spec:
+  replicas: 2
+  selector:
+    matchLabels:
+      app: tidalmesh
+  template:
+    metadata:
+      labels:
+        app: tidalmesh
+    spec:
+      serviceAccountName: tidalmesh
+      containers:
+        - name: tidalmesh
+          image: localhost/tidalmesh:latest
+          imagePullPolicy: Never
+          env:
+            - name: KUBERNETES_NAMESPACE
+              valueFrom:
+                fieldRef:
+                  fieldPath: metadata.namespace
+            - name: KUBERNETES_LABELS
+              value: app=tidalmesh
+            - name: JGROUPS_CLUSTER_PASSWORD
+              valueFrom:
+                secretKeyRef:
+                  name: tidalmesh-cluster
+                  key: password
+          ports:
+            - name: http
+              containerPort: 8080
+            - name: management
+              containerPort: 9990
+            - name: jgroups
+              containerPort: 7600
+          readinessProbe:
+            httpGet:
+              path: /health/ready
+              port: management
+            initialDelaySeconds: 5
+            periodSeconds: 5
+          livenessProbe:
+            httpGet:
+              path: /health/live
+              port: management
+            initialDelaySeconds: 15
+            periodSeconds: 10
+---
+apiVersion: v1
+kind: Service
+metadata:
+  name: tidalmesh
+spec:
+  selector:
+    app: tidalmesh
+  ports:
+    - name: http
+      port: 8080
+      targetPort: http
