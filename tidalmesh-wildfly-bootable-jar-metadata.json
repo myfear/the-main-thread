@@ -1,0 +1,13 @@
+{
+  "quarkus": "-",
+  "java": "17",
+  "substackUrl": "",
+  "projectPath": "tidalmesh-wildfly-bootable-jar",
+  "tests": {
+    "total": 1,
+    "passed": 1,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
