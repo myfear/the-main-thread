@@ -1,0 +1,30 @@
+{
+  "workbookSha256": "bcbe73b35f5b7babf197fb0cb983a11f5d9ff929078d4aa53d171b1f2df2e980",
+  "sheets": [
+    "Year 2009-2010",
+    "Year 2010-2011"
+  ],
+  "dataRows": 1067371,
+  "validRows": 1067371,
+  "invalidRows": 0,
+  "missingCustomerRows": 243007,
+  "cancellationRows": 19494,
+  "grossSalesGbp": "20972968.14",
+  "returnedGoodsGbp": "1527041.43",
+  "netRevenueGbp": "19287250.57",
+  "topNonUkCustomer": {
+    "customerId": "14646",
+    "country": "Netherlands",
+    "netRevenueGbp": "523342.07"
+  },
+  "topReturnedMerchandise": {
+    "stockCode": "23843",
+    "description": "PAPER CRAFT , LITTLE BIRDIE",
+    "returnedValueGbp": "168469.60"
+  },
+  "naiveTopReturnedCode": {
+    "stockCode": "M",
+    "description": "Manual",
+    "returnedValueGbp": "423886.17"
+  }
+}
