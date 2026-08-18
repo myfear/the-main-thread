@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.38.1",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "shieldstral-policy-gate",
+  "tests": {
+    "total": 8,
+    "passed": 8,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
