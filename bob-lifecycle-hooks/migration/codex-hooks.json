@@ -1,0 +1,19 @@
+{
+  "description": "Portable repository write policy",
+  "hooks": {
+    "PreToolUse": [
+      {
+        "matcher": "^(apply_patch|Edit|Write)$",
+        "hooks": [
+          {
+            "type": "command",
+            "command": "python3 ${PLUGIN_ROOT}/hooks/guard_write.py",
+            "timeout": 5,
+            "statusMessage": "Checking repository write policy"
+          }
+        ]
+      }
+    ]
+  }
+}
+
