@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.39.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "reservation-problem-contract",
+  "tests": {
+    "total": 13,
+    "passed": 13,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
