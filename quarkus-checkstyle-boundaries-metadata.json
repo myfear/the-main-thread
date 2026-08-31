@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.39.1",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "quarkus-checkstyle-boundaries",
+  "tests": {
+    "total": 4,
+    "passed": 4,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
