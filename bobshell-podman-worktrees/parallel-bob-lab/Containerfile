@@ -1,0 +1,28 @@
+FROM docker.io/library/node:24-trixie-slim
+
+ARG BOBSHELL_VERSION=2.0.2
+
+RUN apt-get update \
+    && DEBIAN_FRONTEND=noninteractive apt-get install --yes --no-install-recommends \
+        ca-certificates \
+        curl \
+        git \
+        jq \
+        maven \
+        openjdk-21-jdk-headless \
+        ripgrep \
+    && rm -rf /var/lib/apt/lists/* \
+    && curl --fail --silent --show-error --location \
+        https://bob.ibm.com/download/bobshell.sh \
+        --output /tmp/install-bobshell.sh \
+    && bash /tmp/install-bobshell.sh --pm npm --version "${BOBSHELL_VERSION}" \
+    && rm /tmp/install-bobshell.sh \
+    && bob --version \
+    && java -version \
+    && mvn --version
+
+COPY --chmod=0755 scripts/container-unzip.sh /usr/local/bin/unzip
+
+WORKDIR /workspace
+
+CMD ["sleep", "infinity"]

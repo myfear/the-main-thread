@@ -1,0 +1,8 @@
+target/
+.idea/
+.vscode/
+*.log
+.env
+*.key
+secrets/
+.certs/

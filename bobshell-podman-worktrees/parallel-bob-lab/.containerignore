@@ -1,0 +1,7 @@
+.git/
+.worktrees/
+target/
+bob-results/
+.env
+*.key
+secrets/
