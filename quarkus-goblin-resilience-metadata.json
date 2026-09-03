@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.38.3",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "quarkus-goblin-resilience",
+  "tests": {
+    "total": 2,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
