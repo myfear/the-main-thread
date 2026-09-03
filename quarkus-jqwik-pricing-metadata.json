@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.39.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "quarkus-jqwik-pricing",
+  "tests": {
+    "total": 57,
+    "passed": 57,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
