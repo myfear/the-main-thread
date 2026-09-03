@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.38.3",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "bob-acp-web",
+  "tests": {
+    "total": 6,
+    "passed": 6,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
