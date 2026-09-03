@@ -1,0 +1,115 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="dark">
+    <title>Bob Web</title>
+    <link rel="stylesheet" href="/styles.css">
+</head>
+<body>
+    <div class="app-shell">
+        <aside class="sidebar" id="sidebar">
+            <div class="brand">
+                <img class="brand-mark" src="/Bob.svg" width="36" height="36" alt="">
+                <div>
+                    <strong>Bob Web</strong>
+                    <span>ACP workbench</span>
+                </div>
+            </div>
+
+            <button class="new-chat" id="new-chat" type="button">
+                <span>＋</span> New conversation
+            </button>
+
+            <div class="sidebar-label">Conversations</div>
+            <nav class="conversation-list" id="conversation-list" aria-label="Conversations"></nav>
+
+            <div class="sidebar-footer">
+                <span class="connection-dot"></span>
+                Local Quarkus · stdio ACP
+            </div>
+        </aside>
+
+        <main class="workspace">
+            <header class="topbar">
+                <button class="mobile-menu" id="mobile-menu" type="button" aria-label="Toggle sidebar">☰</button>
+                <div class="conversation-heading">
+                    <strong id="conversation-title">Bob Web</strong>
+                    <span id="workspace-label">Start a conversation to connect Bob</span>
+                </div>
+                <div class="topbar-actions">
+                    <label class="mode-control" for="mode-select">
+                        <span>Mode</span>
+                        <select id="mode-select" disabled>
+                            <option>No session</option>
+                        </select>
+                    </label>
+                    <button class="ghost-button" id="commands-button" type="button" disabled>
+                        Commands &amp; skills <span id="command-count">0</span>
+                    </button>
+                </div>
+            </header>
+
+            <section class="empty-state" id="empty-state">
+                <div class="empty-orbit"><img class="brand-mark large" src="/Bob.svg" width="64" height="64" alt=""></div>
+                <p class="eyebrow">A Java client for an AI coding agent</p>
+                <h1>Put Bob behind an interface<br>you can reason about.</h1>
+                <p>Create an ACP session, watch plans and tool calls as structured events, and keep file changes behind an explicit permission gate.</p>
+                <button class="primary-button" id="empty-new-chat" type="button">Start with a workspace</button>
+                <div class="feature-row">
+                    <span>Agent / Plan / Ask modes</span>
+                    <span>Live tool-call timeline</span>
+                    <span>Fail-closed permissions</span>
+                </div>
+            </section>
+
+            <section class="conversation" id="conversation" hidden>
+                <div class="timeline" id="timeline" aria-live="polite"></div>
+                <div class="composer-wrap">
+                    <div class="composer">
+                        <textarea id="prompt" rows="1" placeholder="Ask Bob to inspect, explain, or change this workspace…" disabled></textarea>
+                        <div class="composer-actions">
+                            <span id="composer-hint">Enter to send · Shift+Enter for a new line</span>
+                            <button class="stop-button" id="stop-button" type="button" hidden>Stop</button>
+                            <button class="send-button" id="send-button" type="button" disabled aria-label="Send prompt">↑</button>
+                        </div>
+                    </div>
+                    <p class="safety-note">Bob can read the selected workspace. Changes require approval unless Bob is started with <code>--auto-approve</code>.</p>
+                </div>
+            </section>
+        </main>
+
+        <aside class="command-drawer" id="command-drawer" aria-hidden="true">
+            <div class="drawer-header">
+                <div>
+                    <p class="eyebrow">Advertised over ACP</p>
+                    <h2>Commands &amp; skills</h2>
+                </div>
+                <button class="icon-button" id="close-commands" type="button" aria-label="Close">×</button>
+            </div>
+            <input class="command-search" id="command-search" type="search" placeholder="Filter commands">
+            <div class="command-list" id="command-list"></div>
+        </aside>
+        <div class="scrim" id="scrim" hidden></div>
+    </div>
+
+    <dialog id="new-conversation-dialog">
+        <form method="dialog" id="new-conversation-form">
+            <button class="dialog-close" value="cancel" aria-label="Close">×</button>
+            <p class="eyebrow">New Bob process</p>
+            <h2>Choose a workspace</h2>
+            <p>The path is relative to <code>BOB_WORKSPACE_ROOT</code>. Bob cannot escape that root through this UI.</p>
+            <label for="workspace-input">Workspace directory</label>
+            <input id="workspace-input" name="workspace" value="lab" autocomplete="off" required>
+            <div class="dialog-actions">
+                <button class="ghost-button" value="cancel">Cancel</button>
+                <button class="primary-button" id="create-button" value="default">Connect Bob</button>
+            </div>
+        </form>
+    </dialog>
+
+    <div class="toast" id="toast" role="alert" hidden></div>
+    <script src="/app.js" type="module"></script>
+</body>
+</html>

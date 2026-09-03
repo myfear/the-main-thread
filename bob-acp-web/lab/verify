@@ -1,0 +1,10 @@
+#!/bin/sh
+set -eu
+
+classes_dir=$(mktemp -d)
+trap 'rm -rf "$classes_dir"' EXIT
+
+javac -d "$classes_dir" \
+    src/main/java/dev/mainthread/lab/RetryBudget.java \
+    src/test/java/dev/mainthread/lab/RetryBudgetCheck.java
+java -cp "$classes_dir" dev.mainthread.lab.RetryBudgetCheck
