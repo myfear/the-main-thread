@@ -1,0 +1,224 @@
+{
+  "captured_at": "2026-09-04",
+  "conclusion": "No quality-gated navigation improvement was demonstrated. Across two narrow-task pairs, graph-assisted Bob found 1/10 required call sites and solo Bob found 10/10. Neither condition completed the wider task under the repeated higher-budget runs.",
+  "provenance": {
+    "feature_resolution_first_pair": "bob-crg-benchmark-20260904-run4",
+    "full_batch_rerun": "bob-crg-benchmark-20260904-run6",
+    "server_startup_graph_rerun": "bob-crg-benchmark-20260904-run3",
+    "server_startup_initial_pair": "bob-crg-benchmark-20260904-run2",
+    "server_startup_solo_rerun": "bob-crg-benchmark-20260904-run5b"
+  },
+  "host": {
+    "architecture": "arm64",
+    "bob_shell": "2.0.2 (a31a75e3)",
+    "code_review_graph": "2.3.8",
+    "macos": "26.6.2",
+    "python": "3.14.7"
+  },
+  "open_liberty": {
+    "branch": "integration",
+    "checkout_with_graph_size_gib": 8.2,
+    "commit": "3da6c82529721046a4a6a73f07b34c5c57f8d76e",
+    "java_files": 47668,
+    "source_checkout_approx_size_gib": 1.3,
+    "tracked_files": 120016
+  },
+  "graph": {
+    "build_seconds": 435.14,
+    "database_size_gib": 6.9,
+    "edges": 3554089,
+    "files": 48547,
+    "nodes": 463449
+  },
+  "diagnostics": {
+    "envcheck_main": {
+      "distinct_callee_names": 10,
+      "minimal_visible_results": 5,
+      "node_count_for_two_overloads": 1,
+      "note": "The two overloads share one qualified node identity; the createPlatform call falls outside the five visible minimal results."
+    },
+    "update_features": {
+      "bare_unique_call_targets": 36,
+      "call_edges": 72,
+      "distinct_callee_names": 54,
+      "minimal_visible_results": 5,
+      "qualified_unique_call_targets": 18,
+      "required_bare_targets": [
+        "installBundles",
+        "uninstallBundles",
+        "resolveBundles",
+        "preStartBundles"
+      ],
+      "required_qualified_targets": [
+        "FeatureManager.resolveFeatures"
+      ]
+    }
+  },
+  "trials": {
+    "feature_resolution_first_pair": {
+      "budget": {
+        "max_cost_bobcoins": 0.8,
+        "max_tool_calls_requested": 4,
+        "max_turns": 20
+      },
+      "graph": {
+        "correct_requested_call_sites": 0,
+        "cost_bobcoins": 0.132528,
+        "duration_ms": 20284,
+        "mcp_calls": 2,
+        "native_calls": 2,
+        "status": "success_but_failed_quality_gate",
+        "tool_calls": 4,
+        "tool_result_chars": 12381
+      },
+      "raw_graph_delta_percent": {
+        "cost": -4.7,
+        "duration": -26.0,
+        "tool_result_chars": -10.8
+      },
+      "solo": {
+        "correct_requested_call_sites": 5,
+        "cost_bobcoins": 0.139082,
+        "duration_ms": 27404,
+        "mcp_calls": 0,
+        "native_calls": 4,
+        "status": "success",
+        "tool_calls": 4,
+        "tool_result_chars": 13883
+      }
+    },
+    "feature_resolution_second_pair": {
+      "budget": {
+        "max_cost_bobcoins": 0.8,
+        "max_tool_calls_requested": 4,
+        "max_turns": 20
+      },
+      "graph": {
+        "correct_requested_call_sites": 1,
+        "cost_bobcoins": 0.159434,
+        "duration_ms": 20844,
+        "mcp_calls": 3,
+        "native_calls": 2,
+        "status": "success_but_failed_quality_gate",
+        "tool_calls": 5,
+        "tool_result_chars": 10542
+      },
+      "raw_graph_delta_percent": {
+        "cost": 14.8,
+        "duration": -10.3,
+        "tool_calls": 25.0,
+        "tool_result_chars": -26.3
+      },
+      "solo": {
+        "correct_requested_call_sites": 5,
+        "cost_bobcoins": 0.13892,
+        "duration_ms": 23231,
+        "mcp_calls": 0,
+        "native_calls": 4,
+        "status": "success",
+        "tool_calls": 4,
+        "tool_result_chars": 14299
+      }
+    },
+    "feature_resolution_two_pair_aggregate": {
+      "graph": {
+        "average_cost_bobcoins": 0.145981,
+        "average_duration_ms": 20564,
+        "average_tool_calls": 4.5,
+        "average_tool_result_chars": 11461.5,
+        "correct_requested_call_sites": 1,
+        "quality_gated_passes": 0,
+        "runs": 2,
+        "total_requested_call_sites": 10
+      },
+      "raw_graph_delta_percent": {
+        "average_cost": 5.0,
+        "average_duration": -18.8,
+        "average_tool_calls": 12.5,
+        "average_tool_result_chars": -18.7
+      },
+      "solo": {
+        "average_cost_bobcoins": 0.139001,
+        "average_duration_ms": 25317.5,
+        "average_tool_calls": 4,
+        "average_tool_result_chars": 14091,
+        "correct_requested_call_sites": 10,
+        "quality_gated_passes": 2,
+        "runs": 2,
+        "total_requested_call_sites": 10
+      }
+    },
+    "server_startup_initial_pair": {
+      "budget": {
+        "max_cost_bobcoins": 0.5,
+        "max_turns": 12
+      },
+      "graph": {
+        "cost_bobcoins": 0.524368,
+        "duration_ms": 43657,
+        "mcp_calls": 9,
+        "native_calls": 6,
+        "status": "limit_reached_no_final_answer",
+        "tool_calls": 15,
+        "tool_result_chars": 46419
+      },
+      "solo": {
+        "cost_bobcoins": 0.326164,
+        "duration_ms": 64087,
+        "mcp_calls": 0,
+        "native_calls": 12,
+        "status": "answered_but_failed_quality_gate",
+        "tool_calls": 12,
+        "tool_result_chars": 57085
+      }
+    },
+    "server_startup_higher_budget_rerun": {
+      "budget": {
+        "max_cost_bobcoins": 0.8,
+        "max_turns": 20
+      },
+      "graph": {
+        "cost_bobcoins": 0.880286,
+        "duration_ms": 73377,
+        "mcp_calls": 4,
+        "native_calls": 16,
+        "status": "limit_reached_no_final_answer",
+        "tool_calls": 20,
+        "tool_result_chars": 91874
+      },
+      "solo": {
+        "cost_bobcoins": 0.879986,
+        "duration_ms": 77992,
+        "mcp_calls": 0,
+        "native_calls": 16,
+        "status": "limit_reached_no_final_answer",
+        "tool_calls": 16,
+        "tool_result_chars": 113054
+      }
+    },
+    "server_startup_higher_budget_second_pair": {
+      "budget": {
+        "max_cost_bobcoins": 0.8,
+        "max_turns": 20
+      },
+      "graph": {
+        "cost_bobcoins": 0.69503,
+        "duration_ms": 62905,
+        "mcp_calls": 4,
+        "native_calls": 16,
+        "status": "limit_reached_no_final_answer",
+        "tool_calls": 20,
+        "tool_result_chars": 35866
+      },
+      "solo": {
+        "cost_bobcoins": 0.814708,
+        "duration_ms": 66975,
+        "mcp_calls": 0,
+        "native_calls": 16,
+        "status": "limit_reached_no_final_answer",
+        "tool_calls": 16,
+        "tool_result_chars": 102643
+      }
+    }
+  }
+}

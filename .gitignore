@@ -59,3 +59,8 @@ nb-configuration.xml
 /.quarkus/cli/plugins/
 # TLS Certificates
 .certs/
+
+# Python
+__pycache__/
+*.pyc
+*.pyo
