@@ -16,5 +16,6 @@
     '''(?:^|\/)magic-link-demo\/.*\.pem$''',
     '''(?:^|/)src/main/resources/certs/.*''',
     '''(?:^|/)src/main/resources/META-INF/resources/.*''',
-    '''(?:^|/)quarkus-multi-tenant-extension\/.*\.pem$'''
+    '''(?:^|/)quarkus-multi-tenant-extension\/.*\.pem$''',
+    '''(?:^|/)agent-memory-storage/demo/test/.*\.py$'''
     ]
