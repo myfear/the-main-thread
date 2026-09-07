@@ -1,0 +1,55 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>Worlds beyond our own · The Main Thread</title>
+    {#bundle /}
+</head>
+<body>
+<main>
+    <header>
+        <p class="eyebrow">THE MAIN THREAD <span>/</span> EXOPLANET EXPLORER</p>
+        <h1>Worlds beyond<br><em>our own.</em></h1>
+        <p class="intro">Explore the planets we have found, how we found them, and the measurements we have. One catalogue. Three views.</p>
+    </header>
+    <form id="filters">
+        <label>Catalogue<select name="source"><option value="snapshot">Bundled snapshot</option><option value="live">NASA archive · live</option></select></label>
+        <label>From year<input name="from" type="number" min="1992" value="1992" required></label>
+        <label>To year<input name="to" type="number" min="1992" value="2025" required></label>
+        <button type="submit">Explore range <span aria-hidden="true">↗</span></button>
+        <button id="reset" type="button" class="secondary">Reset years</button>
+    </form>
+    <p id="status" role="status" aria-live="polite">Loading the catalogue…</p>
+    <section id="results" hidden>
+        <div class="metrics">
+            <div><span id="selected">—</span><p>planets in this range</p></div>
+            <div><span id="plotted">—</span><p>with usable size + period</p></div>
+            <div><span id="excluded">—</span><p>excluded from the scatter plot</p></div>
+        </div>
+        <div class="chart-grid">
+            <section class="panel annual">
+                <p class="eyebrow">01 / DISCOVERY</p><h2>How the catalogue grew</h2>
+                <p>Planets by discovery year, grouped by detection method. Click a bar to explore that year.</p>
+                <div class="canvas-wrap"><canvas id="discoveries" role="img" aria-label="Stacked chart of planets by discovery year and method. Values are available in the table below."></canvas></div>
+            </section>
+            <section class="panel">
+                <p class="eyebrow">02 / DETECTION</p><h2>How we found them</h2>
+                <p>Discovery methods in the selected range. Smaller method categories are grouped as Other.</p>
+                <div class="canvas-wrap"><canvas id="methods" role="img" aria-label="Doughnut chart of discovery methods. Values are available in the table below."></canvas></div>
+            </section>
+            <section class="panel scatter">
+                <p class="eyebrow">03 / COMPARISON</p><h2>A year on another world</h2>
+                <p>Orbital period versus planet radius. Each dot is one planet. Both axes use a logarithmic scale; hover for its name and values.</p>
+                <div class="canvas-wrap tall"><canvas id="sizes" role="img" aria-label="Scatter plot of orbital period in days and radius in Earth radii. Point values are available in the table below."></canvas></div>
+                <p class="note">Only finite, positive values with both limit flags equal to zero are plotted. Missing measurements and upper or lower limits are excluded. Measurement uncertainties are not shown.</p>
+            </section>
+        </div>
+        <details><summary>Read the chart values as tables</summary><div id="tables"></div></details>
+        <aside><h2>A catalogue of discoveries</h2><p>These charts describe known planets and the measurements available for them. Detection methods favour different kinds of planets, so the plots do not estimate how common each kind is in the universe. The current year is incomplete; the default range ends in 2025.</p></aside>
+        <p id="provenance" class="note"></p>
+    </section>
+    <footer>Data: <a href="https://exoplanetarchive.ipac.caltech.edu/">NASA Exoplanet Archive</a> · <a href="https://exoplanetarchive.ipac.caltech.edu/docs/acknowledge.html">Attribution</a><br>Built with Quarkus, <a href="https://github.com/xdev-software/chartjs-java-model">chartjs-java-model</a>, and Chart.js.</footer>
+</main>
+</body>
+</html>
