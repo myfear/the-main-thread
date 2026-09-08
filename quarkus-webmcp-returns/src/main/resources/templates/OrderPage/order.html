@@ -1,0 +1,52 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>Order {order.id} · Return workbench</title>
+  <link rel="stylesheet" href="/style.css">
+  <script type="module" src="/app.js"></script>
+</head>
+<body data-order-id="{order.id}">
+  <header><span class="brand">THE MAIN THREAD / LAB</span><span>Order support</span></header>
+  <main>
+    <p class="eyebrow">RETURN WORKBENCH</p>
+    <h1>A return starts with a draft.</h1>
+    <p class="intro">Choose items from order <strong>{order.id}</strong>. Review the estimate before deciding what to do next.</p>
+    <div class="layout">
+      <section aria-labelledby="items-title">
+        <div class="section-heading"><h2 id="items-title">Your order</h2><span>{order.currency}</span></div>
+        <form id="return-form">
+          <fieldset id="fields" disabled>
+            <legend class="sr-only">Items to return</legend>
+            {#for item in order.items}
+            <div class="order-item">
+              <div><label for="quantity-{item.sku}">{item.name}</label><small>{item.sku} · Ordered: {item.quantity}</small>
+                {#if !item.returnable}<span class="ineligible">Not returnable</span>{/if}
+              </div>
+              <label class="quantity-label">Return quantity
+                <input id="quantity-{item.sku}" data-sku="{item.sku}" type="number" min="0" max="{item.quantity}" step="1" value="0" {#if !item.returnable}disabled{/if}>
+              </label>
+            </div>
+            {/for}
+            <label class="reason-label" for="reason">Reason for returning</label>
+            <select id="reason" name="reason">
+              <option value="damaged">Damaged</option>
+              <option value="wrong_item">Wrong item received</option>
+              <option value="changed_mind">Changed my mind</option>
+            </select>
+            <div class="actions"><button type="submit">Prepare return</button><button type="button" id="clear" class="secondary">Clear draft</button></div>
+          </fieldset>
+        </form>
+        <p id="error" role="alert"></p>
+      </section>
+      <section class="draft-card" aria-labelledby="draft-title">
+        <p class="eyebrow">FOR YOUR REVIEW</p><h2 id="draft-title">Return draft</h2>
+        <div id="draft" aria-live="polite"><p class="empty">No draft yet. Your order is unchanged.</p></div>
+        <p class="boundary">This demo prepares an estimate. It does not submit returns or issue refunds.</p>
+      </section>
+    </div>
+    <footer><span id="tool-status" role="status">Loading order…</span><span>Quarkus + WebMCP</span></footer>
+  </main>
+</body>
+</html>

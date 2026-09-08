@@ -1,0 +1,192 @@
+{
+  "testedAt": "2026-09-08T09:21:58.593Z",
+  "evidence": [
+    {
+      "name": "new_page",
+      "arguments": {
+        "url": "http://127.0.0.1:8097"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Pages\n1: about:blank\n2: Order ORD-1042 · Return workbench (http://127.0.0.1:8097/) [selected]"
+          }
+        ]
+      }
+    },
+    {
+      "name": "wait_for",
+      "arguments": {
+        "pageId": 2,
+        "text": [
+          "3 WebMCP tools ready"
+        ]
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Element matching one of [\"3 WebMCP tools ready\"] found.\n## Latest page snapshot\nuid=1_0 RootWebArea \"Order ORD-1042 · Return workbench\" url=\"http://127.0.0.1:8097/\"\n  uid=1_1 banner\n    uid=1_2 StaticText \"THE MAIN THREAD / LAB\"\n    uid=1_3 StaticText \"Order support\"\n  uid=1_4 main\n    uid=1_5 StaticText \"RETURN WORKBENCH\"\n    uid=1_6 heading \"A return starts with a draft.\" level=\"1\"\n    uid=1_7 StaticText \"Choose items from order \"\n    uid=1_8 StaticText \"ORD-1042\"\n    uid=1_9 StaticText \". Review the estimate before deciding what to do next.\"\n    uid=1_10 region \"Your order\"\n      uid=1_11 heading \"Your order\" level=\"2\"\n      uid=1_12 StaticText \"EUR\"\n      uid=1_13 form\n        uid=1_14 StaticText \"Items to return\"\n        uid=1_15 StaticText \"Mechanical keyboard\"\n        uid=1_16 StaticText \"KEYBOARD · Ordered: 1\"\n        uid=1_17 StaticText \"Return quantity\"\n        uid=1_18 spinbutton \"Mechanical keyboard Return quantity\" value=\"0\" valuemax=\"1\" valuemin=\"0\" valuetext=\"0\"\n        uid=1_19 StaticText \"USB-C cable\"\n        uid=1_20 StaticText \"CABLE · Ordered: 2\"\n        uid=1_21 StaticText \"Return quantity\"\n        uid=1_22 spinbutton \"USB-C cable Return quantity\" value=\"0\" valuemax=\"2\" valuemin=\"0\" valuetext=\"0\"\n        uid=1_23 StaticText \"Digital gift card\"\n        uid=1_24 StaticText \"GIFT-CARD · Ordered: 1\"\n        uid=1_25 StaticText \"Not returnable\"\n        uid=1_26 StaticText \"Return quantity\"\n        uid=1_27 spinbutton \"Digital gift card Return quantity\" disableable disabled value=\"0\" valuemax=\"1\" valuemin=\"0\" valuetext=\"0\"\n        uid=1_28 StaticText \"Reason for returning\"\n        uid=1_29 combobox \"Reason for returning\" expandable haspopup=\"menu\" value=\"Damaged\"\n          uid=1_30 option \"Damaged\" selectable selected value=\"Damaged\"\n          uid=1_31 option \"Wrong item received\" selectable value=\"Wrong item received\"\n          uid=1_32 option \"Changed my mind\" selectable value=\"Changed my mind\"\n        uid=1_33 button \"Prepare return\"\n        uid=1_34 button \"Clear draft\"\n      uid=1_35 alert atomic live=\"assertive\" relevant=\"additions text\"\n    uid=1_36 region \"Return draft\"\n      uid=1_37 StaticText \"FOR YOUR REVIEW\"\n      uid=1_38 heading \"Return draft\" level=\"2\"\n      uid=1_39 generic live=\"polite\" relevant=\"additions text\"\n        uid=1_40 StaticText \"No draft yet. Your order is unchanged.\"\n      uid=1_41 StaticText \"This demo prepares an estimate. It does not submit returns or issue refunds.\"\n    uid=1_42 status atomic live=\"polite\" relevant=\"additions text\"\n      uid=1_43 StaticText \"3 WebMCP tools ready\"\n    uid=1_44 StaticText \"Quarkus + WebMCP\"\n"
+          }
+        ]
+      }
+    },
+    {
+      "name": "list_webmcp_tools",
+      "arguments": {
+        "pageId": 2
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## WebMCP tools\nname=\"get_current_order\", description=\"Read the order open on this page, available SKUs, purchased quantities, prices in cents, returnability, and the current return draft.\", inputSchema={\"type\":\"object\",\"properties\":{}}, annotations={\"readOnly\":true,\"untrustedContent\":false}\nname=\"prepare_return\", description=\"Replace the return draft on the current order page with a validated estimate for the selected items. Updates the visible quantities, reason, and refund total. The result is a draft for review; no return is submitted.\", inputSchema={\"type\":\"object\",\"properties\":{\"items\":{\"type\":\"array\",\"description\":\"Distinct SKUs from the current order and quantities to return.\",\"items\":{\"type\":\"object\",\"properties\":{\"sku\":{\"type\":\"string\",\"description\":\"SKU returned by get_current_order.\"},\"quantity\":{\"type\":\"integer\",\"description\":\"Quantity to return, from 1 up to the purchased quantity.\"}},\"required\":[\"sku\",\"quantity\"]}},\"reason\":{\"type\":\"string\",\"enum\":[\"damaged\",\"wrong_item\",\"changed_mind\"]}},\"required\":[\"items\",\"reason\"]}, annotations=undefined\nname=\"clear_return_draft\", description=\"Clear the current return draft and reset the visible selection. The original order stays unchanged.\", inputSchema={\"type\":\"object\",\"properties\":{}}, annotations=undefined"
+          }
+        ]
+      }
+    },
+    {
+      "name": "execute_webmcp_tool",
+      "arguments": {
+        "pageId": 2,
+        "toolName": "get_current_order",
+        "input": "{}"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"Completed\",\n  \"output\": {\n    \"order\": {\n      \"id\": \"ORD-1042\",\n      \"currency\": \"EUR\",\n      \"items\": [\n        {\n          \"sku\": \"KEYBOARD\",\n          \"name\": \"Mechanical keyboard\",\n          \"quantity\": 1,\n          \"unitPriceCents\": 8900,\n          \"returnable\": true\n        },\n        {\n          \"sku\": \"CABLE\",\n          \"name\": \"USB-C cable\",\n          \"quantity\": 2,\n          \"unitPriceCents\": 1900,\n          \"returnable\": true\n        },\n        {\n          \"sku\": \"GIFT-CARD\",\n          \"name\": \"Digital gift card\",\n          \"quantity\": 1,\n          \"unitPriceCents\": 2500,\n          \"returnable\": false\n        }\n      ]\n    },\n    \"draft\": null\n  }\n}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "execute_webmcp_tool",
+      "arguments": {
+        "pageId": 2,
+        "toolName": "prepare_return",
+        "input": "{\"items\":[{\"sku\":\"KEYBOARD\",\"quantity\":1},{\"sku\":\"CABLE\",\"quantity\":1}],\"reason\":\"damaged\"}"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"Completed\",\n  \"output\": {\n    \"orderId\": \"ORD-1042\",\n    \"draft\": {\n      \"orderId\": \"ORD-1042\",\n      \"currency\": \"EUR\",\n      \"items\": [\n        {\n          \"sku\": \"KEYBOARD\",\n          \"name\": \"Mechanical keyboard\",\n          \"quantity\": 1,\n          \"refundCents\": 8900\n        },\n        {\n          \"sku\": \"CABLE\",\n          \"name\": \"USB-C cable\",\n          \"quantity\": 1,\n          \"refundCents\": 1900\n        }\n      ],\n      \"reason\": \"damaged\",\n      \"refundCents\": 10800,\n      \"status\": \"DRAFT\",\n      \"submitted\": false\n    }\n  }\n}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "take_snapshot",
+      "arguments": {
+        "pageId": 2
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "## Latest page snapshot\nuid=1_0 RootWebArea \"Order ORD-1042 · Return workbench\" url=\"http://127.0.0.1:8097/\"\n  uid=1_1 banner\n    uid=1_2 StaticText \"THE MAIN THREAD / LAB\"\n    uid=1_3 StaticText \"Order support\"\n  uid=1_4 main\n    uid=1_5 StaticText \"RETURN WORKBENCH\"\n    uid=1_6 heading \"A return starts with a draft.\" level=\"1\"\n    uid=1_7 StaticText \"Choose items from order \"\n    uid=1_8 StaticText \"ORD-1042\"\n    uid=1_9 StaticText \". Review the estimate before deciding what to do next.\"\n    uid=1_10 region \"Your order\"\n      uid=1_11 heading \"Your order\" level=\"2\"\n      uid=1_12 StaticText \"EUR\"\n      uid=1_13 form\n        uid=1_14 StaticText \"Items to return\"\n        uid=1_15 StaticText \"Mechanical keyboard\"\n        uid=1_16 StaticText \"KEYBOARD · Ordered: 1\"\n        uid=1_17 StaticText \"Return quantity\"\n        uid=1_18 spinbutton \"Mechanical keyboard Return quantity\" value=\"1\" valuemax=\"1\" valuemin=\"0\" valuetext=\"1\"\n        uid=1_19 StaticText \"USB-C cable\"\n        uid=1_20 StaticText \"CABLE · Ordered: 2\"\n        uid=1_21 StaticText \"Return quantity\"\n        uid=1_22 spinbutton \"USB-C cable Return quantity\" value=\"1\" valuemax=\"2\" valuemin=\"0\" valuetext=\"1\"\n        uid=1_23 StaticText \"Digital gift card\"\n        uid=1_24 StaticText \"GIFT-CARD · Ordered: 1\"\n        uid=1_25 StaticText \"Not returnable\"\n        uid=1_26 StaticText \"Return quantity\"\n        uid=1_27 spinbutton \"Digital gift card Return quantity\" disableable disabled value=\"0\" valuemax=\"1\" valuemin=\"0\" valuetext=\"0\"\n        uid=1_28 StaticText \"Reason for returning\"\n        uid=1_29 combobox \"Reason for returning\" expandable haspopup=\"menu\" value=\"Damaged\"\n          uid=1_30 option \"Damaged\" selectable selected value=\"Damaged\"\n          uid=1_31 option \"Wrong item received\" selectable value=\"Wrong item received\"\n          uid=1_32 option \"Changed my mind\" selectable value=\"Changed my mind\"\n        uid=1_33 button \"Prepare return\"\n        uid=1_34 button \"Clear draft\"\n      uid=1_35 alert atomic live=\"assertive\" relevant=\"additions text\"\n    uid=1_36 region \"Return draft\"\n      uid=1_37 StaticText \"FOR YOUR REVIEW\"\n      uid=1_38 heading \"Return draft\" level=\"2\"\n      uid=1_39 generic live=\"polite\" relevant=\"additions text\"\n        uid=2_0 StaticText \"1 × Mechanical keyboard\"\n        uid=2_1 StaticText \"€89.00\"\n        uid=2_2 StaticText \"1 × USB-C cable\"\n        uid=2_3 StaticText \"€19.00\"\n        uid=2_4 StaticText \"Estimated refund\"\n        uid=2_5 StaticText \"€108.00\"\n        uid=2_6 StaticText \"Draft · damaged · Not submitted\"\n      uid=1_41 StaticText \"This demo prepares an estimate. It does not submit returns or issue refunds.\"\n    uid=1_42 status atomic live=\"polite\" relevant=\"additions text\"\n      uid=1_43 StaticText \"3 WebMCP tools ready\"\n    uid=1_44 StaticText \"Quarkus + WebMCP\"\n"
+          }
+        ]
+      }
+    },
+    {
+      "name": "check_return_eligibility",
+      "arguments": {
+        "orderId": "ORD-1042",
+        "items": [
+          {
+            "sku": "KEYBOARD",
+            "quantity": 1
+          },
+          {
+            "sku": "CABLE",
+            "quantity": 1
+          }
+        ],
+        "reason": "damaged"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"orderId\":\"ORD-1042\",\"currency\":\"EUR\",\"items\":[{\"sku\":\"KEYBOARD\",\"name\":\"Mechanical keyboard\",\"quantity\":1,\"refundCents\":8900},{\"sku\":\"CABLE\",\"name\":\"USB-C cable\",\"quantity\":1,\"refundCents\":1900}],\"reason\":\"damaged\",\"refundCents\":10800,\"status\":\"DRAFT\",\"submitted\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "backend-invalid-item",
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "Digital gift card is not returnable."
+          }
+        ],
+        "isError": true
+      }
+    },
+    {
+      "name": "execute_webmcp_tool",
+      "arguments": {
+        "pageId": 2,
+        "toolName": "clear_return_draft",
+        "input": "{}"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"Completed\",\n  \"output\": {\n    \"orderId\": \"ORD-1042\",\n    \"draft\": null\n  }\n}"
+          }
+        ]
+      }
+    },
+    {
+      "name": "check_return_eligibility",
+      "arguments": {
+        "orderId": "ORD-1042",
+        "items": [
+          {
+            "sku": "KEYBOARD",
+            "quantity": 1
+          },
+          {
+            "sku": "CABLE",
+            "quantity": 1
+          }
+        ],
+        "reason": "damaged"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\"orderId\":\"ORD-1042\",\"currency\":\"EUR\",\"items\":[{\"sku\":\"KEYBOARD\",\"name\":\"Mechanical keyboard\",\"quantity\":1,\"refundCents\":8900},{\"sku\":\"CABLE\",\"name\":\"USB-C cable\",\"quantity\":1,\"refundCents\":1900}],\"reason\":\"damaged\",\"refundCents\":10800,\"status\":\"DRAFT\",\"submitted\":false}"
+          }
+        ],
+        "isError": false
+      }
+    },
+    {
+      "name": "execute_webmcp_tool",
+      "arguments": {
+        "pageId": 2,
+        "toolName": "get_current_order",
+        "input": "{}"
+      },
+      "result": {
+        "content": [
+          {
+            "type": "text",
+            "text": "{\n  \"status\": \"Completed\",\n  \"output\": {\n    \"order\": {\n      \"id\": \"ORD-1042\",\n      \"currency\": \"EUR\",\n      \"items\": [\n        {\n          \"sku\": \"KEYBOARD\",\n          \"name\": \"Mechanical keyboard\",\n          \"quantity\": 1,\n          \"unitPriceCents\": 8900,\n          \"returnable\": true\n        },\n        {\n          \"sku\": \"CABLE\",\n          \"name\": \"USB-C cable\",\n          \"quantity\": 2,\n          \"unitPriceCents\": 1900,\n          \"returnable\": true\n        },\n        {\n          \"sku\": \"GIFT-CARD\",\n          \"name\": \"Digital gift card\",\n          \"quantity\": 1,\n          \"unitPriceCents\": 2500,\n          \"returnable\": false\n        }\n      ]\n    },\n    \"draft\": null\n  }\n}"
+          }
+        ]
+      }
+    }
+  ]
+}

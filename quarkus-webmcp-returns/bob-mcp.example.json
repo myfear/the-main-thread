@@ -1,0 +1,21 @@
+{
+  "mcpServers": {
+    "chrome-returns": {
+      "command": "npx",
+      "args": [
+        "-y", "chrome-devtools-mcp@1.8.0",
+        "--isolated",
+        "--categoryExperimentalWebmcp",
+        "--chromeArg=--enable-features=WebMCP",
+        "--allowedUrlPattern=http://127.0.0.1:8097/*",
+        "--no-usage-statistics",
+        "--no-performance-crux",
+        "--no-category-emulation",
+        "--no-category-performance",
+        "--no-category-network"
+      ],
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}

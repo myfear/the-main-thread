@@ -1,0 +1,14 @@
+{
+  "name": "quarkus-webmcp-returns-tests",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "test:browser": "node --test scripts/browser.test.mjs",
+    "test:mcp": "node scripts/mcp-smoke.mjs"
+  },
+  "devDependencies": {
+    "@modelcontextprotocol/sdk": "1.30.0",
+    "chrome-devtools-mcp": "1.8.0",
+    "playwright": "1.58.2"
+  }
+}
