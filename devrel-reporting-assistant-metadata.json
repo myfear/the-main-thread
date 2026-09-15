@@ -1,6 +1,6 @@
 {
   "quarkus": "3.39.3",
-  "java": "21",
+  "java": "25",
   "substackUrl": "",
   "projectPath": "devrel-reporting-assistant",
   "tests": {
