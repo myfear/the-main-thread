@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.39.4",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "mdc-context-demo",
+  "tests": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
