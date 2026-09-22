@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.39.4",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "quarkus-checkout-outbox",
+  "tests": {
+    "total": 11,
+    "passed": 11,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
