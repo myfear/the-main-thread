@@ -1,0 +1,25 @@
+sequenceDiagram
+    autonumber
+    participant H as Checkout
+    participant D as PostgreSQL
+    participant R as Polling relay
+    participant K as Kafka
+    participant C as Fulfillment
+    rect rgb(233, 245, 241)
+        Note over H,D: One database transaction
+        H->>D: Insert order + outbox event
+        D-->>H: Commit both rows
+    end
+    Note over H,D: Crash now: the event survives
+    R->>D: Read unpublished events
+    D-->>R: Stored event + stable UUID
+    R->>K: Send OrderPlaced
+    K-->>R: Acknowledge
+    Note over D,K: Crash here: restart can send the same event again
+    par Record publication
+        R->>D: Set published_at in a new transaction
+    and Process Kafka delivery independently
+        K->>C: Deliver OrderPlaced (may repeat)
+        C->>D: Insert fulfillment<br/>ON CONFLICT (event_id) DO NOTHING
+    end
+    Note over D,C: One fulfillment row per event UUID
