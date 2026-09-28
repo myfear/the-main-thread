@@ -1,0 +1,24 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>{view.title} — Equipment requests</title>
+    <link rel="stylesheet" href="/workflow.css">
+    <script src="/vendor/htmx.min.js" defer></script>
+    <script src="/workflow.js" defer></script>
+</head>
+<body>
+<a class="skip" href="#main">Skip to request</a>
+<header><p>The Main Thread / Keyboard lab</p></header>
+<main id="main" tabindex="-1">
+    <h1>Equipment request</h1>
+    <p>Request loan laptops for a workshop. This demo does not reserve equipment or store requests.</p>
+    <p id="status" role="status" aria-live="polite" aria-atomic="true"></p>
+    <div id="workflow" aria-busy="false">
+        {#include workflow /}
+    </div>
+</main>
+<footer><a href="/">Start a new request</a></footer>
+</body>
+</html>

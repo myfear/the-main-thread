@@ -1,0 +1,50 @@
+<section aria-labelledby="step-title" data-title="{view.title}">
+    <h2 id="step-title" tabindex="-1" {#if view.errors.isEmpty}data-focus{/if}>{view.title}</h2>
+    {#if !view.errors.isEmpty}
+    <div class="errors" tabindex="-1" data-focus aria-labelledby="error-title">
+        <h3 id="error-title">There are {view.errors.size} errors to correct</h3>
+        <ul>
+        {#for error in view.errors.entrySet}
+            <li><a href="#{error.key}">{error.value}</a></li>
+        {/for}
+        </ul>
+    </div>
+    {/if}
+    {#if view.step == 'details'}
+    <form action="/review" method="post" novalidate
+          hx-post="/review" hx-target="#workflow" hx-swap="innerHTML"
+          hx-sync="this:drop" data-pending="Checking request details…">
+        <label for="purpose">Purpose (required)</label>
+        <p id="purpose-hint">Use 10–200 characters to explain the workshop.</p>
+        <input id="purpose" name="purpose" type="text" required maxlength="200"
+               value="{view.purpose}" aria-invalid="{view.errors.containsKey('purpose')}"
+               aria-describedby="purpose-hint{#if view.errors.containsKey('purpose')} purpose-error{/if}">
+        {#if view.errors.containsKey('purpose')}
+        <p id="purpose-error" class="error">{view.errors.get('purpose')}</p>
+        {/if}
+        <label for="quantity">Quantity (required)</label>
+        <p id="quantity-hint">Enter a whole number from 1 to 5.</p>
+        <input id="quantity" name="quantity" type="text" inputmode="numeric" required
+               value="{view.quantity}" aria-invalid="{view.errors.containsKey('quantity')}"
+               aria-describedby="quantity-hint{#if view.errors.containsKey('quantity')} quantity-error{/if}">
+        {#if view.errors.containsKey('quantity')}
+        <p id="quantity-error" class="error">{view.errors.get('quantity')}</p>
+        {/if}
+        <button type="submit">Review request</button>
+    </form>
+    {#else if view.step == 'review'}
+    <dl><dt>Purpose</dt><dd>{view.purpose}</dd><dt>Quantity</dt><dd>{view.quantity}</dd></dl>
+    <form action="/confirm" method="post"
+          hx-post="/confirm" hx-target="#workflow" hx-swap="innerHTML"
+          hx-sync="this:drop" data-pending="Processing your choice…">
+        <input type="hidden" name="purpose" value="{view.purpose}">
+        <input type="hidden" name="quantity" value="{view.quantity}">
+        <button type="submit" name="intent" value="edit">Edit details</button>
+        <button type="submit" name="intent" value="submit">Submit demo request</button>
+    </form>
+    {#else}
+    <p>Your demo request for {view.quantity} laptops is complete.</p>
+    <p>Demo reference: <strong>{view.receipt}</strong></p>
+    <p>No equipment has been reserved. Save this page if you want to keep the reference.</p>
+    {/if}
+</section>

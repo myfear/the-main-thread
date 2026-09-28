@@ -1,0 +1,16 @@
+html { color: #182333; background: #fff; font: 1.1rem/1.6 system-ui, sans-serif; }
+body { max-width: 44rem; margin: auto; padding: 1rem; }
+header, footer { border-block-end: 1px solid #64748b; padding-block: 1rem; }
+a { color: #174d99; }
+label { display: block; font-weight: 650; margin-top: 1rem; }
+input { box-sizing: border-box; width: 100%; padding: .65rem; font: inherit; border: 2px solid #64748b; }
+button { font: inherit; color: white; background: #174d99; border: 2px solid #174d99; padding: .65rem 1rem; margin: 1rem .5rem 0 0; }
+button[aria-disabled="true"] { cursor: wait; }
+:focus { outline: 3px solid #8b3500; outline-offset: 4px; }
+.errors { border: 3px solid #9f1834; padding: 1rem; }
+.error { color: #9f1834; }
+[aria-invalid="true"] { border-color: #9f1834; }
+#status { min-height: 1.6em; }
+.skip:not(:focus) { position: absolute; width: 1px; height: 1px; overflow: hidden; clip-path: inset(50%); }
+dt { font-weight: 650; }
+dd { margin-inline-start: 0; overflow-wrap: anywhere; }
