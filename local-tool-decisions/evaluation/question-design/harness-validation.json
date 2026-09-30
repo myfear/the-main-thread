@@ -1,0 +1,93 @@
+{
+  "recordedOn": "2026-09-30",
+  "testCommand": "python3 -m unittest discover -s local-tool-decisions/scripts -p 'test_compare_questions.py' -v",
+  "testFramework": "Python standard-library unittest",
+  "testMethods": 14,
+  "result": "PASS",
+  "failures": 0,
+  "errors": 0,
+  "skipped": 0,
+  "liveModelCalls": 0,
+  "javaTestsRerun": false,
+  "javaNote": "These 14 Python test methods are separate from the previously recorded 43 passing Java tests. No Java source was changed in this audit.",
+  "changes": [
+    "Reject missing or malformed request fields, blank or oversized user text, unknown tools, unauthorized orders, invalid integer cent amounts, and wrong argument keys before sending any model request.",
+    "Use the first deterministically valid case for warmup, or skip warmup if none exist.",
+    "Return REVIEW_REQUIRED for missing, nonnumeric, nonfinite, out-of-range, incomplete, unnormalized, or inconsistent provider scores; never ALLOW a malformed response.",
+    "Handle summaries with zero model responses or unavailable token-usage metadata.",
+    "Default comparisons to baseline and the frozen split-v2 experimental candidate."
+  ],
+  "coverage": [
+    "Exact decimal money state and immutable input arguments",
+    "Branch-specific question and required-check sets",
+    "Inclusive per-check thresholds, intent mismatch, and intent-margin policy",
+    "Inclusive EUR100 automatic refund limit",
+    "Malformed provider structure, NaN/infinity, booleans, strings, unknown choices, missing probabilities, invalid sums, and selected-choice disagreement",
+    "Mocked CLI warmup and scoring with deterministic rejection",
+    "Replay of all saved development and holdout rows without live calls"
+  ],
+  "replay": [
+    {
+      "capture": "development-comparison.json",
+      "runs": 4,
+      "rows": 120,
+      "modeledRows": 96,
+      "allSavedAssessmentsAndSummariesPreserved": true
+    },
+    {
+      "capture": "development-split-v2.json",
+      "runs": 2,
+      "rows": 60,
+      "modeledRows": 48,
+      "allSavedAssessmentsAndSummariesPreserved": true
+    },
+    {
+      "capture": "holdout-comparison.json",
+      "runs": 4,
+      "rows": 96,
+      "modeledRows": 96,
+      "allSavedAssessmentsAndSummariesPreserved": true
+    }
+  ],
+  "holdoutAudit": {
+    "sha256": "133403638826b79a8a0ac72e78ae313752c21b128c1df279cd97eee80ad4b792",
+    "rowsPerRepetition": 24,
+    "eligibleCases": 12,
+    "ineligibleCases": 12,
+    "frozenRowsLabelsAndSpecsMatchCapture": true,
+    "allSavedScoresFiniteCompleteNormalizedAndConsistent": true,
+    "baseline": {
+      "eligibleAllowed": 6,
+      "eligibleLookupsAllowed": 0,
+      "eligibleRefundsAllowed": 6,
+      "falseAllowIds": [
+        "holdout-refund-wrong-unit"
+      ],
+      "outcomeMismatches": 7,
+      "intentCorrect": 19
+    },
+    "split-v2": {
+      "eligibleAllowed": 5,
+      "eligibleLookupsAllowed": 4,
+      "eligibleRefundsAllowed": 1,
+      "falseAllowIds": [],
+      "outcomeMismatches": 7,
+      "intentCorrect": 22
+    },
+    "repetitionsHaveIdenticalRawResponsesPerVariant": true,
+    "labelReview": "No label changes warranted: all eligible proposals match explicit current actions and deterministic policy; ineligible proposals mismatch order, amount or units, lack current authorization, or exceed the automatic cap."
+  },
+  "methodologicalCaveats": [
+    "The 24 hand-authored holdout cases use the same tools and orders as development. Zero observed false allows is not a production safety guarantee.",
+    "The two repetitions returned identical raw scores for each variant. They are repeated measurements of 24 cases, not 48 independent examples.",
+    "Intent wording, question splitting, and normalized monetary state changed together, so this comparison does not isolate their separate effects.",
+    "The same fixed per-check threshold applied to a changed set of checks measures a policy trade-off, not calibrated joint correctness probability.",
+    "Candidate measurements use raw Ollama SystemOne requests; the unchanged Java integration still uses the baseline questions.",
+    "Latency depends on this machine, model cache state, and the sequential comparison order; these are local measurements, not an end-to-end agent benchmark.",
+    "The harness still stops on transport/JSON-decoding exceptions rather than recording a model outcome; this audit covers provider score validation and performs no live failure injection."
+  ],
+  "filesSha256": {
+    "scripts/compare_questions.py": "f3eca848b026d56861b30b191867138d46bffa7e6dabea097067a5c8af4c9563",
+    "scripts/test_compare_questions.py": "154ecfd299c9d34e17085f17086736157dec4b2ccb65c5025924b1d09a64f3af"
+  }
+}

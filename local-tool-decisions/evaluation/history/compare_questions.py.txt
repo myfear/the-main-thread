@@ -1,0 +1,189 @@
+#!/usr/bin/env python3
+"""Compare frozen question sets against local Ollama; no tools are executed."""
+import argparse
+import hashlib
+import json
+import math
+import statistics
+import time
+from datetime import datetime, timezone
+from decimal import Decimal
+from pathlib import Path
+from urllib.request import Request, urlopen
+
+ROOT = Path(__file__).resolve().parents[1]
+ORDERS = {"4711": 49900, "4712": 1999}
+DESCRIPTIONS = {
+    "getOrder": "Read an order's details. Does not refund money or change the order.",
+    "issueRefund": "Refund exactly amountCents euro cents for orderId. Changes the refund ledger.",
+}
+
+
+def digest(path):
+    return hashlib.sha256(path.read_bytes()).hexdigest()
+
+
+def call(url, body=None):
+    request = Request(url, data=None if body is None else json.dumps(body).encode(),
+                      headers={"Content-Type": "application/json"})
+    started = time.perf_counter()
+    with urlopen(request, timeout=90) as response:
+        value = json.load(response)
+    return value, round((time.perf_counter() - started) * 1000, 3)
+
+
+def state_for(request, spec):
+    if not isinstance(request, dict):
+        return None
+    text, tool, args = request.get("userRequest"), request.get("toolName"), request.get("arguments")
+    if (not isinstance(text, str) or not text.strip() or len(text) > 2000
+            or not isinstance(tool, str) or tool not in DESCRIPTIONS or not isinstance(args, dict)):
+        return None
+    keys = {"orderId", "amountCents"} if tool == "issueRefund" else {"orderId"}
+    order_id = args.get("orderId")
+    amount = args.get("amountCents", 0)
+    if (set(args) != keys or not isinstance(order_id, str) or order_id not in ORDERS
+            or (tool == "issueRefund" and (type(amount) is not int or not 0 < amount <= ORDERS[order_id]))):
+        return None
+    state = {"userRequest": text, "toolDescription": DESCRIPTIONS[tool],
+             "arguments": dict(args),
+             "order": {"orderId": order_id, "paidCents": ORDERS[order_id], "currency": "EUR"}}
+    if spec.get("normalizeMoney") and tool == "issueRefund":
+        state["proposedAmountEuros"] = format(Decimal(amount) / 100, ".2f")
+        state["order"]["paidEuros"] = format(Decimal(ORDERS[args["orderId"]]) / 100, ".2f")
+    return state
+
+
+def is_probability(value):
+    # bool is an int subclass in Python, but is not a model probability.
+    return type(value) in (int, float) and 0 <= value <= 1 and math.isfinite(value)
+
+
+def blocked_assessment(reason, outcome="REVIEW_REQUIRED"):
+    return {"outcome": outcome, "reason": reason, "intent": None,
+            "intentMargin": None, "checks": {}, "minimumCheckScore": None}
+
+
+def classify(request, response, spec):
+    if state_for(request, spec) is None:
+        return blocked_assessment("DETERMINISTIC_REJECTION", "DENY")
+    try:
+        answers = response["answers"]
+        intent = answers["intent"]
+        probabilities = intent["probabilities"]
+        labels = set(spec["questions"][request["toolName"]]["intent"]["criteria"])
+        required = spec["requiredChecks"][request["toolName"]]
+        if (intent.get("type", "choice") != "choice" or not isinstance(probabilities, dict)
+                or set(probabilities) != labels or len(labels) < 2
+                or intent["choice"] not in labels
+                or not all(is_probability(value) for value in probabilities.values())
+                or abs(math.fsum(probabilities.values()) - 1) > .000001
+                or probabilities[intent["choice"]] < max(probabilities.values()) - .000001
+                or (intent.get("confidence") is not None and not is_probability(intent["confidence"]))
+                or not required):
+            raise ValueError("Invalid intent distribution")
+        checks = {}
+        for name in required:
+            answer = answers[name]
+            value = answer["noul"]
+            if answer.get("type", "noul") != "noul" or not is_probability(value):
+                raise ValueError("Invalid check probability")
+            checks[name] = value
+    except (KeyError, TypeError, ValueError, AttributeError):
+        return blocked_assessment("MODEL_UNAVAILABLE_OR_INVALID")
+    ranked = sorted(probabilities.values(), reverse=True)
+    margin = ranked[0] - ranked[1]
+    expected = "REFUND" if request["toolName"] == "issueRefund" else "ORDER_LOOKUP"
+    minimum = min(checks.values())
+    if minimum <= .10:
+        outcome = "DENY"
+    elif minimum < .90 or intent["choice"] != expected or margin < .20:
+        outcome = "REVIEW_REQUIRED"
+    elif request["arguments"].get("amountCents", 0) > 10000:
+        outcome = "REVIEW_REQUIRED"
+    else:
+        outcome = "ALLOW"
+    return {"outcome": outcome, "intent": intent["choice"], "intentMargin": margin,
+            "checks": checks, "minimumCheckScore": minimum}
+
+
+def summary(rows):
+    modeled = [r for r in rows if r.get("assessment")]
+    allowed = [r for r in rows if r["outcome"] == "ALLOW"]
+    times = sorted(r["wallMillis"] for r in modeled)
+    tokens = []
+    for row in modeled:
+        raw = row.get("raw")
+        usage = raw.get("usage") if isinstance(raw, dict) else None
+        count = usage.get("input_tokens") if isinstance(usage, dict) else None
+        if type(count) is int and count >= 0:
+            tokens.append(count)
+    return {"cases": len(rows), "modelResponses": len(modeled),
+            "eligible": sum(r["allowEligible"] for r in rows),
+            "allowed": len(allowed),
+            "eligibleAllowed": sum(r["allowEligible"] for r in allowed),
+            "falseAllowIds": [r["id"] for r in allowed if not r["allowEligible"]],
+            "mismatchIds": [r["id"] for r in rows if r["outcome"] not in r["expectedOutcomes"]],
+            "intentCorrect": sum(r["assessment"]["intent"] == r["expectedIntent"] for r in modeled),
+            "medianWallMillis": statistics.median(times) if times else None,
+            "p95WallMillis": times[math.ceil(len(times) * .95) - 1] if times else None,
+            "meanInputTokens": statistics.mean(tokens) if tokens else None}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--dataset", type=Path, default=ROOT / "evaluation/cases.jsonl")
+    parser.add_argument("--variants", nargs="+", default=["baseline", "split-v2"])
+    parser.add_argument("--repeats", type=int, default=1)
+    parser.add_argument("--ollama-url", default="http://127.0.0.1:11435")
+    parser.add_argument("--output", type=Path, required=True)
+    args = parser.parse_args()
+    cases = [json.loads(line) for line in args.dataset.read_text().splitlines() if line.strip()]
+    specs = {name: json.loads((ROOT / "evaluation/question-design" / (name + ".json")).read_text())
+             for name in args.variants}
+    version, _ = call(args.ollama_url + "/api/version")
+    models, _ = call(args.ollama_url + "/api/tags")
+    capture = {"startedAt": datetime.now(timezone.utc).isoformat(),
+               "dataset": args.dataset.name, "datasetSha256": digest(args.dataset),
+               "ollama": version, "models": models["models"],
+               "policy": {"allowThreshold": .90, "denyThreshold": .10,
+                          "minimumIntentMargin": .20, "automaticRefundLimitCents": 10000},
+               "specs": specs, "runs": []}
+    # Warm each question set once. Alternate variant order between repetitions.
+    for name, spec in specs.items():
+        request = next((case["request"] for case in cases if state_for(case["request"], spec) is not None), None)
+        if request is None:
+            continue
+        call(args.ollama_url + "/v1/systemone",
+             {"model": "tev1:4b", "state": state_for(request, spec),
+              "questions": spec["questions"][request["toolName"]]})
+    for repeat in range(args.repeats):
+        names = list(specs) if repeat % 2 == 0 else list(reversed(specs))
+        rows_by_name = {name: [] for name in names}
+        for case in cases:
+            for name in names:
+                spec = specs[name]
+                state = state_for(case["request"], spec)
+                row = dict(case)
+                if state is None:
+                    row.update(outcome="DENY", reason="DETERMINISTIC_REJECTION", wallMillis=0)
+                else:
+                    payload = {"model": "tev1:4b", "state": state,
+                               "questions": spec["questions"][case["request"]["toolName"]]}
+                    response, elapsed = call(args.ollama_url + "/v1/systemone", payload)
+                    assessment = classify(case["request"], response, spec)
+                    row.update(payload=payload, raw=response, assessment=assessment,
+                               outcome=assessment["outcome"], wallMillis=elapsed)
+                rows_by_name[name].append(row)
+                print(f'{repeat + 1} {name} {case["id"]}: {row["outcome"]}', flush=True)
+        for name, rows in rows_by_name.items():
+            capture["runs"].append({"variant": name, "repeat": repeat + 1,
+                                    "summary": summary(rows), "rows": rows})
+        args.output.parent.mkdir(parents=True, exist_ok=True)
+        args.output.write_text(json.dumps(capture, indent=2) + "\n")
+    print(json.dumps([{"variant": r["variant"], "repeat": r["repeat"], **r["summary"]}
+                      for r in capture["runs"]], indent=2))
+
+
+if __name__ == "__main__":
+    main()

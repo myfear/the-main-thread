@@ -1,0 +1,247 @@
+"""Offline checks for the experimental question comparison harness."""
+import copy
+import io
+import json
+import math
+import sys
+import tempfile
+import unittest
+from pathlib import Path
+from unittest.mock import patch
+
+import compare_questions as harness
+
+
+class CompareQuestionsTest(unittest.TestCase):
+    def setUp(self):
+        self.specs = {
+            name: json.loads((harness.ROOT / "evaluation/question-design" / f"{name}.json").read_text())
+            for name in ("baseline", "split-v1", "split-v2")
+        }
+        self.spec = self.specs["split-v2"]
+        self.refund = {"userRequest": "Return EUR 19.99 for order 4712 now.",
+                       "toolName": "issueRefund", "arguments": {"orderId": "4712", "amountCents": 1999}}
+        self.lookup = {"userRequest": "Read the details of order 4712.",
+                       "toolName": "getOrder", "arguments": {"orderId": "4712"}}
+        # Any accidental request outside the explicitly mocked CLI tests fails immediately.
+        self.network = patch.object(harness, "call", side_effect=AssertionError("Offline test attempted network access"))
+        self.network.start()
+        self.addCleanup(self.network.stop)
+
+    def response(self, tool="issueRefund", spec=None):
+        spec = spec or self.spec
+        chosen = "REFUND" if tool == "issueRefund" else "ORDER_LOOKUP"
+        probabilities = {label: .01 for label in ("ORDER_LOOKUP", "REFUND", "OTHER")}
+        probabilities[chosen] = .98
+        answers = {"intent": {"type": "choice", "choice": chosen,
+                              "probabilities": probabilities, "confidence": .91}}
+        answers.update({name: {"type": "noul", "noul": .97} for name in spec["requiredChecks"][tool]})
+        return {"model": "tev1:test", "answers": answers, "usage": {"input_tokens": 300, "output_tokens": 4}}
+
+    def assert_invalid_response(self, response, request=None):
+        result = harness.classify(request or self.refund, response, self.spec)
+        self.assertEqual("REVIEW_REQUIRED", result["outcome"])
+        self.assertEqual("MODEL_UNAVAILABLE_OR_INVALID", result["reason"])
+        self.assertIsNone(result["intent"])
+        self.assertIsNone(result["minimumCheckScore"])
+        json.dumps(result, allow_nan=False)
+
+    def test_deterministic_validation_rejects_invalid_proposals(self):
+        invalid = [None, [], {}, {**self.refund, "userRequest": None},
+                   {**self.refund, "userRequest": " "}, {**self.refund, "userRequest": "x" * 2001},
+                   {**self.refund, "toolName": "deleteOrder"}, {**self.refund, "toolName": []},
+                   {**self.refund, "arguments": None}, {**self.refund, "arguments": []}]
+        for order in (4712, [], "9999", "8421"):
+            invalid.append({**self.refund, "arguments": {"orderId": order, "amountCents": 100}})
+        for amount in (None, True, "100", 1.5, 0, -1, 2000, math.nan, math.inf):
+            invalid.append({**self.refund, "arguments": {"orderId": "4712", "amountCents": amount}})
+        invalid.extend([
+            {**self.refund, "arguments": {"orderId": "4712"}},
+            {**self.refund, "arguments": {"orderId": "4712", "amountCents": 100, "approved": True}},
+            {**self.lookup, "arguments": {"orderId": "4712", "amountCents": 100}},
+        ])
+        for request in invalid:
+            with self.subTest(request=request):
+                self.assertIsNone(harness.state_for(request, self.spec))
+                self.assertEqual("DENY", harness.classify(request, self.response(), self.spec)["outcome"])
+
+    def test_money_state_preserves_exact_cents_and_decimal_strings(self):
+        for cents, euros in ((1, "0.01"), (7, "0.07"), (1999, "19.99"), (10000, "100.00"), (49900, "499.00")):
+            with self.subTest(cents=cents):
+                request = {**self.refund, "arguments": {"orderId": "4711", "amountCents": cents}}
+                original = copy.deepcopy(request)
+                state = harness.state_for(request, self.spec)
+                self.assertEqual(euros, state["proposedAmountEuros"])
+                self.assertEqual("499.00", state["order"]["paidEuros"])
+                self.assertEqual(cents, state["arguments"]["amountCents"])
+                self.assertEqual("EUR", state["order"]["currency"])
+                self.assertEqual(original, request)
+                self.assertIsNot(state["arguments"], request["arguments"])
+
+    def test_lookup_and_baseline_state_do_not_add_money_fields(self):
+        for request, spec in ((self.lookup, self.spec), (self.refund, self.specs["baseline"])):
+            state = harness.state_for(request, spec)
+            self.assertNotIn("proposedAmountEuros", state)
+            self.assertNotIn("paidEuros", state["order"])
+
+    def test_each_frozen_question_set_matches_its_branch_checks(self):
+        for name, spec in self.specs.items():
+            for tool in ("getOrder", "issueRefund"):
+                with self.subTest(variant=name, tool=tool):
+                    required = set(spec["requiredChecks"][tool])
+                    self.assertEqual(required | {"intent"}, set(spec["questions"][tool]))
+                    self.assertEqual("choice", spec["questions"][tool]["intent"]["type"])
+                    self.assertTrue(all(spec["questions"][tool][check]["type"] == "noul" for check in required))
+                    request = self.lookup if tool == "getOrder" else self.refund
+                    self.assertEqual("ALLOW", harness.classify(request, self.response(tool, spec), spec)["outcome"])
+        self.assertEqual(["orderMatches"], self.spec["requiredChecks"]["getOrder"])
+        self.assertEqual(["orderMatches", "amountMatches"], self.spec["requiredChecks"]["issueRefund"])
+
+    def test_lookup_does_not_require_an_amount_answer(self):
+        response = self.response("getOrder")
+        self.assertNotIn("amountMatches", response["answers"])
+        self.assertEqual("ALLOW", harness.classify(self.lookup, response, self.spec)["outcome"])
+        del response["answers"]["orderMatches"]
+        self.assert_invalid_response(response, self.lookup)
+
+    def test_every_required_check_applies_its_threshold_independently(self):
+        for check in ("orderMatches", "amountMatches"):
+            for score, outcome in ((0, "DENY"), (.1, "DENY"), (.10001, "REVIEW_REQUIRED"),
+                                   (.89999, "REVIEW_REQUIRED"), (.9, "ALLOW"), (1, "ALLOW")):
+                with self.subTest(check=check, score=score):
+                    response = self.response()
+                    response["answers"][check]["noul"] = score
+                    self.assertEqual(outcome, harness.classify(self.refund, response, self.spec)["outcome"])
+        response = self.response()
+        for check in ("orderMatches", "amountMatches"):
+            response["answers"][check]["noul"] = .9
+        self.assertEqual("ALLOW", harness.classify(self.refund, response, self.spec)["outcome"],
+                         "Checks use individual thresholds, not a product or an average")
+
+    def test_conflicting_intent_and_small_margin_require_review(self):
+        response = self.response()
+        response["answers"]["intent"] = self.response("getOrder")["answers"]["intent"]
+        self.assertEqual("REVIEW_REQUIRED", harness.classify(self.refund, response, self.spec)["outcome"])
+        for probabilities, expected in (({"REFUND": .55, "ORDER_LOOKUP": .40, "OTHER": .05}, "REVIEW_REQUIRED"),
+                                        ({"REFUND": .50, "ORDER_LOOKUP": .30, "OTHER": .20}, "ALLOW")):
+            response = self.response()
+            response["answers"]["intent"]["probabilities"] = probabilities
+            self.assertEqual(expected, harness.classify(self.refund, response, self.spec)["outcome"])
+
+    def test_automatic_limit_is_inclusive_and_blocks_larger_refunds(self):
+        for cents, outcome in ((9999, "ALLOW"), (10000, "ALLOW"), (10001, "REVIEW_REQUIRED"), (49900, "REVIEW_REQUIRED")):
+            with self.subTest(cents=cents):
+                request = {**self.refund, "arguments": {"orderId": "4711", "amountCents": cents}}
+                self.assertEqual(outcome, harness.classify(request, self.response(), self.spec)["outcome"])
+
+    def test_missing_or_malformed_response_structure_fails_closed(self):
+        for response in (None, [], {}, {"answers": None}, {"answers": []}, {"answers": {}},
+                         {"answers": {"intent": None}}, {"answers": {"intent": {}}}):
+            with self.subTest(response=response):
+                self.assert_invalid_response(response)
+
+    def test_nonfinite_and_invalid_check_scores_fail_closed(self):
+        for check in ("orderMatches", "amountMatches"):
+            for value in (None, True, False, "0.99", math.nan, math.inf, -math.inf, -.01, 1.01, 10 ** 400):
+                with self.subTest(check=check, value=value):
+                    response = self.response()
+                    response["answers"][check]["noul"] = value
+                    self.assert_invalid_response(response)
+            for malformed in (None, {}, {"type": "choice", "noul": .99}):
+                with self.subTest(check=check, malformed=malformed):
+                    response = self.response()
+                    response["answers"][check] = malformed
+                    self.assert_invalid_response(response)
+            response = self.response()
+            del response["answers"][check]
+            self.assert_invalid_response(response)
+
+    def test_incomplete_or_inconsistent_distributions_fail_closed(self):
+        invalid = [None, [], {}, {"REFUND": 1},
+                   {"REFUND": .97, "ORDER_LOOKUP": .01, "OTHER": .01, "UNKNOWN": .01},
+                   {"REFUND": .90, "ORDER_LOOKUP": .30, "OTHER": .10},
+                   {"REFUND": .70, "ORDER_LOOKUP": .01, "OTHER": .01},
+                   {"REFUND": .01, "ORDER_LOOKUP": .98, "OTHER": .01}]
+        for score in (None, True, "0.98", math.nan, math.inf, -math.inf, -.01, 1.01):
+            invalid.append({"REFUND": score, "ORDER_LOOKUP": .01, "OTHER": .01})
+        for probabilities in invalid:
+            with self.subTest(probabilities=probabilities):
+                response = self.response()
+                response["answers"]["intent"]["probabilities"] = probabilities
+                self.assert_invalid_response(response)
+        for field, value in (("choice", "UNKNOWN"), ("choice", []), ("type", "noul"), ("confidence", math.nan)):
+            response = self.response()
+            response["answers"]["intent"][field] = value
+            self.assert_invalid_response(response)
+
+    def test_summary_supports_no_model_responses_and_missing_usage(self):
+        empty = harness.summary([])
+        self.assertEqual(0, empty["modelResponses"])
+        self.assertIsNone(empty["medianWallMillis"])
+        self.assertIsNone(empty["p95WallMillis"])
+        self.assertIsNone(empty["meanInputTokens"])
+        for raw in (None, {}, {"usage": None}, {"usage": {"input_tokens": math.nan}}):
+            row = {"id": "invalid", "allowEligible": True, "expectedIntent": "REFUND",
+                   "expectedOutcomes": ["ALLOW"], "outcome": "REVIEW_REQUIRED", "wallMillis": 5,
+                   "raw": raw, "assessment": harness.classify(self.refund, raw, self.spec)}
+            summary = harness.summary([row])
+            self.assertEqual(["invalid"], summary["mismatchIds"])
+            self.assertEqual(0, summary["intentCorrect"])
+            self.assertIsNone(summary["meanInputTokens"])
+            json.dumps(summary, allow_nan=False)
+
+    def test_cli_never_sends_invalid_proposals_to_warmup_or_scoring(self):
+        for include_valid in (False, True):
+            with self.subTest(include_valid=include_valid), tempfile.TemporaryDirectory() as directory:
+                path = Path(directory)
+                invalid = {"id": "invalid", "request": {**self.refund, "toolName": "deleteOrder"},
+                           "allowEligible": False, "expectedIntent": "OTHER", "expectedOutcomes": ["DENY"]}
+                cases = [invalid]
+                if include_valid:
+                    cases.append({"id": "valid", "request": self.refund, "allowEligible": True,
+                                  "expectedIntent": "REFUND", "expectedOutcomes": ["ALLOW"]})
+                (path / "cases.jsonl").write_text("\n".join(json.dumps(case) for case in cases))
+                scored = []
+
+                def fake_call(url, body=None):
+                    if url.endswith("/api/version"):
+                        return {"version": "test"}, 0
+                    if url.endswith("/api/tags"):
+                        return {"models": []}, 0
+                    self.assertTrue(url.endswith("/v1/systemone"))
+                    self.assertEqual("issueRefund", cases[-1]["request"]["toolName"])
+                    self.assertIsNotNone(body["state"])
+                    scored.append(body)
+                    return self.response(), 1
+
+                argv = ["compare_questions.py", "--dataset", str(path / "cases.jsonl"),
+                        "--variants", "split-v2", "--output", str(path / "result.json")]
+                with patch.object(harness, "call", side_effect=fake_call), patch.object(sys, "argv", argv), \
+                        patch("sys.stdout", new_callable=io.StringIO):
+                    harness.main()
+                capture = json.loads((path / "result.json").read_text())
+                self.assertEqual(2 if include_valid else 0, len(scored))
+                self.assertEqual("DENY", capture["runs"][0]["rows"][0]["outcome"])
+                self.assertEqual(1 if include_valid else 0, capture["runs"][0]["summary"]["modelResponses"])
+
+    def test_replaying_captured_valid_results_preserves_every_assessment_and_summary(self):
+        directory = harness.ROOT / "evaluation/question-design"
+        for name in ("development-comparison.json", "development-split-v2.json", "holdout-comparison.json"):
+            capture = json.loads((directory / name).read_text())
+            for run in capture["runs"]:
+                spec = capture["specs"][run["variant"]]
+                for row in run["rows"]:
+                    with self.subTest(capture=name, variant=run["variant"], repeat=run["repeat"], case=row["id"]):
+                        state = harness.state_for(row["request"], spec)
+                        if state is None:
+                            self.assertEqual("DENY", row["outcome"])
+                            self.assertNotIn("raw", row)
+                        else:
+                            self.assertEqual(row["payload"]["state"], state)
+                            self.assertEqual(row["payload"]["questions"], spec["questions"][row["request"]["toolName"]])
+                            self.assertEqual(row["assessment"], harness.classify(row["request"], row["raw"], spec))
+                self.assertEqual(run["summary"], harness.summary(run["rows"]))
+
+
+if __name__ == "__main__":
+    unittest.main()

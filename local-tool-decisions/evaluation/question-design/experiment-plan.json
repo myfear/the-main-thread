@@ -1,0 +1,14 @@
+{
+  "purpose": "Compare narrower questions and explicit money state with the original prompt; thresholds fixed.",
+  "typeSafeSkill": "https://github.com/typesafe-ai/skills/blob/65a39f393687675ce170e6094757de20370365b9/skills/typesafe-ai/SKILL.md",
+  "model": "tev1:4b",
+  "selectionRule": "Prefer no false allows on development cases, then maximize eligible allowed; inspect regressions. Holdout outcomes are not used to change prompts or thresholds.",
+  "developmentDataset": "evaluation/cases.jsonl",
+  "holdoutDataset": "evaluation/holdout-cases.jsonl",
+  "holdoutSha256": "133403638826b79a8a0ac72e78ae313752c21b128c1df279cd97eee80ad4b792",
+  "questionFilesSha256": {
+    "split-v1.json": "7ea6e6e6443540be95f6770ca4334abf0c684440ebaf1eb0d3cfdd6c99f102c3",
+    "split-v2.json": "d381a7b80238d9e8bee0a3e364a3adbbbab16ce6db9f8479a9d3a8d60532925b",
+    "baseline.json": "901fe666f57d8902a26c3abc3b4abcb3e21bd5e5fc9866e3ed8e6c25b778cb72"
+  }
+}

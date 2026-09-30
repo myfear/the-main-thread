@@ -1,0 +1,25 @@
+{
+  "recordedAt": "2026-09-30T07:10:57.830480+00:00",
+  "purpose": "Final reproduction files and evidence after offline validation; live captures precede harness hardening. Offline replay preserves all captured assessments and summaries. Original Java implementation remains identified by evaluation/source-sha256.json.",
+  "algorithm": "sha256",
+  "files": {
+    "QUESTION-DESIGN.md": "870a8379bf35ef80c1a30edcca333994bd3f1f1b01d333e105fb5d9d7cfa6e96",
+    "README.md": "a701c1e71027e5bcc5aa0f82984f45d6449a14a074f3bff919ede3deedebc099",
+    "VALIDATION.md": "cfd70ad877b40877592d34de5ff19e879a3718d577f75ffdbb3ec2934e78709d",
+    "article.md": "47134816459828f0b345c2bc93e77c70277026be4e44a59875baabd68d097c06",
+    "evaluation/holdout-cases.jsonl": "133403638826b79a8a0ac72e78ae313752c21b128c1df279cd97eee80ad4b792",
+    "evaluation/holdout-manifest.json": "e02fb900aaf14258b8cc1a68df2b4a5b3cbeb86fb05e0400262d7699092843c9",
+    "evaluation/question-design/baseline-ToolDecisions.java.txt": "a22533813fc4d2b6b5b843daeee2b108ecbe1c6d36a345128b98e49c9c7b0bff",
+    "evaluation/question-design/baseline.json": "901fe666f57d8902a26c3abc3b4abcb3e21bd5e5fc9866e3ed8e6c25b778cb72",
+    "evaluation/question-design/development-comparison.json": "32935f07723ee58422f2f2c229896cb1b63ccd4bbbacd01b7dc8bc148367c33f",
+    "evaluation/question-design/development-split-v2.json": "4a390bf99df87ce78dea91636b23b1d049163f3bd6fdd2a50423468ef148fb5f",
+    "evaluation/question-design/experiment-plan.json": "64cb9883e4c4e8bae5f7d65a0b641663821ed55fd50f5efc05807b57bacfe113",
+    "evaluation/question-design/harness-validation.json": "9b9f2d8ccc8c00523e171ec7be27ef5c348c1f8977410d83f3fc546d39d25dc0",
+    "evaluation/question-design/holdout-comparison.json": "94822491e6f3601a4e03e74c5f58fadd5d72d7231ee8742dbe18e640977f4a2f",
+    "evaluation/question-design/selection.json": "21d0918288aeb314c54921855c5eaf38a7cfa98bfe87ad5babd237278f9b31a7",
+    "evaluation/question-design/split-v1.json": "7ea6e6e6443540be95f6770ca4334abf0c684440ebaf1eb0d3cfdd6c99f102c3",
+    "evaluation/question-design/split-v2.json": "d381a7b80238d9e8bee0a3e364a3adbbbab16ce6db9f8479a9d3a8d60532925b",
+    "scripts/compare_questions.py": "f3eca848b026d56861b30b191867138d46bffa7e6dabea097067a5c8af4c9563",
+    "scripts/test_compare_questions.py": "154ecfd299c9d34e17085f17086736157dec4b2ccb65c5025924b1d09a64f3af"
+  }
+}

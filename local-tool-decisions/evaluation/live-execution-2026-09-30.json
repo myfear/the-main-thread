@@ -1,0 +1,50 @@
+{
+  "capturedAt": "2026-09-30T06:14:45.223019+00:00",
+  "request": {
+    "userRequest": "Refund exactly 19.99 euros for order 4712.",
+    "toolName": "issueRefund",
+    "arguments": {
+      "orderId": "4712",
+      "amountCents": 1999
+    }
+  },
+  "before": {
+    "httpStatus": 200,
+    "body": {}
+  },
+  "execution": {
+    "httpStatus": 200,
+    "body": {
+      "review": {
+        "outcome": "ALLOW",
+        "reason": "CHECKS_PASSED",
+        "toolName": "issueRefund",
+        "sideEffect": "MUTATING",
+        "modelName": "tev1:4b",
+        "latencyMillis": 1158,
+        "scores": {
+          "intent": "REFUND",
+          "intentProbabilities": {
+            "ORDER_LOOKUP": 0.01213355708380408,
+            "REFUND": 0.9821493683986157,
+            "OTHER": 0.005717074517580283
+          },
+          "intentMargin": 0.9700158113148116,
+          "alignment": 0.9801915956917483
+        }
+      },
+      "executed": true,
+      "result": {
+        "refundedCents": 1999,
+        "simulated": true,
+        "orderId": "4712"
+      }
+    }
+  },
+  "after": {
+    "httpStatus": 200,
+    "body": {
+      "4712": 1999
+    }
+  }
+}

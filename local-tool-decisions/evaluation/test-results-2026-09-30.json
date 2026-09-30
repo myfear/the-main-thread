@@ -1,0 +1,16 @@
+{
+  "recordedOn": "2026-09-30",
+  "runner": "Quarkus Dev MCP devui-testing_runTests",
+  "runId": 3,
+  "passedCount": 43,
+  "failedCount": 0,
+  "skippedCount": 0,
+  "totalTimeMillis": 1066,
+  "startedAt": "2026-09-30T06:13:16.254000+00:00",
+  "completedAt": "2026-09-30T06:13:17.320000+00:00",
+  "classes": {
+    "com.themainthread.decisions.DecisionResourceTest": 39,
+    "com.themainthread.decisions.ToolGuardrailIntegrationTest": 4
+  },
+  "scope": "Actual adapters and Quarkus AI Service/tool interception; HTTP decision server and chat model stubbed. Real Ollama behavior is captured separately."
+}

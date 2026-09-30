@@ -1,0 +1,100 @@
+{
+  "tests": 20,
+  "passed": 20,
+  "failed": 0,
+  "savedRowsReplayed": 276,
+  "savedResponsesReplayed": 240,
+  "liveModelCalls": 0,
+  "projectRoot": "/Users/meisele/Projects/the-main-thread-preview/local-tool-decisions",
+  "command": "jbang scripts/CompareQuestionsTest.java /Users/meisele/Projects/the-main-thread-preview/local-tool-decisions",
+  "sourceSha256": {
+    "scripts/CompareQuestions.java": "ad834a2c937b13138e75b89766c5d3cbc551054de8596fe598cb7a8c3570a377",
+    "scripts/CompareQuestionsTest.java": "0d95209fbac38e4e8b1dd5561f878a496029b7e1e8cdff40679a46467b7ed6f3",
+    "evaluation/cases.jsonl": "20d6f860687c2b1668c7e6b7f4858fec859ccea09ec796a5e0b6b07b7858a1f0",
+    "evaluation/question-design/baseline.json": "901fe666f57d8902a26c3abc3b4abcb3e21bd5e5fc9866e3ed8e6c25b778cb72",
+    "evaluation/question-design/split-v1.json": "7ea6e6e6443540be95f6770ca4334abf0c684440ebaf1eb0d3cfdd6c99f102c3",
+    "evaluation/question-design/split-v2.json": "d381a7b80238d9e8bee0a3e364a3adbbbab16ce6db9f8479a9d3a8d60532925b"
+  },
+  "results": [
+    {
+      "test": "deterministic validation rejects malformed proposals",
+      "result": "PASS"
+    },
+    {
+      "test": "money normalization preserves exact cents without mutating input",
+      "result": "PASS"
+    },
+    {
+      "test": "lookup and baseline state omit normalized money",
+      "result": "PASS"
+    },
+    {
+      "test": "every frozen question set agrees with its required checks",
+      "result": "PASS"
+    },
+    {
+      "test": "lookup does not require a refund amount answer",
+      "result": "PASS"
+    },
+    {
+      "test": "required check thresholds apply independently",
+      "result": "PASS"
+    },
+    {
+      "test": "conflicting intent and small margin require review",
+      "result": "PASS"
+    },
+    {
+      "test": "automatic refund cap is inclusive",
+      "result": "PASS"
+    },
+    {
+      "test": "missing or malformed model structure fails closed",
+      "result": "PASS"
+    },
+    {
+      "test": "invalid and nonfinite check scores fail closed",
+      "result": "PASS"
+    },
+    {
+      "test": "inconsistent intent distributions fail closed",
+      "result": "PASS"
+    },
+    {
+      "test": "summary handles absent responses and missing token usage",
+      "result": "PASS"
+    },
+    {
+      "test": "invalid proposals are never sent for warmup or scoring",
+      "result": "PASS"
+    },
+    {
+      "test": "all 276 saved rows and 240 responses preserve assessments and summaries",
+      "result": "PASS"
+    },
+    {
+      "test": "bundled dataset and all variants match source bytes",
+      "result": "PASS"
+    },
+    {
+      "test": "HTTP capture preserves provenance and interleaves reversed repetitions",
+      "result": "PASS"
+    },
+    {
+      "test": "malformed model answers are captured as review required",
+      "result": "PASS"
+    },
+    {
+      "test": "invalid flags and inputs fail without overwriting output",
+      "result": "PASS"
+    },
+    {
+      "test": "HTTP and JSON failures preserve existing output",
+      "result": "PASS"
+    },
+    {
+      "test": "production JBang entry point loads defaults outside the module",
+      "result": "PASS"
+    }
+  ]
+}

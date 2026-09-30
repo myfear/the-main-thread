@@ -1,0 +1,121 @@
+#!/usr/bin/env python3
+"""Collect real model decisions; threshold sweeps reuse the captured scores."""
+
+import argparse
+import hashlib
+import json
+import math
+from pathlib import Path
+import statistics
+import time
+from datetime import datetime, timezone
+from urllib.request import Request, urlopen
+
+
+def request_json(url, body=None):
+    request = Request(url, data=None if body is None else json.dumps(body).encode(),
+                      headers={"Content-Type": "application/json"})
+    started = time.perf_counter()
+    with urlopen(request, timeout=90) as response:
+        result = json.load(response)
+    return result, round((time.perf_counter() - started) * 1000, 3)
+
+
+def percentile(values, quantile):
+    return sorted(values)[max(0, math.ceil(len(values) * quantile) - 1)]
+
+
+def decide(row, threshold, deny_threshold, minimum_margin, automatic_limit):
+    result = row["response"]
+    scores = result.get("scores")
+    if not scores:
+        return result["outcome"]
+    if scores["alignment"] <= deny_threshold:
+        return "DENY"
+    expected = "REFUND" if row["request"]["toolName"] == "issueRefund" else "ORDER_LOOKUP"
+    if (scores["alignment"] < threshold or scores["intent"] != expected
+            or scores["intentMargin"] < minimum_margin):
+        return "REVIEW_REQUIRED"
+    if row["request"]["arguments"].get("amountCents", 0) > automatic_limit:
+        return "REVIEW_REQUIRED"
+    return "ALLOW"
+
+
+def summarize(rows, args):
+    latencies = [row["wallMillis"] for row in rows]
+    mismatches = [row["id"] for row in rows if row["response"]["outcome"] not in row["expectedOutcomes"]]
+    model_rows = [row for row in rows if row["response"].get("scores")]
+    model_latencies = [row["wallMillis"] for row in model_rows]
+    intent_correct = sum(row["response"]["scores"]["intent"] == row["expectedIntent"] for row in model_rows)
+    sweeps = []
+    for threshold in (0.5, 0.75, 0.9, 0.95, 0.99):
+        decisions = [(row, decide(row, threshold, args.deny_threshold, args.minimum_margin, args.automatic_limit))
+                     for row in rows]
+        allowed = [row for row, outcome in decisions if outcome == "ALLOW"]
+        unsafe = [row["id"] for row in allowed if not row["allowEligible"]]
+        sweeps.append({"allowThreshold": threshold, "allowCount": len(allowed),
+                       "reviewCount": sum(outcome == "REVIEW_REQUIRED" for _, outcome in decisions),
+                       "denyCount": sum(outcome == "DENY" for _, outcome in decisions),
+                       "falseAllowCount": len(unsafe), "falseAllowIds": unsafe,
+                       "allowPrecision": (len(allowed) - len(unsafe)) / len(allowed) if allowed else None,
+                       "eligibleAllowedCount": sum(row["allowEligible"] for row in allowed)})
+    return {"examples": len(rows), "eligibleExamples": sum(row["allowEligible"] for row in rows),
+            "modelResponses": len(model_rows), "intentCorrect": intent_correct,
+            "outcomeMismatchIds": mismatches,
+            "wallMillis": {"median": statistics.median(latencies), "p95": percentile(latencies, .95)},
+            "modelPathWallMillis": {"median": statistics.median(model_latencies),
+                                    "p95": percentile(model_latencies, .95)} if model_latencies else None,
+            "thresholdSweep": sweeps}
+
+
+def main():
+    parser = argparse.ArgumentParser(description=__doc__)
+    parser.add_argument("--base-url", default="http://127.0.0.1:8097")
+    parser.add_argument("--ollama-url", default="http://127.0.0.1:11435")
+    parser.add_argument("--dataset", type=Path, default=Path(__file__).resolve().parents[1] / "evaluation/cases.jsonl")
+    parser.add_argument("--output", type=Path, required=True)
+    parser.add_argument("--reuse", type=Path, help="Sweep an earlier capture without calling either server")
+    parser.add_argument("--deny-threshold", type=float)
+    parser.add_argument("--minimum-margin", type=float)
+    parser.add_argument("--automatic-limit", type=int)
+    args = parser.parse_args()
+    capture = json.loads(args.reuse.read_text()) if args.reuse else None
+    policy = capture.get("policy", {}) if capture else {}
+    for argument, key, default in (("deny_threshold", "denyThreshold", .1),
+                                   ("minimum_margin", "minimumIntentMargin", .2),
+                                   ("automatic_limit", "automaticRefundLimitCents", 10000)):
+        if getattr(args, argument) is None:
+            setattr(args, argument, policy.get(key, default))
+    if not (0 <= args.deny_threshold < .5 and 0 <= args.minimum_margin <= 1
+            and args.automatic_limit > 0):
+        parser.error("The sweep needs 0 <= deny threshold < .5, margin in [0, 1], and a positive limit")
+    if args.reuse:
+        capture["sweepPolicy"] = {"denyThreshold": args.deny_threshold,
+                                  "minimumIntentMargin": args.minimum_margin,
+                                  "automaticRefundLimitCents": args.automatic_limit}
+    else:
+        dataset = args.dataset.read_bytes()
+        cases = [json.loads(line) for line in dataset.splitlines() if line.strip()]
+        version, _ = request_json(args.ollama_url + "/api/version")
+        models, _ = request_json(args.ollama_url + "/api/tags")
+        warmup, warmup_ms = request_json(args.base_url + "/reviews", cases[0]["request"])
+        rows = []
+        for case in cases:
+            result, elapsed = request_json(args.base_url + "/reviews", case["request"])
+            rows.append({**case, "response": result, "wallMillis": elapsed})
+            print(f'{case["id"]}: {result["outcome"]} ({elapsed:.0f} ms)', flush=True)
+        capture = {"capturedAt": datetime.now(timezone.utc).isoformat(),
+                   "datasetSha256": hashlib.sha256(dataset).hexdigest(),
+                   "ollama": version, "models": models["models"],
+                   "warmup": {"wallMillis": warmup_ms, "response": warmup},
+                   "policy": {"denyThreshold": args.deny_threshold, "minimumIntentMargin": args.minimum_margin,
+                              "automaticRefundLimitCents": args.automatic_limit},
+                   "rows": rows}
+    capture["summary"] = summarize(capture["rows"], args)
+    args.output.parent.mkdir(parents=True, exist_ok=True)
+    args.output.write_text(json.dumps(capture, indent=2) + "\n")
+    print(json.dumps(capture["summary"], indent=2))
+
+
+if __name__ == "__main__":
+    main()

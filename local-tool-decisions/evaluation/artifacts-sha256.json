@@ -1,0 +1,31 @@
+{
+  "recordedOn": "2026-09-30",
+  "repository": "https://central.sonatype.com/repository/maven-snapshots",
+  "artifacts": [
+    {
+      "coordinate": "dev.langchain4j:langchain4j:1.21.0-20260929.165343-66",
+      "sha256": "42c1051f7567898c9f70a2530822066f3a996d9e759d9f10752e9241636b18c3",
+      "sizeBytes": 440294
+    },
+    {
+      "coordinate": "dev.langchain4j:langchain4j-core:1.21.0-20260929.165343-66",
+      "sha256": "17121886f03232dc657146edbe862aee4954aaf85376d83d6c97b030ecc6f899",
+      "sizeBytes": 740187
+    },
+    {
+      "coordinate": "dev.langchain4j:langchain4j-http-client:1.21.0-20260929.165343-66",
+      "sha256": "8c77280e91983b357160fd66692e6b63f3d4e0f7870c1e545a2ff0aaad2fc676",
+      "sizeBytes": 42209
+    },
+    {
+      "coordinate": "dev.langchain4j:langchain4j-http-client-jdk:1.21.0-20260929.165343-66",
+      "sha256": "9b2b480c60179c804df565d195668eeac6dde1ed75496b8e103a8e9d299f7606",
+      "sizeBytes": 19428
+    },
+    {
+      "coordinate": "dev.langchain4j:langchain4j-typesafe:1.21.0-beta31-20260929.165343-4",
+      "sha256": "59a75a9c580182069279eb85dd958a2363314fd4ba0649e0370a1544bc402664",
+      "sizeBytes": 20738
+    }
+  ]
+}

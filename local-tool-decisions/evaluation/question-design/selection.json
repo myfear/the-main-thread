@@ -1,0 +1,8 @@
+{
+  "selectedAt": "2026-09-30T07:01:23.668798+00:00",
+  "variant": "split-v2",
+  "sha256": "d381a7b80238d9e8bee0a3e364a3adbbbab16ce6db9f8479a9d3a8d60532925b",
+  "reason": "Both development repetitions: 5 of 7 eligible calls allowed, zero false allows; baseline allowed 4 of 7 eligible calls and one false allow. Two valid refund cases remain review-required. Thresholds unchanged.",
+  "holdoutRun": false,
+  "holdoutSha256": "133403638826b79a8a0ac72e78ae313752c21b128c1df279cd97eee80ad4b792"
+}

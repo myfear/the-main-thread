@@ -1,0 +1,67 @@
+{
+  "recordedOn": "2026-09-30",
+  "runner": "Standalone JBang EvaluateTest.java; lightweight Java assertions and a JDK HttpServer stub",
+  "tests": 13,
+  "passed": 13,
+  "failed": 0,
+  "liveModelCalls": 0,
+  "quarkusApplicationStarted": false,
+  "quarkusTestsRerun": false,
+  "versions": {
+    "jbang": "0.138.0",
+    "javaCommand": "OpenJDK 25 Temurin-25+36-LTS",
+    "javaRequirement": "21+",
+    "jacksonDatabind": "2.22.2",
+    "picocli": "4.7.7"
+  },
+  "commands": [
+    {
+      "command": "jbang scripts/EvaluateTest.java",
+      "workingDirectory": "local-tool-decisions",
+      "result": "13/13 passed; includes a production Evaluate.java subprocess from an independent temporary directory"
+    },
+    {
+      "command": "jbang /Users/meisele/Projects/the-main-thread-preview/local-tool-decisions/scripts/EvaluateTest.java /Users/meisele/Projects/the-main-thread-preview/local-tool-decisions",
+      "workingDirectory": "/private/tmp",
+      "result": "12/12 groups passed before the separate production-entry-point test was added"
+    },
+    {
+      "command": "jbang <absolute-project-path>/scripts/Evaluate.java --output <temporary-output.json> --base-url <local-stub-url> --ollama-url <local-stub-url>",
+      "workingDirectory": "A temporary directory created by the test runner",
+      "result": "Exit 0; 33 stub HTTP requests; 30 captured cases; bundled default dataset SHA-256 matched source exactly"
+    }
+  ],
+  "testProjectRootArgument": "EvaluateTest.java accepts an optional first argument containing the module directory. Without it, the test runner uses its working directory. The production Evaluate.java requires no project-root argument.",
+  "savedCaptureParity": {
+    "files": [
+      "evaluation/tev1-4b-2026-09-30.json",
+      "evaluation/tev1-4b-with-extension-2026-09-30.json"
+    ],
+    "rowsPerCapture": 30,
+    "allSummaryFieldsMatch": true,
+    "allThresholdSweepFieldsMatch": true,
+    "numericComparisonTolerance": 1e-09,
+    "reusePreservesOriginalProvenancePolicyAndRows": true,
+    "reuseAddsSweepPolicy": true
+  },
+  "coverage": [
+    "Saved summary parity, median and nearest-rank p95, null precision when nothing is allowed, and null model latency when there are no scores",
+    "Policy inheritance, explicit overrides, missing-policy defaults, inclusive thresholds, intent mismatch, margin and refund cap, and preserved scoreless decisions",
+    "Default dataset bytes bundled through JBang FILES match evaluation/cases.jsonl exactly and work from outside the module",
+    "Fake GET /api/version and /api/tags provenance; one warmup POST /reviews plus one POST per case; original labels and request bodies preserved; dataset SHA and separate warmup retained",
+    "Production Evaluate.java packaging and entry point exercised in a subprocess against the fake server",
+    "Offline reuse works with unreachable server URLs and a nonexistent dataset path",
+    "Required and unknown flags, invalid policy values, missing files, malformed JSON, empty datasets and captures, HTTP 503, missing model metadata; failures return nonzero and preserve an existing output file"
+  ],
+  "quarkusUpdateCheck": {
+    "current": "3.39.4",
+    "available": "3.39.5",
+    "applied": false,
+    "mode": "quarkus_update read-only report and dry-run"
+  },
+  "scope": "CLI and JSON compatibility tests only. No new model behavior measurements; the existing 43 Quarkus tests were not rerun because application sources were unchanged.",
+  "filesSha256": {
+    "scripts/Evaluate.java": "1ad73a6bb8196ef1d548eeb94207a181f63111a7581a708939f9ce81deb7917c",
+    "scripts/EvaluateTest.java": "849d944d0658eb9ea8305b5ee05fcce93deffd1c7925b3732ae36b3b23502195"
+  }
+}

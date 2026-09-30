@@ -1,0 +1,24 @@
+{
+  "recordedOn": "2026-09-30",
+  "algorithm": "sha256",
+  "files": {
+    "pom.xml": "1dcc3d05bc3f2a2aa2d4fec382370e576e867bb58f03a7e3e78906820eaef2eb",
+    "scripts/evaluate.py": "13d37ae5bafc80a2d39d62f694bc1e1b88b7b09e7a4f1f278bae5a971046005e",
+    "evaluation/cases.jsonl": "20d6f860687c2b1668c7e6b7f4858fec859ccea09ec796a5e0b6b07b7858a1f0",
+    "src/main/java/com/themainthread/decisions/DecisionClient.java": "61d2ffef501d8e02ce69f61f718cff531433cc2347cf57bccff330f74078d6a7",
+    "src/main/java/com/themainthread/decisions/DecisionConfig.java": "329ab192567c44eb5b6c008560586f31895b66ad097b7582662cfa79514b9f79",
+    "src/main/java/com/themainthread/decisions/DecisionResource.java": "d5e4f2a5b5a7e94ed8ed8b83dc3c46a90a1814cc19fccca185467bceb200b995",
+    "src/main/java/com/themainthread/decisions/DecisionToolGuardrail.java": "1bf8c6e3fa18bdd85361d06a4578355d243ef62de64c66123582d0fc6b58028b",
+    "src/main/java/com/themainthread/decisions/DemoTools.java": "4a04dea284de4a4c34cb9e60ae906622717a938803bc68f123200b4ba3e5e190",
+    "src/main/java/com/themainthread/decisions/GuardedOrderTools.java": "ac0b6b0b000aac413f3ccdeb14acf5777e2265905b86a628667b5c23d7098b91",
+    "src/main/java/com/themainthread/decisions/ReviewRequest.java": "7339afa763ec78fc8536205f944783608807fc4d0592a9e9981043523e91900a",
+    "src/main/java/com/themainthread/decisions/ReviewResponse.java": "c20e41df3e108d98e8ad1f9809a39bf8fd6b5afee0e9f48cb236172dfdbd3dd1",
+    "src/main/java/com/themainthread/decisions/ReviewService.java": "08e768cb11361468579c706440432713c1fb34c50a75e1fcc3b848330473d97c",
+    "src/main/java/com/themainthread/decisions/ToolDecisions.java": "a22533813fc4d2b6b5b843daeee2b108ecbe1c6d36a345128b98e49c9c7b0bff",
+    "src/test/java/com/themainthread/decisions/DecisionApiStub.java": "7b2f775d2203f2e9d25ea22c65cd82e93c2ee2a85964b6ae80c409ee0dcf085c",
+    "src/test/java/com/themainthread/decisions/DecisionResourceTest.java": "9003bddd746325c2f840b4641aa136fcfb14a573e6558f06a025636dc8c1f398",
+    "src/test/java/com/themainthread/decisions/TestRefundAssistant.java": "1b1249d07991fe40165fed0c115c33a92d46d9caa00539dde9ec244eac33f059",
+    "src/test/java/com/themainthread/decisions/ToolGuardrailIntegrationTest.java": "b12e2829d69e32e1a328f00608092264dc0622be9008f41aaafa2a4f576e0f46",
+    "src/main/resources/application.properties": "a659bf4adc122a2bbebfcae0609dbf2c3092fb4192b6b99c68a775993112938a"
+  }
+}
