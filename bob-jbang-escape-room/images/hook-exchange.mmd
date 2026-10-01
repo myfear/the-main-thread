@@ -1,0 +1,13 @@
+%%{init: {"theme": "base", "themeVariables": {"fontFamily": "Arial, sans-serif", "fontSize": "22px", "actorBkg": "#eef6fb", "actorBorder": "#32729a", "actorTextColor": "#15364d", "actorLineColor": "#9ab0bf", "signalColor": "#32729a", "signalTextColor": "#15364d", "activationBkgColor": "#d8eee8", "activationBorderColor": "#3d8273"}, "sequence": {"mirrorActors": false, "actorFontSize": 22, "messageFontSize": 20, "actorMargin": 100, "messageMargin": 42, "diagramMarginX": 24, "diagramMarginY": 24}}}%%
+sequenceDiagram
+    participant Bob
+    participant Harness
+    participant Java as Java hook (JBang)
+    Bob->>Harness: Request a tool call
+    Harness->>Java: Start hook process
+    activate Java
+    Harness->>Java: Event JSON via stdin
+    Java->>Java: Read the event
+    Java-->>Harness: stdout, stderr, exit code
+    deactivate Java
+    Harness->>Harness: Decide what happens next

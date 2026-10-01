@@ -1,0 +1,9 @@
+{
+  "baseline" : "3/7 passed; 4 failed",
+  "solution" : "7/7 passed; 0 failed",
+  "transitions" : [ "ARRIVAL", "LOCKED", "GREEN", "CLEARED", "ESCAPED", "DEBRIEF" ],
+  "empty_stdin" : "pass",
+  "unrelated_command" : "pass",
+  "stale_source_rejected" : true,
+  "replay_png" : "valid PNG signature"
+}

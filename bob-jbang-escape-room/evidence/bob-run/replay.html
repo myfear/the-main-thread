@@ -1,0 +1,12 @@
+<!doctype html><html lang="en"><meta charset="utf-8">
+<meta name="viewport" content="width=device-width,initial-scale=1">
+<title>Airlock flight recorder</title>
+<style>body{max-width:1050px;margin:40px auto;padding:20px;background:#0d1925;color:#e3eaf1;
+font:18px/1.5 system-ui}img{width:100%}pre{white-space:pre-wrap;overflow-wrap:anywhere}
+li{margin-bottom:24px}h2{font-size:20px}</style>
+<h1>Airlock flight recorder</h1><img src="replay.png" alt="Mission complete; chronological hook decisions follow.">
+<h2>Full event details</h2><ol><li><h2>ARRIVAL</h2><pre>The outer door is locked. Repair the Java interlock to leave.</pre></li><li><h2>LOCKED</h2><pre>AIRLOCK TESTS: 3/7 passed; 4 failed
+FAIL pressure=6, sealed=true, mayOpen=false: expected: &lt;false&gt; but was: &lt;true&gt;
+FAIL pressure=101, sealed=true, mayOpen=false: expected: &lt;false&gt; but was: &lt;true&gt;
+FAIL pressure=0, sealed=false, mayOpen=false: expected: &lt;false&gt; but was: &lt;true&gt;
+FAIL pressure=-1, sealed=true, mayOpen=false: expected: &lt;false&gt; but was: &lt;true&gt;</pre></li><li><h2>GREEN</h2><pre>AIRLOCK TESTS: 7/7 passed; 0 failed</pre></li><li><h2>CLEARED</h2><pre>Fresh verification: AIRLOCK TESTS: 7/7 passed; 0 failed</pre></li><li><h2>ESCAPED</h2><pre>The allowed tool call returned AIRLOCK_OPEN.</pre></li><li><h2>DEBRIEF</h2><pre>Escaped. Final verification: AIRLOCK TESTS: 7/7 passed; 0 failed</pre></li></ol></html>

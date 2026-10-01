@@ -1,0 +1,10 @@
+{
+  "bob_exit" : 0,
+  "seconds" : 23.83,
+  "final_tests_exit" : 0,
+  "controls_unchanged" : true,
+  "replay_written" : true,
+  "bob_version" : "2.0.5\ncommit: 2dc180906",
+  "jbang_version" : "0.138.0",
+  "actions" : [ "ARRIVAL", "LOCKED", "GREEN", "CLEARED", "ESCAPED", "DEBRIEF" ]
+}

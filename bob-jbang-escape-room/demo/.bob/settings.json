@@ -1,0 +1,8 @@
+{
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/airlock-hook.java", "timeout": 30}]}],
+    "PreToolUse": [{"matcher": "^execute_command$", "hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/airlock-hook.java", "timeout": 30}]}],
+    "PostToolUse": [{"matcher": "^(execute_command|write_to_file|write_file|apply_diff|apply_patch|edit_file)$", "hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/airlock-hook.java", "timeout": 30}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/airlock-hook.java", "timeout": 30}]}]
+  }
+}

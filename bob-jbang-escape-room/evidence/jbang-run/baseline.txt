@@ -1,0 +1,5 @@
+AIRLOCK TESTS: 3/7 passed; 4 failed
+FAIL pressure=6, sealed=true, mayOpen=false: expected: <false> but was: <true>
+FAIL pressure=101, sealed=true, mayOpen=false: expected: <false> but was: <true>
+FAIL pressure=0, sealed=false, mayOpen=false: expected: <false> but was: <true>
+FAIL pressure=-1, sealed=true, mayOpen=false: expected: <false> but was: <true>

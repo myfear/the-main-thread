@@ -1,0 +1,6 @@
+{"time":"2026-10-01T10:48:10.072106Z","action":"ARRIVAL","detail":"The outer door is locked. Repair the Java interlock to leave.","tool_use_id":""}
+{"time":"2026-10-01T10:48:12.716190Z","action":"LOCKED","detail":"AIRLOCK TESTS: 3/7 passed; 4 failed\nFAIL pressure=6, sealed=true, mayOpen=false: expected: <false> but was: <true>\nFAIL pressure=101, sealed=true, mayOpen=false: expected: <false> but was: <true>\nFAIL pressure=0, sealed=false, mayOpen=false: expected: <false> but was: <true>\nFAIL pressure=-1, sealed=true, mayOpen=false: expected: <false> but was: <true>","tool_use_id":"tooluse_TVyggFmFISzlBqVETsbDNi"}
+{"time":"2026-10-01T10:48:23.456061Z","action":"GREEN","detail":"AIRLOCK TESTS: 7/7 passed; 0 failed","tool_use_id":"tooluse_1LrfHcxdY8Ua2xfVoHBmJc"}
+{"time":"2026-10-01T10:48:29.293132Z","action":"CLEARED","detail":"Fresh verification: AIRLOCK TESTS: 7/7 passed; 0 failed","tool_use_id":"tooluse_qm276GNkitjVT8gQkFmMjm"}
+{"time":"2026-10-01T10:48:29.700067Z","action":"ESCAPED","detail":"The allowed tool call returned AIRLOCK_OPEN.","tool_use_id":"tooluse_qm276GNkitjVT8gQkFmMjm"}
+{"time":"2026-10-01T10:48:33.887327Z","action":"DEBRIEF","detail":"Escaped. Final verification: AIRLOCK TESTS: 7/7 passed; 0 failed","tool_use_id":""}
