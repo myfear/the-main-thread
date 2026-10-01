@@ -1,0 +1,13 @@
+{
+  "quarkus": "-",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "formal-java-demo",
+  "tests": {
+    "total": 1006,
+    "passed": 1006,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
