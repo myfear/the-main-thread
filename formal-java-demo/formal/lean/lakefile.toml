@@ -1,0 +1,7 @@
+name = "inventory"
+version = "1.0.0"
+defaultTargets = ["Inventory"]
+
+[[lean_lib]]
+name = "Inventory"
+leanOptions = { warningAsError = true }
