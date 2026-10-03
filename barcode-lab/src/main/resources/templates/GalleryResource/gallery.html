@@ -1,0 +1,46 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Barcode Lab · The Main Thread</title>
+    <link rel="stylesheet" href="/gallery.css">
+    <script src="/gallery.js" defer></script>
+</head>
+<body>
+<main>
+    <header class="intro">
+        <p class="eyebrow">THE MAIN THREAD / JAVA EXPERIMENTS</p>
+        <h1>One string.<br>Eight different contracts.</h1>
+        <p class="lede">A barcode is a way to hand data to a reader. Change the format and you change what that reader can accept. Try a payload, see the symbol, then break a rule.</p>
+        <div class="intro-footer"><span class="badge">BARCODE LAB</span><span>Quarkus · ZXing · Qute</span><a href="/barcodes">Explore the format catalog ↗</a></div>
+    </header>
+    <aside class="experiment"><strong>Start here.</strong> Put <code>ORD-2026-104829</code> into Code 128, Code 39 and EAN-13. Two encode it. One refuses. Then change EAN-13's final digit or give ITF an odd number of digits.</aside>
+    <section class="gallery" aria-label="Eight barcode formats">
+    {#for format in formats}
+        <article class="card" id="{format.id}">
+            <div class="card-heading"><span class="number">0{format_count}</span><h2>{format.label}</h2><span class="kind">{#if format.linear}LINEAR{#else}2D{/if}</span></div>
+            <p class="fit">{format.goodFit}</p>
+            <p class="constraint">{format.constraint}</p>
+            <form data-format="{format.id}">
+                <label for="value-{format.id}">Payload</label>
+                <textarea id="value-{format.id}" name="value" rows="2" spellcheck="false" required>{format.example}</textarea>
+                <div class="settings">
+                    <label>Width <input name="width" type="number" min="128" max="1600" value="{format.width}" required></label>
+                    <label>Height <input name="height" type="number" min="128" max="1600" value="{format.height}" required></label>
+                    {#if format.id == 'qr'}
+                    <label>Correction <select name="ecc"><option>L</option><option selected>M</option><option>Q</option><option>H</option></select></label>
+                    {/if}
+                    <button type="submit">Generate →</button>
+                </div>
+            </form>
+            <p class="status" role="status" aria-live="polite">Example loaded. Edit the payload to experiment.</p>
+            <div class="symbol" tabindex="0" aria-label="{format.label} image; scroll horizontally if needed"><img src="{format.imageUrl}" alt="{format.label} encoding the example payload"></div>
+            <div class="card-footer"><span class="dimensions">PNG / pixels preserved</span><a class="download" href="{format.imageUrl}" download="{format.id}.png">Download PNG ↓</a></div>
+        </article>
+    {/for}
+    </section>
+    <footer class="notes"><p><strong>A generated image is the first check.</strong> Test your actual scanner, printed size, contrast and quiet zones. The examples use local application policies; they do not certify GS1 identifiers or transport tickets.</p><p>Payloads stay in this application. The lab has no database or external API calls. Avoid putting secrets in query strings.</p></footer>
+</main>
+</body>
+</html>
