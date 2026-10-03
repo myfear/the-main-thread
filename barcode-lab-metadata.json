@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.36.0",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "barcode-lab",
+  "tests": {
+    "total": 42,
+    "passed": 42,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
