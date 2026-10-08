@@ -1,0 +1,13 @@
+{
+  "quarkus": "4.0.0.Beta1",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "http3-demo",
+  "tests": {
+    "total": 3,
+    "passed": 2,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1
+  }
+}
