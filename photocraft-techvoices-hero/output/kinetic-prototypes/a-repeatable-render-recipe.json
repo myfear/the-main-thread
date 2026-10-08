@@ -1,0 +1,128 @@
+{
+  "base": ".bob/skills/techvoices-hero-image/assets/hero-base.pcraft",
+  "topic_group": "Topic artwork",
+  "background": {
+    "kind": "rect",
+    "rect": [
+      0,
+      0,
+      1200,
+      540
+    ],
+    "fill": "#ffffff",
+    "name": "Kinetic typography field"
+  },
+  "type_layers": [
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "MAKE IT",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#000000",
+        "tracking": -15,
+        "name": "MAKE IT"
+      },
+      "transform": [
+        1.1160714285714286,
+        0.0,
+        -0.0,
+        1.1160714285714286,
+        68.83928571428571,
+        177.0
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "REPEATABLE",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "Repeatable motion echo 2"
+      },
+      "transform": [
+        1.1682242990654206,
+        0.0,
+        -0.0,
+        1.1682242990654206,
+        109.48598130841121,
+        388.8411214953271
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "REPEATABLE",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "Repeatable motion echo 1"
+      },
+      "transform": [
+        1.1682242990654206,
+        0.0,
+        -0.0,
+        1.1682242990654206,
+        89.48598130841121,
+        370.8411214953271
+      ],
+      "opacity": 0.65
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "REPEATABLE",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#002d9c",
+        "tracking": -15,
+        "name": "REPEATABLE"
+      },
+      "transform": [
+        1.1682242990654206,
+        0.0,
+        -0.0,
+        1.1682242990654206,
+        69.48598130841121,
+        352.8411214953271
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "ONE BRIEF. MANY IMAGES.",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#000000",
+        "tracking": -15,
+        "name": "ONE BRIEF. MANY IMAGES."
+      },
+      "transform": [
+        0.2413793103448276,
+        0.0,
+        -0.0,
+        0.2413793103448276,
+        82.06896551724138,
+        483.51724137931035
+      ]
+    }
+  ],
+  "dimensions": [
+    1200,
+    630
+  ],
+  "footer_y": 540
+}

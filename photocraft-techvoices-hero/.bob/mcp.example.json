@@ -1,0 +1,18 @@
+{
+  "mcpServers": {
+    "photocraft": {
+      "command": "/ABSOLUTE/PATH/TO/photocraft-techvoices-hero/.runtime/photocraft-cli-0.2.0-macos-universal/photocraft-cli",
+      "args": [
+        "mcp",
+        "--bridge",
+        "127.0.0.1:7878",
+        "--control-token-file",
+        "/ABSOLUTE/PATH/TO/photocraft-techvoices-hero/.runtime/control.token"
+      ],
+      "cwd": "/ABSOLUTE/PATH/TO/photocraft-techvoices-hero",
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}
+

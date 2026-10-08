@@ -1,0 +1,128 @@
+{
+  "base": ".bob/skills/techvoices-hero-image/assets/hero-base.pcraft",
+  "topic_group": "Topic artwork",
+  "background": {
+    "kind": "rect",
+    "rect": [
+      0,
+      0,
+      1200,
+      540
+    ],
+    "fill": "#000000",
+    "name": "Kinetic typography field"
+  },
+  "type_layers": [
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "SKILL",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#002d9c",
+        "tracking": -15,
+        "name": "Skill motion echo 2"
+      },
+      "transform": [
+        1.5495609120780425,
+        -0.10835585449389576,
+        0.10835585449389576,
+        1.5495609120780425,
+        132.6047628519139,
+        237.89309653623536
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "SKILL",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#002d9c",
+        "tracking": -15,
+        "name": "Skill motion echo 1"
+      },
+      "transform": [
+        1.5495609120780425,
+        -0.10835585449389576,
+        0.10835585449389576,
+        1.5495609120780425,
+        108.6047628519139,
+        253.89309653623536
+      ],
+      "opacity": 0.8
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "SKILL",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "SKILL"
+      },
+      "transform": [
+        1.5495609120780425,
+        -0.10835585449389576,
+        0.10835585449389576,
+        1.5495609120780425,
+        84.6047628519139,
+        269.89309653623536
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "TO",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "TO"
+      },
+      "transform": [
+        0.23931623931623933,
+        0.0,
+        -0.0,
+        0.23931623931623933,
+        83.28205128205128,
+        316.28205128205127
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "CANVAS",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#ffffff",
+        "tracking": -15,
+        "name": "CANVAS"
+      },
+      "transform": [
+        1.5128205128205128,
+        0.0,
+        -0.0,
+        1.5128205128205128,
+        209.4102564102564,
+        504.46153846153845
+      ]
+    }
+  ],
+  "dimensions": [
+    1200,
+    630
+  ],
+  "footer_y": 540
+}

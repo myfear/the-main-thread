@@ -1,0 +1,129 @@
+{
+  "base": ".bob/skills/techvoices-hero-image/assets/hero-base.pcraft",
+  "topic_group": "Topic artwork",
+  "background": {
+    "kind": "rect",
+    "rect": [
+      0,
+      0,
+      1200,
+      540
+    ],
+    "fill": "#002d9c",
+    "name": "Kinetic typography field"
+  },
+  "type_layers": [
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "BRIEF",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "BRIEF"
+      },
+      "transform": [
+        0.7256637168141593,
+        0.0,
+        -0.0,
+        0.7256637168141593,
+        77.46902654867256,
+        126.27433628318585
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "BUILD",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "Build motion echo 2"
+      },
+      "transform": [
+        1.3687066774196082,
+        -0.14385686863321284,
+        0.14385686863321284,
+        1.3687066774196082,
+        109.05619583530415,
+        390.4763055227065
+      ],
+      "opacity": 0.22
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "BUILD",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "Build motion echo 1"
+      },
+      "transform": [
+        1.3687066774196082,
+        -0.14385686863321284,
+        0.14385686863321284,
+        1.3687066774196082,
+        97.05619583530415,
+        376.4763055227065
+      ],
+      "opacity": 0.4
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "BUILD",
+        "font": "IBM Plex Sans",
+        "weight": 700,
+        "size": 160,
+        "color": "#ffffff",
+        "tracking": -15,
+        "name": "BUILD"
+      },
+      "transform": [
+        1.3687066774196082,
+        -0.14385686863321284,
+        0.14385686863321284,
+        1.3687066774196082,
+        85.05619583530415,
+        362.4763055227065
+      ]
+    },
+    {
+      "create": {
+        "x": 0,
+        "y": 0,
+        "text": "PUBLISH",
+        "font": "IBM Plex Sans Condensed",
+        "weight": 700,
+        "size": 160,
+        "color": "#a6c8ff",
+        "tracking": -15,
+        "name": "PUBLISH"
+      },
+      "transform": [
+        0.6837606837606838,
+        0.0,
+        -0.0,
+        0.6837606837606838,
+        653.8461538461538,
+        497.94871794871796
+      ]
+    }
+  ],
+  "dimensions": [
+    1200,
+    630
+  ],
+  "footer_y": 540
+}
