@@ -1,0 +1,5 @@
+/workspace/
+/evidence/
+/target/
+**/target/
+.DS_Store

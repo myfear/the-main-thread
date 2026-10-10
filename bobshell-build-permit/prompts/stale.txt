@@ -1,0 +1,4 @@
+CASE: BUILD-001
+Use execute_command to run exactly `jbang tools/Office.java issue` once in the
+foreground from the workspace root. Stop after that attempt, even if refused.
+Report the office's reason briefly. Do not edit or verify anything in this turn.

@@ -1,0 +1,21 @@
+{
+  "disableGlobalHooks": true,
+  "telemetry": {"enabled": false},
+  "approval": {
+    "autoApprovalEnabled": true,
+    "outsideWorkspaceAllowed": false,
+    "allowed_permissions": ["read", "edit"],
+    "allowedExecutors": [
+      {"toolId": "execute_command", "approvedCommands": ["jbang tools/Office.java"], "deniedCommands": []}
+    ]
+  },
+  "hooks": {
+    "SessionStart": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 10}]}],
+    "UserPromptSubmit": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 10}]}],
+    "PreToolUse": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 10}]}],
+    "PostToolUse": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 60}]}],
+    "PreCompact": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 10}]}],
+    "PostCompact": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 10}]}],
+    "Stop": [{"hooks": [{"type": "command", "command": "jbang --quiet .bob/hooks/OfficeHook.java", "timeout": 10}]}]
+  }
+}

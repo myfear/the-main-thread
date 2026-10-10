@@ -1,0 +1,5 @@
+CASE: BUILD-001
+Using a native edit tool, append the comment `// Inspect the stamp wheel next.`
+to src/main/java/office/StampWheel.java. Make no other changes and run no commands.
+Read the post-edit hook feedback and tell me which test failed. Leave repair for
+the next turn.

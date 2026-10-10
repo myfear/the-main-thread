@@ -1,0 +1,7 @@
+[
+  {"counter": 3, "current": true, "fragment": "42"},
+  {"counter": 0, "current": false, "fragment": "MASTER-KEY"},
+  {"counter": 2, "current": true, "fragment": "-"},
+  {"counter": 1, "current": true, "fragment": "BUILD"},
+  {"counter": 4, "current": false, "fragment": "-OLD"}
+]

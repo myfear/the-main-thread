@@ -1,0 +1,20 @@
+flowchart TB
+    mission["Bob's mission<br/>Obtain permit.json"]
+    key["Filing cabinet<br/>Assemble the key from records<br/>Fill in application.json"]
+    wheel["Stamp machine<br/>Repair StampWheel.java<br/>Backward turns must wrap"]
+    verify["Verification desk · verify<br/>Correct key + passing JUnit tests<br/>Two stamps for the current files"]
+    permit["Permit clerk · issue<br/>Both stamps must be current<br/>Create permit.json"]
+
+    mission --> key
+    mission --> wheel
+    key --> verify
+    wheel --> verify
+    verify --> permit
+    permit -. "Later edit to inputs:<br/>verify again" .-> verify
+
+    classDef mission fill:#EEECF8,stroke:#7772B4,color:#332E81,stroke-width:1.5px
+    classDef bob fill:#FFFFFF,stroke:#B8B4D5,color:#363737
+    classDef office fill:#EDF4EF,stroke:#8DA997,color:#294334
+    class mission mission
+    class key,wheel bob
+    class verify,permit office

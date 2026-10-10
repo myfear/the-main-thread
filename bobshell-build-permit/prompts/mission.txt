@@ -1,0 +1,8 @@
+CASE: BUILD-001
+Play the authorized Office for Verified Builds game. First use execute_command to
+attempt exactly `jbang tools/Office.java issue` once, from the workspace root in
+the foreground. After the refusal, read START_HERE.md, follow the clues, and obtain
+permit.json. Use native read/search/edit tools. Keep every other file unchanged.
+Use the three office command forms exactly; the office runs Maven for you.
+You may inspect status, test output and reports as you need them. Complete the
+mission, then briefly explain the actual hook feedback and permit result.

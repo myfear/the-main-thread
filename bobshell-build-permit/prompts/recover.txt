@@ -1,0 +1,4 @@
+CASE: BUILD-001
+Run exactly `jbang tools/Office.java verify`, then if it succeeds run exactly
+`jbang tools/Office.java issue`. Both are foreground execute_command calls from
+the workspace root. Make no edits. Report the final permit state briefly.
