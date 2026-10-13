@@ -1,0 +1,28 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="color-scheme" content="light">
+    <title>Shapeshift · Local</title>
+    {#bundle /}
+</head>
+<body>
+    <main>
+        <header><a class="wordmark" href="/">shapeshift<span> / local</span></a><span class="local-badge">ON YOUR MACHINE</span></header>
+        <section class="intro"><p class="eyebrow">ONE INPUT. SIX POSSIBILITIES.</p><h1>Start with a thought.<br>Give it a shape.</h1><p>Type a plan, a list, or a little reminder. A local model finds the card. You keep the last word.</p></section>
+        <section class="workspace" aria-label="Create a card">
+            <label for="thought">What’s on your mind?</label>
+            <textarea id="thought" rows="2" maxlength="500" placeholder="Dinner with Priya tomorrow at 8pm…" autofocus></textarea>
+            <div class="input-footer"><span id="status" role="status">Ready when you are.</span><span id="timing">LOCAL OLLAMA · TEV1:4B</span></div>
+            <nav id="palette" aria-label="Choose a card type"></nav>
+            <section id="card" aria-label="Card preview"><div class="empty"><span class="empty-symbol">✳</span><p>A few words are enough to begin.</p></div></section>
+            <div class="actions"><span id="source">Inference stays local. Cards stay in this browser.</span><button id="save" disabled>Save card <kbd>Enter</kbd></button></div>
+        </section>
+        <section class="examples" aria-label="Example inputs"><p>TRY A THOUGHT</p><div id="examples"></div></section>
+        <section class="saved-section"><div class="section-title"><h2>Your cards</h2><span id="saved-count">0 saved</span></div><div id="saved"></div></section>
+        <details class="diagnostics"><summary>Classification & typing measurements</summary><p id="model-info"></p><label for="debounce">Minimum typing pause (ms)</label><input id="debounce" type="number" min="0" max="2000" step="50" value="250"><p>The pause adapts to your typing speed, up to 1 second. Obvious fragments wait for more detail. Confidence is a model score, not a correctness guarantee.</p><pre id="diagnostics"></pre></details>
+        <footer>Inspired by <a href="https://github.com/anishfn/shapeshift">Anish’s Shapeshift</a>. Built with Quarkus Web Bundler, LangChain4j, and Ollama.</footer>
+    </main>
+</body>
+</html>

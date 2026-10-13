@@ -4,6 +4,10 @@
 # Explicitly un-ignore the root .gitignore file
 !/.gitignore
 
+# Ship the build-permit companion's generated-file rules.
+!/bobshell-build-permit/.gitignore
+!/bobshell-build-permit/game/.gitignore
+
 cobol-java/
 mcp.json
 
