@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "gridcraft": {
+      "command": "/absolute/path/to/gridcraft-cli",
+      "args": ["mcp"],
+      "cwd": "/absolute/path/to/gridcraft-agent-workflow",
+      "alwaysAllow": [],
+      "disabled": false
+    }
+  }
+}

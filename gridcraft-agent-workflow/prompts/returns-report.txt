@@ -1,0 +1,23 @@
+Use the gridcraft-report skill and the connected gridcraft MCP server.
+
+Build an editable returns scenario from build/source.xlsx. The original
+Dashboard!B3 deliberately stores £60, while Transactions!D2:D4 contains
+10, 20, 50 and therefore totals £80. In a separate Scenario column,
+change only the third return to £70. Preserve the baseline.
+
+Follow the skill's task contract exactly, including the provenance rows,
+formulas, formatting, column widths, wrapped source hash, frozen header,
+and two-series chart.
+Use one rectangular write for the report data. Search command ids when
+needed. Every read must name a sheet and explicit finite range of at most
+512 cells. Use only local files and the gridcraft server for this task.
+
+Save to build/bob-report.xlsx. Reopen it through MCP and verify the
+numeric values and formula text. Run the Java verifier against the saved
+file. Leave build/source.xlsx unchanged. Do not use subagents.
+Use Java only for validation. Never use Python or install a fallback
+parser, and do not modify the supplied verifier.
+
+Return the saved path and a short answer citing the report cells, with
+the stored £60, baseline £80, scenario £100, and £20 difference clearly
+distinguished. Keep the final answer under 150 words.
