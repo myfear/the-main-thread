@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.40.1",
+  "java": "21",
+  "substackUrl": "",
+  "projectPath": "quarkus-wazuh-siem",
+  "tests": {
+    "total": 6,
+    "passed": 5,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 1
+  }
+}
