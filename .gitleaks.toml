@@ -24,3 +24,15 @@
     '''(?:^|/)quarkus-multi-tenant-extension\/.*\.pem$''',
     '''(?:^|/)agent-memory-storage/demo/test/.*\.py$'''
     ]
+
+# The upstream Wazuh dashboard uses this public password in the local demo.
+# Match both the exact file and password value; other credentials remain scanned.
+[[rules]]
+  id = "generic-api-key"
+
+  [[rules.allowlists]]
+    description = "Upstream Wazuh dashboard demo password"
+    condition = "AND"
+    paths = ['''(?:^|/)quarkus-wazuh-siem/infra/wazuh/config/wazuh_dashboard/wazuh\.yml$''']
+    regexTarget = "secret"
+    regexes = ['''^MyS3cr37P450r\.\*-$''']
