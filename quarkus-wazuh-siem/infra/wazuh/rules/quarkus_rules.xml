@@ -1,0 +1,38 @@
+<group name="quarkus,application_security,">
+  <rule id="100100" level="0">
+    <decoded_as>json</decoded_as>
+    <field name="service" type="pcre2">^quarkus-siem-demo$</field>
+    <field name="schema_version" type="pcre2">^1$</field>
+    <description>Quarkus application security event</description>
+  </rule>
+
+  <rule id="100101" level="5">
+    <if_sid>100100</if_sid>
+    <field name="audit_event_type" type="pcre2">^AUTHENTICATION_FAILURE$</field>
+    <field name="outcome" type="pcre2">^FAILURE$</field>
+    <description>Quarkus authentication failed from $(source_ip)</description>
+  </rule>
+
+  <rule id="100102" level="8">
+    <if_sid>100100</if_sid>
+    <field name="audit_event_type" type="pcre2">^AUTHORIZATION_FAILURE$</field>
+    <field name="outcome" type="pcre2">^DENIED$</field>
+    <field name="path" type="pcre2">^/api/admin/export$</field>
+    <description>Quarkus admin export denied for $(principal)</description>
+  </rule>
+
+  <rule id="100103" level="10" frequency="5" timeframe="60">
+    <if_matched_sid>100101</if_matched_sid>
+    <field name="source_ip" type="pcre2">^(?!null$).+$</field>
+    <same_field>source_ip</same_field>
+    <description>Quarkus repeated authentication failures from $(source_ip)</description>
+  </rule>
+
+  <rule id="100104" level="3">
+    <if_sid>100100</if_sid>
+    <field name="audit_event_type" type="pcre2">^SENSITIVE_OPERATION_COMPLETED$</field>
+    <field name="outcome" type="pcre2">^SUCCESS$</field>
+    <field name="path" type="pcre2">^/api/admin/export$</field>
+    <description>Quarkus simulated admin export completed by $(principal)</description>
+  </rule>
+</group>

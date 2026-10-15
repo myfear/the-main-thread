@@ -1,8 +1,13 @@
+[extend]
+  useDefault = true
+
 [allowlist]
   description = "Global Allowlist"
 
   # Ignore based on any subset of the file path
   paths = [
+    # Locally generated Wazuh development keys/certificates; also excluded from Git.
+    '''(?:^|/)quarkus-wazuh-siem/infra/wazuh/config/wazuh_indexer_ssl_certs/[^/]+\.(?:pem|key)$''',
     # Ignore all example certs
     '''(?:^|\/)jwt-case.*\.pem$''',
     '''(?:^|\/)stateless-api.*\.pem$''',

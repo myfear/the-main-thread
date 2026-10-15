@@ -8,6 +8,9 @@
 !/bobshell-build-permit/.gitignore
 !/bobshell-build-permit/game/.gitignore
 
+# Ship the Wazuh companion's generated-key and private-document exclusions.
+!/quarkus-wazuh-siem/.gitignore
+
 cobol-java/
 mcp.json
 
