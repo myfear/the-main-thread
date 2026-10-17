@@ -1,0 +1,13 @@
+{
+  "quarkus": "4.0.0.Beta1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "quarkus-network-faults-demo",
+  "tests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
