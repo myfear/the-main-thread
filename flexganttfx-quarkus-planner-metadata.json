@@ -1,7 +1,7 @@
 {
   "projectPath" : "flexganttfx-quarkus-planner",
-  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
-  "runNumber" : 183,
+  "sourceSha" : "4369e29405f30590e087ceb177da51d07c7db45e",
+  "runNumber" : 185,
   "runAttempt" : 1,
   "status" : "passing",
   "reason" : "build:success setup:success",
