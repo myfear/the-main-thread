@@ -1,0 +1,58 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <title>One gift, two buyers · The Main Thread</title>
+  <link rel="stylesheet" href="/styles.css">
+  <script src="/app.js" defer></script>
+</head>
+<body>
+<main>
+  <header><a class="brand" href="https://www.the-main-thread.com">The Main Thread</a><span>Java / Quarkus</span></header>
+  <h1>One gift, two buyers</h1>
+  <p class="intro">Two grandparents, one gift on Anna's wishlist. Send competing reservations and see which promises survive the database commit.</p>
+  <section class="gift" aria-labelledby="gift-name">
+    <svg aria-hidden="true" viewBox="0 0 48 48" width="48" height="48"><g fill="none" stroke="currentColor" stroke-width="2"><path d="M8 22h32v20H8zM5 15h38v7H5zM24 15v27"/><path d="M24 15C6 15 11 1 18 6c4 3 6 9 6 9Zm0 0C42 15 37 1 30 6c-4 3-6 9-6 9Z"/></g></svg>
+    <div><h2 id="gift-name">Winter village LEGO set</h2><p>Anna's wishlist · one reservation available</p></div>
+  </section>
+  <form id="controls">
+    <div class="toolbar">
+      <label for="mode">Reservation strategy
+        <select id="mode"><option value="unsafe">Without version check</option><option value="optimistic">With optimistic locking</option></select>
+      </label>
+      <button type="button" id="new-round" class="secondary">New round</button>
+    </div>
+    <p id="strategy">Both requests can overwrite the same gift. Each buyer can receive a success response.</p>
+    <div class="buyers">
+      <section aria-labelledby="first-title">
+        <h2 id="first-title">First grandparent</h2>
+        <label for="first">Buyer label</label><input id="first" name="first" value="First grandparent" maxlength="80" required>
+        <button type="button" id="reserve-first" class="secondary">Reserve as first grandparent</button>
+        <p id="result-first" class="result" role="status">No request sent.</p>
+      </section>
+      <section aria-labelledby="second-title">
+        <h2 id="second-title">Second grandparent</h2>
+        <label for="second">Buyer label</label><input id="second" name="second" value="Second grandparent" maxlength="80" required>
+        <button type="button" id="reserve-second" class="secondary">Reserve as second grandparent</button>
+        <p id="result-second" class="result" role="status">No request sent.</p>
+      </section>
+    </div>
+    <button type="submit" id="run">Send both reservations</button>
+  </form>
+  <p id="notice" role="status">Creating a fresh gift…</p>
+  <section class="saved" aria-labelledby="saved-heading">
+    <h2 id="saved-heading">Saved in PostgreSQL</h2>
+    <p id="saved">Waiting for a round.</p>
+    <button type="button" id="refresh" class="secondary">Refresh saved state</button>
+  </section>
+  <details>
+    <summary>Try two browser windows / inspect the responses</summary>
+    <p><a id="second-window" href="/" target="_blank" rel="noopener">Open this round in a second window</a>. Reserve as the first grandparent here, then as the second grandparent there within 10 seconds. Both requests wait after reading the available gift.</p>
+    <p>Each strategy uses its own database row. Create a new round before repeating a race. The gate only arranges the timing on this single application instance; the version check protects the saved reservation.</p>
+    <pre id="payload">No responses yet.</pre>
+  </details>
+  <footer>Local concurrency demonstration. Buyer labels are not authenticated identities.</footer>
+</main>
+</body>
+</html>
