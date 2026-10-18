@@ -1,0 +1,13 @@
+{
+  "quarkus": "3.40.1",
+  "java": "25",
+  "substackUrl": "",
+  "projectPath": "bob-openui-pilot",
+  "tests": {
+    "total": 7,
+    "passed": 7,
+    "failed": 0,
+    "errors": 0,
+    "skipped": 0
+  }
+}
