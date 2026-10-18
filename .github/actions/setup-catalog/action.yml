@@ -1,0 +1,24 @@
+name: Set up catalog tooling
+description: Install the Java and JBang versions used by repository automation
+runs:
+  using: composite
+  steps:
+    - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+      with:
+        distribution: temurin
+        java-version: '21'
+    - uses: actions/cache@55cc8345863c7cc4c66a329aec7e433d2d1c52a9 # v6.1.0
+      with:
+        path: |
+          ~/.jbang/cache
+          ~/.m2/repository
+        key: catalog-${{ runner.os }}-${{ runner.arch }}-java21-jbang0.142.0-${{ hashFiles('.github/scripts/*.java', '.github/actions/setup-catalog/action.yml') }}
+        restore-keys: |
+          catalog-${{ runner.os }}-${{ runner.arch }}-java21-jbang0.142.0-
+    - uses: jbangdev/setup-jbang@2b1b465a7b75f4222b81426f23a01e013aa7b95c # v0.1.1
+      # This release declares a version input but does not pass it to the installer.
+      env:
+        JBANG_DOWNLOAD_VERSION: '0.142.0'
+    - name: Verify JBang version
+      shell: bash
+      run: test "$(jbang version)" = '0.142.0'
