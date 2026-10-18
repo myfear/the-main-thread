@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.31.4",
-  "java": "21",
-  "substackUrl": "https://www.the-main-thread.com/p/quarkus-mcp-server-ibm-bob",
-  "projectPath": "dev-toolkit-mcp",
-  "tests": {
-    "total": 1,
-    "passed": 1,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "dev-toolkit-mcp",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 1,
+    "passed" : 1,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }

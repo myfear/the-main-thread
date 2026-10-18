@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.32.3",
-  "java": "25",
-  "substackUrl": "https://www.the-main-thread.com/p/real-time-iss-tracker-quarkus-sse-qute-java",
-  "projectPath": "iss-tracker",
-  "tests": {
-    "total": 7,
-    "passed": 7,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "iss-tracker",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 7,
+    "passed" : 7,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }

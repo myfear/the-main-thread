@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.35.2",
-  "java": "21",
-  "substackUrl": "",
-  "projectPath": "gatewayedge-openapi-filters",
-  "tests": {
-    "total": 3,
-    "passed": 3,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "gatewayedge-openapi-filters",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 3,
+    "passed" : 3,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }

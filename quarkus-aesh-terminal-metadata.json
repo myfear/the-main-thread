@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.39.1",
-  "java": "25",
-  "substackUrl": "",
-  "projectPath": "quarkus-aesh-terminal",
-  "tests": {
-    "total": 4,
-    "passed": 4,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "quarkus-aesh-terminal",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 4,
+    "passed" : 4,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }

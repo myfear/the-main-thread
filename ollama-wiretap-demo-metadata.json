@@ -1,13 +1,9 @@
 {
-  "quarkus": "3.34.1",
-  "java": "25",
-  "substackUrl": "https://www.the-main-thread.com/p/debug-ollama-traffic-quarkus-mitmproxy",
-  "projectPath": "ollama-wiretap-demo",
-  "tests": {
-    "total": 0,
-    "passed": 0,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
-  }
+  "projectPath" : "ollama-wiretap-demo",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : null
 }

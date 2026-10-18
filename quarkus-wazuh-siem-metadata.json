@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.40.1",
-  "java": "21",
-  "substackUrl": "",
-  "projectPath": "quarkus-wazuh-siem",
-  "tests": {
-    "total": 6,
-    "passed": 5,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 1
+  "projectPath" : "quarkus-wazuh-siem",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 6,
+    "passed" : 5,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 1
   }
 }

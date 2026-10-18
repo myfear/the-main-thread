@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.31.2",
-  "java": "25",
-  "substackUrl": "https://www.the-main-thread.com/p/architecture-testing-java-quarkus-taikai",
-  "projectPath": "quarkus-taikai-demo",
-  "tests": {
-    "total": 9,
-    "passed": 9,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "quarkus-taikai-demo",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 9,
+    "passed" : 9,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }

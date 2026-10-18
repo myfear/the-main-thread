@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.38.1",
-  "java": "21",
-  "substackUrl": "",
-  "projectPath": "shieldstral-policy-gate",
-  "tests": {
-    "total": 8,
-    "passed": 8,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "shieldstral-policy-gate",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 8,
+    "passed" : 8,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }

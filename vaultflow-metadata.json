@@ -1,13 +1,15 @@
 {
-  "quarkus": "3.36.2",
-  "java": "25",
-  "substackUrl": "",
-  "projectPath": "vaultflow",
-  "tests": {
-    "total": 3,
-    "passed": 3,
-    "failed": 0,
-    "errors": 0,
-    "skipped": 0
+  "projectPath" : "vaultflow",
+  "sourceSha" : "9cf843a6b80108722d9df7e38d583e4747c7f870",
+  "runNumber" : 183,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 3,
+    "passed" : 3,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
   }
 }
