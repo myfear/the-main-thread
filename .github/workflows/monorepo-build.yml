@@ -46,8 +46,8 @@ jobs:
         run: |
           jbang .github/scripts/ProjectCatalog.java discover --output plan/catalog.json
           jbang .github/scripts/ProjectCatalog.java matrix \
-            --event "$EVENT_NAME" --base "$BASE_SHA" --head "$GITHUB_SHA" \
-            --build-all "$BUILD_ALL" --output plan/matrix.json --github-output "$GITHUB_OUTPUT"
+            --event "$EVENT_NAME" --base "${BASE_SHA:-HEAD}" --head "$GITHUB_SHA" \
+            --build-all "${BUILD_ALL:-false}" --output plan/matrix.json --github-output "$GITHUB_OUTPUT"
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         with:
           name: catalog-plan
