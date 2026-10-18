@@ -16,6 +16,7 @@
         <quarkus.platform.version>3.37.0</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-flow-0-11-workflows-not-rules</substack-article.url>
     </properties>
 
     <dependencyManagement>

@@ -32,6 +32,7 @@
     <!-- Override on the CLI: mvn liberty:dev -Dliberty.http.port=9081 -->
     <liberty.http.port>9080</liberty.http.port>
     <liberty.https.port>9443</liberty.https.port>
+      <substack-article.url>https://www.the-main-thread.com/p/microprofile-config-health-fault-tolerance-jwt-open-liberty</substack-article.url>
   </properties>
 
   <dependencyManagement>

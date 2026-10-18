@@ -28,6 +28,7 @@
         <quarkus.version>${quarkus.platform.version}</quarkus.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-flamme-deployment-topologies</substack-article.url>
     </properties>
 
     <dependencyManagement>

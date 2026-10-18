@@ -13,6 +13,7 @@
         <maven.compiler.release>24</maven.compiler.release>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>6.0.3</junit.version>
+        <substack-article.url>https://www.the-main-thread.com/p/java-24-markdown-javadoc-maven-tutorial</substack-article.url>
     </properties>
 
     <dependencies>

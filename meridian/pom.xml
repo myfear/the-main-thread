@@ -16,6 +16,7 @@
         <quarkus.platform.version>3.34.5</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-agent-readiness</substack-article.url>
     </properties>
 
     <dependencyManagement>

@@ -17,6 +17,7 @@
         <quarkus-qubit.version>1.0.0</quarkus-qubit.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-qubit-jpa-criteria-lambda-queries</substack-article.url>
     </properties>
 
     <dependencyManagement>

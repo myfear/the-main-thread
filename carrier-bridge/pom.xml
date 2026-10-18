@@ -17,6 +17,7 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.6</surefire-plugin.version>
         <quarkus-wiremock.version>1.6.3</quarkus-wiremock.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-rest-client-timeouts-retries-redaction</substack-article.url>
     </properties>
 
     <dependencyManagement>

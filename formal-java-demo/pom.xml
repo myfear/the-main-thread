@@ -13,6 +13,7 @@
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <junit.version>5.14.4</junit.version>
         <americium.version>2.2.2</americium.version>
+        <substack-article.url>https://www.the-main-thread.com/p/java-formal-verification</substack-article.url>
     </properties>
 
     <dependencies>

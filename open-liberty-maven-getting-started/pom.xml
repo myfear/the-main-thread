@@ -15,6 +15,7 @@
         <openliberty.version>26.0.0.6</openliberty.version>
         <liberty.var.http.port>9080</liberty.var.http.port>
         <liberty.var.https.port>9443</liberty.var.https.port>
+        <substack-article.url>https://www.the-main-thread.com/p/open-liberty-maven-getting-started</substack-article.url>
     </properties>
 
     <dependencies>

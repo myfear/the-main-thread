@@ -17,6 +17,7 @@
         <quarkus.platform.version>3.32.1</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.2</surefire-plugin.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-form-login-github-oidc-remember-me-jpa</substack-article.url>
     </properties>
 
     <dependencyManagement>

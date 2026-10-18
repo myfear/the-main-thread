@@ -9,6 +9,7 @@
 
     <properties>
         <maven.compiler.release>25</maven.compiler.release>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-langchain4j-mcp-tool-agents</substack-article.url>
     </properties>
 
     <modules>

@@ -17,6 +17,7 @@
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.6</surefire-plugin.version>
         <j-api-proxy.version>0.1.0-alpha</j-api-proxy.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-native-j-api-proxy</substack-article.url>
     </properties>
 
     <dependencyManagement>

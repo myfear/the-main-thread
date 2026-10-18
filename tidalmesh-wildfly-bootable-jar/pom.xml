@@ -22,6 +22,7 @@
         <version.wildfly>41.0.0.Final</version.wildfly>
         <version.wildfly.cloud>9.2.3.Final</version.wildfly.cloud>
         <version.wildfly.maven.plugin>6.0.0.Final</version.wildfly.maven.plugin>
+        <substack-article.url>https://www.the-main-thread.com/p/wildfly-41-bootable-jar-kubernetes</substack-article.url>
     </properties>
 
     <dependencyManagement>

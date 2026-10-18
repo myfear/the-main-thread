@@ -19,6 +19,7 @@
         <quarkus.platform.group-id>io.quarkus.platform</quarkus.platform.group-id>
         <quarkus.platform.version>3.28.4</quarkus.platform.version>
         <quarkus-quickjs4j.version>0.0.3</quarkus-quickjs4j.version>
+        <substack-article.url>https://www.the-main-thread.com/p/quarkus-quickjs4j-carrier-webhook-transformer</substack-article.url>
     </properties>
 
     <dependencyManagement>

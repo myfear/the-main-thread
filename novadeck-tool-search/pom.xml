@@ -16,6 +16,7 @@
         <quarkus.platform.version>3.35.1</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <substack-article.url>https://www.the-main-thread.com/p/langchain4j-tool-search-quarkus-ollama</substack-article.url>
     </properties>
 
     <dependencyManagement>
