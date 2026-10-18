@@ -1,0 +1,228 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173e34" />
+    <title>Glühwein & good company · The Main Thread</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="app.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to ordering</a>
+    <header class="site-header">
+      <a class="brand" href="/">
+        The Main Thread
+        <span aria-hidden="true"></span>
+      </a>
+      <nav aria-label="Demo pages">
+        <a href="/" aria-current="page">Your order</a>
+        <a href="/counter.html" target="_blank" rel="noopener">
+          Stall counter
+          <span class="new-tab">(new tab)</span>
+        </a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="welcome" aria-labelledby="page-title">
+        <div>
+          <h1 id="page-title">
+            Glühwein &
+            <br />
+            <em>good company.</em>
+          </h1>
+          <p>Choose something warm. We’ll let you know when it’s ready.</p>
+        </div>
+        <div class="stall-sign">
+          <svg viewBox="0 0 32 32" aria-hidden="true">
+            <path
+              d="M16 2v28M2 16h28M6 6l20 20M6 26 26 6M12 6l4 4 4-4M12 26l4-4 4 4M6 12l4 4-4 4M26 12l-4 4 4 4"
+            />
+          </svg>
+          <span>Winter market</span>
+          <strong>Stall No. 25</strong>
+          <span>One warm cup at a time</span>
+        </div>
+      </section>
+      <div class="order-layout">
+        <section class="menu" aria-labelledby="menu-title">
+          <div class="section-heading">
+            <h2 id="menu-title">Something to warm up with</h2>
+            <span>Demo menu</span>
+          </div>
+          <form id="order-form">
+            <fieldset class="drinks">
+              <legend>Choose your drink</legend>
+              <label class="drink-option">
+                <input type="radio" name="drink" value="RED" checked />
+                <span class="cup red" aria-hidden="true">
+                  <svg viewBox="0 0 32 32">
+                    <path
+                      d="M7 12h17v12a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4V12Zm17 2h2a4 4 0 0 1 0 8h-2M12 8c-3-3 3-3 0-6M19 8c-3-3 3-3 0-6"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  <strong>Classic Glühwein</strong>
+                  <small>Red wine, orange & winter spices</small>
+                </span>
+                <span class="drink-note">The market classic</span>
+              </label>
+              <label class="drink-option">
+                <input type="radio" name="drink" value="WHITE" />
+                <span class="cup gold" aria-hidden="true">
+                  <svg viewBox="0 0 32 32">
+                    <path
+                      d="M7 12h17v12a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4V12Zm17 2h2a4 4 0 0 1 0 8h-2M12 8c-3-3 3-3 0-6M19 8c-3-3 3-3 0-6"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  <strong>White Glühwein</strong>
+                  <small>White wine, apple & a little cinnamon</small>
+                </span>
+                <span class="drink-note">Bright & spiced</span>
+              </label>
+              <label class="drink-option">
+                <input type="radio" name="drink" value="APPLE" />
+                <span class="cup green" aria-hidden="true">
+                  <svg viewBox="0 0 32 32">
+                    <path
+                      d="M7 12h17v12a4 4 0 0 1-4 4h-9a4 4 0 0 1-4-4V12Zm17 2h2a4 4 0 0 1 0 8h-2M12 8c-3-3 3-3 0-6M19 8c-3-3 3-3 0-6"
+                    />
+                  </svg>
+                </span>
+                <span>
+                  <strong>Spiced apple punch</strong>
+                  <small>Warm apple, clove & orange</small>
+                </span>
+                <span class="drink-note">Alcohol-free</span>
+              </label>
+            </fieldset>
+            <div class="form-fields">
+              <label>
+                Your first name
+                <input
+                  id="name"
+                  name="name"
+                  maxlength="32"
+                  required
+                  autocomplete="given-name"
+                  placeholder="For the name on your ticket"
+                />
+              </label>
+              <label>
+                Cups
+                <select id="quantity" name="quantity" aria-label="Cups">
+                  <option>1</option>
+                  <option>2</option>
+                  <option>3</option>
+                  <option>4</option>
+                  <option>5</option>
+                  <option>6</option>
+                </select>
+              </label>
+            </div>
+            <button class="primary" id="place-order" type="submit">
+              Place your order
+              <span aria-hidden="true">→</span>
+            </button>
+            <p class="form-note">
+              A local demo. No payment, no actual drinks. Sadly.
+            </p>
+            <p id="form-error" class="error" role="alert" hidden></p>
+          </form>
+        </section>
+        <section class="ticket" aria-labelledby="ticket-title">
+          <div class="ticket-top">
+            <h2 id="ticket-title" tabindex="-1">Your market ticket</h2>
+            <span id="ticket-number">No order yet</span>
+          </div>
+          <div id="empty-ticket" class="empty-ticket">
+            <svg viewBox="0 0 32 32" aria-hidden="true">
+              <path d="M8 3h16v26l-4-2-4 2-4-2-4 2V3Zm4 7h8m-8 5h8m-8 5h5" />
+            </svg>
+            <h3>A warm cup has your name on it.</h3>
+            <p>
+              Place an order and follow it from the queue to the counter, right
+              here.
+            </p>
+            <p class="small">
+              You run the stall, too.
+              <br />
+              Open the counter to prepare your drink.
+            </p>
+          </div>
+          <div id="active-ticket" hidden>
+            <p id="ticket-name" class="ticket-name"></p>
+            <p id="ticket-drink" class="ticket-drink"></p>
+            <div
+              id="order-status"
+              class="order-status"
+              role="status"
+              aria-live="polite"
+            >
+              <h3 id="status-title"></h3>
+              <p id="status-description"></p>
+            </div>
+            <ol class="steps" aria-label="Order progress">
+              <li data-stage="QUEUED">
+                <span>1</span>
+                Queued
+              </li>
+              <li data-stage="PREPARING">
+                <span>2</span>
+                Preparing
+              </li>
+              <li data-stage="READY">
+                <span>3</span>
+                Ready
+              </li>
+            </ol>
+            <div class="connection">
+              <span id="connection-state" role="status">Connecting…</span>
+              <button type="button" class="text-button" id="toggle-stream">
+                Disconnect
+              </button>
+            </div>
+            <p id="stale-note" class="stale-note" hidden></p>
+            <button type="button" id="new-order" class="secondary">
+              Order another round
+            </button>
+          </div>
+          <p id="ticket-error" class="error" role="alert" hidden></p>
+        </section>
+      </div>
+      <section class="try-it" aria-labelledby="try-title">
+        <h2 id="try-title">Take a stroll. Your ticket will catch up.</h2>
+        <p>
+          Place an order, then open the
+          <a href="/counter.html" target="_blank" rel="noopener">
+            stall counter in a new tab
+          </a>
+          . Disconnect your ticket, prepare the drink at the counter, and
+          reconnect. Its latest state arrives without a page refresh.
+        </p>
+      </section>
+      <details class="inspector">
+        <summary>
+          Under the counter
+          <span>Connection & received updates</span>
+        </summary>
+        <p>
+          HTTP places the order. Server-Sent Events deliver complete snapshots.
+          Reconnecting recovers the current state; it does not replay every
+          missed step.
+        </p>
+        <ol id="event-log" class="event-log">
+          <li>No ticket connected yet.</li>
+        </ol>
+        <pre id="payload">Place an order to inspect its snapshot.</pre>
+      </details>
+    </main>
+    <footer>
+      <span>A winter experiment from The Main Thread</span>
+      <span>Java 25 · Quarkus · Server-Sent Events</span>
+    </footer>
+  </body>
+</html>

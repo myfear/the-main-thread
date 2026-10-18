@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="utf-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1" />
+    <meta name="theme-color" content="#173e34" />
+    <title>Stall counter · Glühwein live orders</title>
+    <link rel="stylesheet" href="styles.css" />
+    <script type="module" src="counter.js"></script>
+  </head>
+  <body>
+    <a class="skip-link" href="#main">Skip to counter</a>
+    <header class="site-header">
+      <a class="brand" href="/">
+        The Main Thread
+        <span aria-hidden="true"></span>
+      </a>
+      <nav aria-label="Demo pages">
+        <a href="/">Your order</a>
+        <a href="/counter.html" aria-current="page">Stall counter</a>
+      </nav>
+    </header>
+    <main id="main">
+      <section class="welcome counter-welcome">
+        <div>
+          <h1>
+            The warm side
+            <br />
+            <em>of the counter.</em>
+          </h1>
+          <p>Prepare a round. Make someone’s winter a little warmer.</p>
+        </div>
+        <div class="counter-connection">
+          <span id="board-connection" role="status">
+            Connecting to the stall…
+          </span>
+          <p>Live orders · Stall No. 25</p>
+        </div>
+      </section>
+      <p class="counter-help">
+        This is the demo’s operator view. Changes here update customer tickets
+        live.
+      </p>
+      <p id="counter-error" class="error" role="alert" hidden></p>
+      <p id="board-announcement" class="sr-only" role="status"></p>
+      <div id="empty-board" class="empty-board" hidden>
+        <h2>The kettle’s warm. The queue is empty.</h2>
+        <p>
+          <a href="/" target="_blank" rel="noopener">
+            Place the first order in a new tab
+          </a>
+          , then come back to prepare it.
+        </p>
+      </div>
+      <div class="board" id="board">
+        <section class="lane" aria-labelledby="queued-title">
+          <h2 id="queued-title">
+            Queued
+            <span id="queued-count">0</span>
+          </h2>
+          <div id="queued-orders" class="order-list"></div>
+        </section>
+        <section class="lane" aria-labelledby="preparing-title">
+          <h2 id="preparing-title">
+            Preparing
+            <span id="preparing-count">0</span>
+          </h2>
+          <div id="preparing-orders" class="order-list"></div>
+        </section>
+        <section class="lane ready-lane" aria-labelledby="ready-title">
+          <h2 id="ready-title">
+            Ready to collect
+            <span id="ready-count">0</span>
+          </h2>
+          <div id="ready-orders" class="order-list"></div>
+        </section>
+      </div>
+      <p class="form-note">
+        Orders live in memory, up to 100 per run. Restart the application for a
+        fresh market.
+      </p>
+    </main>
+    <footer>
+      <span>A winter experiment from The Main Thread</span>
+      <span>Local demo · no real orders or payments</span>
+    </footer>
+  </body>
+</html>
