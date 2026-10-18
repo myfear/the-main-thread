@@ -1,0 +1,7 @@
+{"eventId":"p12","requestId":"pay-1","endpoint":"/pay","attempt":2,"outcome":"error","durationMs":160}
+{"eventId":"c21","requestId":"cart-2","endpoint":"/cart","attempt":1,"outcome":"ok","durationMs":80}
+{"eventId":"c11","requestId":"cart-1","endpoint":"/cart","attempt":1,"outcome":"error","durationMs":200}
+{"eventId":"p21","requestId":"pay-2","endpoint":"/pay","attempt":1,"outcome":"ok","durationMs":120}
+{"eventId":"c12","requestId":"cart-1","endpoint":"/cart","attempt":2,"outcome":"ok","durationMs":50}
+{"eventId":"p11","requestId":"pay-1","endpoint":"/pay","attempt":1,"outcome":"error","durationMs":180}
+{"eventId":"c12","requestId":"cart-1","endpoint":"/cart","attempt":2,"outcome":"ok","durationMs":50}

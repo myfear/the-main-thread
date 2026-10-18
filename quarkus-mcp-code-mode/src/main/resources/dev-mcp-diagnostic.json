@@ -1,0 +1,16 @@
+{
+  "name": "devui-exceptions_getLastException",
+  "description": "Get the last exception that occurred in this Quarkus application. Returns compilation errors, deployment failures, hot-reload problems, or runtime exceptions with full stack traces and source locations. Deployment problems clear automatically on the next successful reload. For runtime exceptions, call clearLastException after handling to avoid seeing the same exception again.",
+  "inputSchema": {
+    "required": [
+      "maxCauseDepth"
+    ],
+    "type": "object",
+    "properties": {
+      "maxCauseDepth": {
+        "description": "Maximum depth for the cause chain (default 5)",
+        "type": "string"
+      }
+    }
+  }
+}

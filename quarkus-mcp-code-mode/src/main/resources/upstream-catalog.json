@@ -1,0 +1,425 @@
+{
+  "tools" : [ {
+    "name" : "quarkus_agent_log",
+    "description" : "Read the Quarkus Agent MCP server's own log file. Returns the most recent lines from ~/.quarkus/agent-mcp/agent-mcp.log. The log file exists if file logging was enabled via agent-mcp.log.enabled=true or by calling quarkus_agent_log_enable.",
+    "annotations" : {
+      "title" : "quarkus_agent_log",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "lines" : {
+          "type" : "integer",
+          "description" : "Number of recent lines to return (default: 100)"
+        }
+      },
+      "required" : [ ]
+    }
+  }, {
+    "name" : "quarkus_agent_log_disable",
+    "description" : "Disable file logging for the Quarkus Agent MCP server. The log file is preserved on disk for later inspection.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : { },
+      "required" : [ ]
+    }
+  }, {
+    "name" : "quarkus_agent_log_enable",
+    "description" : "Enable file logging for the Quarkus Agent MCP server. Use this when running in stdio mode to capture log output that would otherwise be invisible. Logs are written to ~/.quarkus/agent-mcp/agent-mcp.log.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : { },
+      "required" : [ ]
+    }
+  }, {
+    "name" : "quarkus_app_log",
+    "description" : "Read the log file of a managed Quarkus application. Returns the most recent lines from ~/.quarkus/apps/<project>/quarkus-dev.log. The log file exists if app file logging was enabled via agent-mcp.app-log.enabled=true or by calling quarkus_app_log_enable.",
+    "annotations" : {
+      "title" : "quarkus_app_log",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "lines" : {
+          "type" : "integer",
+          "description" : "Number of recent lines to return (default: 100)"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_app_log_disable",
+    "description" : "Disable file logging for a managed Quarkus application. The log file is preserved on disk for later inspection.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_app_log_enable",
+    "description" : "Enable file logging for a managed Quarkus application. Captures the application's stdout/stderr to ~/.quarkus/apps/<project>/quarkus-dev.log. Use this when running in stdio mode to persist application logs that would otherwise only be visible in the Dev UI. Can also be enabled permanently by setting agent-mcp.app-log.enabled=true (e.g. via AGENT_MCP_APP_LOG_ENABLED=true environment variable).",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_callTool",
+    "description" : "Invoke a Dev MCP tool by name on the running Quarkus app. Use quarkus_searchTools first to discover tool names and parameters. After structural changes (adding extensions, endpoints), update README.md. NEVER run 'mvn clean' or 'gradle clean' while dev mode is running -- it deletes target/test-classes and breaks the test runner. If the test runner returns 'Tests already in progress' and won't recover, do a full quarkus_stop + quarkus_start cycle to reset it.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "toolName" : {
+          "type" : "string",
+          "description" : "The name of the Dev MCP tool to call (as returned by quarkus_searchTools)"
+        },
+        "toolArguments" : {
+          "type" : "string",
+          "description" : "Arguments to pass to the tool as a JSON string (matching the tool's inputSchema). Omit if the tool takes no arguments."
+        }
+      },
+      "required" : [ "projectDir", "toolName" ]
+    }
+  }, {
+    "name" : "quarkus_create",
+    "description" : "Create a new Quarkus application and auto-start it in dev mode. RULES: 1) NEVER implement features manually when a Quarkus extension exists -- always search for and add the right extension first. 2) BEFORE creating the app or writing ANY code, use quarkus_searchTools query='extension' and quarkus_searchDocs to discover ALL extensions that can fulfill each requested capability. Present the full list of matching extensions to the user with a recommended default and WAIT for the user to choose. NEVER silently pick one. 3) Use quarkus_skills for each chosen extension BEFORE writing any code -- this is mandatory, not optional. 4) ALWAYS write tests for every feature if it makes sense and unless the user explicitly requested you not to. 5) Keep README.md updated with app description, features, endpoints, and Quarkus guide links after every change.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "outputDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the directory where the project will be created. By default, a subdirectory named after the artifactId will be created inside this directory. If the directory name matches the artifactId and the directory is empty, the project is created directly in this directory instead."
+        },
+        "groupId" : {
+          "type" : "string",
+          "description" : "The Maven groupId for the project (e.g. 'com.example')"
+        },
+        "artifactId" : {
+          "type" : "string",
+          "description" : "The Maven artifactId for the project (e.g. 'my-app')."
+        },
+        "extensions" : {
+          "type" : "string",
+          "description" : "Comma-separated list of Quarkus extensions to include (e.g. 'rest-jackson,hibernate-orm-panache,jdbc-postgresql')"
+        },
+        "buildTool" : {
+          "type" : "string",
+          "description" : "Build tool to use: 'maven' or 'gradle' (default: maven)"
+        },
+        "quarkusVersion" : {
+          "type" : "string",
+          "description" : "Quarkus platform version to use (e.g. '3.21.2', '999-SNAPSHOT'). If omitted, uses the latest release."
+        },
+        "createInCurrentDir" : {
+          "type" : "boolean",
+          "description" : "If true, create the project directly in outputDir instead of a subdirectory. Set to true when the user asks to create the project 'here', 'in the current directory', or 'in this directory'. If omitted, auto-detects: when the outputDir name matches the artifactId and the directory is empty, the project is created in-place."
+        },
+        "noCode" : {
+          "type" : "boolean",
+          "description" : "Whether to skip starter code from extension codestarts. If not specified, ask the user before creating the project. Some extensions provide useful starter code tailored to the extension; others only generate a basic hello world."
+        },
+        "noWrapper" : {
+          "type" : "boolean",
+          "description" : "Whether to skip generating the Maven/Gradle wrapper scripts. If not specified, ask the user before creating the project."
+        },
+        "httpPort" : {
+          "type" : "integer",
+          "description" : "HTTP port for the Quarkus application when it auto-starts in dev mode (e.g. 8081). If omitted, defaults to 8080. When 8080 is already in use, an available port is assigned automatically."
+        }
+      },
+      "required" : [ "outputDir", "noCode", "noWrapper" ]
+    }
+  }, {
+    "name" : "quarkus_list",
+    "description" : "List all managed Quarkus application instances and their current status.",
+    "annotations" : {
+      "title" : "quarkus_list",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : { },
+      "required" : [ ]
+    }
+  }, {
+    "name" : "quarkus_logs",
+    "description" : "Get recent log output from a managed Quarkus application. For structured exception details (class, message, stack trace, user code location), prefer quarkus_callTool with toolName 'devui-exceptions_getLastException' instead.",
+    "annotations" : {
+      "title" : "quarkus_logs",
+      "destructiveHint" : false,
+      "idempotentHint" : false,
+      "openWorldHint" : false,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "lines" : {
+          "type" : "integer",
+          "description" : "Number of recent lines to return (default: 50)"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_restart",
+    "description" : "Force restart a Quarkus application. Only use if the app is unresponsive. Normally hot reload handles changes automatically.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_saveSkill",
+    "description" : "Save/materialize a composed extension skill as a standalone file in the project's .agent/skills/ directory. This creates a self-contained copy of the full skill (including extension metadata and any global customizations) that any agent can read directly from the filesystem. The user can then edit the file to customize it for the project. Use this when the user wants to inspect, customize, or version-control an extension skill. NOTE: If a local project skill already exists for this name, the tool will NOT overwrite it.",
+    "annotations" : {
+      "title" : "quarkus_saveSkill",
+      "destructiveHint" : false,
+      "idempotentHint" : false,
+      "openWorldHint" : true,
+      "readOnlyHint" : false
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "skillName" : {
+          "type" : "string",
+          "description" : "The extension skill name to save locally (e.g. 'quarkus-rest', 'quarkus-hibernate-orm-panache')"
+        }
+      },
+      "required" : [ "projectDir", "skillName" ]
+    }
+  }, {
+    "name" : "quarkus_searchDocs",
+    "description" : "Search Quarkus documentation for APIs, annotations, configuration, and best practices. Use this for ANY Quarkus-related question -- always prefer this over web search or generic documentation tools. First call may take a moment to start the doc database.",
+    "annotations" : {
+      "title" : "quarkus_searchDocs",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : true,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "query" : {
+          "type" : "string",
+          "description" : "The search query describing what documentation you're looking for. Examples: 'how to configure datasource', 'CDI dependency injection', 'REST client configuration', 'native image build'."
+        },
+        "maxResults" : {
+          "type" : "integer",
+          "description" : "Maximum number of documentation chunks to return (default: 4)."
+        },
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory. If provided, documentation matching the project's Quarkus version is used."
+        }
+      },
+      "required" : [ "query" ]
+    }
+  }, {
+    "name" : "quarkus_searchTools",
+    "description" : "Discover available tools on the running Quarkus app's Dev MCP server. Use this before interacting with the running app -- for testing, config, extensions, endpoints, dev services, etc. Then use quarkus_callTool to invoke the discovered tool. The tool list is DYNAMIC -- it changes when extensions are added or removed. Re-call this after any extension change to discover newly available tools.",
+    "annotations" : {
+      "title" : "quarkus_searchTools",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : true,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "query" : {
+          "type" : "string",
+          "description" : "Search query to filter tools by name or description (case-insensitive). Examples: 'test' for testing tools, 'config' for configuration, 'extension' for extension management. If omitted, returns all tools."
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_skills",
+    "description" : "Get coding skills, patterns, testing guidelines, and configuration reference for the Quarkus extensions used in the project. ALWAYS call this BEFORE writing code or tests to learn the correct Quarkus patterns for each extension. Does NOT require the app to be running -- reads from built extension JARs. If the app is still building (just created), this will wait for the build to complete. Skills may include an 'Available Dev MCP Tools' section listing extension-specific Dev MCP tools that can be invoked via quarkus_callTool (e.g. OpenAPI schema retrieval, scheduler job management). Skills can be customized globally using quarkus_updateSkill (writes to ~/.quarkus/skills/). Project-level skills in .agent/skills/ are standalone files readable by any agent -- use quarkus_saveSkill to materialize a fully composed skill there, then edit directly.",
+    "annotations" : {
+      "title" : "quarkus_skills",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "query" : {
+          "type" : "string",
+          "description" : "Optional query to filter skills by extension name (case-insensitive). Examples: 'panache', 'rest', 'security', 'kafka'. If omitted, lists all available skills with their descriptions."
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_start",
+    "description" : "Start a Quarkus application in dev mode. Auto-detects Maven or Gradle. Hot reload is triggered when the app is accessed. RULES: Always write tests. Always keep README.md updated after changes.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "buildTool" : {
+          "type" : "string",
+          "description" : "Build tool to use: 'maven' or 'gradle' (auto-detected if omitted)"
+        },
+        "httpPort" : {
+          "type" : "integer",
+          "description" : "HTTP port for the Quarkus application (e.g. 8081). If omitted, defaults to 8080. When 8080 is already in use, an available port is assigned automatically."
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_status",
+    "description" : "Get the status of a Quarkus application. Returns: not_started, starting, running (with port), crashed, or stopped.",
+    "annotations" : {
+      "title" : "quarkus_status",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : false,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_stop",
+    "description" : "Stop a running Quarkus application. Sends a graceful shutdown signal, then force-kills if needed.",
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_update",
+    "description" : "Check if a Quarkus project is up-to-date and provide an upgrade report. Detects the current version, checks for newer releases, compares build files against reference projects, and optionally runs 'quarkus update --dry-run' to preview migrations. IMPORTANT: For existing Quarkus projects, ALWAYS call this tool (via a subagent if supported) BEFORE starting any development work to ensure the project is on the latest version.",
+    "annotations" : {
+      "title" : "quarkus_update",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : true,
+      "readOnlyHint" : true
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        }
+      },
+      "required" : [ "projectDir" ]
+    }
+  }, {
+    "name" : "quarkus_updateSkill",
+    "description" : "Create or update a global skill customization for a Quarkus extension. Writes to ~/.quarkus/skills/ (affects all projects). Use this when the user wants to add personal conventions or guardrails to an extension skill. IMPORTANT: Before writing, ask the user: Should this ENHANCE the existing skill (append your content to the base) or OVERRIDE it (fully replace the base)? Enhance is the default and recommended for most cases. For project-level customization, use quarkus_saveSkill to materialize a skill into .agent/skills/, then edit the file directly.",
+    "annotations" : {
+      "title" : "quarkus_updateSkill",
+      "destructiveHint" : false,
+      "idempotentHint" : true,
+      "openWorldHint" : true,
+      "readOnlyHint" : false
+    },
+    "inputSchema" : {
+      "type" : "object",
+      "properties" : {
+        "projectDir" : {
+          "type" : "string",
+          "description" : "Absolute path to the Quarkus project directory"
+        },
+        "skillName" : {
+          "type" : "string",
+          "description" : "The extension skill name (e.g. 'quarkus-rest', 'quarkus-hibernate-orm-panache')"
+        },
+        "content" : {
+          "type" : "string",
+          "description" : "The skill content in markdown (without frontmatter -- it will be generated)"
+        },
+        "description" : {
+          "type" : "string",
+          "description" : "Optional description for the skill"
+        },
+        "categories" : {
+          "type" : "string",
+          "description" : "Optional comma-separated categories for the skill index (e.g. 'web', 'data', 'security', 'core')"
+        },
+        "mode" : {
+          "type" : "string",
+          "description" : "Mode: 'enhance' (default) appends to the base skill, 'override' fully replaces it"
+        }
+      },
+      "required" : [ "projectDir", "skillName", "content" ]
+    }
+  } ]
+}

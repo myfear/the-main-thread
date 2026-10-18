@@ -1,0 +1,10 @@
+[
+  { "name": "quarkus_status", "arguments": { "projectDir": "/absolute/path/to/app" } },
+  { "name": "quarkus_logs", "arguments": { "projectDir": "/absolute/path/to/app", "lines": 200 } },
+  { "name": "quarkus_searchTools", "arguments": { "projectDir": "/absolute/path/to/app", "query": "exception" } },
+  { "name": "quarkus_callTool", "arguments": {
+      "projectDir": "/absolute/path/to/app",
+      "toolName": "devui-exceptions_getLastException",
+      "toolArguments": "{\"maxCauseDepth\":\"3\"}"
+  } }
+]

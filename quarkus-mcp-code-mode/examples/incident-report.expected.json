@@ -1,0 +1,7 @@
+{
+  "endpoints": [
+    {"endpoint":"/cart","requestCount":2,"finalFailureCount":0,"p95DurationMs":80},
+    {"endpoint":"/pay","requestCount":2,"finalFailureCount":1,"p95DurationMs":120}
+  ],
+  "failedAfterRetry": ["pay-1"]
+}
