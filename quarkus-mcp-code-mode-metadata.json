@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-mcp-code-mode",
+  "sourceSha" : "8c251fb9c6cde6d4a8d0feee5b4ada920ee575da",
+  "runNumber" : 186,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
