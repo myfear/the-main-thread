@@ -1,0 +1,4 @@
+# Python is confined to the local image inference runtime.
+mflux==0.23.0
+# Pillow 13.0.0 imports a numbers helper absent from Python 3.12.
+pillow==12.3.0
