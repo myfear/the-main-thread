@@ -1,0 +1,29 @@
+{
+  "name": "bob-openui-pilot",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "generate": "node --import tsx scripts/generate-prompt.ts",
+    "check:prompt": "node --import tsx scripts/generate-prompt.ts --check",
+    "build": "npm run check:prompt && tsc --noEmit && vite build",
+    "dev": "vite --host 127.0.0.1"
+  },
+  "dependencies": {
+    "@openuidev/react-lang": "1.0.1",
+    "@openuidev/lang-core": "1.0.1",
+    "@openuidev/react-headless": "0.18.1",
+    "react": "19.3.1",
+    "react-dom": "19.3.1",
+    "zod": "4.3.6",
+    "zustand": "4.5.7"
+  },
+  "devDependencies": {
+    "@types/node": "24.10.1",
+    "@types/react": "19.2.14",
+    "@types/react-dom": "19.2.3",
+    "tsx": "4.21.0",
+    "typescript": "5.9.3",
+    "vite": "8.3.4"
+  }
+}

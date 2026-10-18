@@ -1,0 +1,5 @@
+export const examples = {
+  workshop: 'On 14 October 2026, Taylor Quinn ran a 90-minute hybrid Java testing workshop for Example Runtime. There were 32 people on site and 18 remote. 41 participants completed the exercise. The outcome was that participants could write a test for an HTTP endpoint. Materials: https://example.org/java-testing. We have not recorded the event name yet.',
+  video: 'Taylor Quinn published a video about Example Runtime on 12 October 2026. Title: Testing an HTTP endpoint in Java. Link: https://example.org/videos/java-testing. The video demonstrates request validation and an integration test. View counts have not been collected yet; do not estimate them.',
+  inconsistent: 'Taylor Quinn ran a hybrid Java workshop on 14 October 2026. There were 32 on-site attendees and 18 remote attendees. 55 participants completed the exercise. The workshop lasted 90 minutes. Materials: https://example.org/java-testing. Please show the numbers as supplied and identify anything that needs checking.',
+};
