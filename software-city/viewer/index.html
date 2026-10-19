@@ -1,0 +1,128 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f7f3">
+    <meta name="description" content="Explore committed Java types as an interactive software city.">
+    <title>Software City — The Main Thread</title>
+  </head>
+  <body>
+    <a class="skip-link" href="#search">Skip to type search</a>
+    <main class="app-shell">
+      <header class="page-header">
+        <div class="heading">
+          <h1>Software City</h1>
+          <span class="publication">The Main Thread</span>
+        </div>
+        <button id="open-file" class="primary" type="button">Open JSON</button>
+        <input id="file-input" type="file" accept=".json,application/json" hidden aria-label="Open snapshot JSON">
+      </header>
+      <section class="snapshot-bar" aria-label="Loaded snapshot">
+        <div class="snapshot-description">
+          <strong id="repository-name">Opening snapshot…</strong>
+          <span id="snapshot-summary"></span>
+          <code id="commit"></code>
+        </div>
+        <button id="load-sample" class="text-button" type="button">Load Quarkus sample</button>
+      </section>
+      <p id="status" class="status" role="status">Opening the bundled Quarkus snapshot.</p>
+      <section id="import-error" class="notice error-notice" role="alert" hidden>
+        <p id="error-message"></p>
+        <button id="dismiss-error" class="text-button" type="button">Dismiss</button>
+      </section>
+      <details id="diagnostics" class="notice diagnostics" hidden>
+        <summary id="diagnostics-summary">Analysis diagnostics</summary>
+        <p id="diagnostics-description"></p>
+        <ul id="diagnostics-list"></ul>
+      </details>
+      <section class="toolbar" aria-label="City controls">
+        <div class="field search-field">
+          <label for="search">Find a type</label>
+          <input id="search" type="search" placeholder="Type, package, or module" autocomplete="off"
+            spellcheck="false" aria-controls="type-list" disabled>
+        </div>
+        <div class="field color-field">
+          <label for="color-metric">Color buildings by</label>
+          <select id="color-metric" disabled>
+            <option value="methodCount">Methods</option>
+            <option value="fieldCount">Fields</option>
+            <option value="sourceLines">Source lines</option>
+          </select>
+        </div>
+        <button id="reset-camera" type="button" disabled>Reset camera</button>
+        <button id="focus-selected" type="button" disabled>Focus selected</button>
+      </section>
+      <div class="workspace">
+        <aside class="type-browser" aria-labelledby="types-heading">
+          <div class="panel-heading">
+            <h2 id="types-heading">Types</h2>
+            <span id="result-count" class="count">0</span>
+          </div>
+          <ul id="type-list" class="type-list" aria-label="Type results"></ul>
+          <p id="no-results" class="empty-message" hidden>No types match. Try a shorter name or clear the search.</p>
+        </aside>
+        <section class="city-panel" aria-label="Software city">
+          <div id="canvas-host" class="canvas-host" data-state="loading"></div>
+          <div id="city-message" class="city-message" role="status">
+            <h2 id="city-message-heading">Opening the city</h2>
+            <p id="city-message-text">Loading the bundled snapshot.</p>
+          </div>
+          <div id="legend" class="legend" aria-label="Building color scale">
+            <span>Color: <span id="legend-title">Methods</span></span>
+            <div class="legend-scale" aria-hidden="true"></div>
+            <div class="legend-values"><span>0</span><span id="legend-max">0</span></div>
+            <p class="legend-encoding">Height: methods · Footprint: fields</p>
+          </div>
+          <div id="drop-hint" class="drop-hint" hidden>Drop a snapshot JSON to open it</div>
+        </section>
+        <aside class="inspector" aria-labelledby="inspector-heading">
+          <div class="panel-heading"><h2 id="inspector-heading">Type details</h2></div>
+          <div id="selection-empty" class="selection-empty">
+            <p>Select a building or a type from the list to inspect its declared members and source.</p>
+          </div>
+          <div id="selection-details" hidden>
+            <h3 id="selected-name" class="qualified-name"></h3>
+            <p id="selected-kind" class="type-kind"></p>
+            <table class="metrics">
+              <caption>Snapshot metrics</caption>
+              <tbody>
+                <tr><th scope="row">Declared methods</th><td id="method-count"></td></tr>
+                <tr><th scope="row">Constructors</th><td id="constructor-count"></td></tr>
+                <tr><th scope="row">Fields</th><td id="field-count"></td></tr>
+                <tr><th scope="row">Source lines</th><td id="source-lines"></td></tr>
+              </tbody>
+            </table>
+            <h4>Source</h4>
+            <code id="selected-source" class="source-location"></code>
+            <p id="selected-span" class="small"></p>
+            <button id="copy-location" type="button">Copy path:line</button>
+            <p id="copy-status" class="small" role="status"></p>
+            <dl class="type-context">
+              <dt>Module</dt><dd id="selected-module"></dd>
+              <dt>Package</dt><dd id="selected-package"></dd>
+            </dl>
+            <details class="identity-details">
+              <summary>Type ID</summary><code id="selected-id"></code>
+            </details>
+          </div>
+          <details class="reading-guide">
+            <summary>How to read the city</summary>
+            <p>Packages are districts; top-level Java types are buildings.</p>
+            <p>Height represents declared methods. Footprint uses the field count, with a minimum area and a cap for large types.</p>
+            <p>Height = 1 + 2 × log₂(1 + methods). Area weight = 1 + min(63, fields). Gutters keep buildings apart.</p>
+            <p>Changing the color metric does not change a building's dimensions. Exact counts are shown above. Source lines describe a declaration's inclusive span, not logical lines of code.</p>
+          </details>
+        </aside>
+      </div>
+      <footer class="workspace-footer">
+        <p id="city-instructions">Drag to orbit · Right-drag to pan · Scroll or pinch to zoom</p>
+        <p>Search dims other buildings. Use ↓ from search, then arrow keys and Enter to select.</p>
+      </footer>
+    </main>
+    <div id="tooltip" class="tooltip" role="tooltip" hidden>
+      <strong id="tooltip-name"></strong><span id="tooltip-metrics"></span><code id="tooltip-module"></code>
+    </div>
+    <script type="module" src="/src/main.ts"></script>
+  </body>
+</html>

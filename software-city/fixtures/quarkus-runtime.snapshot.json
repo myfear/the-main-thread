@@ -1,0 +1,6814 @@
+{
+  "schemaVersion" : "1",
+  "mode" : "snapshot",
+  "repository" : {
+    "displayName" : "quarkus"
+  },
+  "revisions" : {
+    "base" : null,
+    "head" : {
+      "ref" : "866d824ae3cca9750702e8eb4caea636d086ed48",
+      "commit" : "866d824ae3cca9750702e8eb4caea636d086ed48"
+    }
+  },
+  "types" : [ {
+    "id" : "core/runtime::io.quarkus.Generated",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus",
+    "qualifiedName" : "io.quarkus.Generated",
+    "typeName" : "Generated",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/Generated.java",
+        "startLine" : 23,
+        "endLine" : 54
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 32
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.devservices.crossclassloader.runtime.ComparableDevServicesConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.devservices.crossclassloader.runtime",
+    "qualifiedName" : "io.quarkus.devservices.crossclassloader.runtime.ComparableDevServicesConfig",
+    "typeName" : "ComparableDevServicesConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "record"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/devservices/crossclassloader/runtime/ComparableDevServicesConfig.java",
+        "startLine" : 19,
+        "endLine" : 129
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 0,
+        "fieldCount" : 4,
+        "sourceLines" : 111
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.devservices.crossclassloader.runtime.DevServiceOwner",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.devservices.crossclassloader.runtime",
+    "qualifiedName" : "io.quarkus.devservices.crossclassloader.runtime.DevServiceOwner",
+    "typeName" : "DevServiceOwner",
+    "typeKind" : {
+      "base" : null,
+      "head" : "record"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/devservices/crossclassloader/runtime/DevServiceOwner.java",
+        "startLine" : 11,
+        "endLine" : 14
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 3,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.devservices.crossclassloader.runtime.RunningDevServicesRegistry",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.devservices.crossclassloader.runtime",
+    "qualifiedName" : "io.quarkus.devservices.crossclassloader.runtime.RunningDevServicesRegistry",
+    "typeName" : "RunningDevServicesRegistry",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/devservices/crossclassloader/runtime/RunningDevServicesRegistry.java",
+        "startLine" : 23,
+        "endLine" : 178
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 9,
+        "constructorCount" : 1,
+        "fieldCount" : 5,
+        "sourceLines" : 156
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.devservices.crossclassloader.runtime.RunningService",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.devservices.crossclassloader.runtime",
+    "qualifiedName" : "io.quarkus.devservices.crossclassloader.runtime.RunningService",
+    "typeName" : "RunningService",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/devservices/crossclassloader/runtime/RunningService.java",
+        "startLine" : 14,
+        "endLine" : 68
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 7,
+        "constructorCount" : 1,
+        "fieldCount" : 7,
+        "sourceLines" : 55
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.logging.Log",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.logging",
+    "qualifiedName" : "io.quarkus.logging.Log",
+    "typeName" : "Log",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/logging/Log.java",
+        "startLine" : 13,
+        "endLine" : 2930
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 202,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 2918
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.logging.LoggingFilter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.logging",
+    "qualifiedName" : "io.quarkus.logging.LoggingFilter",
+    "typeName" : "LoggingFilter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/logging/LoggingFilter.java",
+        "startLine" : 13,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 9
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.Application",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.Application",
+    "typeName" : "Application",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/Application.java",
+        "startLine" : 24,
+        "endLine" : 287
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 13,
+        "constructorCount" : 1,
+        "fieldCount" : 12,
+        "sourceLines" : 264
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ApplicationConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ApplicationConfig",
+    "typeName" : "ApplicationConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ApplicationConfig.java",
+        "startLine" : 13,
+        "endLine" : 34
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 22
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ApplicationLifecycleManager",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ApplicationLifecycleManager",
+    "typeName" : "ApplicationLifecycleManager",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ApplicationLifecycleManager.java",
+        "startLine" : 48,
+        "endLine" : 495
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 19,
+        "constructorCount" : 1,
+        "fieldCount" : 18,
+        "sourceLines" : 448
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BannerRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BannerRecorder",
+    "typeName" : "BannerRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BannerRecorder.java",
+        "startLine" : 8,
+        "endLine" : 36
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 29
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BannerRuntimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BannerRuntimeConfig",
+    "typeName" : "BannerRuntimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BannerRuntimeConfig.java",
+        "startLine" : 11,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BlockingOperationControl",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BlockingOperationControl",
+    "typeName" : "BlockingOperationControl",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BlockingOperationControl.java",
+        "startLine" : 3,
+        "endLine" : 19
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 17
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BlockingOperationNotAllowedException",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BlockingOperationNotAllowedException",
+    "typeName" : "BlockingOperationNotAllowedException",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BlockingOperationNotAllowedException.java",
+        "startLine" : 6,
+        "endLine" : 23
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 4,
+        "fieldCount" : 0,
+        "sourceLines" : 18
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BlockingOperationRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BlockingOperationRecorder",
+    "typeName" : "BlockingOperationRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BlockingOperationRecorder.java",
+        "startLine" : 7,
+        "endLine" : 13
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BuildAnalyticsConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BuildAnalyticsConfig",
+    "typeName" : "BuildAnalyticsConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BuildAnalyticsConfig.java",
+        "startLine" : 17,
+        "endLine" : 37
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 21
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.BuilderConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.BuilderConfig",
+    "typeName" : "BuilderConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/BuilderConfig.java",
+        "startLine" : 17,
+        "endLine" : 52
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 36
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.CommandLineRuntimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.CommandLineRuntimeConfig",
+    "typeName" : "CommandLineRuntimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/CommandLineRuntimeConfig.java",
+        "startLine" : 15,
+        "endLine" : 26
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ConfigConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ConfigConfig",
+    "typeName" : "ConfigConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ConfigConfig.java",
+        "startLine" : 23,
+        "endLine" : 81
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 6,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 59
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.DebugRuntimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.DebugRuntimeConfig",
+    "typeName" : "DebugRuntimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/DebugRuntimeConfig.java",
+        "startLine" : 11,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ErrorPageAction",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ErrorPageAction",
+    "typeName" : "ErrorPageAction",
+    "typeKind" : {
+      "base" : null,
+      "head" : "record"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ErrorPageAction.java",
+        "startLine" : 3,
+        "endLine" : 5
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 3
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ExecutionMode",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ExecutionMode",
+    "typeName" : "ExecutionMode",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ExecutionMode.java",
+        "startLine" : 6,
+        "endLine" : 30
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 25
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ExecutionModeManager",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ExecutionModeManager",
+    "typeName" : "ExecutionModeManager",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ExecutionModeManager.java",
+        "startLine" : 3,
+        "endLine" : 26
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 24
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ExecutorRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ExecutorRecorder",
+    "typeName" : "ExecutorRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ExecutorRecorder.java",
+        "startLine" : 25,
+        "endLine" : 228
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 6,
+        "constructorCount" : 1,
+        "fieldCount" : 3,
+        "sourceLines" : 204
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.IOThreadDetector",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.IOThreadDetector",
+    "typeName" : "IOThreadDetector",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/IOThreadDetector.java",
+        "startLine" : 3,
+        "endLine" : 6
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ImageMode",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ImageMode",
+    "typeName" : "ImageMode",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ImageMode.java",
+        "startLine" : 8,
+        "endLine" : 48
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 41
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.JVMUnsafeWarningsControl",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.JVMUnsafeWarningsControl",
+    "typeName" : "JVMUnsafeWarningsControl",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/JVMUnsafeWarningsControl.java",
+        "startLine" : 7,
+        "endLine" : 37
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 31
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.LaunchConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.LaunchConfig",
+    "typeName" : "LaunchConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/LaunchConfig.java",
+        "startLine" : 11,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.LaunchMode",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.LaunchMode",
+    "typeName" : "LaunchMode",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/LaunchMode.java",
+        "startLine" : 3,
+        "endLine" : 96
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 11,
+        "constructorCount" : 1,
+        "fieldCount" : 8,
+        "sourceLines" : 94
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.LiveReloadConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.LiveReloadConfig",
+    "typeName" : "LiveReloadConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/LiveReloadConfig.java",
+        "startLine" : 15,
+        "endLine" : 67
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 8,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 53
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.LocalesBuildTimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.LocalesBuildTimeConfig",
+    "typeName" : "LocalesBuildTimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/LocalesBuildTimeConfig.java",
+        "startLine" : 17,
+        "endLine" : 55
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 39
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.MockedThroughWrapper",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.MockedThroughWrapper",
+    "typeName" : "MockedThroughWrapper",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/MockedThroughWrapper.java",
+        "startLine" : 9,
+        "endLine" : 13
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.NativeImageRuntimePropertiesRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.NativeImageRuntimePropertiesRecorder",
+    "typeName" : "NativeImageRuntimePropertiesRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/NativeImageRuntimePropertiesRecorder.java",
+        "startLine" : 11,
+        "endLine" : 29
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 19
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ObjectSubstitution",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ObjectSubstitution",
+    "typeName" : "ObjectSubstitution",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ObjectSubstitution.java",
+        "startLine" : 13,
+        "endLine" : 19
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.PreloadClassesRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.PreloadClassesRecorder",
+    "typeName" : "PreloadClassesRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/PreloadClassesRecorder.java",
+        "startLine" : 13,
+        "endLine" : 67
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 55
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.PreventFurtherStepsException",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.PreventFurtherStepsException",
+    "typeName" : "PreventFurtherStepsException",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/PreventFurtherStepsException.java",
+        "startLine" : 11,
+        "endLine" : 31
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 3,
+        "fieldCount" : 1,
+        "sourceLines" : 21
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.Quarkus",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.Quarkus",
+    "typeName" : "Quarkus",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/Quarkus.java",
+        "startLine" : 32,
+        "endLine" : 331
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 14,
+        "constructorCount" : 0,
+        "fieldCount" : 10,
+        "sourceLines" : 300
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.QuarkusApplication",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.QuarkusApplication",
+    "typeName" : "QuarkusApplication",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/QuarkusApplication.java",
+        "startLine" : 7,
+        "endLine" : 10
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.QuarkusBindException",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.QuarkusBindException",
+    "typeName" : "QuarkusBindException",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/QuarkusBindException.java",
+        "startLine" : 9,
+        "endLine" : 40
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 1,
+        "fieldCount" : 2,
+        "sourceLines" : 32
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ResettableSystemProperties",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ResettableSystemProperties",
+    "typeName" : "ResettableSystemProperties",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ResettableSystemProperties.java",
+        "startLine" : 12,
+        "endLine" : 47
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 36
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.RuntimeValue",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.RuntimeValue",
+    "typeName" : "RuntimeValue",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/RuntimeValue.java",
+        "startLine" : 10,
+        "endLine" : 29
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 2,
+        "fieldCount" : 1,
+        "sourceLines" : 20
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.Shutdown",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.Shutdown",
+    "typeName" : "Shutdown",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/Shutdown.java",
+        "startLine" : 47,
+        "endLine" : 58
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ShutdownContext",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ShutdownContext",
+    "typeName" : "ShutdownContext",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ShutdownContext.java",
+        "startLine" : 13,
+        "endLine" : 45
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 33
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ShutdownDelayInitiated",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ShutdownDelayInitiated",
+    "typeName" : "ShutdownDelayInitiated",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ShutdownDelayInitiated.java",
+        "startLine" : 50,
+        "endLine" : 60
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ShutdownDelayInitiatedEvent",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ShutdownDelayInitiatedEvent",
+    "typeName" : "ShutdownDelayInitiatedEvent",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ShutdownDelayInitiatedEvent.java",
+        "startLine" : 16,
+        "endLine" : 17
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 2
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ShutdownEvent",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ShutdownEvent",
+    "typeName" : "ShutdownEvent",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ShutdownEvent.java",
+        "startLine" : 17,
+        "endLine" : 57
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 2,
+        "fieldCount" : 1,
+        "sourceLines" : 41
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.SnapStartRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.SnapStartRecorder",
+    "typeName" : "SnapStartRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/SnapStartRecorder.java",
+        "startLine" : 8,
+        "endLine" : 18
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.Startup",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.Startup",
+    "typeName" : "Startup",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/Startup.java",
+        "startLine" : 83,
+        "endLine" : 94
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.StartupContext",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.StartupContext",
+    "typeName" : "StartupContext",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/StartupContext.java",
+        "startLine" : 14,
+        "endLine" : 108
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 7,
+        "constructorCount" : 1,
+        "fieldCount" : 7,
+        "sourceLines" : 95
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.StartupEvent",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.StartupEvent",
+    "typeName" : "StartupEvent",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/StartupEvent.java",
+        "startLine" : 20,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 2
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.StartupTask",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.StartupTask",
+    "typeName" : "StartupTask",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/StartupTask.java",
+        "startLine" : 6,
+        "endLine" : 10
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.TemplateHtmlBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.TemplateHtmlBuilder",
+    "typeName" : "TemplateHtmlBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/TemplateHtmlBuilder.java",
+        "startLine" : 15,
+        "endLine" : 581
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 25,
+        "constructorCount" : 6,
+        "fieldCount" : 35,
+        "sourceLines" : 567
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ThreadPoolConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ThreadPoolConfig",
+    "typeName" : "ThreadPoolConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ThreadPoolConfig.java",
+        "startLine" : 18,
+        "endLine" : 88
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 9,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 71
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ValueRegistryConfigSource",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ValueRegistryConfigSource",
+    "typeName" : "ValueRegistryConfigSource",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ValueRegistryConfigSource.java",
+        "startLine" : 27,
+        "endLine" : 57
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 31
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ValueRegistryImpl",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime",
+    "qualifiedName" : "io.quarkus.runtime.ValueRegistryImpl",
+    "typeName" : "ValueRegistryImpl",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ValueRegistryImpl.java",
+        "startLine" : 27,
+        "endLine" : 145
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 7,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 119
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.CommandLineArguments",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.CommandLineArguments",
+    "typeName" : "CommandLineArguments",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/CommandLineArguments.java",
+        "startLine" : 11,
+        "endLine" : 15
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocDefault",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocDefault",
+    "typeName" : "ConfigDocDefault",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocDefault.java",
+        "startLine" : 19,
+        "endLine" : 27
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 9
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocEnum",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocEnum",
+    "typeName" : "ConfigDocEnum",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocEnum.java",
+        "startLine" : 14,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocEnumValue",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocEnumValue",
+    "typeName" : "ConfigDocEnumValue",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocEnumValue.java",
+        "startLine" : 16,
+        "endLine" : 27
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocFilename",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocFilename",
+    "typeName" : "ConfigDocFilename",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocFilename.java",
+        "startLine" : 16,
+        "endLine" : 22
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocIgnore",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocIgnore",
+    "typeName" : "ConfigDocIgnore",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocIgnore.java",
+        "startLine" : 14,
+        "endLine" : 18
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocMapKey",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocMapKey",
+    "typeName" : "ConfigDocMapKey",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocMapKey.java",
+        "startLine" : 15,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocPrefix",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocPrefix",
+    "typeName" : "ConfigDocPrefix",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocPrefix.java",
+        "startLine" : 18,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigDocSection",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigDocSection",
+    "typeName" : "ConfigDocSection",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigDocSection.java",
+        "startLine" : 15,
+        "endLine" : 27
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 13
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigGroup",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigGroup",
+    "typeName" : "ConfigGroup",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigGroup.java",
+        "startLine" : 14,
+        "endLine" : 17
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigPhase",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigPhase",
+    "typeName" : "ConfigPhase",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigPhase.java",
+        "startLine" : 3,
+        "endLine" : 51
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 1,
+        "fieldCount" : 4,
+        "sourceLines" : 49
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.ConfigRoot",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.ConfigRoot",
+    "typeName" : "ConfigRoot",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/ConfigRoot.java",
+        "startLine" : 35,
+        "endLine" : 45
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.DevMCPEnableByDefault",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.DevMCPEnableByDefault",
+    "typeName" : "DevMCPEnableByDefault",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/DevMCPEnableByDefault.java",
+        "startLine" : 13,
+        "endLine" : 18
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.IgnoreProperty",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.IgnoreProperty",
+    "typeName" : "IgnoreProperty",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/IgnoreProperty.java",
+        "startLine" : 13,
+        "endLine" : 16
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.JsonRpcDescription",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.JsonRpcDescription",
+    "typeName" : "JsonRpcDescription",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/JsonRpcDescription.java",
+        "startLine" : 14,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.JsonRpcUsage",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.JsonRpcUsage",
+    "typeName" : "JsonRpcUsage",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/JsonRpcUsage.java",
+        "startLine" : 13,
+        "endLine" : 18
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.QuarkusMain",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.QuarkusMain",
+    "typeName" : "QuarkusMain",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/QuarkusMain.java",
+        "startLine" : 27,
+        "endLine" : 35
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 9
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RecordableConstructor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RecordableConstructor",
+    "typeName" : "RecordableConstructor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RecordableConstructor.java",
+        "startLine" : 17,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.Recorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.Recorder",
+    "typeName" : "Recorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/Recorder.java",
+        "startLine" : 35,
+        "endLine" : 38
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RegisterForProxy",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RegisterForProxy",
+    "typeName" : "RegisterForProxy",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RegisterForProxy.java",
+        "startLine" : 13,
+        "endLine" : 39
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 27
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RegisterForReflection",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RegisterForReflection",
+    "typeName" : "RegisterForReflection",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RegisterForReflection.java",
+        "startLine" : 17,
+        "endLine" : 69
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 9,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 53
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RegisterResourceBundle",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RegisterResourceBundle",
+    "typeName" : "RegisterResourceBundle",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RegisterResourceBundle.java",
+        "startLine" : 12,
+        "endLine" : 40
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 29
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RegisterResources",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RegisterResources",
+    "typeName" : "RegisterResources",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RegisterResources.java",
+        "startLine" : 12,
+        "endLine" : 37
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 26
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RelaxedValidation",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RelaxedValidation",
+    "typeName" : "RelaxedValidation",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RelaxedValidation.java",
+        "startLine" : 14,
+        "endLine" : 17
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.RuntimeInit",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.RuntimeInit",
+    "typeName" : "RuntimeInit",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/RuntimeInit.java",
+        "startLine" : 11,
+        "endLine" : 14
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.StaticInit",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.StaticInit",
+    "typeName" : "StaticInit",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/StaticInit.java",
+        "startLine" : 11,
+        "endLine" : 14
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.StaticInitSafe",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.StaticInitSafe",
+    "typeName" : "StaticInitSafe",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/StaticInitSafe.java",
+        "startLine" : 45,
+        "endLine" : 49
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.annotations.Usage",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.annotations",
+    "qualifiedName" : "io.quarkus.runtime.annotations.Usage",
+    "typeName" : "Usage",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/annotations/Usage.java",
+        "startLine" : 5,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 16
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.AbstractConfigBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.AbstractConfigBuilder",
+    "typeName" : "AbstractConfigBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/AbstractConfigBuilder.java",
+        "startLine" : 31,
+        "endLine" : 166
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 22,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 136
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ArrayListFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ArrayListFactory",
+    "typeName" : "ArrayListFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ArrayListFactory.java",
+        "startLine" : 9,
+        "endLine" : 23
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 15
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.CharsetConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.CharsetConverter",
+    "typeName" : "CharsetConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/CharsetConverter.java",
+        "startLine" : 15,
+        "endLine" : 38
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 24
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.CidrAddressConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.CidrAddressConverter",
+    "typeName" : "CidrAddressConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/CidrAddressConverter.java",
+        "startLine" : 17,
+        "endLine" : 34
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 18
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConfigBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConfigBuilder",
+    "typeName" : "ConfigBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConfigBuilder.java",
+        "startLine" : 11,
+        "endLine" : 17
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConfigDiagnostic",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConfigDiagnostic",
+    "typeName" : "ConfigDiagnostic",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConfigDiagnostic.java",
+        "startLine" : 36,
+        "endLine" : 303
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 17,
+        "constructorCount" : 1,
+        "fieldCount" : 6,
+        "sourceLines" : 268
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConfigRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConfigRecorder",
+    "typeName" : "ConfigRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConfigRecorder.java",
+        "startLine" : 22,
+        "endLine" : 118
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 97
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConfigSourceOrdinal",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConfigSourceOrdinal",
+    "typeName" : "ConfigSourceOrdinal",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConfigSourceOrdinal.java",
+        "startLine" : 8,
+        "endLine" : 36
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 29
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConfigUtils",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConfigUtils",
+    "typeName" : "ConfigUtils",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConfigUtils.java",
+        "startLine" : 19,
+        "endLine" : 187
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 10,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 169
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConfigurationException",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConfigurationException",
+    "typeName" : "ConfigurationException",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConfigurationException.java",
+        "startLine" : 12,
+        "endLine" : 100
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 7,
+        "fieldCount" : 2,
+        "sourceLines" : 89
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ConverterSupport",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ConverterSupport",
+    "typeName" : "ConverterSupport",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ConverterSupport.java",
+        "startLine" : 10,
+        "endLine" : 32
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 1,
+        "fieldCount" : 2,
+        "sourceLines" : 23
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.DisableableConfigSource",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.DisableableConfigSource",
+    "typeName" : "DisableableConfigSource",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/DisableableConfigSource.java",
+        "startLine" : 10,
+        "endLine" : 74
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 7,
+        "constructorCount" : 1,
+        "fieldCount" : 3,
+        "sourceLines" : 65
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.DurationConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.DurationConverter",
+    "typeName" : "DurationConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/DurationConverter.java",
+        "startLine" : 15,
+        "endLine" : 134
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 0,
+        "fieldCount" : 3,
+        "sourceLines" : 120
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.FixedAtBuildTimeConfigBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.FixedAtBuildTimeConfigBuilder",
+    "typeName" : "FixedAtBuildTimeConfigBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/FixedAtBuildTimeConfigBuilder.java",
+        "startLine" : 9,
+        "endLine" : 58
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 50
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.HashSetFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.HashSetFactory",
+    "typeName" : "HashSetFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/HashSetFactory.java",
+        "startLine" : 9,
+        "endLine" : 38
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 30
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.InetAddressConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.InetAddressConverter",
+    "typeName" : "InetAddressConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/InetAddressConverter.java",
+        "startLine" : 18,
+        "endLine" : 39
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 22
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.InetSocketAddressConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.InetSocketAddressConverter",
+    "typeName" : "InetSocketAddressConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/InetSocketAddressConverter.java",
+        "startLine" : 20,
+        "endLine" : 54
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 35
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.LocaleConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.LocaleConverter",
+    "typeName" : "LocaleConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/LocaleConverter.java",
+        "startLine" : 16,
+        "endLine" : 43
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 28
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.MemorySize",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.MemorySize",
+    "typeName" : "MemorySize",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/MemorySize.java",
+        "startLine" : 15,
+        "endLine" : 1020
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 60,
+        "constructorCount" : 2,
+        "fieldCount" : 5,
+        "sourceLines" : 1006
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.MemorySizeConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.MemorySizeConverter",
+    "typeName" : "MemorySizeConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/MemorySizeConverter.java",
+        "startLine" : 17,
+        "endLine" : 33
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 17
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.NameIterator",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.NameIterator",
+    "typeName" : "NameIterator",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/NameIterator.java",
+        "startLine" : 7,
+        "endLine" : 341
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 29,
+        "constructorCount" : 3,
+        "fieldCount" : 10,
+        "sourceLines" : 335
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.NormalizeRootHttpPathConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.NormalizeRootHttpPathConverter",
+    "typeName" : "NormalizeRootHttpPathConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/NormalizeRootHttpPathConverter.java",
+        "startLine" : 16,
+        "endLine" : 40
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 25
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.PathConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.PathConverter",
+    "typeName" : "PathConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/PathConverter.java",
+        "startLine" : 16,
+        "endLine" : 25
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.PropertiesUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.PropertiesUtil",
+    "typeName" : "PropertiesUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/PropertiesUtil.java",
+        "startLine" : 7,
+        "endLine" : 55
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 49
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.QuarkusConfigBuilderCustomizer",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.QuarkusConfigBuilderCustomizer",
+    "typeName" : "QuarkusConfigBuilderCustomizer",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/QuarkusConfigBuilderCustomizer.java",
+        "startLine" : 24,
+        "endLine" : 149
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 2,
+        "fieldCount" : 6,
+        "sourceLines" : 126
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.QuarkusConfigFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.QuarkusConfigFactory",
+    "typeName" : "QuarkusConfigFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/QuarkusConfigFactory.java",
+        "startLine" : 10,
+        "endLine" : 46
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 37
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.QuarkusConfigValue",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.QuarkusConfigValue",
+    "typeName" : "QuarkusConfigValue",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/QuarkusConfigValue.java",
+        "startLine" : 6,
+        "endLine" : 117
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 16,
+        "constructorCount" : 0,
+        "fieldCount" : 8,
+        "sourceLines" : 112
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.RegexConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.RegexConverter",
+    "typeName" : "RegexConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/RegexConverter.java",
+        "startLine" : 15,
+        "endLine" : 29
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 15
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.RuntimeConfigBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.RuntimeConfigBuilder",
+    "typeName" : "RuntimeConfigBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/RuntimeConfigBuilder.java",
+        "startLine" : 14,
+        "endLine" : 63
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 50
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.StaticInitConfigBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.StaticInitConfigBuilder",
+    "typeName" : "StaticInitConfigBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/StaticInitConfigBuilder.java",
+        "startLine" : 9,
+        "endLine" : 23
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 15
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.Substitutions",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.Substitutions",
+    "typeName" : "Substitutions",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/Substitutions.java",
+        "startLine" : 32,
+        "endLine" : 785
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 754
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.SystemOnlySourcesConfigBuilder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.SystemOnlySourcesConfigBuilder",
+    "typeName" : "SystemOnlySourcesConfigBuilder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/SystemOnlySourcesConfigBuilder.java",
+        "startLine" : 5,
+        "endLine" : 15
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 11
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.TrimmedStringConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.TrimmedStringConverter",
+    "typeName" : "TrimmedStringConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/TrimmedStringConverter.java",
+        "startLine" : 5,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 20
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.configuration.ZoneIdConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.configuration",
+    "qualifiedName" : "io.quarkus.runtime.configuration.ZoneIdConverter",
+    "typeName" : "ZoneIdConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/configuration/ZoneIdConverter.java",
+        "startLine" : 15,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.console.ConsoleRuntimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.console",
+    "qualifiedName" : "io.quarkus.runtime.console.ConsoleRuntimeConfig",
+    "typeName" : "ConsoleRuntimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/console/ConsoleRuntimeConfig.java",
+        "startLine" : 12,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.dev.io.NioThreadPoolRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.dev.io",
+    "qualifiedName" : "io.quarkus.runtime.dev.io.NioThreadPoolRecorder",
+    "typeName" : "NioThreadPoolRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/dev/io/NioThreadPoolRecorder.java",
+        "startLine" : 7,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 18
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.AwtImageIO",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.AwtImageIO",
+    "typeName" : "AwtImageIO",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 19,
+        "endLine" : 39
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 21
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.ClassDefinerSubstitutions",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.ClassDefinerSubstitutions",
+    "typeName" : "ClassDefinerSubstitutions",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/ClassDefinerSubstitutions.java",
+        "startLine" : 10,
+        "endLine" : 18
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 9
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.ConfigurationSubstitutions",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.ConfigurationSubstitutions",
+    "typeName" : "ConfigurationSubstitutions",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/ConfigurationSubstitutions.java",
+        "startLine" : 60,
+        "endLine" : 61
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 2
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.DiagnosticPrinter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.DiagnosticPrinter",
+    "typeName" : "DiagnosticPrinter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/DiagnosticPrinter.java",
+        "startLine" : 10,
+        "endLine" : 48
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 39
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.DisableLoggingFeature",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.DisableLoggingFeature",
+    "typeName" : "DisableLoggingFeature",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/DisableLoggingFeature.java",
+        "startLine" : 13,
+        "endLine" : 58
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 3,
+        "sourceLines" : 46
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.DisabledSSLContext",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.DisabledSSLContext",
+    "typeName" : "DisabledSSLContext",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/DisabledSSLContext.java",
+        "startLine" : 20,
+        "endLine" : 106
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 87
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.GraalVM",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.GraalVM",
+    "typeName" : "GraalVM",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/GraalVM.java",
+        "startLine" : 23,
+        "endLine" : 280
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 258
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet4AnyAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet4AnyAccessor",
+    "typeName" : "Inet4AnyAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 17,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet4AnyCidrAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet4AnyCidrAccessor",
+    "typeName" : "Inet4AnyCidrAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 47,
+        "endLine" : 70
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 24
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet4BroadcastAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet4BroadcastAccessor",
+    "typeName" : "Inet4BroadcastAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 29,
+        "endLine" : 33
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet4LoopbackAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet4LoopbackAccessor",
+    "typeName" : "Inet4LoopbackAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 23,
+        "endLine" : 27
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet6AnyAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet6AnyAccessor",
+    "typeName" : "Inet6AnyAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 35,
+        "endLine" : 39
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet6AnyCidrAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet6AnyCidrAccessor",
+    "typeName" : "Inet6AnyCidrAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 72,
+        "endLine" : 95
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 24
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Inet6LoopbackAccessor",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Inet6LoopbackAccessor",
+    "typeName" : "Inet6LoopbackAccessor",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 41,
+        "endLine" : 45
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.InetRunTime",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.InetRunTime",
+    "typeName" : "InetRunTime",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/InetRunTime.java",
+        "startLine" : 9,
+        "endLine" : 15
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 5,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.JVMChecksFeature",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.JVMChecksFeature",
+    "typeName" : "JVMChecksFeature",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/JVMChecksFeature.java",
+        "startLine" : 12,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.LoggingSubstitutions",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.LoggingSubstitutions",
+    "typeName" : "LoggingSubstitutions",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/LoggingSubstitutions.java",
+        "startLine" : 67,
+        "endLine" : 68
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 2
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.QuarkusSubstitution",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.QuarkusSubstitution",
+    "typeName" : "QuarkusSubstitution",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/QuarkusSubstitution.java",
+        "startLine" : 9,
+        "endLine" : 17
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 9
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.SkipConsoleServiceProvidersFeature",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.SkipConsoleServiceProvidersFeature",
+    "typeName" : "SkipConsoleServiceProvidersFeature",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/SkipConsoleServiceProvidersFeature.java",
+        "startLine" : 16,
+        "endLine" : 54
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 39
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_quarkus_bootstrap_logging_InitialConfigurator",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_quarkus_bootstrap_logging_InitialConfigurator",
+    "typeName" : "Target_io_quarkus_bootstrap_logging_InitialConfigurator",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/LoggingSubstitutions.java",
+        "startLine" : 36,
+        "endLine" : 41
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_quarkus_runtime_configuration_QuarkusConfigFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_quarkus_runtime_configuration_QuarkusConfigFactory",
+    "typeName" : "Target_io_quarkus_runtime_configuration_QuarkusConfigFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/ConfigurationSubstitutions.java",
+        "startLine" : 54,
+        "endLine" : 58
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM",
+    "typeName" : "Target_io_quarkus_runtime_graal_GraalVM",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/GraalVM.java",
+        "startLine" : 285,
+        "endLine" : 288
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM_Distribution",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM_Distribution",
+    "typeName" : "Target_io_quarkus_runtime_graal_GraalVM_Distribution",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/GraalVM.java",
+        "startLine" : 290,
+        "endLine" : 293
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM_Version",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM_Version",
+    "typeName" : "Target_io_quarkus_runtime_graal_GraalVM_Version",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/GraalVM.java",
+        "startLine" : 295,
+        "endLine" : 298
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM_VersionParseHelper",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_quarkus_runtime_graal_GraalVM_VersionParseHelper",
+    "typeName" : "Target_io_quarkus_runtime_graal_GraalVM_VersionParseHelper",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/GraalVM.java",
+        "startLine" : 300,
+        "endLine" : 303
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_smallrye_common_net_CidrAddress",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_smallrye_common_net_CidrAddress",
+    "typeName" : "Target_io_smallrye_common_net_CidrAddress",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_io_smallrye_common_net_CidrAddress.java",
+        "startLine" : 16,
+        "endLine" : 36
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 1,
+        "fieldCount" : 2,
+        "sourceLines" : 21
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_smallrye_common_net_Inet",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_smallrye_common_net_Inet",
+    "typeName" : "Target_io_smallrye_common_net_Inet",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_io_smallrye_common_net_Inet.java",
+        "startLine" : 17,
+        "endLine" : 39
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 5,
+        "sourceLines" : 23
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_io_smallrye_config_SmallRyeConfigProviderResolver",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_io_smallrye_config_SmallRyeConfigProviderResolver",
+    "typeName" : "Target_io_smallrye_config_SmallRyeConfigProviderResolver",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/ConfigurationSubstitutions.java",
+        "startLine" : 12,
+        "endLine" : 52
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 7,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 41
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_awt_Color",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_awt_Color",
+    "typeName" : "Target_java_awt_Color",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 62,
+        "endLine" : 68
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_awt_GraphicsEnvironment",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_awt_GraphicsEnvironment",
+    "typeName" : "Target_java_awt_GraphicsEnvironment",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 41,
+        "endLine" : 52
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_awt_Toolkit",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_awt_Toolkit",
+    "typeName" : "Target_java_awt_Toolkit",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 54,
+        "endLine" : 60
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_awt_geom_AffineTransform",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_awt_geom_AffineTransform",
+    "typeName" : "Target_java_awt_geom_AffineTransform",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 86,
+        "endLine" : 93
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 8
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_awt_geom_Path2D",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_awt_geom_Path2D",
+    "typeName" : "Target_java_awt_geom_Path2D",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 95,
+        "endLine" : 101
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_awt_image_Kernel",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_awt_image_Kernel",
+    "typeName" : "Target_java_awt_image_Kernel",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 103,
+        "endLine" : 110
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 8
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_java_util_logging_Logger",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_java_util_logging_Logger",
+    "typeName" : "Target_java_util_logging_Logger",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/LoggingSubstitutions.java",
+        "startLine" : 43,
+        "endLine" : 54
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_javax_imageio_ImageIO",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_javax_imageio_ImageIO",
+    "typeName" : "Target_javax_imageio_ImageIO",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 128,
+        "endLine" : 143
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 16
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_javax_imageio_spi_IIORegistry",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_javax_imageio_spi_IIORegistry",
+    "typeName" : "Target_javax_imageio_spi_IIORegistry",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 70,
+        "endLine" : 76
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_javax_imageio_spi_ServiceRegistry",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_javax_imageio_spi_ServiceRegistry",
+    "typeName" : "Target_javax_imageio_spi_ServiceRegistry",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 78,
+        "endLine" : 84
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_javax_management_JMX",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_javax_management_JMX",
+    "typeName" : "Target_javax_management_JMX",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_javax_management_JMX.java",
+        "startLine" : 12,
+        "endLine" : 35
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 24
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_javax_net_ssl_SSLContext",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_javax_net_ssl_SSLContext",
+    "typeName" : "Target_javax_net_ssl_SSLContext",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_javax_net_ssl_SSLContext.java",
+        "startLine" : 15,
+        "endLine" : 82
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 68
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_org_jboss_logmanager_LogManager",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_org_jboss_logmanager_LogManager",
+    "typeName" : "Target_org_jboss_logmanager_LogManager",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/LoggingSubstitutions.java",
+        "startLine" : 56,
+        "endLine" : 65
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 10
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_org_jboss_logmanager_LoggerNode",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_org_jboss_logmanager_LoggerNode",
+    "typeName" : "Target_org_jboss_logmanager_LoggerNode",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/LoggingSubstitutions.java",
+        "startLine" : 19,
+        "endLine" : 25
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_org_slf4j_LoggerFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_org_slf4j_LoggerFactory",
+    "typeName" : "Target_org_slf4j_LoggerFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/LoggingSubstitutions.java",
+        "startLine" : 27,
+        "endLine" : 34
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 8
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_org_wildfly_common_net_CidrAddress",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_org_wildfly_common_net_CidrAddress",
+    "typeName" : "Target_org_wildfly_common_net_CidrAddress",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_org_wildfly_common_net_CidrAddress.java",
+        "startLine" : 16,
+        "endLine" : 37
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 22
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_org_wildfly_common_net_Inet",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_org_wildfly_common_net_Inet",
+    "typeName" : "Target_org_wildfly_common_net_Inet",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_org_wildfly_common_net_Inet.java",
+        "startLine" : 17,
+        "endLine" : 39
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 5,
+        "sourceLines" : 23
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_sun_awt_FontConfiguration",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_sun_awt_FontConfiguration",
+    "typeName" : "Target_sun_awt_FontConfiguration",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 120,
+        "endLine" : 126
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_sun_font_FontManagerNativeLibrary",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_sun_font_FontManagerNativeLibrary",
+    "typeName" : "Target_sun_font_FontManagerNativeLibrary",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/AwtImageIO.java",
+        "startLine" : 112,
+        "endLine" : 118
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.Target_sun_security_jca_JCAUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.Target_sun_security_jca_JCAUtil",
+    "typeName" : "Target_sun_security_jca_JCAUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/Target_sun_security_jca_JCAUtil.java",
+        "startLine" : 9,
+        "endLine" : 15
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.graal.TimingReplacement",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.graal",
+    "qualifiedName" : "io.quarkus.runtime.graal.TimingReplacement",
+    "typeName" : "TimingReplacement",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/graal/TimingReplacement.java",
+        "startLine" : 9,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.init.AbstractPreInitRunner",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.init",
+    "qualifiedName" : "io.quarkus.runtime.init.AbstractPreInitRunner",
+    "typeName" : "AbstractPreInitRunner",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/init/AbstractPreInitRunner.java",
+        "startLine" : 9,
+        "endLine" : 63
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 55
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.init.InitRuntimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.init",
+    "qualifiedName" : "io.quarkus.runtime.init.InitRuntimeConfig",
+    "typeName" : "InitRuntimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/init/InitRuntimeConfig.java",
+        "startLine" : 16,
+        "endLine" : 38
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 23
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.init.InitializationTaskRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.init",
+    "qualifiedName" : "io.quarkus.runtime.init.InitializationTaskRecorder",
+    "typeName" : "InitializationTaskRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/init/InitializationTaskRecorder.java",
+        "startLine" : 15,
+        "endLine" : 47
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 33
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.init.InitializeClassPreInitRunnable",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.init",
+    "qualifiedName" : "io.quarkus.runtime.init.InitializeClassPreInitRunnable",
+    "typeName" : "InitializeClassPreInitRunnable",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/init/InitializeClassPreInitRunnable.java",
+        "startLine" : 3,
+        "endLine" : 27
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 2,
+        "sourceLines" : 25
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.init.TimeZonePreInitRunnable",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.init",
+    "qualifiedName" : "io.quarkus.runtime.init.TimeZonePreInitRunnable",
+    "typeName" : "TimeZonePreInitRunnable",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/init/TimeZonePreInitRunnable.java",
+        "startLine" : 5,
+        "endLine" : 11
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.DecorateStackUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.DecorateStackUtil",
+    "typeName" : "DecorateStackUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/DecorateStackUtil.java",
+        "startLine" : 13,
+        "endLine" : 140
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 10,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 128
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.DiscoveredLogComponents",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.DiscoveredLogComponents",
+    "typeName" : "DiscoveredLogComponents",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/DiscoveredLogComponents.java",
+        "startLine" : 6,
+        "endLine" : 21
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 16
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.InheritableLevel",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.InheritableLevel",
+    "typeName" : "InheritableLevel",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/InheritableLevel.java",
+        "startLine" : 14,
+        "endLine" : 111
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 8,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 98
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.InheritableLevelConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.InheritableLevelConverter",
+    "typeName" : "InheritableLevelConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/InheritableLevelConverter.java",
+        "startLine" : 14,
+        "endLine" : 26
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 13
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LevelConverter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LevelConverter",
+    "typeName" : "LevelConverter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LevelConverter.java",
+        "startLine" : 17,
+        "endLine" : 28
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogBuildTimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogBuildTimeConfig",
+    "typeName" : "LogBuildTimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogBuildTimeConfig.java",
+        "startLine" : 17,
+        "endLine" : 65
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 49
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogCleanupFilter",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogCleanupFilter",
+    "typeName" : "LogCleanupFilter",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogCleanupFilter.java",
+        "startLine" : 13,
+        "endLine" : 62
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 1,
+        "fieldCount" : 3,
+        "sourceLines" : 50
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogCleanupFilterElement",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogCleanupFilterElement",
+    "typeName" : "LogCleanupFilterElement",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogCleanupFilterElement.java",
+        "startLine" : 6,
+        "endLine" : 50
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 6,
+        "constructorCount" : 3,
+        "fieldCount" : 3,
+        "sourceLines" : 45
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogFilterFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogFilterFactory",
+    "typeName" : "LogFilterFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogFilterFactory.java",
+        "startLine" : 11,
+        "endLine" : 57
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 47
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogMetricsHandler",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogMetricsHandler",
+    "typeName" : "LogMetricsHandler",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogMetricsHandler.java",
+        "startLine" : 19,
+        "endLine" : 45
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 1,
+        "fieldCount" : 1,
+        "sourceLines" : 27
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogMetricsHandlerRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogMetricsHandlerRecorder",
+    "typeName" : "LogMetricsHandlerRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogMetricsHandlerRecorder.java",
+        "startLine" : 18,
+        "endLine" : 53
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 4,
+        "sourceLines" : 36
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LogRuntimeConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LogRuntimeConfig",
+    "typeName" : "LogRuntimeConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LogRuntimeConfig.java",
+        "startLine" : 32,
+        "endLine" : 513
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 12,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 482
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.LoggingSetupRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.LoggingSetupRecorder",
+    "typeName" : "LoggingSetupRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/LoggingSetupRecorder.java",
+        "startLine" : 75,
+        "endLine" : 971
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 23,
+        "constructorCount" : 1,
+        "fieldCount" : 4,
+        "sourceLines" : 897
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.logging.NamedHandlerType",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.logging",
+    "qualifiedName" : "io.quarkus.runtime.logging.NamedHandlerType",
+    "typeName" : "NamedHandlerType",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/logging/NamedHandlerType.java",
+        "startLine" : 6,
+        "endLine" : 11
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.metrics.MetricsFactory",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.metrics",
+    "qualifiedName" : "io.quarkus.runtime.metrics.MetricsFactory",
+    "typeName" : "MetricsFactory",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/metrics/MetricsFactory.java",
+        "startLine" : 13,
+        "endLine" : 156
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 144
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.recording.substitutions.ZoneIdSubstitution",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.recording.substitutions",
+    "qualifiedName" : "io.quarkus.runtime.recording.substitutions.ZoneIdSubstitution",
+    "typeName" : "ZoneIdSubstitution",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/recording/substitutions/ZoneIdSubstitution.java",
+        "startLine" : 7,
+        "endLine" : 18
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.rest.DisabledRestEndpoints",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.rest",
+    "qualifiedName" : "io.quarkus.runtime.rest.DisabledRestEndpoints",
+    "typeName" : "DisabledRestEndpoints",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/rest/DisabledRestEndpoints.java",
+        "startLine" : 10,
+        "endLine" : 22
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 13
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.shutdown.ShutdownAction",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.shutdown",
+    "qualifiedName" : "io.quarkus.runtime.shutdown.ShutdownAction",
+    "typeName" : "ShutdownAction",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/shutdown/ShutdownAction.java",
+        "startLine" : 9,
+        "endLine" : 37
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 29
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.shutdown.ShutdownActionEvent",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.shutdown",
+    "qualifiedName" : "io.quarkus.runtime.shutdown.ShutdownActionEvent",
+    "typeName" : "ShutdownActionEvent",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/shutdown/ShutdownActionEvent.java",
+        "startLine" : 10,
+        "endLine" : 23
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 14
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.shutdown.ShutdownConfig",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.shutdown",
+    "qualifiedName" : "io.quarkus.runtime.shutdown.ShutdownConfig",
+    "typeName" : "ShutdownConfig",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/shutdown/ShutdownConfig.java",
+        "startLine" : 14,
+        "endLine" : 45
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 32
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.shutdown.ShutdownListener",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.shutdown",
+    "qualifiedName" : "io.quarkus.runtime.shutdown.ShutdownListener",
+    "typeName" : "ShutdownListener",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/shutdown/ShutdownListener.java",
+        "startLine" : 13,
+        "endLine" : 44
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 32
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.shutdown.ShutdownRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.shutdown",
+    "qualifiedName" : "io.quarkus.runtime.shutdown.ShutdownRecorder",
+    "typeName" : "ShutdownRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/shutdown/ShutdownRecorder.java",
+        "startLine" : 13,
+        "endLine" : 99
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 1,
+        "fieldCount" : 4,
+        "sourceLines" : 87
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ssl.SslContextConfiguration",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.ssl",
+    "qualifiedName" : "io.quarkus.runtime.ssl.SslContextConfiguration",
+    "typeName" : "SslContextConfiguration",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ssl/SslContextConfiguration.java",
+        "startLine" : 3,
+        "endLine" : 14
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.ssl.SslContextConfigurationRecorder",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.ssl",
+    "qualifiedName" : "io.quarkus.runtime.ssl.SslContextConfigurationRecorder",
+    "typeName" : "SslContextConfigurationRecorder",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/ssl/SslContextConfigurationRecorder.java",
+        "startLine" : 5,
+        "endLine" : 11
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 7
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.test.TestApplicationClassPredicate",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.test",
+    "qualifiedName" : "io.quarkus.runtime.test.TestApplicationClassPredicate",
+    "typeName" : "TestApplicationClassPredicate",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/test/TestApplicationClassPredicate.java",
+        "startLine" : 8,
+        "endLine" : 10
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 3
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.test.TestHttpEndpointProvider",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.test",
+    "qualifiedName" : "io.quarkus.runtime.test.TestHttpEndpointProvider",
+    "typeName" : "TestHttpEndpointProvider",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/test/TestHttpEndpointProvider.java",
+        "startLine" : 11,
+        "endLine" : 24
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 14
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.test.TestScopeSetup",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.test",
+    "qualifiedName" : "io.quarkus.runtime.test.TestScopeSetup",
+    "typeName" : "TestScopeSetup",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/test/TestScopeSetup.java",
+        "startLine" : 3,
+        "endLine" : 8
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.types.GenericArrayTypeImpl",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.types",
+    "qualifiedName" : "io.quarkus.runtime.types.GenericArrayTypeImpl",
+    "typeName" : "GenericArrayTypeImpl",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/types/GenericArrayTypeImpl.java",
+        "startLine" : 10,
+        "endLine" : 52
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 2,
+        "fieldCount" : 1,
+        "sourceLines" : 43
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.types.ParameterizedTypeImpl",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.types",
+    "qualifiedName" : "io.quarkus.runtime.types.ParameterizedTypeImpl",
+    "typeName" : "ParameterizedTypeImpl",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/types/ParameterizedTypeImpl.java",
+        "startLine" : 8,
+        "endLine" : 86
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 6,
+        "constructorCount" : 2,
+        "fieldCount" : 4,
+        "sourceLines" : 79
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.types.WildcardTypeImpl",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.types",
+    "qualifiedName" : "io.quarkus.runtime.types.WildcardTypeImpl",
+    "typeName" : "WildcardTypeImpl",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/types/WildcardTypeImpl.java",
+        "startLine" : 17,
+        "endLine" : 73
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 7,
+        "constructorCount" : 1,
+        "fieldCount" : 5,
+        "sourceLines" : 57
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.ClassPathUtils",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.ClassPathUtils",
+    "typeName" : "ClassPathUtils",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/ClassPathUtils.java",
+        "startLine" : 20,
+        "endLine" : 229
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 10,
+        "constructorCount" : 0,
+        "fieldCount" : 2,
+        "sourceLines" : 210
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.EnumerationUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.EnumerationUtil",
+    "typeName" : "EnumerationUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/EnumerationUtil.java",
+        "startLine" : 14,
+        "endLine" : 69
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 3,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 56
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.ExceptionUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.ExceptionUtil",
+    "typeName" : "ExceptionUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/ExceptionUtil.java",
+        "startLine" : 12,
+        "endLine" : 126
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 115
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.ForwardingExecutorService",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.ForwardingExecutorService",
+    "typeName" : "ForwardingExecutorService",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/ForwardingExecutorService.java",
+        "startLine" : 16,
+        "endLine" : 87
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 14,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 72
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.ForwardingScheduledExecutorService",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.ForwardingScheduledExecutorService",
+    "typeName" : "ForwardingScheduledExecutorService",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/ForwardingScheduledExecutorService.java",
+        "startLine" : 13,
+        "endLine" : 37
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 25
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.HashUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.HashUtil",
+    "typeName" : "HashUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/HashUtil.java",
+        "startLine" : 7,
+        "endLine" : 58
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 8,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 52
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.IsLinux",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.IsLinux",
+    "typeName" : "IsLinux",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/IsLinux.java",
+        "startLine" : 18,
+        "endLine" : 23
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.IsWindows",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.IsWindows",
+    "typeName" : "IsWindows",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/IsWindows.java",
+        "startLine" : 11,
+        "endLine" : 16
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.JavaVersionGreaterOrEqual25",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.JavaVersionGreaterOrEqual25",
+    "typeName" : "JavaVersionGreaterOrEqual25",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/JavaVersionGreaterOrEqual25.java",
+        "startLine" : 9,
+        "endLine" : 14
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.JavaVersionLessThan25",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.JavaVersionLessThan25",
+    "typeName" : "JavaVersionLessThan25",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/JavaVersionLessThan25.java",
+        "startLine" : 10,
+        "endLine" : 15
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.JavaVersionUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.JavaVersionUtil",
+    "typeName" : "JavaVersionUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/JavaVersionUtil.java",
+        "startLine" : 3,
+        "endLine" : 15
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 13
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.NoopShutdownScheduledExecutorService",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.NoopShutdownScheduledExecutorService",
+    "typeName" : "NoopShutdownScheduledExecutorService",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/NoopShutdownScheduledExecutorService.java",
+        "startLine" : 12,
+        "endLine" : 50
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 5,
+        "constructorCount" : 1,
+        "fieldCount" : 2,
+        "sourceLines" : 39
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.ProgrammingParadigm",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.ProgrammingParadigm",
+    "typeName" : "ProgrammingParadigm",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/ProgrammingParadigm.java",
+        "startLine" : 9,
+        "endLine" : 20
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 12
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.Reason",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.Reason",
+    "typeName" : "Reason",
+    "typeKind" : {
+      "base" : null,
+      "head" : "record"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/Reason.java",
+        "startLine" : 13,
+        "endLine" : 43
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 3,
+        "fieldCount" : 2,
+        "sourceLines" : 31
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.StepTiming",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.StepTiming",
+    "typeName" : "StepTiming",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/StepTiming.java",
+        "startLine" : 10,
+        "endLine" : 40
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 4,
+        "constructorCount" : 0,
+        "fieldCount" : 3,
+        "sourceLines" : 31
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "core/runtime::io.quarkus.runtime.util.StringUtil",
+    "module" : "core/runtime",
+    "packageName" : "io.quarkus.runtime.util",
+    "qualifiedName" : "io.quarkus.runtime.util.StringUtil",
+    "typeName" : "StringUtil",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "core/runtime/src/main/java/io/quarkus/runtime/util/StringUtil.java",
+        "startLine" : 10,
+        "endLine" : 235
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 13,
+        "constructorCount" : 1,
+        "fieldCount" : 0,
+        "sourceLines" : 226
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  } ],
+  "diagnostics" : [ ],
+  "summary" : {
+    "typeCountBase" : 0,
+    "typeCountHead" : 219,
+    "added" : 0,
+    "removed" : 0,
+    "modified" : 0,
+    "unchanged" : 219,
+    "incomplete" : false
+  }
+}

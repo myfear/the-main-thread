@@ -1,0 +1,503 @@
+{
+  "$schema": "https://json-schema.org/draft/2020-12/schema",
+  "$id": "https://www.the-main-thread.com/schemas/software-city-v1.schema.json",
+  "title": "Software City v1",
+  "type": "object",
+  "additionalProperties": false,
+  "required": [
+    "schemaVersion",
+    "mode",
+    "repository",
+    "revisions",
+    "types",
+    "diagnostics",
+    "summary"
+  ],
+  "properties": {
+    "schemaVersion": {
+      "const": "1"
+    },
+    "mode": {
+      "enum": [
+        "snapshot",
+        "comparison"
+      ]
+    },
+    "repository": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "displayName"
+      ],
+      "properties": {
+        "displayName": {
+          "type": "string",
+          "minLength": 1
+        }
+      }
+    },
+    "revisions": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "base",
+        "head"
+      ],
+      "properties": {
+        "base": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "$ref": "#/$defs/revision"
+            }
+          ]
+        },
+        "head": {
+          "$ref": "#/$defs/revision"
+        }
+      }
+    },
+    "types": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/type"
+      }
+    },
+    "diagnostics": {
+      "type": "array",
+      "items": {
+        "$ref": "#/$defs/diagnostic"
+      }
+    },
+    "summary": {
+      "$ref": "#/$defs/summary"
+    }
+  },
+  "allOf": [
+    {
+      "if": {
+        "properties": {
+          "mode": {
+            "const": "snapshot"
+          }
+        }
+      },
+      "then": {
+        "properties": {
+          "revisions": {
+            "properties": {
+              "base": {
+                "type": "null"
+              }
+            }
+          },
+          "types": {
+            "items": {
+              "properties": {
+                "source": {
+                  "properties": {
+                    "base": {
+                      "type": "null"
+                    },
+                    "head": {
+                      "$ref": "#/$defs/source"
+                    }
+                  }
+                },
+                "metrics": {
+                  "properties": {
+                    "base": {
+                      "type": "null"
+                    },
+                    "head": {
+                      "$ref": "#/$defs/metrics"
+                    }
+                  }
+                },
+                "typeKind": {
+                  "properties": {
+                    "base": {
+                      "type": "null"
+                    },
+                    "head": {
+                      "$ref": "#/$defs/kind"
+                    }
+                  }
+                },
+                "change": {
+                  "properties": {
+                    "status": {
+                      "const": "unchanged"
+                    },
+                    "fileChanged": {
+                      "const": false
+                    }
+                  }
+                }
+              }
+            }
+          },
+          "summary": {
+            "properties": {
+              "typeCountBase": {
+                "const": 0
+              },
+              "added": {
+                "const": 0
+              },
+              "removed": {
+                "const": 0
+              },
+              "modified": {
+                "const": 0
+              }
+            }
+          }
+        }
+      },
+      "else": {
+        "properties": {
+          "revisions": {
+            "properties": {
+              "base": {
+                "$ref": "#/$defs/revision"
+              }
+            }
+          }
+        }
+      }
+    }
+  ],
+  "$defs": {
+    "path": {
+      "type": "string",
+      "minLength": 1,
+      "pattern": "^(?!/)(?![A-Za-z]:)(?!.*(?:^|/)\\.\\.(?:/|$))[^\\\\]+$"
+    },
+    "revision": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "ref",
+        "commit"
+      ],
+      "properties": {
+        "ref": {
+          "type": "string",
+          "minLength": 1
+        },
+        "commit": {
+          "type": "string",
+          "pattern": "^[0-9a-f]{40}$"
+        }
+      }
+    },
+    "kind": {
+      "enum": [
+        "class",
+        "interface",
+        "enum",
+        "record",
+        "annotation"
+      ]
+    },
+    "source": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "path",
+        "startLine",
+        "endLine"
+      ],
+      "properties": {
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "startLine": {
+          "type": "integer",
+          "minimum": 1
+        },
+        "endLine": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "metrics": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "methodCount",
+        "constructorCount",
+        "fieldCount",
+        "sourceLines"
+      ],
+      "properties": {
+        "methodCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "constructorCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "fieldCount": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "sourceLines": {
+          "type": "integer",
+          "minimum": 1
+        }
+      }
+    },
+    "type": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "id",
+        "module",
+        "packageName",
+        "qualifiedName",
+        "typeName",
+        "typeKind",
+        "source",
+        "metrics",
+        "change"
+      ],
+      "properties": {
+        "id": {
+          "type": "string",
+          "minLength": 1
+        },
+        "module": {
+          "$ref": "#/$defs/path"
+        },
+        "packageName": {
+          "type": "string"
+        },
+        "qualifiedName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "typeName": {
+          "type": "string",
+          "minLength": 1
+        },
+        "typeKind": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "base",
+            "head"
+          ],
+          "properties": {
+            "base": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/kind"
+                }
+              ]
+            },
+            "head": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/kind"
+                }
+              ]
+            }
+          }
+        },
+        "source": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "base",
+            "head"
+          ],
+          "properties": {
+            "base": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/source"
+                }
+              ]
+            },
+            "head": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/source"
+                }
+              ]
+            }
+          }
+        },
+        "metrics": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "base",
+            "head"
+          ],
+          "properties": {
+            "base": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/metrics"
+                }
+              ]
+            },
+            "head": {
+              "anyOf": [
+                {
+                  "type": "null"
+                },
+                {
+                  "$ref": "#/$defs/metrics"
+                }
+              ]
+            }
+          }
+        },
+        "change": {
+          "type": "object",
+          "additionalProperties": false,
+          "required": [
+            "status",
+            "fileChanged"
+          ],
+          "properties": {
+            "status": {
+              "enum": [
+                "added",
+                "removed",
+                "modified",
+                "unchanged"
+              ]
+            },
+            "fileChanged": {
+              "type": "boolean"
+            }
+          }
+        }
+      }
+    },
+    "diagnostic": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "severity",
+        "code",
+        "revision",
+        "path",
+        "line",
+        "message",
+        "affectedTypeIds"
+      ],
+      "properties": {
+        "severity": {
+          "enum": [
+            "info",
+            "warning",
+            "error"
+          ]
+        },
+        "code": {
+          "type": "string",
+          "minLength": 1
+        },
+        "revision": {
+          "enum": [
+            "base",
+            "head"
+          ]
+        },
+        "path": {
+          "$ref": "#/$defs/path"
+        },
+        "line": {
+          "anyOf": [
+            {
+              "type": "null"
+            },
+            {
+              "type": "integer",
+              "minimum": 1
+            }
+          ]
+        },
+        "message": {
+          "type": "string",
+          "minLength": 1
+        },
+        "affectedTypeIds": {
+          "type": "array",
+          "uniqueItems": true,
+          "items": {
+            "type": "string",
+            "minLength": 1
+          }
+        }
+      }
+    },
+    "summary": {
+      "type": "object",
+      "additionalProperties": false,
+      "required": [
+        "typeCountBase",
+        "typeCountHead",
+        "added",
+        "removed",
+        "modified",
+        "unchanged",
+        "incomplete"
+      ],
+      "properties": {
+        "typeCountBase": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "typeCountHead": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "added": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "removed": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "modified": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "unchanged": {
+          "type": "integer",
+          "minimum": 0
+        },
+        "incomplete": {
+          "type": "boolean"
+        }
+      }
+    }
+  }
+}

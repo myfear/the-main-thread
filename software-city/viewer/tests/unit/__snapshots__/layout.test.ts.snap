@@ -1,0 +1,69 @@
+// Vitest Snapshot v1, https://vitest.dev/guide/snapshot.html
+
+exports[`deterministic hierarchical layout > produces a stable golden layout for the reproducible fixture 1`] = `
+[
+  {
+    "depth": 7.447869,
+    "id": ".::Root",
+    "width": 1.141943,
+    "x": -7.276069,
+    "z": -4.123106,
+  },
+  {
+    "depth": 7.447869,
+    "id": "api::example.Shared",
+    "width": 1.141943,
+    "x": -7.276069,
+    "z": 4.123106,
+  },
+  {
+    "depth": 5.524415,
+    "id": "app::example.Action",
+    "width": 2.579764,
+    "x": -3.054563,
+    "z": -3.522523,
+  },
+  {
+    "depth": 5.524415,
+    "id": "app::example.Everything",
+    "width": 5.799529,
+    "x": 1.775084,
+    "z": -3.522523,
+  },
+  {
+    "depth": 5.778043,
+    "id": "app::example.Helper",
+    "width": 1.22351,
+    "x": 5.799789,
+    "z": -3.522523,
+  },
+  {
+    "depth": 1.070847,
+    "id": "app::example.Label",
+    "width": 6.705072,
+    "x": -1.142828,
+    "z": 0.264189,
+  },
+  {
+    "depth": 4.996036,
+    "id": "app::example.Point",
+    "width": 6.403235,
+    "x": -1.142828,
+    "z": 3.786712,
+  },
+  {
+    "depth": 1.784745,
+    "id": "app::example.Shared",
+    "width": 3.662337,
+    "x": 4.49176,
+    "z": 0.733859,
+  },
+  {
+    "depth": 4.056697,
+    "id": "app::example.State",
+    "width": 3.585941,
+    "x": 4.49176,
+    "z": 4.256382,
+  },
+]
+`;

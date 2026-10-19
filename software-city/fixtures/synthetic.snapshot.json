@@ -1,0 +1,304 @@
+{
+  "schemaVersion" : "1",
+  "mode" : "snapshot",
+  "repository" : {
+    "displayName" : "fixture-repo"
+  },
+  "revisions" : {
+    "base" : null,
+    "head" : {
+      "ref" : "6e5e61ed38f5b5fb3e855c25cd67afb5c656158c",
+      "commit" : "6e5e61ed38f5b5fb3e855c25cd67afb5c656158c"
+    }
+  },
+  "types" : [ {
+    "id" : ".::Root",
+    "module" : ".",
+    "packageName" : "",
+    "qualifiedName" : "Root",
+    "typeName" : "Root",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "src/main/java/Root.java",
+        "startLine" : 1,
+        "endLine" : 1
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 0,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 1
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "api::example.Shared",
+    "module" : "api",
+    "packageName" : "example",
+    "qualifiedName" : "example.Shared",
+    "typeName" : "Shared",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "api/src/main/java/example/Shared.java",
+        "startLine" : 2,
+        "endLine" : 2
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 1
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.Action",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.Action",
+    "typeName" : "Action",
+    "typeKind" : {
+      "base" : null,
+      "head" : "interface"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Everything.java",
+        "startLine" : 18,
+        "endLine" : 22
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.Everything",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.Everything",
+    "typeName" : "Everything",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Everything.java",
+        "startLine" : 4,
+        "endLine" : 16
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 1,
+        "fieldCount" : 3,
+        "sourceLines" : 13
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.Helper",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.Helper",
+    "typeName" : "Helper",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Everything.java",
+        "startLine" : 42,
+        "endLine" : 44
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 3
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.Label",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.Label",
+    "typeName" : "Label",
+    "typeKind" : {
+      "base" : null,
+      "head" : "annotation"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Everything.java",
+        "startLine" : 37,
+        "endLine" : 40
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 2,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 4
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.Point",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.Point",
+    "typeName" : "Point",
+    "typeKind" : {
+      "base" : null,
+      "head" : "record"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Everything.java",
+        "startLine" : 24,
+        "endLine" : 29
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 2,
+        "fieldCount" : 3,
+        "sourceLines" : 6
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.Shared",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.Shared",
+    "typeName" : "Shared",
+    "typeKind" : {
+      "base" : null,
+      "head" : "class"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Shared.java",
+        "startLine" : 2,
+        "endLine" : 2
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 0,
+        "sourceLines" : 1
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  }, {
+    "id" : "app::example.State",
+    "module" : "app",
+    "packageName" : "example",
+    "qualifiedName" : "example.State",
+    "typeName" : "State",
+    "typeKind" : {
+      "base" : null,
+      "head" : "enum"
+    },
+    "source" : {
+      "base" : null,
+      "head" : {
+        "path" : "app/src/main/java/example/Everything.java",
+        "startLine" : 31,
+        "endLine" : 35
+      }
+    },
+    "metrics" : {
+      "base" : null,
+      "head" : {
+        "methodCount" : 1,
+        "constructorCount" : 0,
+        "fieldCount" : 1,
+        "sourceLines" : 5
+      }
+    },
+    "change" : {
+      "status" : "unchanged",
+      "fileChanged" : false
+    }
+  } ],
+  "diagnostics" : [ ],
+  "summary" : {
+    "typeCountBase" : 0,
+    "typeCountHead" : 9,
+    "added" : 0,
+    "removed" : 0,
+    "modified" : 0,
+    "unchanged" : 9,
+    "incomplete" : false
+  }
+}
