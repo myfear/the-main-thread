@@ -1,0 +1,14 @@
+name: mainthread-prime
+description: Prime the immutable Java lab and its Maven cache
+requires:
+  - mainthread-jdk21
+  - bob
+  - podman
+  - maven-3
+  - sshd
+run_as_user:
+  - git config --global user.name 'Main Thread Bob Lab'
+  - git config --global user.email 'bob-lab@example.invalid'
+  - git config --global commit.gpgsign false
+  - cd /home/agentuser/parallel-bob-lab && JAVA_HOME=/opt/jdk21 PATH=/opt/jdk21/bin:$PATH ./mvnw -B test
+verify: java -version && bob --version && test "$BOB_API_KEY" = bob-placeholder

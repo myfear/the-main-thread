@@ -1,0 +1,26 @@
+name: mainthread-jdk21
+description: Eclipse Temurin 21.0.12.1+1 with verified archive checksums
+downloads:
+  - arch: aarch64
+    url: https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_aarch64_linux_hotspot_21.0.12.1_1.tar.gz
+    sha256: 23e37e026f12f3e706f18938ff611db3032d075b09d0879a25d06718c773e223
+    extract: /opt
+    extract_in_container: true
+  - arch: x86_64
+    url: https://github.com/adoptium/temurin21-binaries/releases/download/jdk-21.0.12.1%2B1/OpenJDK21U-jdk_x64_linux_hotspot_21.0.12.1_1.tar.gz
+    sha256: ce79869e1307ed8ee1e2baa86a412b1eb5b75d10a01006d788a6f968bcfaee94
+    extract: /opt
+    extract_in_container: true
+run:
+  - ln -sfn /opt/jdk-21.0.12.1+1 /opt/jdk21
+  - ln -sfn /etc/pki/ca-trust/extracted/java/cacerts /opt/jdk21/lib/security/cacerts
+  - ln -sfn /opt/jdk21/bin/java /usr/local/bin/java
+  - ln -sfn /opt/jdk21/bin/javac /usr/local/bin/javac
+env:
+  - name: JAVA_HOME
+    value: /opt/jdk21
+  - name: PATH
+    value: /opt/jdk21/bin
+    strategy: prepend
+    separator: ":"
+verify: java -version && javac -version

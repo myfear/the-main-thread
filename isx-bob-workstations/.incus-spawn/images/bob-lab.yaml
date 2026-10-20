@@ -1,0 +1,23 @@
+name: tpl-mainthread-bob21
+description: Java 21, Bob Shell, nested Podman, and the catalog/shipping lab
+parent: tpl-minimal
+packages:
+  - git
+  - unzip
+  - jq
+  - ripgrep
+tools:
+  - bob
+  - podman
+  - maven-3
+  - sshd
+  - mainthread-prime
+host-resources:
+  - source: .local/parallel-bob-lab
+    path: ~/parallel-bob-lab
+    mode: copy
+env:
+  - name: BOB_API_KEY
+    value: bob-placeholder
+workdir: ~/parallel-bob-lab
+default-action: bob
