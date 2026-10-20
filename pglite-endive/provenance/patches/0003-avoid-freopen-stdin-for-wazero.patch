@@ -1,0 +1,53 @@
+diff --git a/pglite-wasm/pg_main.c b/pglite-wasm/pg_main.c
+index 65e5d7a..30f54f6 100644
+--- a/pglite-wasm/pg_main.c
++++ b/pglite-wasm/pg_main.c
+@@ -12,6 +12,7 @@
+ // #define PGDEBUG_STARTUP
+ 
+ // MEMFS files for os pipe simulation
++#include <fcntl.h>
+ #define IDB_PIPE_BOOT "/tmp/initdb.boot.txt"
+ #define IDB_PIPE_SINGLE "/tmp/initdb.single.txt"
+ 
+@@ -460,7 +461,26 @@ __attribute__ ((export_name("pgl_backend")))
+     int saved_stdin = dup(STDIN_FILENO);
+     {
+         PDEBUG("# 450: restarting in boot mode for initdb");
++#if defined(__wasi__)
++        /* wasipg: redirect stdin at the fd level. wasi-libc's freopen
++         * goes through fd_renumber, which wazero refuses for stdio
++         * targets (marked preopen) — and the musl failure path then
++         * closes stdin outright. wasi-libc 33 also declares stdin as
++         * FILE *const, so the old stream-reassign trick is out.
++         * close(0) + open() lands the boot script on fd 0 because the
++         * fd table allocates lowest-free; the stdio stream (fd 0,
++         * nothing buffered yet) then reads the script. */
++        close(STDIN_FILENO);
++        {
++            int boot_fd = open(IDB_PIPE_BOOT, O_RDONLY);
++            if (boot_fd != STDIN_FILENO) {
++                fprintf(stderr, "# wasipg: boot script landed on fd %d, expected 0\n", boot_fd);
++                abort();
++            }
++        }
++#else
+         freopen(IDB_PIPE_BOOT, "r", stdin);
++#endif
+ 
+         char *boot_argv[] = {
+             g_argv[0],
+@@ -484,7 +504,13 @@ __attribute__ ((export_name("pgl_backend")))
+ #else
+         remove(IDB_PIPE_BOOT);
+ #endif
++#if defined(__wasi__)
++        /* stdin is FILE *const in wasi-libc 33 and nothing reads it
++         * after this point (wire mode only); just drop the saved fd. */
++        close(saved_stdin);
++#else
+         stdin = fdopen(saved_stdin, "r");
++#endif
+ 
+         PDEBUG("# 479: initdb faking shutdown to complete WAL/OID states");
+         pg_proc_exit(66);

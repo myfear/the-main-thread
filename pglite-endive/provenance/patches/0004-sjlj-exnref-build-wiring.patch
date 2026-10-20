@@ -1,0 +1,51 @@
+diff --git a/pglite-wasm/build.sh b/pglite-wasm/build.sh
+index bb97a96..9498b0f 100755
+--- a/pglite-wasm/build.sh
++++ b/pglite-wasm/build.sh
+@@ -105,7 +105,7 @@ ________________________________________________________
+              $LINK_ICU \
+              ${PG_BUILD}/${BUILD}/src/backend/snowball/libdict_snowball.a \
+              ${PG_BUILD}/${BUILD}/src/pl/plpgsql/src/libplpgsql.a \
+-             -lxml2 -lz
++             -lxml2 -lz ${LINK_SETJMP:-}
+         else
+             echo "compilation of libpglite ${BUILD} support failed"
+         fi
+diff --git a/wasm-build.sh b/wasm-build.sh
+index c0de2dc..a8ac6c8 100755
+--- a/wasm-build.sh
++++ b/wasm-build.sh
+@@ -223,7 +223,19 @@ export CC_PGLITE="-DPYDK=1 -DPG_PREFIX=${PGROOT} -I${PGROOT}/include -DCMA_MB=${
+ 
+ if $WASI
+ then
+-    export WASI_CFLAGS="-D_WASI_EMULATED_PROCESS_CLOCKS -D_WASI_EMULATED_SIGNAL --target=wasm32-wasip1 -D__wasilibc_use_wasip1" # -mllvm -wasm-enable-sjlj"
++    export WASI_CFLAGS="-D_WASI_EMULATED_PROCESS_CLOCKS -D_WASI_EMULATED_SIGNAL --target=wasm32-wasip1 -D__wasilibc_use_wasip1"
++    if ${SJLJ:-false}
++    then
++        # wasipg: real setjmp/longjmp lowered onto standardized exnref EH
++        # (wasi-sdk >= 33 + a runtime with exception handling, e.g.
++        # wazero >= 1.12). WASIPG_SJLJ re-enables PG_RE_THROW in elog.c
++        # and the real sigsetjmp/siglongjmp in the SDK's hotfix/patch.h
++        # (gated there by the builder image). Link needs -lsetjmp.
++        export WASI_CFLAGS="$WASI_CFLAGS -mllvm -wasm-enable-sjlj -mllvm -wasm-use-legacy-eh=false -DWASIPG_SJLJ"
++        export LINK_SETJMP="-lsetjmp"
++    else
++        export LINK_SETJMP=""
++    fi
+     export CC_PGLITE="$WASI_CFLAGS $CC_PGLITE"
+ fi
+ 
+diff --git a/wasm-build/build-pgcore.sh b/wasm-build/build-pgcore.sh
+index 702f481..bfc85c5 100755
+--- a/wasm-build/build-pgcore.sh
++++ b/wasm-build/build-pgcore.sh
+@@ -112,7 +112,7 @@ else
+         UUID=""
+ 
+  # -lwasi-emulated-signal -D_WASI_EMULATED_SIGNAL -lwasi-emulated-getpid -D_WASI_EMULATED_GETPID
+-        WASM_LDFLAGS="-lwasi-emulated-mman -lwasi-emulated-pthread -lwasi-emulated-process-clocks"
++        WASM_LDFLAGS="-lwasi-emulated-mman -lwasi-emulated-pthread -lwasi-emulated-process-clocks ${LINK_SETJMP:-}"
+         WASM_CFLAGS="-I${WASISDK}/hotfix -DSDK_PORT=${PREFIX}/include/sdk_port-wasi.c ${COMMON_CFLAGS} -D_WASI_EMULATED_PTHREAD -D_WASI_EMULATED_MMAN -D_WASI_EMULATED_PROCESS_CLOCKS"
+         export MAIN_MODULE=""
+ 

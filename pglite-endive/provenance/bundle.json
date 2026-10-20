@@ -1,0 +1,37 @@
+{
+  "postgresqlVersion": "17.5",
+  "pgliteSource": {
+    "repository": "https://github.com/electric-sql/postgres-pglite",
+    "commit": "2194acf356e9b7bf7cff29c4ed4bd6b82b93895d"
+  },
+  "wasiRecoveryBuild": {
+    "repository": "https://github.com/moznion/wasipg",
+    "commit": "fa290be67946c0d3c4540bd1400b11e193d874e1",
+    "portableSdk": "3.1.74.12.0",
+    "portableSdkArchiveSha256": "ae5be6198935ca67bba69eb80a1ad6e9fcca4f32bc1c993bdf41026700c49a50",
+    "wasiSdk": "33.0",
+    "wasiSdkArchiveSha256": "4f98ee738c7abb45c81a94d1461fc53cc569d1cd01498951c8184d841a027844",
+    "sjlj": true,
+    "buildEngine": "Podman 6.1.3, Linux arm64",
+    "adaptations": [
+      "Use Podman for the temporary upstream build.",
+      "Skip the Go pristine-data step; the Java host runs initdb itself."
+    ]
+  },
+  "artifacts": {
+    "src/main/resources/pglite/pglite-wasi.tar.xz": "c052dafc7fbfabb4453a862af5327c437944449b3ff9f93ee33a19e98c915838",
+    "tmp/pglite/bin/pglite.wasi": "6e4f4d382383eeda83f50aad7fe42595fb38a3f8074af7e46c29262c5befbcbd"
+  },
+  "quarkusEndive": {
+    "repository": "https://github.com/quarkiverse/quarkus-endive",
+    "commit": "c5494f6e9702943702c79c4b0e6e92863e9ca77e",
+    "sourceArchiveSha256": "b536daa84eb284884360368099800f5c2248f9b2657861183765b0a1821d33b8",
+    "localVersion": "0.0.0-c5494f6e",
+    "endiveVersionOverride": "1.1.0",
+    "quarkusVersion": "3.37.3"
+  },
+  "formatter": {
+    "source": "https://github.com/quarkusio/quarkus/blob/3.37.3/independent-projects/ide-config/src/main/resources/eclipse-format.xml",
+    "sha256": "6f2edb676e13a3d8c5201eaad188693d764ae078e3e6007d0e4fc27c0d0b552b"
+  }
+}

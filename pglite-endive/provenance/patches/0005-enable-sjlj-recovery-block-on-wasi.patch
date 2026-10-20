@@ -1,0 +1,14 @@
+diff --git a/pglite-wasm/pgl_sjlj.c b/pglite-wasm/pgl_sjlj.c
+index 6c05daf..590cc32 100644
+--- a/pglite-wasm/pgl_sjlj.c
++++ b/pglite-wasm/pgl_sjlj.c
+@@ -1,4 +1,8 @@
+-#if defined(__wasi__)
++#if defined(__wasi__) && !defined(WASIPG_SJLJ)
++    /* wasipg: this is the "sjlj exception handler off" switch — without
++     * working setjmp/longjmp the whole recovery block (including the
++     * PG_exception_stack hookup) is compiled out and every ERROR gets
++     * promoted to a fatal abort. WASIPG_SJLJ builds re-enable it. */
+     PDEBUG("# 2:" __FILE__ ": sjlj exception handler off");
+ #else
+ 	if (sigsetjmp(local_sigjmp_buf, 1) != 0)

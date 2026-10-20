@@ -1,0 +1,16 @@
+diff --git a/src/backend/utils/error/elog.c b/src/backend/utils/error/elog.c
+index f8dc856..355ce19 100644
+--- a/src/backend/utils/error/elog.c
++++ b/src/backend/utils/error/elog.c
+@@ -543,8 +543,10 @@ errfinish(const char *filename, int lineno, const char *funcname)
+ 		 */
+ 
+ 		recursion_depth--;
+-#if defined(__wasi__)
++#if defined(__wasi__) && !defined(WASIPG_SJLJ)
+         fprintf(stderr, "# 547: PG_RE_THROW(ERROR : %d) ignored\r\n", recursion_depth);
++        /* wasipg: emit the report before dying so the host log shows WHY */
++        EmitErrorReport();
+         abort();
+ #else
+ 		PG_RE_THROW();

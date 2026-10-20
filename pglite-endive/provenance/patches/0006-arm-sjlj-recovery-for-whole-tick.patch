@@ -1,0 +1,120 @@
+diff --git a/pglite-wasm/interactive_one.c b/pglite-wasm/interactive_one.c
+index fc35909..4cd36ba 100644
+--- a/pglite-wasm/interactive_one.c
++++ b/pglite-wasm/interactive_one.c
+@@ -367,6 +367,34 @@ PDEBUG("# 330: TODO: set a pgl started flag");
+ 
+ extern void pg_startcma();
+ 
++/* wasipg: side-effect-free reply flush. Host pollers must NOT call
++ * interactive_one to nudge replies out — its prologue mutates session
++ * state (MessageContext reset, snapshot invalidation, rfq bookkeeping)
++ * and a host-scheduling-dependent number of such ticks corrupts a
++ * half-processed session (the root cause of the intermittent
++ * trap/timeout/desync class). This entry only emits a deferred
++ * ReadyForQuery and renames buffered reply bytes onto the reply file.
++ */
++__attribute__((export_name("wasipg_flush"))) void
++wasipg_flush() {
++    if (!MyProcPort)
++        return;
++    if (send_ready_for_query && is_wire && !ClientAuthInProgress) {
++        if (!SOCKET_FILE) {
++            SOCKET_FILE = fopen(PGS_OLOCK, "w");
++            MyProcPort->sock = fileno(SOCKET_FILE);
++        }
++        ReadyForQuery(DestRemote);
++        send_ready_for_query = false;
++    }
++    if (SOCKET_FILE && SOCKET_DATA > 0) {
++        fclose(SOCKET_FILE);
++        SOCKET_FILE = NULL;
++        SOCKET_DATA = 0;
++        rename(PGS_OLOCK, PGS_OUT);
++    }
++}
++
+ __attribute__((export_name("interactive_one"))) void
+ interactive_one() {
+     int	peek = -1;  /* preview of firstchar with no pos change */
+@@ -384,6 +412,16 @@ interactive_one() {
+ if (cma_rsize<0)
+     goto resume_on_error;
+ 
++    /* wasipg: arm error recovery for the WHOLE tick. Anything below —
++     * io_init, catalog snapshot invalidation, notify processing,
++     * startup/auth — may ereport(ERROR); the handler must be
++     * registered in THIS invocation before that can happen. */
++#if defined(__EMSCRIPTEN__) || defined(__wasi__)
++#   include "pgl_sjlj.c"
++#else
++    #error "sigsetjmp unsupported"
++#endif
++
+     if (!MyProcPort) {
+         PDEBUG("# 353: client created");
+         io_init(is_wire, false);
+@@ -437,6 +475,13 @@ if (cma_rsize<0)
+                 notified = true;
+             }
+         }
++        /* wasipg: real PostgresMain SENDS ReadyForQuery here; silently
++         * dropping the flag loses the deferred RFQ whenever the
++         * previous tick could not emit it (auth in progress), and a
++         * host poll tick landing in that window desynchronizes the
++         * whole reply stream. */
++        if (is_wire)
++            ReadyForQuery(DestRemote);
+         send_ready_for_query = false;
+     }
+ // postgres.c 4627
+@@ -536,8 +581,18 @@ PDEBUG("# 507: NO DATA:" PGS_IN  "\n");
+         } // fp data read
+ 
+         // is it REPL in cma ?
+-        if (!peek)
++        if (!peek) {
++            /* wasipg: an empty tick must still drain bytes a previous
++             * partially-processed batch left in the pq receive buffer
++             * — the tail (often the Sync that triggers ReadyForQuery)
++             * would otherwise never execute and the client hangs. */
++            if (is_wire && !ClientAuthInProgress && pq_buffer_remaining_data() > 0) {
++                peek = -1;
++                firstchar = 0;
++                goto incoming;
++            }
+             goto return_early;
++        }
+ 
+         firstchar = peek ;
+ 
+@@ -570,12 +625,8 @@ PDEBUG("# 507: NO DATA:" PGS_IN  "\n");
+         goto return_early;
+     }
+ 
+-incoming:
+-#if defined(__EMSCRIPTEN__) || defined(__wasi__) //PGDEBUG
+-#   include "pgl_sjlj.c"
+-#else
+-    #error "sigsetjmp unsupported"
+-#endif // wasi
++incoming:;
++    /* wasipg: recovery arming moved to the top of the function. */
+ 
+ 
+     while (pipelining) {
+@@ -687,7 +738,13 @@ wire_flush:
+                     PDEBUG("# 672: cma and sockfile ???\n");
+                 }
+ 
+-                if (sockfiles) {
++                /* wasipg: never strand reply bytes. If the sockfiles
++                 * flag is momentarily false while the file holds a
++                 * reply, skipping the rename leaves the bytes in the
++                 * lock file and the next tick's fopen("w") truncates
++                 * them — a lost reply desynchronizes the wire stream
++                 * (observed as timeouts and off-by-one replies). */
++                if (sockfiles || outb > 0) {
+ #if PGDEBUG
+                     printf("# 675: client:ready -> read(%d) " PGS_OLOCK "->" PGS_OUT"\n", outb);
+ #endif
