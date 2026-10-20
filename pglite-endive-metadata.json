@@ -1,9 +1,15 @@
 {
   "projectPath" : "pglite-endive",
-  "sourceSha" : "436317dde2d50b137452839f77b31d77949d8bc8",
-  "runNumber" : 193,
+  "sourceSha" : "e965e01a42ceceae6b41358776109021bd852016",
+  "runNumber" : 194,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "failing",
+  "reason" : "build:failure setup:success",
+  "tests" : {
+    "total" : 10,
+    "passed" : 9,
+    "failed" : 0,
+    "errors" : 1,
+    "skipped" : 0
+  }
 }

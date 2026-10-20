@@ -1,9 +1,15 @@
 {
   "projectPath" : "gluhwein-live",
-  "sourceSha" : "6e0282a2575889f81bad3638857e6153f94f29a0",
-  "runNumber" : 187,
+  "sourceSha" : "e965e01a42ceceae6b41358776109021bd852016",
+  "runNumber" : 194,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 7,
+    "passed" : 7,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }

@@ -1,9 +1,15 @@
 {
   "projectPath" : "time-advent-calendar",
-  "sourceSha" : "36df3dde035d3f425e18f061fa6e2c59c784ad76",
-  "runNumber" : 192,
+  "sourceSha" : "e965e01a42ceceae6b41358776109021bd852016",
+  "runNumber" : 194,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 52,
+    "passed" : 52,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }
