@@ -1,6 +1,8 @@
 package com.themainthread.pglite;
 
 import static io.restassured.RestAssured.given;
+import static io.restassured.config.HttpClientConfig.httpClientConfig;
+import static io.restassured.config.RestAssuredConfig.config;
 import static org.hamcrest.Matchers.equalTo;
 
 import java.util.List;
@@ -15,7 +17,10 @@ import io.quarkus.test.junit.QuarkusTest;
 public class PGliteResourceTest {
     @Test
     void commitsRollsBackAndRecoversThroughHttpOnSameInstance() {
-        String instance = given().get("/pglite").then().statusCode(200).extract().path("instanceId");
+        // The first request compiles WASM and initializes PostgreSQL on a cold JVM.
+        String instance = given()
+                .config(config().httpClient(httpClientConfig().setParam("http.socket.timeout", 120_000)))
+                .get("/pglite").then().statusCode(200).extract().path("instanceId");
         String table = "http_" + UUID.randomUUID().toString().replace("-", "");
         query("CREATE TABLE " + table + " (id int PRIMARY KEY)");
         given().contentType("application/json")
