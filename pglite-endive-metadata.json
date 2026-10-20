@@ -1,0 +1,9 @@
+{
+  "projectPath" : "pglite-endive",
+  "sourceSha" : "436317dde2d50b137452839f77b31d77949d8bc8",
+  "runNumber" : 193,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
