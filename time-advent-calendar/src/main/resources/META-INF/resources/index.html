@@ -1,0 +1,88 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="theme-color" content="#f8f7f3">
+    <title>24 doors, 24 time bugs · The Main Thread</title>
+    <link rel="stylesheet" href="/styles.css">
+    <script src="/app.js" defer></script>
+</head>
+<body>
+<a class="skip-link" href="#experiment">Skip to the experiment</a>
+<div class="page">
+    <header class="masthead">
+        <a href="https://www.the-main-thread.com" aria-label="The Main Thread home"><img src="/wordmark.png" alt="The Main Thread" width="189" height="36"></a>
+        <span class="edition">A Java time Advent calendar · 2026</span>
+    </header>
+    <main>
+        <div class="introduction">
+            <h1>24 doors, 24 time bugs.</h1>
+            <p>Open a door. Run the Java. Find out what time actually means.</p>
+        </div>
+        <section class="clock-panel" aria-labelledby="clock-heading">
+            <div class="clock-title">
+                <h2 id="clock-heading">Your calendar clock</h2>
+                <p>Only your browser’s experiment changes.</p>
+            </div>
+            <form id="clock-form">
+                <div class="clock-fields">
+                    <label>Simulated instant <span class="unit">UTC</span><input id="instant" name="instant" type="datetime-local" step="1" min="1900-01-01T00:00:00" max="2100-12-31T23:59:59" required value="2026-12-24T12:00:00"></label>
+                    <label>Calendar time zone<select id="zone" name="zone">
+                        <option>Europe/Berlin</option><option>UTC</option><option>America/New_York</option>
+                        <option>Asia/Tokyo</option><option>Pacific/Auckland</option><option>Pacific/Honolulu</option><option>Asia/Kathmandu</option>
+                    </select></label>
+                    <label>Calendar mode<select id="mode" name="mode"><option value="explore">Explore · all doors</option><option value="replay">Replay · unlock by date</option></select></label>
+                    <button class="primary apply" type="submit">Apply clock</button>
+                </div>
+                <div class="clock-actions">
+                    <button type="button" data-preset="start">December 1</button>
+                    <button type="button" data-preset="boundary">Before Berlin midnight</button>
+                    <button type="button" data-preset="eve">Christmas Eve</button>
+                    <button type="button" data-preset="now">Use current time</button>
+                    <button type="button" id="advance">Advance 1 calendar day</button>
+                </div>
+            </form>
+            <p id="clock-status" class="clock-status" role="status">Loading the calendar…</p>
+            <p id="clock-error" class="error" role="alert" hidden></p>
+        </section>
+        <div class="workbench">
+            <section class="calendar-panel" aria-labelledby="calendar-heading">
+                <div class="section-heading"><h2 id="calendar-heading">Choose a door</h2><span id="available-count"></span></div>
+                <p class="calendar-hint">The six marked doors are explored in depth in the article.</p>
+                <nav id="doors" class="doors" aria-label="24 time experiments"></nav>
+                <div class="legend"><span class="legend-deep">In the article</span><span>PG = real PostgreSQL experiment</span></div>
+            </section>
+            <section id="experiment" class="experiment" aria-labelledby="experiment-heading" tabindex="-1">
+                <div class="experiment-heading-row"><span id="door-number" class="door-number">07</span><span id="experiment-kind" class="experiment-kind">Java time experiment</span></div>
+                <h2 id="experiment-heading">The hour that never happened</h2>
+                <p id="summary">Choose a door to inspect its scenario and computed result.</p>
+                <p id="challenge" class="challenge" hidden></p>
+                <div id="run-controls" class="run-controls" hidden>
+                    <label>Scenario<select id="variant"></select></label>
+                    <button id="run" class="primary" type="button">Run again</button>
+                </div>
+                <p id="run-status" class="run-status" role="status"></p>
+                <p id="run-error" class="error" role="alert" hidden></p>
+                <div id="output" hidden>
+                    <h3>What Java returned</h3>
+                    <dl id="observations"></dl>
+                    <p id="takeaway" class="takeaway"></p>
+                    <details id="code-details">
+                        <summary>Inspect the relevant code</summary>
+                        <pre><code id="code"></code></pre>
+                        <p class="code-caption">Focused excerpt. The companion source contains imports and surrounding methods.</p>
+                        <a id="reference" href="https://docs.oracle.com/en/java/javase/25/docs/api/java.base/java/time/package-summary.html" target="_blank" rel="noopener noreferrer">Read the API reference <span aria-hidden="true">↗</span></a>
+                    </details>
+                </div>
+            </section>
+        </div>
+        <aside class="lab-note">
+            <h2>A clock you can safely rewind</h2>
+            <p>Explore mode keeps every lesson available. Replay mode asks the server which doors have opened in your chosen zone. The simulated time is an intentional lab input; it is not an access-control mechanism. Each lesson names its fixed fixture or uses your calendar clock.</p>
+        </aside>
+    </main>
+    <footer><span>Java 25 · Quarkus · PostgreSQL</span><a href="https://www.the-main-thread.com/p/java-time-advent-calendar-24-bugs">Article · planned for December 24, 2026</a></footer>
+</div>
+</body>
+</html>
