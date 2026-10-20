@@ -1,0 +1,9 @@
+{
+  "projectPath" : "db2-rcac-quarkus",
+  "sourceSha" : "7e79f50e06da3085186a66450acaf171b974962d",
+  "runNumber" : 189,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
