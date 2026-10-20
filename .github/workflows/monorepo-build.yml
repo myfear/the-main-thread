@@ -93,7 +93,12 @@ jobs:
         continue-on-error: true
         run: |
           if [[ -f mvnw ]]; then chmod +x mvnw; command=(./mvnw); else command=(mvn); fi
-          "${command[@]}" --batch-mode --no-transfer-progress package -DskipTests=false
+          goal=package
+          if [[ "$PROJECT_PATH" == pglite-endive ]]; then
+            ./scripts/bootstrap-endive.sh
+            goal=verify
+          fi
+          "${command[@]}" --batch-mode --no-transfer-progress "$goal" -DskipTests=false
       - name: Collect build outcome and module reports
         if: ${{ !cancelled() }}
         env:
@@ -110,7 +115,8 @@ jobs:
           if [[ -d "$PROJECT_PATH" ]]; then
             while IFS= read -r -d '' report; do
               cp --parents -- "$report" "$result_dir/reports/"
-            done < <(find "$PROJECT_PATH" -type f -path '*/target/surefire-reports/TEST-*.xml' -print0)
+            done < <(find "$PROJECT_PATH" -type f \
+              \( -path '*/target/surefire-reports/TEST-*.xml' -o -path '*/target/failsafe-reports/TEST-*.xml' \) -print0)
           fi
       - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
         if: ${{ !cancelled() }}
