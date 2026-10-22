@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-checkout-outbox-replicas",
+  "sourceSha" : "4598a0401da506806265be15703ee86ce99b3ec5",
+  "runNumber" : 196,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
