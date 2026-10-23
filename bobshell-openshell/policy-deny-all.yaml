@@ -1,0 +1,8 @@
+version: 1
+filesystem_policy:
+  include_workdir: true
+  read_only: [/bin, /usr, /lib, /proc, /dev/urandom, /etc, /var/log]
+  read_write: [/sandbox, /home/node, /tmp, /dev/null]
+landlock:
+  compatibility: hard_requirement
+network_policies: {}

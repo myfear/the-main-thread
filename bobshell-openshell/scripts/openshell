@@ -1,0 +1,9 @@
+#!/usr/bin/env bash
+set -euo pipefail
+
+# Scope the isolated configuration to OpenShell, preserving Podman's settings.
+lab_root=$(cd "$(dirname "$0")/.." && pwd)
+exec env XDG_CONFIG_HOME="$lab_root/.local/config" \
+    XDG_STATE_HOME="$lab_root/.local/state" \
+    OPENSHELL_GATEWAY=bob-tutorial \
+    "$lab_root/.local/bin/openshell" "$@"

@@ -1,0 +1,23 @@
+# Experimental profile for Bob Shell 2.0.8 and this image layout.
+# Bob sends Authorization: apikey <value>. OpenShell replaces the
+# environment placeholder inside that header at this approved endpoint.
+id: ibm-bob
+display_name: IBM Bob Shell
+description: Bob Shell API-key access to the US East service
+category: inference
+credentials:
+  - name: api_key
+    env_vars: [BOB_API_KEY]
+    required: true
+    auth_style: header
+    header_name: authorization
+discovery:
+  credentials: [api_key]
+endpoints:
+  - host: api.us-east.bob.ibm.com
+    port: 443
+    protocol: rest
+    enforcement: enforce
+    access: read-write
+binaries:
+  - /usr/local/bin/node
