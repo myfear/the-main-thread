@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-network-faults-postgres",
+  "sourceSha" : "7ed83d4d09e144045065d936acce341ed20f8411",
+  "runNumber" : 198,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
