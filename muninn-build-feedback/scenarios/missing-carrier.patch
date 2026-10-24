@@ -1,0 +1,15 @@
+--- /dev/null
++++ b/src/main/java/com/themainthread/shipping/MissingCarrier.java
+@@ -0,0 +1,12 @@
++package com.themainthread.shipping;
++
++import jakarta.enterprise.context.ApplicationScoped;
++
++@ApplicationScoped
++class MissingCarrier {
++    MissingCarrier(CarrierGateway gateway) {
++    }
++}
++
++interface CarrierGateway {
++}

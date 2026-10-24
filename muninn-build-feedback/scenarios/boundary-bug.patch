@@ -1,0 +1,11 @@
+--- a/src/main/java/com/themainthread/shipping/ShippingService.java
++++ b/src/main/java/com/themainthread/shipping/ShippingService.java
+@@ -18,7 +18,7 @@
+         BigDecimal shipping;
+         if (request.method() == ShippingMethod.EXPRESS) {
+             shipping = config.expressFee();
+-        } else if (request.subtotal().compareTo(config.freeStandardFrom()) >= 0) {
++        } else if (request.subtotal().compareTo(config.freeStandardFrom()) > 0) {
+             shipping = FREE;
+         } else {
+             shipping = config.standardFee();
