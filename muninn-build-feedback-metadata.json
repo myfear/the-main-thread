@@ -1,0 +1,9 @@
+{
+  "projectPath" : "muninn-build-feedback",
+  "sourceSha" : "39a2251affbdc49148503ae275bbec55941e3bd3",
+  "runNumber" : 203,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
