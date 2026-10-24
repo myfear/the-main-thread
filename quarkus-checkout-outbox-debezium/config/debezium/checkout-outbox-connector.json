@@ -1,0 +1,30 @@
+{
+  "name": "checkout-outbox-cdc",
+  "config": {
+    "connector.class": "io.debezium.connector.postgresql.PostgresConnector",
+    "tasks.max": "1",
+    "database.hostname": "postgres",
+    "database.port": "5432",
+    "database.user": "checkout_cdc",
+    "database.password": "RENDER_FROM_CDC_PASSWORD",
+    "database.dbname": "checkout",
+    "topic.prefix": "checkout-cdc",
+    "plugin.name": "pgoutput",
+    "slot.name": "checkout_outbox_slot",
+    "slot.drop.on.stop": "false",
+    "publication.name": "checkout_outbox_pub",
+    "publication.autocreate.mode": "disabled",
+    "table.include.list": "public.outbox_event",
+    "snapshot.mode": "no_data",
+    "transforms": "outbox",
+    "transforms.outbox.type": "io.debezium.transforms.outbox.EventRouter",
+    "transforms.outbox.route.topic.replacement": "order-placed",
+    "transforms.outbox.table.field.event.id": "id",
+    "transforms.outbox.table.field.event.key": "aggregateid",
+    "transforms.outbox.table.field.event.payload": "payload",
+    "transforms.outbox.table.expand.json.payload": "true",
+    "key.converter": "org.apache.kafka.connect.storage.StringConverter",
+    "value.converter": "org.apache.kafka.connect.json.JsonConverter",
+    "value.converter.schemas.enable": "false"
+  }
+}
