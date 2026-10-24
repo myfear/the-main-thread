@@ -16,6 +16,7 @@
         <quarkus.platform.version>3.40.1.1</quarkus.platform.version>
         <skipITs>true</skipITs>
         <surefire-plugin.version>3.5.4</surefire-plugin.version>
+        <test.excluded-groups>reader-workflow</test.excluded-groups>
         <substack-article.url>https://www.the-main-thread.com/p/enterprise-rag-quarkus-docling</substack-article.url>
     </properties>
 
@@ -117,6 +118,7 @@
                 <artifactId>maven-surefire-plugin</artifactId>
                 <version>${surefire-plugin.version}</version>
                 <configuration>
+                    <excludedGroups>${test.excluded-groups}</excludedGroups>
                     <argLine>@{argLine} --add-opens java.base/java.lang=ALL-UNNAMED</argLine>
                     <systemPropertyVariables>
                         <java.util.logging.manager>org.jboss.logmanager.LogManager</java.util.logging.manager>
@@ -136,6 +138,7 @@
                     </execution>
                 </executions>
                 <configuration>
+                    <excludedGroups>${test.excluded-groups}</excludedGroups>
                     <argLine>@{argLine} --add-opens java.base/java.lang=ALL-UNNAMED</argLine>
                     <systemPropertyVariables>
                         <native.image.path>${project.build.directory}/${project.build.finalName}-runner</native.image.path>
@@ -146,5 +149,15 @@
             </plugin>
         </plugins>
     </build>
+
+    <profiles>
+        <profile>
+            <id>reader-workflow</id>
+            <properties>
+                <test.excluded-groups></test.excluded-groups>
+                <skipITs>false</skipITs>
+            </properties>
+        </profile>
+    </profiles>
 
 </project>

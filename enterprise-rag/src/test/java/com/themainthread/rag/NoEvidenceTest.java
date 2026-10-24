@@ -9,6 +9,7 @@ import static org.mockito.Mockito.when;
 
 import java.util.List;
 
+import org.junit.jupiter.api.Tag;
 import org.junit.jupiter.api.Test;
 
 import dev.langchain4j.data.embedding.Embedding;
@@ -24,6 +25,7 @@ import dev.langchain4j.store.embedding.EmbeddingStore;
 import io.quarkus.test.junit.QuarkusTest;
 
 @QuarkusTest
+@Tag("reader-workflow")
 class NoEvidenceTest {
     @Test
     @SuppressWarnings("unchecked")

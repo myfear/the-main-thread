@@ -87,17 +87,30 @@ than 1,000 characters return 400. Backend failures return 502.
 
 ## Run the Java checks
 
-Stop dev mode with Ctrl+C, then run:
+For the nine portable checks and application package, run:
 
 ```bash
-./mvnw verify -DskipITs=false
+./mvnw package
 ```
 
-This runs failure-path checks, the real-service `@QuarkusTest` workflow, and the
-same HTTP contract against the packaged JVM application with
-`@QuarkusIntegrationTest`. The checks need Podman, Ollama, and both models. They
-exercise conversion, retrieval, source metadata, the known price, an unsupported
-future price, and the input boundary. They do not require Python.
+These checks cover conversion response validation, ingestion failures and direct
+readiness enforcement with test doubles. They do not start services or download
+models. This is also the default CI build.
+
+To run all 18 checks, stop dev mode with Ctrl+C, keep Ollama running with both
+models pulled, and run:
+
+```bash
+./mvnw verify -Preader-workflow
+```
+
+The profile adds the real-service `@QuarkusTest` workflow, the no-evidence
+generation check, and the same HTTP contract against the packaged JVM application
+with `@QuarkusIntegrationTest`. It needs Podman, Ollama, and both models; Quarkus
+starts Docling and pgvector. Ollama Dev Services is disabled because the example
+uses your existing server on port 11434. The checks exercise conversion,
+retrieval, source metadata, the known price, an unsupported future price, and the
+input boundary. Neither test path requires Python.
 
 ## Run the package without a source tree
 
