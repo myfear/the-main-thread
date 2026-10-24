@@ -1,0 +1,4 @@
+/target/
+/.quarkus/
+/.env
+/converted/
