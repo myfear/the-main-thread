@@ -1,0 +1,5 @@
+CONFIDENTIAL — demo contract
+Supplier: Main Thread Engineering
+Customer: Example GmbH
+Delivery: Java workshop in München, with colleagues in 東京.
+This is fictional sample data. No real personal or commercial information.
