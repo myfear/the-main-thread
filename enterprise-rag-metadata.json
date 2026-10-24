@@ -1,9 +1,15 @@
 {
   "projectPath" : "enterprise-rag",
-  "sourceSha" : "e965e01a42ceceae6b41358776109021bd852016",
-  "runNumber" : 194,
+  "sourceSha" : "59e78f43c7c4fba197949246c29c29774493b04b",
+  "runNumber" : 200,
   "runAttempt" : 1,
-  "status" : "passing",
-  "reason" : "build:success setup:success",
-  "tests" : null
+  "status" : "failing",
+  "reason" : "build:failure setup:success",
+  "tests" : {
+    "total" : 14,
+    "passed" : 10,
+    "failed" : 4,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }
