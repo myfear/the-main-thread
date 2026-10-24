@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-checkout-outbox-debezium",
+  "sourceSha" : "6ad7bc52f8e3d631785eb2468a7612184d962a52",
+  "runNumber" : 202,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
