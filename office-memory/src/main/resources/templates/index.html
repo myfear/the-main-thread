@@ -1,0 +1,50 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <meta name="description" content="A local office assistant with facts you can review, correct, and remove.">
+    <title>Office Memory · The Main Thread</title>
+    <link rel="stylesheet" href="/office.css">
+    <script src="/office.js" defer></script>
+</head>
+<body>
+    <a class="skip-link" href="#message">Skip to message</a>
+    <header class="page-header">
+        <div><img src="/main-thread-wordmark.png" width="158" height="30" alt="The Main Thread"><h1>Office Memory</h1></div>
+        <p>A local assistant. You decide what becomes a saved fact.</p>
+    </header>
+    <main>
+        <div class="toolbar">
+            <div><label for="project">Project</label><select id="project"></select></div>
+            <div><label for="conversation">Conversation</label><select id="conversation"><option>Create a conversation</option></select></div>
+            <form id="new-conversation"><label for="title">New conversation</label><div class="inline"><input id="title" maxlength="120" placeholder="Give this conversation a name" required><button class="secondary" type="submit">Create</button></div></form>
+        </div>
+        <p id="status" class="status" role="status" aria-live="polite">Loading projects…</p>
+        <div class="workspace">
+            <section class="conversation-panel" aria-labelledby="chat-heading">
+                <div class="section-heading"><h2 id="chat-heading">Conversation</h2><span id="turn-state">Ready</span></div>
+                <div id="messages" class="messages" aria-live="polite"><p class="empty">Create a conversation to start.</p></div>
+                <form id="composer">
+                    <label for="message">Message</label>
+                    <textarea id="message" rows="4" maxlength="4000" required placeholder="Remember that the offsite is in Hamburg on 19 November 2026, with 24 colleagues."></textarea>
+                    <div class="composer-actions"><small>Facts need approval before another conversation can retrieve them.</small><button id="send" type="submit">Send message</button></div>
+                </form>
+            </section>
+            <section class="facts-panel" aria-labelledby="facts-heading">
+                <div class="section-heading"><h2 id="facts-heading">Saved facts</h2><span id="fact-count">0 active</span></div>
+                <p class="section-help">Approved facts shared by conversations in this project.</p>
+                <div id="facts"><p class="empty">No saved facts. Ask the assistant to remember a detail, then approve the proposal.</p></div>
+                <aside class="retention-note"><strong>What removal clears</strong><p>Removing a saved fact clears its saved versions, vectors, and related proposal text. Original conversations and their context windows are retained. Start a new conversation to check retrieval after a change.</p></aside>
+            </section>
+            <section class="changes-panel" aria-labelledby="changes-heading">
+                <div class="section-heading"><h2 id="changes-heading">Pending changes</h2><span id="pending-count">0 pending</span></div>
+                <div id="proposals"><p class="empty">Proposals appear here when the assistant calls a memory tool.</p></div>
+                <div class="activity-heading"><h2>Tool activity</h2><p class="section-help">Actual calls for the selected conversation.</p></div>
+                <ol id="activity" class="activity"><li class="empty">No tool calls in this conversation.</li></ol>
+            </section>
+        </div>
+    </main>
+    <footer>Fictional projects · Single local user · No email or calendar connections</footer>
+</body>
+</html>
