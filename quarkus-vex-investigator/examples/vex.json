@@ -1,0 +1,16 @@
+{
+  "@context" : "https://openvex.dev/ns/v0.2.0",
+  "@id" : "urn:uuid:fa039c80-fabb-4a49-807f-6dbeb186ae11",
+  "author" : "TEST_ONLY / TEST_ONLY simulated reviewer",
+  "timestamp" : "2026-10-26T00:53:13.633300Z",
+  "version" : 1,
+  "statements" : [ {
+    "vulnerability" : {
+      "name" : "TEST_ONLY-COMMONS-TEXT"
+    },
+    "products" : [ {
+      "@id" : "pkg:generic/quarkus-run.jar@1.0.0"
+    } ],
+    "status" : "under_investigation"
+  } ]
+}
