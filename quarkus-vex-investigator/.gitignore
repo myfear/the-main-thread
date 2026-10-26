@@ -1,0 +1,7 @@
+**/target/
+/runs/
+/.local/
+/.bob/mcp.json
+/.bob/state/
+/.bob/logs/
+*.log

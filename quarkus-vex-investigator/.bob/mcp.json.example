@@ -1,0 +1,11 @@
+{
+  "mcpServers": {
+    "huginn": {
+      "command": "jbang",
+      "args": ["--quiet", "eu.maveniverse.maven.huginn:huginn-mcp:0.1.1:runner"],
+      "cwd": "/absolute/path/to/quarkus-vex-investigator/sample-app",
+      "disabled": false,
+      "alwaysAllow": []
+    }
+  }
+}
