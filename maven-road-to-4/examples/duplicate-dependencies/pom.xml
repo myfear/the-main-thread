@@ -1,0 +1,24 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project xmlns="http://maven.apache.org/POM/4.0.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0 https://maven.apache.org/xsd/maven-4.0.0.xsd">
+    <modelVersion>4.0.0</modelVersion>
+    <groupId>com.themainthread.mavenlab</groupId>
+    <artifactId>duplicate-dependencies</artifactId>
+    <version>1.0.0</version>
+    <packaging>pom</packaging>
+    <properties>
+        <substack-article.url>https://www.the-main-thread.com/p/maven-3-10-road-to-maven-4</substack-article.url>
+    </properties>
+    <dependencies>
+        <dependency>
+            <groupId>com.themainthread.mavenlab</groupId>
+            <artifactId>support</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+        <dependency>
+            <groupId>com.themainthread.mavenlab</groupId>
+            <artifactId>support</artifactId>
+            <version>1.0.0</version>
+        </dependency>
+    </dependencies>
+</project>
