@@ -1,0 +1,274 @@
+{
+  "schemaVersion": 1,
+  "flowId": "8c7b7c80-4071-4e22-bc19-53326441dc6a",
+  "name": "Fixture PR Review",
+  "description": "Deterministic review contract with risk routing; no live model.",
+  "nodes": [
+    {
+      "id": "input",
+      "type": "workflow.input",
+      "version": 1,
+      "position": {
+        "x": 0,
+        "y": 180
+      },
+      "config": {}
+    },
+    {
+      "id": "fetch",
+      "type": "task.fetch-pr-fixture",
+      "version": 1,
+      "position": {
+        "x": 230,
+        "y": 180
+      },
+      "config": {}
+    },
+    {
+      "id": "review",
+      "type": "ai.agent",
+      "version": 1,
+      "position": {
+        "x": 460,
+        "y": 180
+      },
+      "config": {
+        "outputSchemaRef": "review-result-v1",
+        "maxToolCalls": 2
+      }
+    },
+    {
+      "id": "policy",
+      "type": "task.review-policy",
+      "version": 1,
+      "position": {
+        "x": 690,
+        "y": 180
+      },
+      "config": {
+        "minimumSeverity": "HIGH"
+      }
+    },
+    {
+      "id": "route",
+      "type": "logic.switch",
+      "version": 1,
+      "position": {
+        "x": 920,
+        "y": 180
+      },
+      "config": {}
+    },
+    {
+      "id": "lowOutput",
+      "type": "workflow.output",
+      "version": 1,
+      "position": {
+        "x": 1150,
+        "y": 80
+      },
+      "config": {}
+    },
+    {
+      "id": "highOutput",
+      "type": "workflow.output",
+      "version": 1,
+      "position": {
+        "x": 1150,
+        "y": 300
+      },
+      "config": {}
+    },
+    {
+      "id": "model",
+      "type": "ai.model-ref",
+      "version": 1,
+      "position": {
+        "x": 240,
+        "y": -120
+      },
+      "config": {
+        "modelRef": "fixture-model-v1"
+      }
+    },
+    {
+      "id": "prompt",
+      "type": "ai.prompt-ref",
+      "version": 1,
+      "position": {
+        "x": 470,
+        "y": -120
+      },
+      "config": {
+        "promptRef": "quarkus-review-v1"
+      }
+    },
+    {
+      "id": "tools",
+      "type": "ai.toolset-ref",
+      "version": 1,
+      "position": {
+        "x": 700,
+        "y": -120
+      },
+      "config": {
+        "allowedToolIds": [
+          "pr.read-files"
+        ]
+      }
+    }
+  ],
+  "edges": [
+    {
+      "id": "e1",
+      "kind": "control",
+      "source": "input",
+      "sourcePort": "next",
+      "target": "fetch",
+      "targetPort": "in"
+    },
+    {
+      "id": "e2",
+      "kind": "control",
+      "source": "fetch",
+      "sourcePort": "next",
+      "target": "review",
+      "targetPort": "in"
+    },
+    {
+      "id": "e3",
+      "kind": "control",
+      "source": "review",
+      "sourcePort": "next",
+      "target": "policy",
+      "targetPort": "in"
+    },
+    {
+      "id": "e4",
+      "kind": "control",
+      "source": "policy",
+      "sourcePort": "next",
+      "target": "route",
+      "targetPort": "in"
+    },
+    {
+      "id": "e5",
+      "kind": "control",
+      "source": "route",
+      "sourcePort": "false",
+      "target": "lowOutput",
+      "targetPort": "in"
+    },
+    {
+      "id": "e6",
+      "kind": "control",
+      "source": "route",
+      "sourcePort": "true",
+      "target": "highOutput",
+      "targetPort": "in"
+    },
+    {
+      "id": "e7",
+      "kind": "data",
+      "source": "input",
+      "sourcePort": "fixture",
+      "target": "fetch",
+      "targetPort": "fixture"
+    },
+    {
+      "id": "e8",
+      "kind": "data",
+      "source": "fetch",
+      "sourcePort": "pullRequest",
+      "target": "review",
+      "targetPort": "pullRequest"
+    },
+    {
+      "id": "e9",
+      "kind": "data",
+      "source": "review",
+      "sourcePort": "reviewResult",
+      "target": "policy",
+      "targetPort": "reviewResult"
+    },
+    {
+      "id": "e10",
+      "kind": "data",
+      "source": "fetch",
+      "sourcePort": "pullRequest",
+      "target": "policy",
+      "targetPort": "pullRequest"
+    },
+    {
+      "id": "e11",
+      "kind": "data",
+      "source": "policy",
+      "sourcePort": "requiresApproval",
+      "target": "route",
+      "targetPort": "condition"
+    },
+    {
+      "id": "e12",
+      "kind": "data",
+      "source": "review",
+      "sourcePort": "reviewResult",
+      "target": "lowOutput",
+      "targetPort": "reviewResult"
+    },
+    {
+      "id": "e13",
+      "kind": "data",
+      "source": "review",
+      "sourcePort": "reviewResult",
+      "target": "highOutput",
+      "targetPort": "reviewResult"
+    },
+    {
+      "id": "e14",
+      "kind": "data",
+      "source": "policy",
+      "sourcePort": "requiresApproval",
+      "target": "lowOutput",
+      "targetPort": "requiresApproval"
+    },
+    {
+      "id": "e15",
+      "kind": "data",
+      "source": "policy",
+      "sourcePort": "requiresApproval",
+      "target": "highOutput",
+      "targetPort": "requiresApproval"
+    },
+    {
+      "id": "e16",
+      "kind": "capability",
+      "source": "model",
+      "sourcePort": "model",
+      "target": "review",
+      "targetPort": "model"
+    },
+    {
+      "id": "e17",
+      "kind": "capability",
+      "source": "prompt",
+      "sourcePort": "prompt",
+      "target": "review",
+      "targetPort": "prompt"
+    },
+    {
+      "id": "e18",
+      "kind": "capability",
+      "source": "tools",
+      "sourcePort": "tools",
+      "target": "review",
+      "targetPort": "tools"
+    }
+  ],
+  "metadata": {
+    "viewport": {
+      "x": 0,
+      "y": 0,
+      "zoom": 1
+    }
+  }
+}

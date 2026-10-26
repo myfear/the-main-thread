@@ -1,0 +1,10 @@
+{
+  "number": 42,
+  "title": "Open the admin endpoint",
+  "files": [
+    {
+      "path": "src/main/java/example/security/AdminPolicy.java",
+      "diff": "@@ -12 +12 @@\n- requireRole(\"admin\");\n+ permitAll();"
+    }
+  ]
+}

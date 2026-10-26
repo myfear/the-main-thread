@@ -1,7 +1,7 @@
 [extend]
   useDefault = true
 
-[allowlist]
+[[allowlists]]
   description = "Global Allowlist"
 
   # Ignore based on any subset of the file path
@@ -35,3 +35,12 @@
     paths = ['''(?:^|/)quarkus-wazuh-siem/infra/wazuh/config/wazuh_dashboard/wazuh\.yml$''']
     regexTarget = "secret"
     regexes = ['''^MyS3cr37P450r\.\*-$''']
+
+# Agent Studio's loopback-only development runner token is intentionally public.
+[[allowlists]]
+  description = "Agent Studio README demo runner token"
+  targetRules = ["curl-auth-header"]
+  condition = "AND"
+  paths = ['''^quarkus-visual-agent-studio/README\.md$''']
+  regexTarget = "secret"
+  regexes = ['''^local-spike-runner$''']

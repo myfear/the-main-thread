@@ -1,0 +1,54 @@
+document:
+  dsl: '1.0.0'
+  namespace: studio
+  name: risk-triage
+  version: '@VERSION@'
+input:
+  schema:
+    format: json
+    document:
+      type: object
+      additionalProperties: false
+      required: [runId, changedLines, fail]
+      properties:
+        runId:
+          type: string
+          format: uuid
+        changedLines:
+          type: integer
+          minimum: 0
+          maximum: 10000
+        fail:
+          type: boolean
+do:
+  - input:
+      set:
+        runId: '${ .runId }'
+        changedLines: '${ .changedLines }'
+        fail: '${ .fail }'
+  - policy:
+      call: http
+      with:
+        method: post
+        endpoint: '@EXECUTOR_URL@/internal/spike/policy'
+        body: '${ . }'
+  - checkpointWindow:
+      wait:
+        milliseconds: 2000
+  - route:
+      switch:
+        - highRisk:
+            when: '${ .requiresApproval == true }'
+            then: humanReview
+        - lowRisk:
+            then: lowRiskOutput
+  - lowRiskOutput:
+      set:
+        runId: '${ .runId }'
+        decision: LOW_RISK
+      then: end
+  - humanReview:
+      set:
+        runId: '${ .runId }'
+        decision: REQUIRES_HUMAN_REVIEW
+      then: end

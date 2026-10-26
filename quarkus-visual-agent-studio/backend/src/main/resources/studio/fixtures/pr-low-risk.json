@@ -1,0 +1,10 @@
+{
+  "number": 41,
+  "title": "Clarify the setup documentation",
+  "files": [
+    {
+      "path": "README.md",
+      "diff": "@@ -4 +4 @@\n- Run the server.\n+ Run the server from the backend directory."
+    }
+  ]
+}
