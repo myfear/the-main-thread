@@ -48,7 +48,7 @@ An em dash means metadata or test reports are unavailable; it does not mean test
 | **[bob-code-review-graph](https://github.com/myfear/the-main-thread/tree/main/bob-code-review-graph)** | — | — | — | — | Not configured |
 | **[bob-jbang-escape-room](https://github.com/myfear/the-main-thread/tree/main/bob-jbang-escape-room)** | — | — | — | — | Not configured |
 | **[bob-lifecycle-hooks](https://github.com/myfear/the-main-thread/tree/main/bob-lifecycle-hooks)** | — | — | — | — | Not configured |
-| **[bob-openui-pilot](https://github.com/myfear/the-main-thread/tree/main/bob-openui-pilot)** | 25 | 3.40.1 | — | [Article](https://www.the-main-thread.com/p/openui-ibm-bob-quarkus) | ![bob-openui-pilot](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/bob-openui-pilot.json) |
+| **[bob-openui-pilot](https://github.com/myfear/the-main-thread/tree/main/bob-openui-pilot)** | 25 | 3.40.1 | ✅ 7/7 | [Article](https://www.the-main-thread.com/p/openui-ibm-bob-quarkus) | ![bob-openui-pilot](https://img.shields.io/endpoint?url=https://raw.githubusercontent.com/myfear/the-main-thread/badges/bob-openui-pilot.json) |
 | **[bobshell-build-permit](https://github.com/myfear/the-main-thread/tree/main/bobshell-build-permit)** | 21 | — | — | — | Not configured |
 | **[bobshell-openshell](https://github.com/myfear/the-main-thread/tree/main/bobshell-openshell)** | — | — | — | — | Not configured |
 | **[bobshell-podman-worktrees](https://github.com/myfear/the-main-thread/tree/main/bobshell-podman-worktrees)** | 21 | 3.39.1 | — | — | Not configured |
