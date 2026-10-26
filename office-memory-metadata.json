@@ -1,9 +1,15 @@
 {
   "projectPath" : "office-memory",
-  "sourceSha" : "d36388c32162d795161e0d73d27324c2db09a3eb",
-  "runNumber" : 204,
+  "sourceSha" : "6c85fe5c3da0b4c09f3446e3c3fcb17e173075e7",
+  "runNumber" : 206,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 20,
+    "passed" : 20,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }

@@ -1,7 +1,7 @@
 {
   "projectPath" : "docling-rag",
-  "sourceSha" : "59e78f43c7c4fba197949246c29c29774493b04b",
-  "runNumber" : 200,
+  "sourceSha" : "6c85fe5c3da0b4c09f3446e3c3fcb17e173075e7",
+  "runNumber" : 206,
   "runAttempt" : 1,
   "status" : "passing",
   "reason" : "build:success setup:success",

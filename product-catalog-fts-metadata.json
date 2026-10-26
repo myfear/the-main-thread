@@ -1,7 +1,7 @@
 {
   "projectPath" : "product-catalog-fts",
-  "sourceSha" : "e965e01a42ceceae6b41358776109021bd852016",
-  "runNumber" : 194,
+  "sourceSha" : "6c85fe5c3da0b4c09f3446e3c3fcb17e173075e7",
+  "runNumber" : 206,
   "runAttempt" : 1,
   "status" : "passing",
   "reason" : "build:success setup:success",

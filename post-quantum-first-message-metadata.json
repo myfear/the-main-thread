@@ -1,9 +1,15 @@
 {
   "projectPath" : "post-quantum-first-message",
-  "sourceSha" : "30cdb6296c7c6291e4c2aab59052f6aab6c70bbe",
-  "runNumber" : 199,
+  "sourceSha" : "6c85fe5c3da0b4c09f3446e3c3fcb17e173075e7",
+  "runNumber" : 206,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 50,
+    "passed" : 50,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }

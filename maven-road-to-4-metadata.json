@@ -1,9 +1,15 @@
 {
   "projectPath" : "maven-road-to-4",
-  "sourceSha" : "0bc02d35f7f544d347320fa45dc8f310bf0a74f6",
-  "runNumber" : 205,
+  "sourceSha" : "6c85fe5c3da0b4c09f3446e3c3fcb17e173075e7",
+  "runNumber" : 206,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 7,
+    "passed" : 7,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }

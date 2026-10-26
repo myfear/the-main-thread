@@ -1,9 +1,15 @@
 {
   "projectPath" : "enterprise-rag",
-  "sourceSha" : "cf6fdd486d220503a19482593a9fe7db0d9f7e41",
-  "runNumber" : 201,
+  "sourceSha" : "6c85fe5c3da0b4c09f3446e3c3fcb17e173075e7",
+  "runNumber" : 206,
   "runAttempt" : 1,
-  "status" : "no result",
-  "reason" : "Expected build artifact is missing",
-  "tests" : null
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 9,
+    "passed" : 9,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
 }
