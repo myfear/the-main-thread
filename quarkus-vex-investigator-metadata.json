@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-vex-investigator",
+  "sourceSha" : "75d97a526ceea6b95e482dc65d0a26c1b45a575f",
+  "runNumber" : 207,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
