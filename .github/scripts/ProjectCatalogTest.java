@@ -54,6 +54,29 @@ class ProjectCatalogTest {
         assertThrows(IllegalArgumentException.class, this::projects);
     }
 
+    @Test void buildJdkCanDifferFromApplicationBytecodeTarget() throws Exception {
+        file("demo/pom.xml", pom("<maven.compiler.release>17</maven.compiler.release>"
+                + "<build.jdk>25</build.jdk><maven.build.java.version>${build.jdk}</maven.build.java.version>"));
+        file("demo/runner/pom.xml", pom("<maven.compiler.release>25</maven.compiler.release>"));
+        stage();
+        var project = projects().getFirst();
+        assertEquals("17", project.java());
+        assertEquals("25", project.buildJava());
+        assertEquals(List.of(new ProjectCatalog.Build("demo", "25", false)),
+                ProjectCatalog.matrix(root, "workflow_dispatch", "", "HEAD", true));
+    }
+
+    @Test void rejectsInvalidBuildJdkBeforeCreatingMatrix() throws Exception {
+        for (String version : List.of("25-ea", "", "${missing}")) {
+            file("demo/pom.xml", pom("<maven.compiler.release>17</maven.compiler.release>"
+                    + "<maven.build.java.version>" + version + "</maven.build.java.version>"));
+            stage();
+            var error = assertThrows(IllegalArgumentException.class,
+                    () -> ProjectCatalog.matrix(root, "workflow_dispatch", "", "HEAD", true));
+            assertTrue(error.getMessage().contains("maven.build.java.version"));
+        }
+    }
+
     @Test void metadataUsesSourcePropertiesAndOnlyConsistentNestedValues() throws Exception {
         file("single/service/pom.xml", pom("<jdk>25</jdk><maven.compiler.release>${jdk}</maven.compiler.release><quarkus.platform.version>3.40.1</quarkus.platform.version>"));
         file("mixed/a/pom.xml", pom("<maven.compiler.release>21</maven.compiler.release>"));

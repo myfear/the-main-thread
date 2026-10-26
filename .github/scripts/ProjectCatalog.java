@@ -161,7 +161,11 @@ public class ProjectCatalog {
                 article = "";
             }
             // Catalog overrides must not change the existing build eligibility or Java selection.
-            String buildJava = javaVersion(top);
+            // A reactor can require a newer build JDK than its application's bytecode target.
+            String buildJava = value(top, "maven.build.java.version");
+            if (top.containsKey("maven.build.java.version") && !buildJava.matches("[0-9]+"))
+                throw new IllegalArgumentException(name + "/pom.xml: maven.build.java.version must resolve to a Java major version");
+            if (buildJava.isEmpty()) buildJava = javaVersion(top);
             if (buildJava.isEmpty()) buildJava = poms.entrySet().stream()
                     .filter(e -> e.getKey().split("/").length == 3).map(e -> javaVersion(e.getValue()))
                     .filter(s -> !s.isEmpty()).findFirst().orElse("21");
