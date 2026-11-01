@@ -15,6 +15,10 @@ final class Checks {
     static int passed;
     interface Checked { void run() throws Exception; }
 
+    public static void main(String[] args) throws Exception {
+        fakeAgent(Path.of(args[0]));
+    }
+
     static void run() throws Exception {
         Clock clock = Clock.fixed(Instant.parse("2026-11-02T09:00:00Z"), ZoneId.of("UTC"));
         check(Briefing.weekStart("2026-W43").equals(LocalDate.of(2026, 10, 19)), "ISO week start");
@@ -54,6 +58,11 @@ final class Checks {
         check(tool.get(), "ACP tool attempt rejected");
         Bob.receive(frame("agent_message_chunk", "a".repeat(64_001)), response, overflow, tool);
         check(overflow.get(), "ACP response bounded");
+        ObjectNode permission = Briefing.JSON.createObjectNode().put("jsonrpc", "2.0").put("id", "permission-1").put("method", "session/request_permission");
+        permission.putObject("params").putArray("options").addObject().put("kind", "allow_once").put("optionId", "yes");
+        JsonNodeCheck.denied(permission);
+        ObjectNode fileRead = Briefing.JSON.createObjectNode().put("id", 9).put("method", "fs/read_text_file");
+        check(Bob.denyClientRequest(fileRead).path("error").path("code").asInt() == -32601, "agent file and terminal requests are unsupported");
         ObjectNode copy = copy(records.subList(1, 3));
         Briefing.validate(copy, records.subList(1, 3));
         check(true, "valid editorial contract");
@@ -71,6 +80,17 @@ final class Checks {
         reject(() -> Briefing.validate(links, records.subList(1, 3)), "model-supplied links rejected");
         Path root = Files.createTempDirectory("briefing-check-");
         try {
+            // Exercise the real SmallRye stdio client against an agent that offers only approval.
+            // The receipt proves the wire reply denied permission, not just later issue validation.
+            Path receipt = root.resolve("permission-result.txt");
+            Path agent = root.resolve("fake-bob");
+            String javaCommand = Path.of(System.getProperty("java.home"), "bin", "java").toString();
+            Files.writeString(agent, "#!/bin/sh\nexec " + quote(javaCommand) + " -cp " + quote(System.getProperty("java.class.path")) + " Checks " + quote(receipt.toString()) + "\n");
+            Files.setPosixFilePermissions(agent, java.nio.file.attribute.PosixFilePermissions.fromString("rwx------"));
+            Path fixtureKey = root.resolve("fixture-key.json");
+            Briefing.atomicJson(fixtureKey, Briefing.JSON.createObjectNode().put("apikey", "local-test-fixture"));
+            reject(() -> Bob.generate(Briefing.JSON.createObjectNode(), Map.of("bob", agent.toString(), "key-file", fixtureKey.toString())), "tool request makes generation fail");
+            check(Files.readString(receipt).equals("cancelled"), "real ACP transport cancels an approval-only permission request");
             Path xml = root.resolve("feed.xml");
             Files.write(xml, feed);
             Path state = root.resolve("state");
@@ -120,6 +140,52 @@ final class Checks {
         System.out.println(passed + " offline contract checks passed.");
     }
 
+    static String quote(String value) { return "'" + value.replace("'", "'\"'\"'") + "'"; }
+
+    static void fakeAgent(Path receipt) throws Exception {
+        try (var input = new java.io.BufferedReader(new java.io.InputStreamReader(System.in, StandardCharsets.UTF_8))) {
+            com.fasterxml.jackson.databind.JsonNode promptId = null;
+            for (String line; (line = input.readLine()) != null;) {
+                var request = Briefing.JSON.readTree(line);
+                if (request.path("id").asText().equals("permission-only-approve") && !request.has("method")) {
+                    Files.writeString(receipt, request.path("result").path("outcome").path("outcome").asText());
+                    ObjectNode reply = Briefing.JSON.createObjectNode().put("jsonrpc", "2.0");
+                    reply.set("id", promptId);
+                    reply.putObject("result").put("stopReason", "cancelled");
+                    wire(reply);
+                    continue;
+                }
+                String method = request.path("method").asText();
+                ObjectNode reply = Briefing.JSON.createObjectNode().put("jsonrpc", "2.0");
+                reply.set("id", request.path("id"));
+                ObjectNode result = reply.putObject("result");
+                switch (method) {
+                    case "initialize" -> {
+                        result.put("protocolVersion", 1).putObject("agentCapabilities");
+                        result.putObject("agentInfo").put("name", "test-agent").put("version", "1");
+                    }
+                    case "session/new" -> result.put("sessionId", "test-session");
+                    case "session/prompt" -> {
+                        promptId = request.path("id");
+                        ObjectNode permission = Briefing.JSON.createObjectNode().put("jsonrpc", "2.0").put("id", "permission-only-approve").put("method", "session/request_permission");
+                        ObjectNode params = permission.putObject("params").put("sessionId", "test-session");
+                        params.putObject("toolCall").put("toolCallId", "test-command").put("title", "Test operation");
+                        params.putArray("options").addObject().put("optionId", "yes").put("kind", "allow_once").put("name", "Allow");
+                        wire(permission);
+                        continue;
+                    }
+                    default -> { if (!request.has("id")) continue; }
+                }
+                wire(reply);
+            }
+        }
+    }
+
+    static void wire(ObjectNode frame) throws Exception {
+        System.out.println(Briefing.JSON.writer().without(com.fasterxml.jackson.databind.SerializationFeature.INDENT_OUTPUT).writeValueAsString(frame));
+        System.out.flush();
+    }
+
     static ObjectNode copy(List<ObjectNode> records) {
         ObjectNode copy = Briefing.JSON.createObjectNode().put("headline", "Check the engineering decision")
                 .put("intro", "A practical week about decisions that need an explicit check.")
@@ -147,6 +213,14 @@ final class Checks {
     static void check(boolean condition, String label) {
         if (!condition) throw new AssertionError(label);
         passed++;
+    }
+
+    static final class JsonNodeCheck {
+        static void denied(ObjectNode request) {
+            var reply = Bob.denyClientRequest(request);
+            check(reply.path("result").path("outcome").path("outcome").asText().equals("cancelled"), "permission cancelled even when agent offers only approval");
+            check(reply.path("id").equals(request.path("id")), "permission denial preserves JSON-RPC correlation ID");
+        }
     }
     static void reject(Checked action, String label) throws Exception {
         try { action.run(); }

@@ -8,6 +8,7 @@ import java.nio.file.Path;
 import java.time.Duration;
 import java.util.Map;
 import java.util.concurrent.atomic.AtomicBoolean;
+import java.util.function.Consumer;
 
 final class Bob {
     static final String PROMPT_VERSION = "queue-1";
@@ -33,11 +34,29 @@ final class Bob {
             parameters.addEnvVar("BOB_LOG_LEVEL", "silent");
             parameters.args("acp", "--trust", "--disable-mcp", "--disable-subagents", "--log-level", "silent");
             if (Boolean.parseBoolean(options.getOrDefault("accept-license", "false"))) parameters.arg("--accept-license");
-            var transport = new StdioAcpClientTransport(parameters.build());
-            transport.setStdErrorHandler(line -> { /* Agent diagnostics can contain source text: do not persist them. */ });
             StringBuffer response = new StringBuffer();
             AtomicBoolean overflow = new AtomicBoolean();
             AtomicBoolean toolAttempt = new AtomicBoolean();
+            var transport = new StdioAcpClientTransport(parameters.build()) {
+                @Override
+                public void setInboundMessageHandler(Consumer<JsonNode> handler) {
+                    super.setInboundMessageHandler(frame -> {
+                        // SmallRye 0.2.2 falls back to an approval option when the requested reject
+                        // option is absent. Deny all agent -> client requests before that fallback.
+                        if (frame.has("method") && frame.has("id")) {
+                            toolAttempt.set(true);
+                            sendMessage(denyClientRequest(frame));
+                            String session = frame.path("params").path("sessionId").asText();
+                            if (!session.isBlank()) {
+                                ObjectNode cancel = Briefing.JSON.createObjectNode().put("jsonrpc", "2.0").put("method", "session/cancel");
+                                cancel.putObject("params").put("sessionId", session);
+                                sendMessage(cancel);
+                            }
+                        } else handler.accept(frame);
+                    });
+                }
+            };
+            transport.setStdErrorHandler(line -> { /* Agent diagnostics can contain source text: do not persist them. */ });
             // In 0.2.2 the typed notification router can lose Bob's sessionUpdate discriminator.
             // Use the documented transport listener for message chunks, never thoughts or raw logs.
             transport.setRawInboundListener(line -> receive(line, response, overflow, toolAttempt));
@@ -72,6 +91,17 @@ final class Bob {
                 return new Result((ObjectNode) parsed, agent);
             }
         } finally { Site.deleteTree(workspace); }
+    }
+
+    static ObjectNode denyClientRequest(JsonNode frame) {
+        ObjectNode reply = Briefing.JSON.createObjectNode().put("jsonrpc", "2.0");
+        reply.set("id", frame.path("id"));
+        if (frame.path("method").asText().equals("session/request_permission")) {
+            reply.putObject("result").putObject("outcome").put("outcome", "cancelled");
+        } else {
+            reply.putObject("error").put("code", -32601).put("message", "Client tools are disabled for briefing generation.");
+        }
+        return reply;
     }
 
     static void receive(String line, StringBuffer response, AtomicBoolean overflow, AtomicBoolean toolAttempt) {

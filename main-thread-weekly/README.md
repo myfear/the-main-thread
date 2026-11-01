@@ -131,7 +131,7 @@ The feed is a rolling source, not a complete archive. The pipeline requires over
 
 Bob receives bounded records as untrusted data. MCP and subagents are disabled; ACP permission requests are rejected, and any observed tool attempt rejects the run. Only final text chunks are collected. Responses have a five-minute timeout and a 64 KB limit. Java requires exact fields, every known ID once, approved topic labels, bounded plain text, and no model-supplied links or HTML. These checks constrain output shape; they do not establish factual accuracy. The UI labels the briefing as AI-assisted and links to the originals.
 
-SmallRye ACP 0.2.2 handles initialization, sessions, permissions, prompts, timeouts, and process shutdown. Its typed notification router did not expose Bob's final message chunks in the tested combination. `Bob.receive` uses the transport's documented inbound listener to select `agent_message_chunk` messages by their wire discriminator. It discards thought chunks and never logs the frames. Offline checks cover this adapter; the combination has also been tested against Bob Shell 2.0.9.
+SmallRye ACP 0.2.2 handles initialization, sessions, prompts, timeouts, and process shutdown. Its permission handler can fall back to approval when a requested rejection option is absent, so the transport cancels permission requests and rejects other client-tool requests before that handler. Its typed notification router did not expose Bob's final message chunks in the tested combination. `Bob.receive` uses the transport's documented inbound listener to select `agent_message_chunk` messages by their wire discriminator. It discards thought chunks and never logs the frames. Offline checks cover these adapters; the combination has also been tested against Bob Shell 2.0.9.
 
 ### Companion links
 
@@ -145,7 +145,7 @@ Pass `--override PATH` to replace the editorial portion of a selected week witho
 
 ## Validation and recovery
 
-`jbang Briefing.java test` runs offline checks for ISO weeks and DST, feed deduplication and audio classification, external entity rejection, URL restrictions, ACP chunk selection and limits, editorial validation, accepted-issue caching, failure preservation, empty weeks, HTML escaping, noindex, and generated local links. It needs no Bob key.
+`jbang Briefing.java test` runs offline checks for ISO weeks and DST, feed deduplication and audio classification, external entity rejection, URL restrictions, ACP chunk selection and limits, editorial validation, accepted-issue caching, failure preservation, empty weeks, HTML escaping, noindex, and generated local links. A local fake agent exercises the real SmallRye stdio transport and proves that a permission request offering only approval is cancelled. The checks need a POSIX shell (macOS, Linux, or WSL) and no Bob key.
 
 Generation validates and renders a candidate before replacing accepted output. Actions uploads and deploys only after successful generation. A failed run leaves the previous Pages deployment available. If deployment fails after state was saved, run `render` with publication enabled to retry without Bob. To roll back copy or content, restore the relevant accepted issue JSON from an earlier `gh-pages` commit, then render again. To roll back the UI, run `render` from the intended source revision.
 
