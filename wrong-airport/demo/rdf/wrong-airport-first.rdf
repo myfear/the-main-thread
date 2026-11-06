@@ -1,0 +1,16 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- Synthetic test data; no claim about live DBpedia values. -->
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dbo="http://dbpedia.org/ontology/"
+         xmlns:dbp="http://dbpedia.org/property/"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description rdf:about="http://dbpedia.org/resource/Other_Airport">
+        <dbo:runwayLength>9999</dbo:runwayLength>
+    </rdf:Description>
+    <rdf:Description rdf:about="http://dbpedia.org/resource/Munich_Airport">
+        <rdfs:label xml:lang="de">Flughafen München</rdfs:label>
+        <rdfs:label xml:lang="en">Munich Airport</rdfs:label>
+        <dbp:iata>MUC</dbp:iata>
+        <dbo:runwayLength>4000</dbo:runwayLength>
+    </rdf:Description>
+</rdf:RDF>

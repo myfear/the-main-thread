@@ -1,0 +1,7 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:dbo="http://dbpedia.org/ontology/">
+    <rdf:Description rdf:about="http://dbpedia.org/resource/Other_Airport">
+        <dbo:runwayLength>9999</dbo:runwayLength>
+    </rdf:Description>
+</rdf:RDF>

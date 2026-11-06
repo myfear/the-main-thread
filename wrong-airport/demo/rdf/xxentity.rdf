@@ -1,0 +1,8 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE rdf:RDF [<!ENTITY xxe SYSTEM "http://127.0.0.1:9/must-not-be-read">]>
+<rdf:RDF xmlns:rdf="http://www.w3.org/1999/02/22-rdf-syntax-ns#"
+         xmlns:rdfs="http://www.w3.org/2000/01/rdf-schema#">
+    <rdf:Description rdf:about="http://dbpedia.org/resource/Munich_Airport">
+        <rdfs:label xml:lang="en">&xxe;</rdfs:label>
+    </rdf:Description>
+</rdf:RDF>
