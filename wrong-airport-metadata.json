@@ -1,0 +1,9 @@
+{
+  "projectPath" : "wrong-airport",
+  "sourceSha" : "84fc342536207677f777b5179e8d54cc0d4c11dd",
+  "runNumber" : 213,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
