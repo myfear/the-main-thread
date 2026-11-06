@@ -1,0 +1,24 @@
+[Unit]
+Description=Workshop Maven Central cache
+
+[Container]
+Image=docker.io/dzikoysk/reposilite:3.6.6
+ContainerName=ollama-workshop-maven
+Pod=ollama-workshop.pod
+Pull=never
+Environment="JAVA_OPTS=-Xmx256m -Dreposilite.status.remote-version-check=false"
+Environment="REPOSILITE_OPTS=--hostname=127.0.0.1 --port=8081 --shared-configuration=/etc/reposilite/shared.json"
+Volume=/mnt/ssd/ollama-workshop-registry/maven-data:/app/data:Z
+Volume=/mnt/ssd/ollama-workshop-registry/reposilite.json:/etc/reposilite/shared.json:ro,Z
+HealthCmd=curl -fsS -o /dev/null http://127.0.0.1:8081/
+HealthInterval=10s
+HealthTimeout=3s
+HealthRetries=5
+HealthStartPeriod=60s
+HealthOnFailure=kill
+Notify=healthy
+
+[Service]
+Restart=always
+RestartSec=5
+TimeoutStartSec=900

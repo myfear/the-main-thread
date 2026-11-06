@@ -1,0 +1,13 @@
+[Unit]
+Description=Workshop model registry and Maven cache
+RequiresMountsFor=/mnt/ssd
+AssertPathIsMountPoint=/mnt/ssd
+
+[Pod]
+PodName=ollama-workshop
+PublishPort=127.0.0.1:5001:5000
+PublishPort=0.0.0.0:5002:8080
+PublishPort=0.0.0.0:5003:8082
+
+[Install]
+WantedBy=multi-user.target

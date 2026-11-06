@@ -1,0 +1,25 @@
+[Unit]
+Description=Workshop model storage
+
+[Container]
+Image=docker.io/library/registry:3.1.2
+ContainerName=ollama-workshop-registry
+Pod=ollama-workshop.pod
+Pull=never
+Environment=REGISTRY_STORAGE_FILESYSTEM_ROOTDIRECTORY=/var/lib/registry
+Environment=REGISTRY_STORAGE_DELETE_ENABLED=false
+Environment=REGISTRY_HTTP_ADDR=0.0.0.0:5000
+Environment=REGISTRY_HTTP_RELATIVEURLS=false
+Environment=OTEL_TRACES_EXPORTER=none
+Volume=/mnt/ssd/ollama-workshop-registry/data:/var/lib/registry:Z
+HealthCmd=wget -q -O /dev/null http://127.0.0.1:5000/v2/
+HealthInterval=10s
+HealthTimeout=3s
+HealthRetries=5
+HealthOnFailure=kill
+Notify=healthy
+
+[Service]
+Restart=always
+RestartSec=5
+TimeoutStartSec=900

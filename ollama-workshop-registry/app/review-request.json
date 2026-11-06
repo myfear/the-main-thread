@@ -1,0 +1,4 @@
+{
+  "code": "static int sum(int[] numbers) {\n    int total = 0;\n    for (int i = 0; i <= numbers.length; i++) {\n        total += numbers[i];\n    }\n    return total;\n}",
+  "question": "Why does this method throw an exception for a non-empty array? Show a corrected method."
+}

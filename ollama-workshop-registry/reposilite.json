@@ -1,0 +1,25 @@
+{
+  "maven": {
+    "repositories": [
+      {
+        "id": "central",
+        "visibility": "PUBLIC",
+        "storageProvider": {
+          "type": "fs",
+          "quota": "10GB"
+        },
+        "storagePolicy": "STRICT",
+        "proxied": [
+          {
+            "reference": "https://repo.maven.apache.org/maven2",
+            "store": true,
+            "allowedExtensions": [
+              ".jar", ".pom", ".xml", ".module", ".zip", ".properties", ".json",
+              ".asc", ".md5", ".sha1", ".sha256", ".sha512"
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}
