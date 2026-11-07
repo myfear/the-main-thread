@@ -1,0 +1,120 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Fulfillment Diagram Lab · The Main Thread</title>
+    {#bundle /}
+</head>
+<body>
+<header class="site-header">
+    <a href="https://www.the-main-thread.com" class="wordmark">The Main Thread<span aria-hidden="true">.</span></a>
+    <span class="header-note">Quarkus + Qute + Pele</span>
+</header>
+<main>
+    <h1>Give your diagram a little less room.</h1>
+    <p class="intro">Follow one sample order from arrival to shipment. Change the available space, compare the layouts, then take a snapshot.</p>
+
+    <section aria-labelledby="live-heading" class="lab">
+        <div class="section-heading">
+            <h2 id="live-heading">Fulfillment diagram</h2>
+            <button id="details-toggle" aria-expanded="false" aria-controls="order-details" type="button">Show order details</button>
+        </div>
+        <div class="toolbar">
+            <div class="width-control">
+                <label for="width">Requested width <output id="requested-width" for="width">960 px</output></label>
+                <input id="width" type="range" min="320" max="960" step="1" value="960">
+                <div class="presets" aria-label="Width presets">
+                    <button type="button" data-width="960">Wide · 960</button>
+                    <button type="button" data-width="640">Medium · 640</button>
+                    <button type="button" data-width="360">Narrow · 360</button>
+                </div>
+            </div>
+            <div class="select-control">
+                <label for="layout">Layout behavior</label>
+                <select id="layout">
+                    <option value="adapt">Adapt to available space</option>
+                    <option value="scale">Scale the original layout</option>
+                </select>
+            </div>
+            <div class="select-control">
+                <label for="theme">Diagram theme</label>
+                <select id="theme">
+                    <option value="light">Paper</option>
+                    <option value="dark">Graphite</option>
+                </select>
+            </div>
+        </div>
+        <div id="workspace" class="workspace">
+            <div class="canvas-area" data-theme="light" id="canvas-area">
+                <div class="diagram-width" id="diagram-width">
+                    <div id="live-diagram" aria-label="Live fulfillment diagram"></div>
+                    <div id="scaled-diagram" aria-label="Original diagram scaled to fit" hidden></div>
+                </div>
+            </div>
+            <aside id="order-details" hidden>
+                <h3>Order TMT-1042</h3>
+                <p class="sample-label">Sample data</p>
+                <dl>
+                    <dt>Item</dt><dd>Mechanical keyboard</dd>
+                    <dt>Quantity</dt><dd>1</dd>
+                    <dt>Delivery</dt><dd>Standard parcel</dd>
+                </dl>
+                <p>Opening this panel gives the diagram less space. The browser window stays the same size.</p>
+            </aside>
+        </div>
+        <div class="diagram-footer">
+            <p id="dimensions">Preparing diagram…</p>
+            <p id="layout-help">The live layout follows its container.</p>
+        </div>
+        <p id="render-error" role="alert" hidden></p>
+        <noscript><p>This live diagram and image export need JavaScript. You can still read the workflow and Mermaid source below.</p></noscript>
+    </section>
+
+    <details class="source-section" id="source-section">
+        <summary>Edit the Mermaid source</summary>
+        <p>This example bundles the flowchart renderer. Keep the first line as <code>flowchart LR</code> to explore its automatic direction change.</p>
+        <label for="source">Mermaid flowchart</label>
+        <textarea id="source" spellcheck="false" rows="12" maxlength="10000" aria-describedby="source-help">{source}</textarea>
+        <div class="source-actions">
+            <button type="button" id="reset-source">Restore sample</button>
+            <span id="source-help">Updates as you type. Maximum 10,000 characters.</span>
+        </div>
+    </details>
+
+    <section class="export-section" aria-labelledby="export-heading">
+        <div class="section-heading">
+            <div>
+                <h2 id="export-heading">Keep this view</h2>
+                <p>Capture the current diagram as portable SVG and PNG images.</p>
+            </div>
+            <div class="export-controls">
+                <label for="density">PNG size</label>
+                <select id="density"><option value="1">1×</option><option value="2" selected>2×</option></select>
+                <button id="capture" class="primary" type="button" disabled>Create snapshot</button>
+            </div>
+        </div>
+        <p id="export-status" role="status">No snapshot yet. Choose a layout, then create one.</p>
+        <div id="previews" class="previews" hidden>
+            <figure>
+                <figcaption><strong>SVG image</strong><span>Vector snapshot</span></figcaption>
+                <div class="image-preview"><img id="svg-preview" alt="Captured flowchart as an SVG image"></div>
+                <button id="download-svg" type="button" disabled>Download SVG</button>
+            </figure>
+            <figure>
+                <figcaption><strong>PNG image</strong><span id="png-size">Raster snapshot</span></figcaption>
+                <div class="image-preview"><img id="png-preview" alt="Captured flowchart as a PNG image"></div>
+                <button id="download-png" type="button" disabled>Download PNG</button>
+            </figure>
+        </div>
+    </section>
+
+    <section class="reading-note" aria-labelledby="workflow-heading">
+        <h2 id="workflow-heading">The sample workflow</h2>
+        <p>Receive an order and reserve stock. If stock is available, authorize payment, pack the order, and ship the parcel. Otherwise, notify the customer. The diagram's direction can change; its steps and connections stay the same.</p>
+        <p>Inline diagrams respond to the page. SVG and PNG snapshots keep the layout and colors captured at one moment. Edit the source to start a new snapshot.</p>
+    </section>
+</main>
+<footer>Fulfillment Diagram Lab · A Main Thread companion</footer>
+</body>
+</html>

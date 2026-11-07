@@ -1,0 +1,9 @@
+flowchart LR
+    accTitle: Order fulfillment
+    accDescr: Reserve stock after receiving an order. If stock is available, authorize payment, pack the order, and ship the parcel. Otherwise, notify the customer.
+    received[Order received] --> reserve[Reserve stock]
+    reserve --> available{Stock available?}
+    available -->|Yes| payment[Authorize payment]
+    payment --> pack[Pack order]
+    pack --> ship[Ship parcel]
+    available -->|No| notify[Notify customer]
