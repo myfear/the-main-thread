@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-streamhouse-order-context",
+  "sourceSha" : "f8a8708a26646170002a1cfe7ac4d7778e32c1c8",
+  "runNumber" : 215,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
