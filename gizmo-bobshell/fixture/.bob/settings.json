@@ -1,0 +1,5 @@
+{
+  "disableGlobalHooks": true,
+  "telemetry": { "enabled": false },
+  "bobShell": { "autoUpdate": false }
+}
