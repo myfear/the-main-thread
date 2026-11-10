@@ -1,0 +1,9 @@
+{
+  "schemaVersion": 1,
+  "process": {
+    "entrypoint": ["/usr/bin/java"],
+    "args": ["-jar", "/app/quarkus-run.jar"],
+    "workingDir": "/app"
+  },
+  "runtimeImages": ["java-21"]
+}

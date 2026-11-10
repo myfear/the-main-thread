@@ -1,0 +1,38 @@
+apiVersion: apps/v1
+kind: Deployment
+metadata:
+  name: brewlet-quarkus
+spec:
+  replicas: 1
+  selector:
+    matchLabels: {app: brewlet-quarkus}
+  template:
+    metadata:
+      labels: {app: brewlet-quarkus}
+      annotations:
+        brewlet.sh/runtime-image: java-21
+    spec:
+      runtimeClassName: brewlet
+      containers:
+        - name: app
+          image: example.invalid/brewlet-quarkus/demo:lab
+          imagePullPolicy: Never
+          securityContext:
+            readOnlyRootFilesystem: true
+          env:
+            - name: QUARKUS_VERTX_CACHE_DIRECTORY
+              value: /app/cache/vertx
+          volumeMounts:
+            - name: vertx-cache
+              mountPath: /app/cache
+          ports:
+            - name: http
+              containerPort: 8080
+          resources:
+            requests: {cpu: 100m, memory: 128Mi}
+            limits: {memory: 512Mi}
+          readinessProbe:
+            httpGet: {path: /runtime, port: http}
+      volumes:
+        - name: vertx-cache
+          emptyDir: {}
