@@ -1,0 +1,9 @@
+{
+  "projectPath" : "brewlet-quarkus",
+  "sourceSha" : "5145e5097564b1d3e9eef1d62d8b0806fd39e8c3",
+  "runNumber" : 219,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
