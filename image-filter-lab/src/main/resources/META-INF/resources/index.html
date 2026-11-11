@@ -1,0 +1,106 @@
+<!doctype html>
+<html lang="en">
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>Image Filter Lab · The Main Thread</title>
+    <meta name="description" content="A small Quarkus lab for exploring image filter algorithms with Pembana Image Filters.">
+    <link rel="icon" href="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 32 32'%3E%3Crect width='32' height='32' rx='7' fill='%231b2420'/%3E%3Ccircle cx='16' cy='16' r='6' fill='%23c94b2b'/%3E%3C/svg%3E">
+    <link rel="stylesheet" href="styles.css?v=3">
+</head>
+<body>
+<header class="masthead shell">
+    <div class="brand">
+        <span class="brand-name">The Main Thread · Image Lab</span>
+    </div>
+    <a class="masthead-link" href="https://github.com/pembana/pembana-image-filters" target="_blank" rel="noreferrer">
+        Pembana Image Filters <span aria-hidden="true">↗</span>
+    </a>
+</header>
+
+<main class="shell">
+    <section class="intro">
+        <div>
+            <h1>Filters,<br>from the inside.</h1>
+        </div>
+        <div class="intro-side">
+            <p class="lede">Choose a photograph, adjust a filter, and compare the pixels. Explore Gaussian kernels and dither matrices alongside the result.</p>
+            <dl class="intro-facts">
+                <div><dt>Filters</dt><dd>10</dd></div>
+                <div><dt>Deep dives</dt><dd>02</dd></div>
+                <div><dt>Engine</dt><dd>Quarkus</dd></div>
+            </dl>
+        </div>
+    </section>
+
+    <section class="workspace">
+        <aside class="rail">
+            <div class="rail-head">
+                <h2>Filters</h2>
+                <span id="filter-count" class="mono-note"></span>
+            </div>
+            <div id="filter-list" class="filter-list" aria-label="Available filters"></div>
+        </aside>
+
+        <section class="stage-column">
+            <div class="toolbar">
+                <button id="choose-button" class="button primary" type="button" disabled>Choose image</button>
+                <input id="file-input" type="file" accept="image/png,image/jpeg,image/gif" hidden>
+                <button id="sample-button" class="button ghost" type="button" disabled>Use test frame</button>
+                <a id="download-button" class="button ghost is-disabled" download aria-disabled="true">Download PNG</a>
+                <span id="status" class="status" role="status" aria-live="polite"></span>
+            </div>
+
+            <p class="upload-help">PNG, JPEG, or GIF · up to 10 MiB and 24 megapixels · GIF uses the first frame</p>
+            <div id="stage" class="stage" style="--split: 50%">
+                <img id="after-image" src="/api/sample.png" alt="Filtered image" draggable="false">
+                <div class="before-layer">
+                    <img id="before-image" src="/api/sample.png" alt="Original image" draggable="false">
+                </div>
+                <div class="split-handle" aria-hidden="true"></div>
+                <span class="tag tag-before">Original</span>
+                <span id="after-label" class="tag tag-after">Filtered</span>
+                <input id="split-range" class="split-range" type="range" min="0" max="100" value="50"
+                       aria-label="Before and after comparison">
+            </div>
+            <div class="stage-meta">
+                <span id="meta-size">Loading test frame…</span>
+                <span id="meta-time"></span>
+            </div>
+
+            <section class="controls" aria-live="polite">
+                <div class="controls-head">
+                    <div>
+                        <h2 id="active-name">Gaussian Blur</h2>
+                    </div>
+                    <p id="active-summary" class="controls-summary"></p>
+                </div>
+                <div id="param-controls" class="param-controls"></div>
+            </section>
+        </section>
+    </section>
+
+    <section class="underhood">
+        <div class="underhood-head">
+            <div>
+                <h2>Inside the filters</h2>
+                <p class="underhood-lede">The sliders change numbers. These two panels show which numbers, and what the algorithm does with them.</p>
+            </div>
+            <div class="tabs" role="tablist" aria-label="Filter deep dives">
+                <button id="theory-gaussian" class="tab is-active" type="button" role="tab" aria-controls="theory-panel" aria-selected="true" data-theory="gaussian">Gaussian blur</button>
+                <button id="theory-dither" class="tab" type="button" role="tab" aria-controls="theory-panel" aria-selected="false" tabindex="-1" data-theory="dither">Dither</button>
+            </div>
+        </div>
+        <div id="theory-panel" class="theory-panel" role="tabpanel" aria-labelledby="theory-gaussian" tabindex="0"></div>
+    </section>
+</main>
+
+<footer class="footer shell">
+    <span>Built with Quarkus and <a href="https://github.com/pembana/pembana-image-filters" target="_blank" rel="noreferrer">Pembana Image Filters</a>.</span>
+    <span class="mono-note">Images are processed by this Quarkus server.</span>
+</footer>
+
+<noscript><p class="shell noscript">This lab needs JavaScript to upload an image and request a render.</p></noscript>
+<script src="app.js?v=3"></script>
+</body>
+</html>
