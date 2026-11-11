@@ -1,0 +1,224 @@
+name: Weekly briefing
+
+on:
+  schedule:
+    - cron: '17 5 * * *' # Daily collection, UTC
+    - cron: '17 7 * * 1' # Previous completed week, Monday UTC
+  workflow_dispatch:
+    inputs:
+      mode:
+        description: 'collect saves source records; build uses Bob; render reuses accepted issues'
+        type: choice
+        options: [build, collect, render]
+        default: build
+      week:
+        description: 'Completed ISO week, e.g. 2026-W43 (blank = previous week)'
+        type: string
+      publish:
+        description: 'Save state to gh-pages and deploy the site (collect only saves state)'
+        type: boolean
+        default: false
+      replace_issue:
+        description: 'Explicitly regenerate an already accepted issue'
+        type: boolean
+        default: false
+  pull_request:
+    paths: ['main-thread-weekly/**', '.github/workflows/weekly-briefing.yml']
+  push:
+    branches: [main]
+    paths: ['main-thread-weekly/**', '.github/workflows/weekly-briefing.yml']
+
+permissions:
+  contents: read
+
+defaults:
+  run:
+    shell: bash
+
+# Serialize collection, generation, branch writes, and Pages deployments. Never cancel a write.
+concurrency:
+  group: main-thread-weekly
+  cancel-in-progress: false
+
+jobs:
+  check:
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: jbangdev/setup-jbang@2b1b465a7b75f4222b81426f23a01e013aa7b95c # v0.1.1
+        env:
+          JBANG_DOWNLOAD_VERSION: '0.142.0'
+      - run: jbang Briefing.java test
+        working-directory: main-thread-weekly
+
+  generate:
+    needs: check
+    if: github.event_name == 'workflow_dispatch' || (github.event_name == 'schedule' && vars.BRIEFING_ENABLED == 'true')
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    outputs:
+      mode: ${{ steps.plan.outputs.mode }}
+      publish: ${{ steps.plan.outputs.publish }}
+    env:
+      BRIEFING_TIMEZONE: ${{ vars.BRIEFING_TIMEZONE || 'Europe/Berlin' }}
+      BOB_MODEL: ${{ vars.BOB_MODEL }}
+    steps:
+      - uses: actions/checkout@3d3c42e5aac5ba805825da76410c181273ba90b1 # v7.0.1
+        with:
+          persist-credentials: false
+      - uses: actions/setup-java@b843ebf9b913146b38da2eaa7aeddf76074ae1ad # v6.1.0
+        with:
+          distribution: temurin
+          java-version: '25'
+      - uses: jbangdev/setup-jbang@2b1b465a7b75f4222b81426f23a01e013aa7b95c # v0.1.1
+        env:
+          JBANG_DOWNLOAD_VERSION: '0.142.0'
+      - name: Select operation
+        id: plan
+        env:
+          EVENT_NAME: ${{ github.event_name }}
+          SCHEDULE: ${{ github.event.schedule }}
+          INPUT_MODE: ${{ inputs.mode }}
+          INPUT_PUBLISH: ${{ inputs.publish }}
+        run: |
+          mode="${INPUT_MODE:-collect}"
+          publish="${INPUT_PUBLISH:-false}"
+          if [ "$EVENT_NAME" = schedule ]; then
+            publish=true
+            if [ "$SCHEDULE" = '17 7 * * 1' ]; then mode=build; fi
+          fi
+          echo "mode=$mode" >> "$GITHUB_OUTPUT"
+          echo "publish=$publish" >> "$GITHUB_OUTPUT"
+      - name: Restore durable state
+        run: |
+          mkdir -p work/state
+          if [ -n "$(git ls-remote --heads origin refs/heads/gh-pages)" ]; then
+            git fetch --no-tags origin refs/heads/gh-pages
+            git cat-file -e FETCH_HEAD:.briefing-state-v1 || { echo 'Existing gh-pages branch is not owned by this pipeline.' >&2; exit 1; }
+            git archive FETCH_HEAD state site | tar -x -C work
+          fi
+      - name: Discover explicit article-to-companion mappings
+        if: steps.plan.outputs.mode == 'build'
+        run: jbang .github/scripts/ProjectCatalog.java discover --output work/catalog.json
+      - name: Collect feed
+        if: steps.plan.outputs.mode != 'render'
+        working-directory: main-thread-weekly
+        run: jbang Briefing.java collect --state ../work/state
+      - uses: actions/setup-node@949feb2413d6458794dcd2491c4babbbce0c15c1 # v7.1.0
+        if: steps.plan.outputs.mode == 'build'
+        with:
+          node-version: '24'
+          package-manager-cache: false
+      - name: Install pinned Bob Shell
+        if: steps.plan.outputs.mode == 'build'
+        run: npm install --registry=https://registry.npmjs.org/ --allow-scripts=@officecli/officecli --global @ibm/bob@2.0.9
+      - name: Assemble and validate issue
+        if: steps.plan.outputs.mode == 'build'
+        working-directory: main-thread-weekly
+        env:
+          BOB_API_KEY: ${{ secrets.BOB_API_KEY }}
+          BOB_ACCEPT_LICENSE: ${{ vars.BOB_ACCEPT_LICENSE }}
+          INPUT_WEEK: ${{ inputs.week }}
+          INPUT_REPLACE: ${{ inputs.replace_issue }}
+        run: |
+          args=(build --state ../work/state --site ../work/site --timezone "$BRIEFING_TIMEZONE" --catalog-file ../work/catalog.json)
+          if [ -n "$INPUT_WEEK" ]; then args+=(--week "$INPUT_WEEK"); fi
+          if [ -n "$BOB_MODEL" ]; then args+=(--model "$BOB_MODEL"); fi
+          if [ "$INPUT_REPLACE" = true ]; then args+=(--force); fi
+          if [ "$BOB_ACCEPT_LICENSE" = true ]; then args+=(--accept-license); fi
+          jbang Briefing.java "${args[@]}"
+      - name: Render accepted issues without Bob
+        if: steps.plan.outputs.mode == 'render'
+        working-directory: main-thread-weekly
+        run: jbang Briefing.java render --state ../work/state --site ../work/site
+      - name: Keep a site directory in a collection-only bootstrap
+        run: |
+          mkdir -p work/site
+          if [ ! -f work/site/index.html ]; then touch work/site/.keep; fi
+      - uses: actions/upload-artifact@cf430e030ddbb5b0abf93d22962f4752f3646cd9 # v7.0.2
+        with:
+          name: weekly-briefing-candidate
+          path: |
+            work/state
+            work/site
+          include-hidden-files: true
+          if-no-files-found: error
+          retention-days: 7
+      - name: Record outcome
+        env:
+          MODE: ${{ steps.plan.outputs.mode }}
+          PUBLISH: ${{ steps.plan.outputs.publish }}
+        run: |
+          echo "Operation: $MODE. Publish requested: $PUBLISH." >> "$GITHUB_STEP_SUMMARY"
+          echo 'The candidate artifact contains compact records, accepted issue JSON, and the rendered site. No key, raw feed, or agent trace is included.' >> "$GITHUB_STEP_SUMMARY"
+
+  save-state:
+    needs: generate
+    if: needs.generate.outputs.publish == 'true'
+    runs-on: ubuntu-latest
+    timeout-minutes: 5
+    permissions:
+      contents: write
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: weekly-briefing-candidate
+          path: generated
+      - name: Update only pipeline-owned state branch
+        env:
+          GH_TOKEN: ${{ github.token }}
+          REPOSITORY: ${{ github.repository }}
+          SERVER_URL: ${{ github.server_url }}
+        run: |
+          git init --initial-branch=gh-pages publish
+          cd publish
+          git remote add origin "$SERVER_URL/$REPOSITORY.git"
+          export GIT_CONFIG_COUNT=1
+          export GIT_CONFIG_KEY_0="http.$SERVER_URL/.extraheader"
+          export GIT_CONFIG_VALUE_0="AUTHORIZATION: basic $(printf 'x-access-token:%s' "$GH_TOKEN" | base64 -w0)"
+          if [ -n "$(git ls-remote --heads origin refs/heads/gh-pages)" ]; then
+            git fetch --no-tags origin refs/heads/gh-pages
+            git checkout -B gh-pages FETCH_HEAD
+            test -f .briefing-state-v1 || { echo 'Refusing to replace an existing unrelated Pages branch.' >&2; exit 1; }
+          fi
+          rm -rf state site
+          cp -R ../generated/state state
+          mkdir -p site
+          if [ -d ../generated/site ]; then cp -R ../generated/site/. site/; fi
+          touch .briefing-state-v1
+          git add -- state site .briefing-state-v1
+          if ! git diff --cached --quiet; then
+            git -c user.name='github-actions[bot]' -c user.email='41898282+github-actions[bot]@users.noreply.github.com' commit -m 'Update weekly briefing state and site'
+            git push origin HEAD:refs/heads/gh-pages
+          fi
+
+  deploy:
+    needs: [generate, save-state]
+    if: needs.generate.outputs.publish == 'true' && needs.generate.outputs.mode != 'collect'
+    runs-on: ubuntu-latest
+    timeout-minutes: 10
+    permissions:
+      pages: write
+      id-token: write
+    environment:
+      name: github-pages
+      url: ${{ steps.deployment.outputs.page_url }}
+    steps:
+      - uses: actions/download-artifact@9000827ccba6bdab643e8b6fd33ac0654aef8333 # v8.0.2
+        with:
+          name: weekly-briefing-candidate
+          path: generated
+      - uses: actions/configure-pages@45bfe0192ca1faeb007ade9deae92b16b8254a0d # v6.0.0
+      - uses: actions/upload-pages-artifact@fc324d3547104276b827a68afc52ff2a11cc49c9 # v5.0.0
+        with:
+          path: generated/site
+      - name: Deploy
+        id: deployment
+        uses: actions/deploy-pages@368f82528645a54fb793d4d04e342629a3f51346 # v5.0.1
