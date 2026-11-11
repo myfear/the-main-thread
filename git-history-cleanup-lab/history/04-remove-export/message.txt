@@ -1,0 +1,5 @@
+Remove legacy payroll export checks
+
+The 2025 payroll service took over export delivery. Remove the old export-related
+regression check with the retired local integration. The service still accepts
+15-minute blocks; this change does not alter the payroll rules.

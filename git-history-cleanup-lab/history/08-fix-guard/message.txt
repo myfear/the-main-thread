@@ -1,0 +1,6 @@
+Preserve payroll behavior after cleanup
+
+Restore the flat-rate guard and block rounding removed by the proposal. Emergency
+dispatch bypasses ShiftAssignmentValidator, so add a regression check for that path.
+Keep only the behavior-preserving simplification: remove the redundant early return.
+Remove the proposal file. PAY-501 remains a separate January rollout change.

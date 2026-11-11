@@ -1,0 +1,1 @@
+You are reviewing a cleanup proposal in this repository. For each removed condition, find the commit that introduced it, the reason recorded there, and whether that reason is a current requirement. Cite commit hashes and files. Do not change code.

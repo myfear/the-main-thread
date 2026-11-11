@@ -1,0 +1,6 @@
+Apply per-minute overtime for January rollout (PAY-501)
+
+Remove the restored 15-minute block rule in a separate behavior-changing commit.
+PAY-501 approves exact-minute pay for standard contracts from January 2027.
+Add the ten-minute check and the decision record. This branch models the rollout;
+it must not be used for November payroll.

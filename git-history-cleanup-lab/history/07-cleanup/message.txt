@@ -1,0 +1,4 @@
+Simplify overtime calculation
+
+Remove checks that no longer apply. The assignment validator covers flat-rate
+contracts, and the 2027 export accepts minutes.

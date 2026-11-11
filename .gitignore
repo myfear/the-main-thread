@@ -11,6 +11,9 @@
 # Ship the Wazuh companion's generated-key and private-document exclusions.
 !/quarkus-wazuh-siem/.gitignore
 
+# Ship the Git history lab exclusion for generated exercise repositories.
+!/git-history-cleanup-lab/.gitignore
+
 cobol-java/
 mcp.json
 

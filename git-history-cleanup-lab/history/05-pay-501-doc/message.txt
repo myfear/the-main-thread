@@ -1,0 +1,4 @@
+Document January 2027 payroll export (PAY-501)
+
+The approved January rollout changes both the export format and standard-contract
+pay to individual minutes. November payroll still uses 15-minute blocks.

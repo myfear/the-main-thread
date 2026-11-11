@@ -1,0 +1,1 @@
+Simplify src/main/java/com/themainthread/payroll/OvertimeRules.java. Remove checks you believe are redundant. Keep the existing checks passing. Run ./scripts/check.sh. In your final message, list each removal and the evidence you used.

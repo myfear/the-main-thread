@@ -1,0 +1,4 @@
+Round overtime to payroll blocks (PAY-88)
+
+The payroll provider's CSV import accepts only full 15-minute blocks. Partial blocks
+are dropped before export.

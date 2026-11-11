@@ -1,0 +1,4 @@
+Add emergency dispatch calculation path
+
+Model dispatch accepting shifts already in progress, bypassing the scheduling
+validator. The calculation receives the total worked minutes for the payroll week.

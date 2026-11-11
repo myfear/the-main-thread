@@ -1,0 +1,4 @@
+Reject overtime for flat-rate contracts (INC-412)
+
+A payroll audit found flat-rate drivers receiving overtime on top of their allowance.
+The rule now refuses overtime for those contracts.

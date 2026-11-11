@@ -1,0 +1,4 @@
+Validate contract and shift assignment
+
+The scheduling UI now rejects flat-rate contracts for overtime-eligible shifts.
+This keeps the decision at the assignment boundary.
