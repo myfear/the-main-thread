@@ -1,0 +1,15 @@
+{
+  "projectPath" : "virtual-threads-demo",
+  "sourceSha" : "096fbbf6d0993c4e03e970dfc36f0477a04544cd",
+  "runNumber" : 223,
+  "runAttempt" : 1,
+  "status" : "passing",
+  "reason" : "build:success setup:success",
+  "tests" : {
+    "total" : 6,
+    "passed" : 6,
+    "failed" : 0,
+    "errors" : 0,
+    "skipped" : 0
+  }
+}
