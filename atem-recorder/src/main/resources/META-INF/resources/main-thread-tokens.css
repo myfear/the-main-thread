@@ -1,0 +1,46 @@
+/* Optional light-theme tokens. Apply data-main-thread-ui to the app root.
+   Map these roles into an existing theme rather than adding a second system. */
+[data-main-thread-ui] {
+  color-scheme: light;
+
+  --mt-canvas: #f8f7f3;
+  --mt-surface: #ffffff;
+  --mt-surface-secondary: #f4f5f7;
+  --mt-text: #2b2b35;
+  --mt-text-secondary: #62616f;
+  --mt-primary: #2d2786;
+  --mt-primary-hover: #231e6d;
+  --mt-on-primary: #ffffff;
+  --mt-selected-surface: #eeecf8;
+  --mt-focus: #5145c6;
+  --mt-signature: #e61e73;
+  --mt-divider: #d8d6e2;
+  --mt-control-edge: #878394;
+  --mt-success: #226447;
+  --mt-warning: #805413;
+  --mt-error: #a5263d;
+
+  --mt-font-ui: ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont,
+    "Segoe UI", sans-serif;
+  --mt-font-code: ui-monospace, "SFMono-Regular", Consolas, "Liberation Mono",
+    monospace;
+  --mt-text-small: 0.875rem;
+  --mt-text-body: 1rem;
+  --mt-text-section: 1.25rem;
+  --mt-text-title: 2rem;
+  --mt-leading-body: 1.55;
+  --mt-leading-heading: 1.2;
+  --mt-measure: 68ch;
+
+  --mt-space-1: 0.25rem;
+  --mt-space-2: 0.5rem;
+  --mt-space-3: 0.75rem;
+  --mt-space-4: 1rem;
+  --mt-space-6: 1.5rem;
+  --mt-space-8: 2rem;
+  --mt-space-12: 3rem;
+  --mt-radius-control: 0.375rem;
+  --mt-radius-panel: 0.625rem;
+  --mt-content-max: 70rem;
+  --mt-motion-fast: 160ms;
+}

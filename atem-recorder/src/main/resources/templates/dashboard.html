@@ -1,0 +1,61 @@
+<!doctype html>
+<html lang="en" data-main-thread-ui>
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1">
+    <title>ATEM Recorder</title>
+    <link rel="stylesheet" href="/main-thread-tokens.css">
+    <link rel="stylesheet" href="/dashboard.css">
+    <script src="/dashboard.js" defer></script>
+</head>
+<body>
+    <header class="masthead">
+        <div class="shell">
+            <img src="/main-thread-wordmark.png" width="136" height="26" alt="The Main Thread">
+        </div>
+    </header>
+    <main class="shell">
+        <div class="title-row">
+            <h1>ATEM Recorder</h1>
+            <button class="control refresh" id="refresh" type="button">Refresh</button>
+        </div>
+
+        <section class="stream-panel" aria-labelledby="stream-heading">
+            <div>
+                <h2 id="stream-heading">Incoming stream</h2>
+                <p class="stream-state" id="stream-state" data-state="loading" role="status">Checking stream…</p>
+                <code class="stream-path">{streamPath}</code>
+            </div>
+            <dl class="stream-details">
+                <div>
+                    <dt>Connected for</dt>
+                    <dd id="elapsed">—</dd>
+                </div>
+                <div>
+                    <dt>Last successful check</dt>
+                    <dd><time id="last-check">—</time></dd>
+                </div>
+            </dl>
+        </section>
+
+        <section class="recordings" aria-labelledby="recordings-heading">
+            <div class="section-heading">
+                <h2 id="recordings-heading">Recordings</h2>
+                <p class="timezone" id="timezone"></p>
+            </div>
+            <p class="library-note" id="library-note" role="status">Loading recordings…</p>
+            <table id="recording-table" role="table" aria-labelledby="recordings-heading" hidden>
+                <thead role="rowgroup">
+                    <tr role="row">
+                        <th scope="col" role="columnheader">Start time</th>
+                        <th scope="col" role="columnheader">Duration</th>
+                        <th scope="col" role="columnheader"><span class="visually-hidden">Download</span></th>
+                    </tr>
+                </thead>
+                <tbody role="rowgroup" id="recording-rows"></tbody>
+            </table>
+        </section>
+        <noscript><p>Enable JavaScript to see the stream status and recordings.</p></noscript>
+    </main>
+</body>
+</html>

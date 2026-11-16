@@ -1,0 +1,40 @@
+logLevel: info
+
+rtsp: no
+rtmp: yes
+rtmpAddress: :1935
+hls: no
+webrtc: no
+srt: no
+moq: no
+
+api: yes
+apiAddress: :9997
+playback: yes
+playbackAddress: :9996
+
+# Podman forwards host requests from outside the container's loopback interface.
+# Keep both HTTP ports bound to loopback on the host when publishing them.
+authMethod: internal
+authInternalUsers:
+  - user: any
+    permissions:
+      - action: api
+      - action: playback
+        path: live/atem
+      - action: publish
+        path: live/atem
+
+pathDefaults:
+  recordSegmentDuration: 10m
+
+
+paths:
+  live/atem:
+    source: publisher
+    overridePublisher: no
+    record: yes
+    recordPath: /recordings/%path/%Y-%m-%d_%H-%M-%S-%f_%z
+    recordFormat: fmp4
+    recordPartDuration: 1s
+    recordDeleteAfter: 0s
