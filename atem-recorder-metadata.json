@@ -1,0 +1,9 @@
+{
+  "projectPath" : "atem-recorder",
+  "sourceSha" : "c6b92bd01f7f10f71f899611223b514287ef3bf9",
+  "runNumber" : 222,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
