@@ -1,0 +1,6 @@
+FROM registry.access.redhat.com/ubi9/openjdk-25-runtime:1.24
+WORKDIR /deployments
+COPY --chown=185 target/quarkus-app/ ./
+USER 185
+EXPOSE 8080
+ENTRYPOINT ["java", "-Djava.awt.headless=true", "-Dquarkus.http.host=0.0.0.0", "-jar", "quarkus-run.jar"]
