@@ -23,6 +23,15 @@ Each folder in this repository matches an article from the Substack and includes
 - ⚙️ Quarkus configurations and Dev Services integration
 - 📦 Companion projects, including Maven, Gradle, JBang, and script-based examples
 
+## Maintenance and support
+
+These projects are educational companions to The Main Thread articles, provided
+as-is. There is no commitment to ongoing maintenance, dependency updates, security
+fixes, compatibility with future releases, or support. Examples may stop building
+or running as dependencies and external services change. Build badges report past
+CI results; they are not a guarantee of continued compatibility or maintenance.
+Review and adapt the code before using it in your own applications.
+
 ## Companion projects and build status
 
 This catalog includes every tracked companion folder, whether or not it has a
