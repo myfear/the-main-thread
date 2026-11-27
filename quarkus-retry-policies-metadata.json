@@ -1,0 +1,9 @@
+{
+  "projectPath" : "quarkus-retry-policies",
+  "sourceSha" : "ecaa9437be8ddd98a417008ce2646c215115fac8",
+  "runNumber" : 227,
+  "runAttempt" : 1,
+  "status" : "no result",
+  "reason" : "Expected build artifact is missing",
+  "tests" : null
+}
